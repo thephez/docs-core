@@ -26,7 +26,7 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:blocktransactions>>~[blocktr
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:blocktransactionsrequest >>~[blocktransactionsrequest ](../resources/glossary.md#blocktransactionsrequest s)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:Bloom-filter>>~[bloom-filter](../resources/glossary.md#bloom-filter)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:chain-code>>~[chain-code](../resources/glossary.md#chain-code)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:ChainLock>>~[ChainLock](../resources/glossary.md#ChainLock)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:ChainLock>>~[ChainLock](../resources/glossary.md#chainlock)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:change output>>~[change output](../resources/glossary.md#change-output)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:child key>>~[child key](../resources/glossary.md#child-key)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:child-pays-for-parent>>~[child-pays-for-parent](../resources/glossary.md#child-pays-for-parent)~g' {} +

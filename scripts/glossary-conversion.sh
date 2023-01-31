@@ -73,6 +73,7 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:high-priority-transaction>>~
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:index>>~[index](../resources/glossary.md#index)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:initial-block-download>>~[initial-block-download](../resources/glossary.md#initial-block-download)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:input>>~[input](../resources/glossary.md#input)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:inputs>>~[inputs](../resources/glossary.md#input)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:instantsend>>~[instantsend](../resources/glossary.md#instantsend)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:internal-byte-order>>~[internal-byte-order](../resources/glossary.md#internal-byte-order)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:inventory>>~[inventory](../resources/glossary.md#inventory)~g' {} +
@@ -104,6 +105,7 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:network>>~[network](../resou
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:network-magic>>~[network-magic](../resources/glossary.md#network-magic)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:nlocktime>>~[nlocktime](../resources/glossary.md#nlocktime)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:node>>~[node](../resources/glossary.md#node)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:nodes>>~[nodes](../resources/glossary.md#node)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:null-data-op_return-transaction>>~[null-data-op_return-transaction](../resources/glossary.md#null-data-op_return-transaction)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:opcode>>~[opcode](../resources/glossary.md#opcode)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:orphan-block>>~[orphan-block](../resources/glossary.md#orphan-block)~g' {} +

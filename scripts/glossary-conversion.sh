@@ -36,7 +36,7 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:coinbase transaction>>~[coin
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:coinjoin>>~[coinjoin](../resources/glossary.md#coinjoin)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:compactSize uint>>~[compactSize uint](../resources/glossary.md#compactsize)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:compactSize unsigned integers>>~[compactSize unsigned integers](../resources/glossary.md#compactsize)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:compressed-public-key>>~[compactsize](../resources/glossary.md#compressed-public-key)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:compressed public key>>~[compressed public key](../resources/glossary.md#compressed-public-key)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:confirmations>>~[confirmations](../resources/glossary.md#confirmations)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:consensus>>~[consensus](../resources/glossary.md#consensus)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:consensus rules>>~[consensus rules](../resources/glossary.md#consensus-rules)~g' {} +

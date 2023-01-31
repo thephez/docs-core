@@ -27,18 +27,18 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:blocktransactionsrequest >>~
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:Bloom-filter>>~[bloom-filter](../resources/glossary.md#bloom-filter)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:chain-code>>~[chain-code](../resources/glossary.md#chain-code)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:ChainLock>>~[ChainLock](../resources/glossary.md#ChainLock)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:change-output>>~[change-output](../resources/glossary.md#change-output)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:child-key>>~[child-key](../resources/glossary.md#child-key)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:change output>>~[change output](../resources/glossary.md#change-output)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:child key>>~[child key](../resources/glossary.md#child-key)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:child-pays-for-parent>>~[child-pays-for-parent](../resources/glossary.md#child-pays-for-parent)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:coinbase>>~[coinbase](../resources/glossary.md#coinbase)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:coinbase-block-height>>~[coinbase-block-height](../resources/glossary.md#coinbase-block-height)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:coinbase-transaction>>~[coinbase-transaction](../resources/glossary.md#coinbase-transaction)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:coinbase transaction>>~[coinbase transaction](../resources/glossary.md#coinbase-transaction)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:coinjoin>>~[coinjoin](../resources/glossary.md#coinjoin)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:compactsize>>~[compactsize](../resources/glossary.md#compactsize)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:compressed-public-key>>~[compactsize](../resources/glossary.md#compressed-public-key)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:confirmations>>~[confirmations](../resources/glossary.md#confirmations)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:consensus>>~[consensus](../resources/glossary.md#consensus)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:consensus-rules>>~[consensus-rules](../resources/glossary.md#consensus-rules)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:consensus rules>>~[consensus rules](../resources/glossary.md#consensus-rules)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:dark-gravity-wave>>~[dark-gravity-wave](../resources/glossary.md#dark-gravity-wave)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:dash-address-encoding>>~[dash-address-encoding](../resources/glossary.md#dash-address-encoding)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:consensus-rules>>~[consensus-rules](../resources/glossary.md#consensus-rules)~g' {} +

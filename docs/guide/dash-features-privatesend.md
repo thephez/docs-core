@@ -8,13 +8,13 @@ The following video provides an overview with a good introduction to the details
 
 ## Wallet Preparation
 
-The <<glossary:wallet>> completes two operations in this phase:
+The [wallet](../resources/glossary.md#wallet) completes two operations in this phase:
 
-1. Split value into inputs matching the CoinJoin <<glossary:denominations>> by sending <<glossary:transactions>> to itself
+1. Split value into inputs matching the CoinJoin [denominations](../resources/glossary.md#denominations) by sending [transactions](../resources/glossary.md#transaction) to itself
 
-2. Split value into <<glossary:inputs>> to use for collateral by sending transactions to itself
+2. Split value into [inputs](../resources/glossary.md#input) to use for collateral by sending transactions to itself
 
-**Note**: Both these operations incur the standard <<glossary:transaction fee>> like any other transaction
+**Note**: Both these operations incur the standard [transaction fee](../resources/glossary.md#transaction-fee) like any other transaction
 
 **Creating Denominations**
 
@@ -36,7 +36,7 @@ Protocol version 70213 added a 5th denomination (0.001 DASH).
 
 Collaterals are used to pay CoinJoin fees, but are kept separate from the denominations to maximize privacy. Since protocol version 70213, the minimum collateral fee is 1/10 of the smallest denomination for all sessions regardless of denomination. In Dash Core, collaterals are created with enough value to pay 4 collateral fees (4 x 0.001 DASH). ([Dash Core Reference](https://github.com/dashpay/dash/blob/v0.15.0.0/src/privatesend/privatesend.h#L459))
 
-In protocol version 70208, collateral inputs can be anything from 2x the minimum collateral amount to the maximum collateral amount (currently defined as 4x the minimum collateral). In protocol versions > 70208, Dash Core can use any <<glossary:input>> from 1x the minimum collateral amount to the maximum collateral amount.
+In protocol version 70208, collateral inputs can be anything from 2x the minimum collateral amount to the maximum collateral amount (currently defined as 4x the minimum collateral). In protocol versions > 70208, Dash Core can use any [input](../resources/glossary.md#input) from 1x the minimum collateral amount to the maximum collateral amount.
 
 [Example Testnet collateral creation transaction](https://testnet-insight.dashevo.org/insight/tx/8f9b15973983876f7ce4eb2c32b09690dfb0432d2caf6c6df516196a8d17689f)
 
@@ -44,7 +44,7 @@ In protocol version 70208, collateral inputs can be anything from 2x the minimum
 
 ## CoinJoin Processing
 
-This phase involves exchanging a sequence of messages with a <<glossary:masternode>> so it can construct a denominate transaction with inputs from the clients in its pool.
+This phase involves exchanging a sequence of messages with a [masternode](../resources/glossary.md#masternode) so it can construct a denominate transaction with inputs from the clients in its pool.
 
 *Data Flow*
 
@@ -72,12 +72,12 @@ _**Step 0 - Pool Selection**_
 _**Step 1 - Pool Request**_
 
   * The [`dsa` message](../reference/p2p-network-privatesend-messages.md#dsa) contains a collateral transaction
-    * This transaction uses a collateral <<glossary:input>> created in the [Wallet Preparation](#wallet-preparation) phase
-    * The collateral is a signed <<glossary:transaction>> that pays the collateral back to a client <<glossary:address>> minus a fee of 0.001 DASH
+    * This transaction uses a collateral [input](../resources/glossary.md#input) created in the [Wallet Preparation](#wallet-preparation) phase
+    * The collateral is a signed [transaction](../resources/glossary.md#transaction) that pays the collateral back to a client [address](../resources/glossary.md#address) minus a fee of 0.001 DASH
 
 _**Step 3 - Queue**_
 
-  * A masternode broadcasts [`dsq` messages](../reference/p2p-network-privatesend-messages.md#dsq) when it starts a new queue. These message are relayed by all <<glossary:peers>>.
+  * A masternode broadcasts [`dsq` messages](../reference/p2p-network-privatesend-messages.md#dsq) when it starts a new queue. These message are relayed by all [peers](../resources/glossary.md#peer).
   * As of protocol version 70214, sessions have a variable number of participants defined by the range `nPoolMinParticipants` ([3](https://github.com/dashpay/dash/blob/v0.15.0.0/src/chainparams.cpp#L360)) to `nPoolMaxParticipants` ([5](https://github.com/dashpay/dash/blob/v0.15.0.0/src/chainparams.cpp#L361)). Prior protocol version sessions always contained exactly 3 participants. Spork 22 introduced in Dash Core 0.16.0 expanded the maximum number of participants to 20 and also reduced the minimum number of participants to 2 for testnet/devnet/regtest networks. The spork was removed in Dash Core 0.17.0 which made the change permanent.
   * The masternode sends a [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq) with the ready bit set once it has received valid [`dsa` messages](../reference/p2p-network-privatesend-messages.md#dsa) from either:
     1. The maximum number of clients (20)
@@ -117,7 +117,7 @@ _**General**_
 
 **Sending Fees**
 
-To maintain privacy when using CoinJoin funds, transactions must fully spend all inputs to a single output (with the remainder becoming the fee - i.e. no <<glossary:change output>>). This can result in large fees depending on the value being sent.
+To maintain privacy when using CoinJoin funds, transactions must fully spend all inputs to a single output (with the remainder becoming the fee - i.e. no [change output](../resources/glossary.md#change-output)). This can result in large fees depending on the value being sent.
 
 For example, an extreme case is sending the minimum non-dust value (546 duffs). This results in an extremely large transaction fee because the minimum denomination (0.00100001 DASH or 100,001 duffs) must be fully spent with no change. This results in a fee of 0.00999464 DASH and a sent value of only 0.00000546 DASH as shown by the calculation below.
 

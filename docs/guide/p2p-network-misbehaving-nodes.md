@@ -4,7 +4,7 @@
 >
 > Dash Core 18.1.0 introduced changes to how misbehaving peers are treated.
 
-Take note that for both types of broadcasting, mechanisms are in place to punish misbehaving <<glossary:peers>> who take up bandwidth and computing resources by sending false information. Since Dash Core 18.1.0, peers that misbehave (e.g. send us invalid blocks) are referred to as discouraged nodes in log output. They are not strictly banned: incoming connections are still allowed from them, but they're preferred for eviction.
+Take note that for both types of broadcasting, mechanisms are in place to punish misbehaving [peers](../resources/glossary.md#peer) who take up bandwidth and computing resources by sending false information. Since Dash Core 18.1.0, peers that misbehave (e.g. send us invalid blocks) are referred to as discouraged nodes in log output. They are not strictly banned: incoming connections are still allowed from them, but they're preferred for eviction.
 
 Furthermore, a few additional changes are introduced to how discouraged addresses are treated:
 

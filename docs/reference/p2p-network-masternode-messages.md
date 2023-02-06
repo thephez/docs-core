@@ -1,6 +1,6 @@
 # Masternode Messages
 
-The following network messages enable the <<glossary:masternode>> features built in to Dash.
+The following network messages enable the [masternode](../resources/glossary.md#masternode) features built in to Dash.
 
 ![Overview Of P2P Protocol Masternode Request And Reply Messages](https://dash-docs.github.io/img/dev/en-p2p-masternode-messages.svg)
 
@@ -35,7 +35,7 @@ bf110000 ................................... Count: 4543
 
 *Added in protocol version 70214*
 
-The [`mnauth` message](../reference/p2p-network-masternode-messages.md#mnauth) is sent by a <<glossary:masternode>> immediately after sending a [`verack` message](../reference/p2p-network-control-messages.md#verack) to authenticate that the sender is a masternode. It is only sent when the sender is actually a masternode.
+The [`mnauth` message](../reference/p2p-network-masternode-messages.md#mnauth) is sent by a [masternode](../resources/glossary.md#masternode) immediately after sending a [`verack` message](../reference/p2p-network-control-messages.md#verack) to authenticate that the sender is a masternode. It is only sent when the sender is actually a masternode.
 
 The [`mnauth` message](../reference/p2p-network-masternode-messages.md#mnauth) signs a challenge that was previously sent via a [`version` message](../reference/p2p-network-control-messages.md#version). The challenge is signed differently depending on if the connection is inbound or outbound.
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Dash Core provides a remote procedure call (RPC) interface for various administrative tasks, <<glossary:wallet>> operations, and queries about <<glossary:network>> and <<glossary:block chain>> data.
+Dash Core provides a remote procedure call (RPC) interface for various administrative tasks, [wallet](../resources/glossary.md#wallet) operations, and queries about [network](../resources/glossary.md#network) and [block chain](../resources/glossary.md#block-chain) data.
 
 Open-source client libraries for the RPC interface are readily available in most modern programming languages, so you probably don't need to write your own from scratch. Dash Core also ships with its own compiled C++ RPC client, `dash-cli`, located in the `bin` directory alongside `dashd` and `dash-qt`. The `dash-cli` program can be used as a command-line interface (CLI) to Dash Core or for making RPC calls from applications written in languages lacking a suitable native client. The remainder of this section describes the Dash Core RPC protocol in detail.
 
@@ -84,7 +84,7 @@ Only the following RPCs are accessible to the restricted user:
 
 ### Default Connection Info
 
-The Dash Core RPC service listens for HTTP `POST` requests on port 9998 in <<glossary:mainnet>> mode, 19998 in <<glossary:testnet>>, or 19898 in <<glossary:regression test mode>>. The port number can be changed by setting `rpcport` in `dash.conf`. By default the RPC service binds to your server's [localhost](https://en.wikipedia.org/wiki/Localhost) loopback network interface so it's not accessible from other servers. Authentication is implemented using [HTTP basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication). RPC HTTP requests must include a `Content-Type` header set to `text/plain` and a `Content-Length` header set to the size of the request body.
+The Dash Core RPC service listens for HTTP `POST` requests on port 9998 in [mainnet](../resources/glossary.md#mainnet) mode, 19998 in [testnet](../resources/glossary.md#testnet), or 19898 in [regression test mode](../resources/glossary.md#regression-test-mode). The port number can be changed by setting `rpcport` in `dash.conf`. By default the RPC service binds to your server's [localhost](https://en.wikipedia.org/wiki/Localhost) loopback network interface so it's not accessible from other servers. Authentication is implemented using [HTTP basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication). RPC HTTP requests must include a `Content-Type` header set to `text/plain` and a `Content-Length` header set to the size of the request body.
 
 ## Data Formats
 
@@ -131,7 +131,7 @@ The HTTP response data for a RPC request is a JSON object with the following for
 
 ## Example
 
-As an example, here is the JSON-RPC request object for the hash of the <<glossary:genesis block>>:
+As an example, here is the JSON-RPC request object for the hash of the [genesis block](../resources/glossary.md#genesis-block):
 
 ```json
 {

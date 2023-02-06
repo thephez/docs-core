@@ -1,12 +1,12 @@
 # Raw Transaction Format
 
-Dash transactions are broadcast between <<glossary:peers>> in a serialized byte format, called <<glossary:raw format>>. It is this form of a transaction which is SHA256(SHA256()) hashed to create the <<glossary:TXID>> and, ultimately, the <<glossary:merkle root>> of a <<glossary:block>> containing the transaction---making the transaction format part of the <<glossary:consensus rules>>.
+Dash transactions are broadcast between [peers](../resources/glossary.md#peer) in a serialized byte format, called [raw format](../resources/glossary.md#raw-format). It is this form of a transaction which is SHA256(SHA256()) hashed to create the [TXID](../resources/glossary.md#transaction-identifiers) and, ultimately, the [merkle root](../resources/glossary.md#merkle-root) of a [block](../resources/glossary.md#block) containing the transaction---making the transaction format part of the [consensus rules](../resources/glossary.md#consensus-rules).
 
-Dash Core and many other tools print and accept <<glossary:raw transactions>> encoded as hex.
+Dash Core and many other tools print and accept [raw transactions](../resources/glossary.md#raw-transaction) encoded as hex.
 
-Transactions prior to protocol version 70209 defaulted to version 1. Transaction version 2 was the default in protocol versions => 70209 and < 70213. Version 2 transactions have the same format, but the `lock_time` parameter was redefined by [BIP68](https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki) to enable relative lock-times. (Note: transactions in the <<glossary:block chain>> are allowed to list a higher version number to permit <<glossary:soft forks>>, but they are treated as version 2 transactions by current software.)
+Transactions prior to protocol version 70209 defaulted to version 1. Transaction version 2 was the default in protocol versions => 70209 and < 70213. Version 2 transactions have the same format, but the `lock_time` parameter was redefined by [BIP68](https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki) to enable relative lock-times. (Note: transactions in the [block chain](../resources/glossary.md#block-chain) are allowed to list a higher version number to permit [soft forks](../resources/glossary.md#soft-fork), but they are treated as version 2 transactions by current software.)
 
-Dash Core 0.13.0 (protocol version 70213) introduced transaction version 3 as part of the [DIP2 - Special Transactions](https://github.com/dashpay/dips/blob/master/dip-0002.md) implementation. Details of the changes introduced by this feature and currently implemented <<glossary:special transactions>> can be found in the [Special Transactions section](../reference/transactions-special-transactions.md) below as well as in the [DIP](https://github.com/dashpay/dips/blob/master/dip-0002.md).
+Dash Core 0.13.0 (protocol version 70213) introduced transaction version 3 as part of the [DIP2 - Special Transactions](https://github.com/dashpay/dips/blob/master/dip-0002.md) implementation. Details of the changes introduced by this feature and currently implemented [special transactions](../resources/glossary.md#special-transactions) can be found in the [Special Transactions section](../reference/transactions-special-transactions.md) below as well as in the [DIP](https://github.com/dashpay/dips/blob/master/dip-0002.md).
 
 A raw transaction has the following top-level format:
 
@@ -22,7 +22,7 @@ A raw transaction has the following top-level format:
 | *Varies* | extra_payload size | compactSize uint | *Added by DIP2 in v0.13.0*<br><br>Variable number of bytes of extra payload for DIP2-based special transactions
 | *Varies* | extra_payload | blob               | *Added by DIP2 in v0.13.0*<br><br>Special transaction payload.
 
-A transaction may have multiple <<glossary:inputs>> and <<glossary:outputs>>, so the txIn and txOut structures may recur within a transaction. <<glossary:CompactSize unsigned integers>> are a form of variable-length integers; they are described in the [CompactSize section](../reference/transactions-compactsize-unsigned-integers.md).
+A transaction may have multiple [inputs](../resources/glossary.md#input) and [outputs](../resources/glossary.md#output), so the txIn and txOut structures may recur within a transaction. [CompactSize unsigned integers](../resources/glossary.md#compactsize) are a form of variable-length integers; they are described in the [CompactSize section](../reference/transactions-compactsize-unsigned-integers.md).
 
 ## JSON-RPC Responses
 
@@ -55,7 +55,7 @@ Version 3 Transaction Structure (Dash Core v0.13.0+ and activated [DIP2](https:/
 }
 ```
 
-For <<glossary:special transactions>> (those using the extraPayload fields), JSON-RPC responses contain a parsed JSON representation of the Transaction Payload.
+For [special transactions](../resources/glossary.md#special-transactions) (those using the extraPayload fields), JSON-RPC responses contain a parsed JSON representation of the Transaction Payload.
 
 The sample transaction below shows the response for a quorum commitment special transaction:
 
@@ -91,11 +91,11 @@ The sample transaction below shows the response for a quorum commitment special 
 **<span id="txin"></span>**
 ## TxIn: A Transaction Input (Non-Coinbase)
 
-Each non- <<glossary:coinbase>> <<glossary:input>> spends an outpoint from a previous transaction. (Coinbase inputs are described separately after the example section below.)
+Each non- [coinbase](../resources/glossary.md#coinbase) [input](../resources/glossary.md#input) spends an outpoint from a previous transaction. (Coinbase inputs are described separately after the example section below.)
 
 | Bytes    | Name             | Data Type            | Description
 |----------|------------------|----------------------|--------------
-| 36       | previous_output  | <<glossary:outpoint>>             | The previous outpoint being spent.  See description of outpoint below.
+| 36       | previous_output  | [outpoint](../resources/glossary.md#outpoint)             | The previous outpoint being spent.  See description of outpoint below.
 | *Varies* | script bytes     | compactSize uint     | The number of bytes in the signature script.  Maximum is 10,000 bytes.
 | *Varies* | signature script | char[]               | A script-language script which satisfies the conditions placed in the outpoint's pubkey script.  Should only contain data pushes; see the [signature script modification warning](../reference/transactions-opcodes.md#signature-script-modification).
 | 4        | sequence         | uint32_t             | Sequence number.  Default for Dash Core and almost all other programs is 0xffffffff.
@@ -103,7 +103,7 @@ Each non- <<glossary:coinbase>> <<glossary:input>> spends an outpoint from a pre
 **<span id="outpoint"></span>**
 ## Outpoint: The Specific Part Of A Specific Output
 
-Because a single transaction can include multiple <<glossary:outputs>>, the <<glossary:outpoint>> structure includes both a <<glossary:TXID>> and an output index number to refer to specific output.
+Because a single transaction can include multiple [outputs](../resources/glossary.md#output), the [outpoint](../resources/glossary.md#outpoint) structure includes both a [TXID](../resources/glossary.md#transaction-identifiers) and an output index number to refer to specific output.
 
 | Bytes | Name  | Data Type | Description
 |-------|-------|-----------|--------------
@@ -113,7 +113,7 @@ Because a single transaction can include multiple <<glossary:outputs>>, the <<gl
 **<span id="txout"></span>**
 ## TxOut: A Transaction Output
 
-Each <<glossary:output>> spends a certain number of <<glossary:duffs>>, placing them under control of anyone who can satisfy the provided <<glossary:pubkey script>>.
+Each [output](../resources/glossary.md#output) spends a certain number of [duffs](../resources/glossary.md#duffs), placing them under control of anyone who can satisfy the provided [pubkey script](../resources/glossary.md#pubkey-script).
 
 | Bytes    | Name            | Data Type        | Description
 |----------|-----------------|------------------|--------------
@@ -162,20 +162,20 @@ The sample raw transaction itemized below is the one created in the [Simple Raw 
 **<span id="coinbase"></span>**
 ## Coinbase Input: The Input Of The First Transaction In A Block
 
-The first transaction in a <<glossary:block>>, called the <<glossary:coinbase transaction>>, must have exactly one input, called a <<glossary:coinbase>>. The coinbase <<glossary:input>> currently has the following format.
+The first transaction in a [block](../resources/glossary.md#block), called the [coinbase transaction](../resources/glossary.md#coinbase-transaction), must have exactly one input, called a [coinbase](../resources/glossary.md#coinbase). The coinbase [input](../resources/glossary.md#input) currently has the following format.
 
 | Bytes    | Name               | Data Type            | Description
 |----------|--------------------|----------------------|--------------
 | 32       | hash (null)        | char[32]             | A 32-byte null, as a coinbase has no previous outpoint.
 | 4        | index (UINT32_MAX) | uint32_t             | 0xffffffff, as a coinbase has no previous outpoint.
 | *Varies* | script bytes       | compactSize uint     | The number of bytes in the coinbase script, up to a maximum of 100 bytes.
-| *Varies* (4) | height         | script               | The <<glossary:block height>> of this block as required by BIP34.  Uses script language: starts with a data-pushing opcode that indicates how many bytes to push to the stack followed by the block height as a little-endian unsigned integer.  This script must be as short as possible, otherwise it may be rejected.<br><br>  The data-pushing opcode will be 0x03 and the total size four bytes until block 16,777,216 about 300 years from now.
-| *Varies* | coinbase script    | *None*               | The <<glossary:coinbase field>>: Arbitrary data not exceeding 100 bytes minus the (4) height bytes.  Miners commonly place an extra nonce in this field to update the block header merkle root during hashing.
+| *Varies* (4) | height         | script               | The [block height](../resources/glossary.md#block-height) of this block as required by BIP34.  Uses script language: starts with a data-pushing opcode that indicates how many bytes to push to the stack followed by the block height as a little-endian unsigned integer.  This script must be as short as possible, otherwise it may be rejected.<br><br>  The data-pushing opcode will be 0x03 and the total size four bytes until block 16,777,216 about 300 years from now.
+| *Varies* | coinbase script    | *None*               | The [coinbase field](../resources/glossary.md#coinbase): Arbitrary data not exceeding 100 bytes minus the (4) height bytes.  Miners commonly place an extra nonce in this field to update the block header merkle root during hashing.
 | 4        | sequence           | uint32_t             | Sequence number.
 
 Although the coinbase script is arbitrary data, if it includes the bytes used by any signature-checking operations such as [`OP_CHECKSIG`](../reference/transactions-opcodes.md), those signature checks will be counted as signature operations (sigops) towards the block's sigop limit.  To avoid this, you can prefix all data with the appropriate push operation.
 
-An itemized <<glossary:coinbase transaction>>:
+An itemized [coinbase transaction](../resources/glossary.md#coinbase-transaction):
 
 ``` text
 01000000 .............................. Version
@@ -208,4 +208,4 @@ An itemized <<glossary:coinbase transaction>>:
 | 00000000 ............................ Locktime
 ```
 
-Note: currently the normal coinbase has 2 outputs (1 for the <<glossary:miner>> and 1 for the selected <<glossary:masternode>>). Superblocks ([superblock example](https://chainz.cryptoid.info/dash/block.dws?731104.htm)) have multiple outputs depending on the number of proposals being funded.
+Note: currently the normal coinbase has 2 outputs (1 for the [miner](../resources/glossary.md#miner) and 1 for the selected [masternode](../resources/glossary.md#masternode)). Superblocks ([superblock example](https://chainz.cryptoid.info/dash/block.dws?731104.htm)) have multiple outputs depending on the number of proposals being funded.

@@ -1,6 +1,6 @@
 # Quorum Messages
 
-The following network messages enable the long-living masternode quorum (<<glossary:LLMQ>>) features built in to Dash.
+The following network messages enable the long-living masternode quorum ([LLMQ](../resources/glossary.md#long-living-masternode-quorum)) features built in to Dash.
 
 ## Distributed Key Generation
 
@@ -14,7 +14,7 @@ With the exception of the [`qfcommit` message](../reference/p2p-network-quorum-m
 
 > 🚧 
 >
-> This message is used for intra-quorum communication and is only sent to the <<glossary:masternodes>> in the LLMQ and <<glossary:nodes>> that are monitoring in Watch Mode for auditing/debugging purposes.
+> This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qcontrib` message](../reference/p2p-network-quorum-messages.md#qcontrib) is used by each member of the DKG process to send key contributions to all other members.
 
@@ -95,7 +95,7 @@ e000da1aeda5f98ec9e64b801681bfc1 ........... BLS signature (Operator Key)
 
 > 🚧 
 >
-> This message is used for intra-quorum communication and is only sent to the <<glossary:masternodes>> in the LLMQ and <<glossary:nodes>> that are monitoring in Watch Mode for auditing/debugging purposes.
+> This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qcomplaint` message](../reference/p2p-network-quorum-messages.md#qcomplaint) is used to notify other members in the DKG process of any members that provided no contribution or an invalid secret key contribution. The notifications are divided into 2 fields:
 
@@ -148,7 +148,7 @@ bb632eeb60f29e351963032a673abd61
 
 > 🚧 
 >
-> This message is used for intra-quorum communication and is only sent to the <<glossary:masternodes>> in the LLMQ and <<glossary:nodes>> that are monitoring in Watch Mode for auditing/debugging purposes.
+> This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qdata` message](../reference/p2p-network-quorum-messages.md#qdata) is used to send quorum DKG data to a node that has requested it via a [`qgetdata` message](../reference/p2p-network-quorum-messages.md#qgetdata). The response will include one or more of the following depending on what was requested:
 - Quorum verification vector for the request quorum
@@ -229,7 +229,7 @@ Data (Verification Vectors)
 
 > 🚧 
 >
-> This message is used for intra-quorum communication and is only sent to the <<glossary:masternodes>> in the LLMQ and <<glossary:nodes>> that are monitoring in Watch Mode for auditing/debugging purposes.
+> This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qgetdata` message](../reference/p2p-network-quorum-messages.md#qgetdata) is used to request DKG data from a masternode. The response to a `qgetdata` message is a [`qdata` message](../reference/p2p-network-quorum-messages.md#qdata). These messages allows an LLMQ member to recover its DKG data if needed with the help of other members of that LLMQ type.
 
@@ -260,9 +260,9 @@ c7ccb13df0c0e950b4d1b737808c2c72 ........... ProRegTx hash
 
 > 🚧 
 >
-> This message is used for intra-quorum communication and is only sent to the <<glossary:masternodes>> in the LLMQ and <<glossary:nodes>> that are monitoring in Watch Mode for auditing/debugging purposes.
+> This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
-The [`qjustify` message](../reference/p2p-network-quorum-messages.md#qjustify) is used to respond to complaints. This provides a way for <<glossary:nodes>> that have been complained about to offer proof of correct behavior. If a valid justification is not provided, all other nodes mark it as a bad. If a valid justification is provided, the complaining node is marked as bad instead (since it submitted a bad complaint).
+The [`qjustify` message](../reference/p2p-network-quorum-messages.md#qjustify) is used to respond to complaints. This provides a way for [nodes](../resources/glossary.md#node) that have been complained about to offer proof of correct behavior. If a valid justification is not provided, all other nodes mark it as a bad. If a valid justification is provided, the complaining node is marked as bad instead (since it submitted a bad complaint).
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -323,7 +323,7 @@ Contribution #2
 
 > 🚧 
 >
-> This message is used for intra-quorum communication and is only sent to the <<glossary:masternodes>> in the LLMQ and <<glossary:nodes>> that are monitoring in Watch Mode for auditing/debugging purposes.
+> This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qpcommit` message](../reference/p2p-network-quorum-messages.md#qpcommit) is used to exchange premature commitment messages for verification and selection of the final commitment.
 
@@ -379,9 +379,9 @@ b6a5077267fdc61cdb192faffa27bed9
 
 ### qfcommit
 
-The [`qfcommit` message](../reference/p2p-network-quorum-messages.md#qfcommit) is used to finalize a <<glossary:Long-Living Masternode Quorum>> setup by aggregating the information necessary to mine the on-chain [QcTx](../reference/transactions-special-transactions.md#qctx) special transaction. The message contains all the necessary information required to validate the long-living masternode quorum's signing results.
+The [`qfcommit` message](../reference/p2p-network-quorum-messages.md#qfcommit) is used to finalize a [Long-Living Masternode Quorum](../resources/glossary.md#long-living-masternode-quorum) setup by aggregating the information necessary to mine the on-chain [QcTx](../reference/transactions-special-transactions.md#qctx) special transaction. The message contains all the necessary information required to validate the long-living masternode quorum's signing results.
 
-It is possible to receive multiple valid final commitments for the same DKG session. These should only differ in the number of signers, which can be ignored as long as there are at least `quorumThreshold` number of signers. The set of valid members for these final commitments should always be the same, as each member only creates a single premature commitment. This means that only one set of valid members (and thus only one quorum verification vector and quorum <<glossary:public key>>) can gain a majority. If the threshold is not reached, there will be no valid final commitment.
+It is possible to receive multiple valid final commitments for the same DKG session. These should only differ in the number of signers, which can be ignored as long as there are at least `quorumThreshold` number of signers. The set of valid members for these final commitments should always be the same, as each member only creates a single premature commitment. This means that only one set of valid members (and thus only one quorum verification vector and quorum [public key](../resources/glossary.md#public-key)) can gain a majority. If the threshold is not reached, there will be no valid final commitment.
 
 > 📘 Version 2
 >
@@ -492,7 +492,7 @@ With the exception of the [`qsendrecsigs` message](../reference/p2p-network-quor
 
 > 🚧 
 >
-> This message is used for intra-quorum communication and is only sent to the <<glossary:masternodes>> in the LLMQ and <<glossary:nodes>> that are monitoring in Watch Mode for auditing/debugging purposes.
+> This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qbsigs` message](../reference/p2p-network-quorum-messages.md#qbsigs) is used to send batched signature shares in response to a [`qgetsigs` message](../reference/p2p-network-quorum-messages.md#qgetsigs).
 
@@ -555,7 +555,7 @@ Signature Share Batch 2
 
 > 🚧 
 >
-> This message is used for intra-quorum communication and is only sent to the <<glossary:masternodes>> in the LLMQ and <<glossary:nodes>> that are monitoring in Watch Mode for auditing/debugging purposes.
+> This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qgetsigs` message](../reference/p2p-network-quorum-messages.md#qgetsigs) is used to request signature shares. The response to a [`qgetsigs` message](../reference/p2p-network-quorum-messages.md#qgetsigs) is a [`qbsigs` message](../reference/p2p-network-quorum-messages.md#qbsigs).
 
@@ -590,7 +590,7 @@ Signature share request 2
 
 *Added in protocol version 70214 of Dash Core*
 
-The [`qsendrecsigs` message](../reference/p2p-network-quorum-messages.md#qsendrecsigs) is used to notify a <<glossary:peer>> to send plain <<glossary:LLMQ>> recovered signatures (inventory type `MSG_QUORUM_RECOVERED_SIG`). Otherwise the peer would only announce/send the higher level messages produced when a recovered signature is found (e.g. InstantSend [`islock` messages](../reference/p2p-network-instantsend-messages.md#islock) or ChainLock [`clsig` messages](../reference/p2p-network-instantsend-messages.md#clsig)).
+The [`qsendrecsigs` message](../reference/p2p-network-quorum-messages.md#qsendrecsigs) is used to notify a [peer](../resources/glossary.md#peer) to send plain [LLMQ](../resources/glossary.md#long-living-masternode-quorum) recovered signatures (inventory type `MSG_QUORUM_RECOVERED_SIG`). Otherwise the peer would only announce/send the higher level messages produced when a recovered signature is found (e.g. InstantSend [`islock` messages](../reference/p2p-network-instantsend-messages.md#islock) or ChainLock [`clsig` messages](../reference/p2p-network-instantsend-messages.md#clsig)).
 
 > 📘
 >
@@ -610,7 +610,7 @@ The following annotated hexdump shows a [`qsendrecsigs` message](../reference/p2
 
 *Added in protocol version 70214 of Dash Core*
 
-The [`qsigrec` message](../reference/p2p-network-quorum-messages.md#qsigrec) is used to provide recovered signatures and related quorum details to <<glossary:nodes>> that have requested this information via the [`qsendrecsigs` message](../reference/p2p-network-quorum-messages.md#qsendrecsigs).
+The [`qsigrec` message](../reference/p2p-network-quorum-messages.md#qsigrec) is used to provide recovered signatures and related quorum details to [nodes](../resources/glossary.md#node) that have requested this information via the [`qsendrecsigs` message](../reference/p2p-network-quorum-messages.md#qsendrecsigs).
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -652,7 +652,7 @@ a11e5e7930deccc3e11a931fc9524f06 ........... LLMQ BLS Signature (96 bytes)
 
 > 🚧 
 >
-> This message is used for intra-quorum communication and is only sent to the <<glossary:masternodes>> in the LLMQ and <<glossary:nodes>> that are monitoring in Watch Mode for auditing/debugging purposes.
+> This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qsigsesann` message](../reference/p2p-network-quorum-messages.md#qsigsesann) is used to announce the sessionId for a signing session. The sessionId will be used for all P2P messages related to that session.
 
@@ -709,7 +709,7 @@ Session Announcement 2
 
 > 🚧 
 >
-> This message is used for intra-quorum communication and is only sent to the <<glossary:masternodes>> in the LLMQ and <<glossary:nodes>> that are monitoring in Watch Mode for auditing/debugging purposes.
+> This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qsigshare` message](../reference/p2p-network-quorum-messages.md#qsigshare) (quorum signature share) announces one or more quorum signature shares known by the transmitting peer.
 
@@ -758,7 +758,7 @@ a277386b48a7ae627d075da826aab694 ......... Signature Share
 
 > 🚧 
 >
-> This message is used for intra-quorum communication and is only sent to the <<glossary:masternodes>> in the LLMQ and <<glossary:nodes>> that are monitoring in Watch Mode for auditing/debugging purposes.
+> This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv) (quorum signature inventory) announces one or more quorum signature share inventories known by the transmitting peer.
 
@@ -795,7 +795,7 @@ The following annotated hexdump shows a [`qsigsinv` message](../reference/p2p-ne
 
 *Added in protocol version 70214 of Dash Core*
 
-The [`qwatch` message](../reference/p2p-network-quorum-messages.md#qwatch) tells the receiving <<glossary:peer>> to relay <<glossary:LLMQ>> [DKG messages](#distributed-key-generation) and [Signing session messages](#signing-sessions) (e.g., [`qcontrib`](../reference/p2p-network-quorum-messages.md#qcontrib)).
+The [`qwatch` message](../reference/p2p-network-quorum-messages.md#qwatch) tells the receiving [peer](../resources/glossary.md#peer) to relay [LLMQ](../resources/glossary.md#long-living-masternode-quorum) [DKG messages](#distributed-key-generation) and [Signing session messages](#signing-sessions) (e.g., [`qcontrib`](../reference/p2p-network-quorum-messages.md#qcontrib)).
 
 This message is sent when a Dash Core node is started with the [`-watchquorums` option](../dashcore/wallet-arguments-and-commands-dashd.md#debuggingtesting-options) enabled.
 

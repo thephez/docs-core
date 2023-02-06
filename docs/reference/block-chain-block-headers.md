@@ -1,19 +1,19 @@
 # Block Headers
 
-<<glossary:Block headers>> are serialized in the 80-byte format described below and then hashed as part of the proof-of-work algorithm, making the serialized header format part of the <<glossary:consensus rules>>.
+[Block headers](../resources/glossary.md#block-header) are serialized in the 80-byte format described below and then hashed as part of the proof-of-work algorithm, making the serialized header format part of the [consensus rules](../resources/glossary.md#consensus-rules).
 
 | Bytes | Name                | Data Type | Description
 |-------|---------------------|-----------|----------------
-| 4     | version             |  int32_t  | The <<glossary:block>> version number indicates which set of block validation rules to follow. See the list of block versions below.
+| 4     | version             |  int32_t  | The [block](../resources/glossary.md#block) version number indicates which set of block validation rules to follow. See the list of block versions below.
 | 32    | previous block header hash | char[32]  | An X11() hash in internal byte order of the previous block's header.  This ensures no previous block can be changed without also changing this block's header.
 | 32    | merkle root hash    | char[32]  | A SHA256(SHA256()) hash in internal byte order. The merkle root is derived from the hashes of all transactions included in this block, ensuring that none of those transactions can be modified without modifying the header.  See the [merkle trees section](#merkle-trees) below.
 | 4     | time                | uint32_t  | The block time is a Unix epoch time when the miner started hashing the header (according to the miner).  Must be strictly greater than the median time of the previous 11 blocks.  Full nodes will not accept blocks with headers more than two hours in the future according to their clock.
 | 4     | nBits               | uint32_t  | An encoded version of the target threshold this block's header hash must be less than or equal to.  See the nBits format described below.
 | 4     | nonce               | uint32_t  | An arbitrary number miners change to modify the header hash in order to produce a hash less than or equal to the target threshold.  If all 32-bit values are tested, the time can be updated or the coinbase transaction can be changed and the merkle root updated.
 
-The hashes are in <<glossary:internal byte order>>; the other values are all in little-endian order.
+The hashes are in [internal byte order](../resources/glossary.md#internal-byte-order); the other values are all in little-endian order.
 
-An example <<glossary:header>> in hex:
+An example [header](../resources/glossary.md#header) in hex:
 
 ``` text
 02000000 ........................... Block version: 2
@@ -30,16 +30,16 @@ fe9f0864 ........................... Nonce
 
 ## Block Versions
 
-* **Version 1** was used by Dash for the <<glossary:genesis block>> only.
+* **Version 1** was used by Dash for the [genesis block](../resources/glossary.md#genesis-block) only.
 
-* **Version 2** was introduced with the first block following the <<glossary:genesis block>> (January 2014). As described in [BIP34](https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki), valid version 2 blocks require a <<glossary:block height>> parameter in the coinbase.
+* **Version 2** was introduced with the first block following the [genesis block](../resources/glossary.md#genesis-block) (January 2014). As described in [BIP34](https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki), valid version 2 blocks require a [block height](../resources/glossary.md#block-height) parameter in the coinbase.
 
 * **Version 3** blocks were introduced in Dash Core 0.11.2 (March 2015) as a
   soft fork (Block 244,834 was the first version 3 block).
 
-  When the <<glossary:fork>> reached full enforcement, it required strict [DER encoding](https://en.wikipedia.org/wiki/X.690#DER_encoding) of all <<glossary:ECDSA signatures>> in new blocks as described in [BIP66](https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki). Transactions that do not use strict DER encoding had previously been non-standard since Dash Core 0.8.0.
+  When the [fork](../resources/glossary.md#fork) reached full enforcement, it required strict [DER encoding](https://en.wikipedia.org/wiki/X.690#DER_encoding) of all [ECDSA signatures](../resources/glossary.md#ecdsa-signatures) in new blocks as described in [BIP66](https://github.com/bitcoin/bips/blob/master/bip-0066.mediawiki). Transactions that do not use strict DER encoding had previously been non-standard since Dash Core 0.8.0.
 
-* **Version 4** blocks specified in [BIP65](https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki) and introduced in Bitcoin Core 0.11.2 (November 2015) as a <<glossary:soft fork>> became active in December 2015.  These blocks now support the new `OP_CHECKLOCKTIMEVERIFY` <<glossary:opcode>> described in that BIP.
+* **Version 4** blocks specified in [BIP65](https://github.com/bitcoin/bips/blob/master/bip-0065.mediawiki) and introduced in Bitcoin Core 0.11.2 (November 2015) as a [soft fork](../resources/glossary.md#soft-fork) became active in December 2015.  These blocks now support the new `OP_CHECKLOCKTIMEVERIFY` [opcode](../resources/glossary.md#opcode) described in that BIP.
 
 The mechanism used for the version 2, 3, and 4 upgrades is commonly called IsSuperMajority() after the function added to Dash Core to manage those soft forking changes. See [BIP34](https://github.com/bitcoin/bips/blob/master/bip-0034.mediawiki) for a full description of this method.
 
@@ -47,25 +47,25 @@ As of this writing, a newer method called *version bits* is being designed to ma
 
 ## Merkle Trees
 
-The <<glossary:merkle root>> is constructed using all the <<glossary:TXIDs>> of transactions in this block, but first the TXIDs are placed in order as required by the <<glossary:consensus rules>>:
+The [merkle root](../resources/glossary.md#merkle-root) is constructed using all the [TXIDs](../resources/glossary.md#transaction-identifiers) of transactions in this block, but first the TXIDs are placed in order as required by the [consensus rules](../resources/glossary.md#consensus-rules):
 
-* The <<glossary:coinbase transaction>>'s <<glossary:TXID>> is always placed first.
+* The [coinbase transaction](../resources/glossary.md#coinbase-transaction)'s [TXID](../resources/glossary.md#transaction-identifiers) is always placed first.
 
-* Any <<glossary:input>> within this block can spend an <<glossary:output>> which also appears in this block (assuming the spend is otherwise valid). However, the TXID corresponding to the output must be placed at some point before the TXID corresponding to the input. This ensures that any program parsing block chain transactions linearly will encounter each output before it is used as an input.
+* Any [input](../resources/glossary.md#input) within this block can spend an [output](../resources/glossary.md#output) which also appears in this block (assuming the spend is otherwise valid). However, the TXID corresponding to the output must be placed at some point before the TXID corresponding to the input. This ensures that any program parsing block chain transactions linearly will encounter each output before it is used as an input.
 
-If a <<glossary:block>> only has a coinbase transaction, the coinbase TXID is used as the merkle root hash.
+If a [block](../resources/glossary.md#block) only has a coinbase transaction, the coinbase TXID is used as the merkle root hash.
 
 If a block only has a coinbase transaction and one other transaction, the TXIDs of those two transactions are placed in order, concatenated as 64 raw bytes, and then SHA256(SHA256()) hashed together to form the merkle root.
 
-If a block has three or more transactions, intermediate <<glossary:merkle tree>> rows are formed. The TXIDs are placed in order and paired, starting with the coinbase transaction's TXID. Each pair is concatenated together as 64 raw bytes and SHA256(SHA256()) hashed to form a second row of hashes. If there are an odd (non-even) number of TXIDs, the last TXID is concatenated with a copy of itself and hashed. If there are more than two hashes in the second row, the process is repeated to create a third row (and, if necessary, repeated further to create additional rows). Once a row is obtained with only two hashes, those hashes are concatenated and hashed to produce the merkle root.
+If a block has three or more transactions, intermediate [merkle tree](../resources/glossary.md#merkle-tree) rows are formed. The TXIDs are placed in order and paired, starting with the coinbase transaction's TXID. Each pair is concatenated together as 64 raw bytes and SHA256(SHA256()) hashed to form a second row of hashes. If there are an odd (non-even) number of TXIDs, the last TXID is concatenated with a copy of itself and hashed. If there are more than two hashes in the second row, the process is repeated to create a third row (and, if necessary, repeated further to create additional rows). Once a row is obtained with only two hashes, those hashes are concatenated and hashed to produce the merkle root.
 
 ![Example Merkle Tree Construction](https://github.com/dash-docs/dash-docs/raw/master/img/dev/en-merkle-tree-construction.png)
 
-TXIDs and intermediate hashes are always in <<glossary:internal byte order>> when they're concatenated, and the resulting merkle root is also in internal byte order when it's placed in the <<glossary:block header>>.
+TXIDs and intermediate hashes are always in [internal byte order](../resources/glossary.md#internal-byte-order) when they're concatenated, and the resulting merkle root is also in internal byte order when it's placed in the [block header](../resources/glossary.md#block-header).
 
 ## Target nBits
 
-The <<glossary:target threshold>> is a 256-bit unsigned integer which a <<glossary:header>> hash must be equal to or below in order for that header to be a valid part of the <<glossary:block chain>>. However, the header field *<<glossary:nBits>>* provides only 32 bits of space, so the <<glossary:target>> number uses a less precise format called "compact" which works like a base-256 version of scientific notation:
+The [target threshold](../resources/glossary.md#target) is a 256-bit unsigned integer which a [header](../resources/glossary.md#header) hash must be equal to or below in order for that header to be a valid part of the [block chain](../resources/glossary.md#block-chain). However, the header field *[nBits](../resources/glossary.md#nbits)* provides only 32 bits of space, so the [target](../resources/glossary.md#target) number uses a less precise format called "compact" which works like a base-256 version of scientific notation:
 
 ![Converting nBits Into A Target Threshold](https://github.com/dash-docs/dash-docs/raw/master/img/dev/en-nbits-overview.png)
 
@@ -90,4 +90,4 @@ Some examples taken from the Dash Core test cases:
 | 0x04923456 | -0x12345600      | High bit set (0x80 in 0x92).
 | 0x04123456 | &nbsp;0x12345600 | Inverse of above; no high bit.
 
-Difficulty 1, the minimum allowed <<glossary:difficulty>>, is represented on <<glossary:mainnet>> and the current <<glossary:testnet>> by the nBits value 0x1e0ffff0. Regtest mode uses a different difficulty 1 value---0x207fffff, the highest possible value below uint32_max which can be encoded; this allows near-instant building of blocks in <<glossary:regression test mode>>.
+Difficulty 1, the minimum allowed [difficulty](../resources/glossary.md#difficulty), is represented on [mainnet](../resources/glossary.md#mainnet) and the current [testnet](../resources/glossary.md#testnet) by the nBits value 0x1e0ffff0. Regtest mode uses a different difficulty 1 value---0x207fffff, the highest possible value below uint32_max which can be encoded; this allows near-instant building of blocks in [regression test mode](../resources/glossary.md#regression-test-mode).

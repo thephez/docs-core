@@ -1,8 +1,8 @@
 # Standard Transactions
 
-After the discovery of several dangerous bugs in early versions of Bitcoin, a test was added which only accepted <<glossary:transactions>> from the <<glossary:network>> if their pubkey scripts and signature scripts matched a small set of believed-to-be-safe templates, and if the rest of the transaction didn't violate another small set of rules enforcing good network behavior. This is the `IsStandard()` test, and transactions which pass it are called standard transactions.
+After the discovery of several dangerous bugs in early versions of Bitcoin, a test was added which only accepted [transactions](../resources/glossary.md#transaction) from the [network](../resources/glossary.md#network) if their pubkey scripts and signature scripts matched a small set of believed-to-be-safe templates, and if the rest of the transaction didn't violate another small set of rules enforcing good network behavior. This is the `IsStandard()` test, and transactions which pass it are called standard transactions.
 
-Non-standard transactions---those that fail the test---may be accepted by <<glossary:nodes>> not using the default Dash Core settings. If they are included in blocks, they will also avoid the IsStandard test and be processed.
+Non-standard transactions---those that fail the test---may be accepted by [nodes](../resources/glossary.md#node) not using the default Dash Core settings. If they are included in blocks, they will also avoid the IsStandard test and be processed.
 
 Besides making it more difficult for someone to attack Dash for free by broadcasting harmful transactions, the standard transaction test also helps prevent users from creating transactions today that would make adding new transaction features in the future more difficult. For example, as described above, each transaction includes a version number---if users started arbitrarily changing the version number, it would become useless as a tool for introducing backwards-incompatible features.
 
@@ -10,7 +10,7 @@ As of Dash Core 0.12.2, the standard pubkey script types are:
 
 ## Pay To Public Key Hash (P2PKH)
 
-<<glossary:P2PKH>> is the most common form of pubkey script used to send a transaction to one or multiple Dash <<glossary:addresses>>.
+[P2PKH](../resources/glossary.md#pay-to-pubkey-hash) is the most common form of pubkey script used to send a transaction to one or multiple Dash [addresses](../resources/glossary.md#address).
 
 ```
 Pubkey script: OP_DUP OP_HASH160 <PubKeyHash> OP_EQUALVERIFY OP_CHECKSIG
@@ -19,7 +19,7 @@ Signature script: <sig> <pubkey>
 
 ## Pay To Script Hash (P2SH)
 
-<<glossary:P2SH>> is used to send a transaction to a script hash. Each of the standard pubkey scripts can be used as a P2SH redeem script, but in practice only the multisig pubkey script makes sense until more transaction types are made standard.
+[P2SH](../resources/glossary.md#pay-to-script-hash) is used to send a transaction to a script hash. Each of the standard pubkey scripts can be used as a P2SH redeem script, but in practice only the multisig pubkey script makes sense until more transaction types are made standard.
 
 ```
 Pubkey script: OP_HASH160 <Hash160(redeemScript)> OP_EQUAL
@@ -51,7 +51,7 @@ Signature script: OP_0 <A sig> <C sig> <redeemScript>
 
 ## Pubkey
 
-Pubkey <<glossary:outputs>> are a simplified form of the P2PKH pubkey script, but they aren’t as secure as P2PKH, so they generally aren’t used in new transactions anymore.
+Pubkey [outputs](../resources/glossary.md#output) are a simplified form of the P2PKH pubkey script, but they aren’t as secure as P2PKH, so they generally aren’t used in new transactions anymore.
 
 ```
 Pubkey script: <pubkey> OP_CHECKSIG
@@ -60,7 +60,7 @@ Signature script: <sig>
 
 ## Null Data
 
-Null data transactions (relayed and mined by default in Bitcoin Core 0.9.0 and later) add arbitrary data to a provably unspendable pubkey script that full <<glossary:nodes>> don't have to store in their UTXO database. It is preferable to use null data transactions over transactions that bloat the UTXO database because they cannot be automatically pruned; however, it is usually even more preferable to store data outside transactions if possible.
+Null data transactions (relayed and mined by default in Bitcoin Core 0.9.0 and later) add arbitrary data to a provably unspendable pubkey script that full [nodes](../resources/glossary.md#node) don't have to store in their UTXO database. It is preferable to use null data transactions over transactions that bloat the UTXO database because they cannot be automatically pruned; however, it is usually even more preferable to store data outside transactions if possible.
 
 Consensus rules allow null data outputs up to the maximum allowed pubkey script size of 10,000 bytes provided they follow all other consensus rules, such as not having any data pushes larger than 520 bytes.
 

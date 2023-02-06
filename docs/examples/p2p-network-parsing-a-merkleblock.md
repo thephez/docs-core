@@ -1,6 +1,6 @@
 # Parsing a MerkleBlock
 
-In the section above, we retrieved a <<glossary:merkle block>> from the network; now we will parse it. Most of the <<glossary:block header>> has been omitted. For a more complete hexdump, see the example in the [`merkleblock` message section](../reference/p2p-network-data-messages.md#merkleblock).
+In the section above, we retrieved a [merkle block](../resources/glossary.md#merkle-block) from the network; now we will parse it. Most of the [block header](../resources/glossary.md#block-header) has been omitted. For a more complete hexdump, see the example in the [`merkleblock` message section](../reference/p2p-network-data-messages.md#merkleblock).
 
 ``` text
 7f16c5962e8bd963659c793ce370d95f
@@ -26,15 +26,15 @@ We parse the above [`merkleblock` message](../reference/p2p-network-data-message
 
 ![Parsing A MerkleBlock](https://dash-docs.github.io/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-001.svg)
 
-We start by building the structure of a <<glossary:merkle tree>> based on the number of <<glossary:transactions>> in the <<glossary:block>>.
+We start by building the structure of a [merkle tree](../resources/glossary.md#merkle-tree) based on the number of [transactions](../resources/glossary.md#transaction) in the [block](../resources/glossary.md#block).
 
 ![Parsing A MerkleBlock](https://dash-docs.github.io/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-002.svg)
 
-The first flag is a 1 and the <<glossary:merkle root>> is (as always) a non-TXID node, so we will need to compute the hash later based on this node's children. Accordingly, we descend into the merkle root's left child and look at the next flag for instructions.
+The first flag is a 1 and the [merkle root](../resources/glossary.md#merkle-root) is (as always) a non-TXID node, so we will need to compute the hash later based on this node's children. Accordingly, we descend into the merkle root's left child and look at the next flag for instructions.
 
 ![Parsing A MerkleBlock](https://dash-docs.github.io/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-003.svg)
 
-The next flag in the example is a 0 and this is also a non-TXID node, so we apply the first hash from the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) to this node. We also don't process any child nodes---according to the peer which created the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock), none of those nodes will lead to <<glossary:TXIDs>> of transactions that match our filter, so we don't need them. We go back up to the merkle root and then descend into its right child and look at the next (third) flag for instructions.
+The next flag in the example is a 0 and this is also a non-TXID node, so we apply the first hash from the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) to this node. We also don't process any child nodes---according to the peer which created the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock), none of those nodes will lead to [TXIDs](../resources/glossary.md#transaction-identifiers) of transactions that match our filter, so we don't need them. We go back up to the merkle root and then descend into its right child and look at the next (third) flag for instructions.
 
 ![Parsing A MerkleBlock](https://dash-docs.github.io/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-004.svg)
 
@@ -64,4 +64,4 @@ Moving to the right child of the third node we encountered, we fill it out using
 
 We hash as appropriate to fill out the tree.  Note that the eighth flag is not used---this is acceptable as it was required to pad out a flag byte.
 
-The final steps would be to ensure the computed <<glossary:merkle root>> is identical to the merkle root in the <<glossary:header>> and check the other steps of the parsing checklist in the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) section.
+The final steps would be to ensure the computed [merkle root](../resources/glossary.md#merkle-root) is identical to the merkle root in the [header](../resources/glossary.md#header) and check the other steps of the parsing checklist in the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) section.

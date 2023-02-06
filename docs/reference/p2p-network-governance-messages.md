@@ -1,6 +1,6 @@
 # Governance Messages
 
-The following <<glossary:network>> messages enable the Governance features built in to Dash. For additional details on the governance system, see this [Budget System page](https://docs.dash.org/en/stable/governance/index.html).
+The following [network](../resources/glossary.md#network) messages enable the Governance features built in to Dash. For additional details on the governance system, see this [Budget System page](https://docs.dash.org/en/stable/governance/index.html).
 
 ![Overview Of P2P Protocol Governance Request And Reply Messages](https://dash-docs.github.io/img/dev/en-p2p-governance-messages.svg)
 
@@ -8,7 +8,7 @@ For additional details, refer to the Developer Guide [Governance section](../gui
 
 ## govobj
 
-The [`govobj` message](../reference/p2p-network-governance-messages.md#govobj) contains a governance object that is generally a proposal, contract, or setting. <<glossary:Masternodes>> ignore this request if they are not fully synced.
+The [`govobj` message](../reference/p2p-network-governance-messages.md#govobj) contains a governance object that is generally a proposal, contract, or setting. [Masternodes](../resources/glossary.md#masternode) ignore this request if they are not fully synced.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
@@ -88,11 +88,11 @@ d289fca20905fd453620238a505582fa ..... Masternode BLS Signature
 
 ## govobjvote
 
-The [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote) is used to indicate the voting status of a governance object.  Voting status is comprised of the vote outcome (how the <<glossary:masternode>> voted) and the vote signal (the network support status). A sufficient number of yes votes results in the proposed funding being payed out in the next <<glossary:superblock>> (assuming their are sufficient funds available in the budget).
+The [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote) is used to indicate the voting status of a governance object.  Voting status is comprised of the vote outcome (how the [masternode](../resources/glossary.md#masternode) voted) and the vote signal (the network support status). A sufficient number of yes votes results in the proposed funding being payed out in the next [superblock](../resources/glossary.md#superblock) (assuming their are sufficient funds available in the budget).
 
 The initial [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote) is created by a masternode to vote on a governance object (proposal, etc.). When the masternode votes, it broadcasts the [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote) to all its peers.
 
-When a <<glossary:node>> receives a valid, **new** [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote), it relays the message to all its connected <<glossary:peers>> to propagate the vote.
+When a [node](../resources/glossary.md#node) receives a valid, **new** [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote), it relays the message to all its connected [peers](../resources/glossary.md#peer) to propagate the vote.
 
 Additionally, nodes can request [`govobjvote` messages](../reference/p2p-network-governance-messages.md#govobjvote) for specific governance objects via a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync). Masternodes ignore requests for votes if they are not fully synced.
 
@@ -146,7 +146,7 @@ d289fca20905fd453620238a505582fa ..... Masternode BLS Signature
 
 ## govsync
 
-The [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) is used to request syncing of governance objects (`govobj` message and [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote)) with peers. <<glossary:Masternodes>> ignore this request if they are not fully synced.
+The [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) is used to request syncing of governance objects (`govobj` message and [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote)) with peers. [Masternodes](../resources/glossary.md#masternode) ignore this request if they are not fully synced.
 
 This message responds in one of two ways depending on the request:
 

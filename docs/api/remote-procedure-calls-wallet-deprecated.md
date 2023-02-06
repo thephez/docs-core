@@ -12,7 +12,7 @@
 
 > 📘 
 >
-> Requires <<glossary:wallet>> support (**unavailable on masternodes**)
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
 
 The [`getaccount` RPC](../api/remote-procedure-calls-wallet-deprecated.md#getaccount) returns the name of the account associated with the given address.
 
@@ -52,7 +52,7 @@ doc test
 
 > 📘
 >
-> Requires <<glossary:wallet>> support (**unavailable on masternodes**)
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
 
 The [`getaccountaddress` RPC](../api/remote-procedure-calls-wallet-deprecated.md#getaccountaddress) returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address.
 
@@ -96,7 +96,7 @@ yNUQ6RzTpNj5GP5ebdRcusJ7K9JJKx6VvV
 
 > 📘 
 >
-> Requires <<glossary:wallet>> support (**unavailable on masternodes**)
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
 
 The [`getaddressesbyaccount` RPC](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount) returns a list of every address assigned to a particular account.
 
@@ -143,7 +143,7 @@ Result:
 
 > 📘
 >
-> Requires <<glossary:wallet>> support (**unavailable on masternodes**)
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
 
 The [`setaccount` RPC](../api/remote-procedure-calls-wallet-deprecated.md#setaccount) puts the specified address in the given account.
 

@@ -2,9 +2,9 @@
 
 ## Base Opcodes
 
-The <<glossary:opcodes>> used in the pubkey scripts of standard <<glossary:transactions>> are:
+The [opcodes](../resources/glossary.md#opcode) used in the pubkey scripts of standard [transactions](../resources/glossary.md#transaction) are:
 
-* Various data pushing opcodes from 0x00 to 0x4e (1--78). These aren't typically shown in examples, but they must be used to push <<glossary:signatures>> and <<glossary:public keys>> onto the stack. See the link below this list for a description.
+* Various data pushing opcodes from 0x00 to 0x4e (1--78). These aren't typically shown in examples, but they must be used to push [signatures](../resources/glossary.md#signature) and [public keys](../resources/glossary.md#public-key) onto the stack. See the link below this list for a description.
 
 * `OP_TRUE`/`OP_1` (0x51) and `OP_2` through `OP_16` (0x52--0x60), which push the values 1 through 16 to the stack.
 
@@ -21,15 +21,15 @@ The <<glossary:opcodes>> used in the pubkey scripts of standard <<glossary:trans
 * `OP_HASH160` (0xa9) consumes the topmost item on the stack, computes the RIPEMD160(SHA256()) hash of that item, and pushes that hash onto the stack.
 
 **<span id="op_checksig"></span>**
-* `OP_CHECKSIG` (0xac) consumes a signature and a full public key, and pushes true onto the stack if the transaction data specified by the <<glossary:SIGHASH flag>> was converted into the signature using the same <<glossary:ECDSA private key>> that generated the public key. Otherwise, it pushes false onto the stack.
+* `OP_CHECKSIG` (0xac) consumes a signature and a full public key, and pushes true onto the stack if the transaction data specified by the [SIGHASH flag](../resources/glossary.md#sighash-flag) was converted into the signature using the same [ECDSA private key](../resources/glossary.md#ecdsa-private-key) that generated the public key. Otherwise, it pushes false onto the stack.
 
 * `OP_CHECKMULTISIG` (0xae) consumes the value (n) at the top of the stack, consumes that many of the next stack levels (public keys), consumes the value (m) now at the top of the stack, and consumes that many of the next values (signatures) plus one extra value.
 
-    The "one extra value" it consumes is the result of an off-by-one error in the Bitcoin Core implementation. This value is not used, so signature scripts prefix the list of <<glossary:secp256k1 signatures>> with a single OP_0 (0x00).
+    The "one extra value" it consumes is the result of an off-by-one error in the Bitcoin Core implementation. This value is not used, so signature scripts prefix the list of [secp256k1 signatures](../resources/glossary.md#secp256k1-signatures) with a single OP_0 (0x00).
 
     `OP_CHECKMULTISIG` compares the first signature against each public key until it finds an [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) match. Starting with the subsequent public key, it compares the second signature against each remaining public key until it finds an ECDSA match. The process is repeated until all signatures have been checked or not enough public keys remain to produce a successful result.
 
-    Because public keys are not checked again if they fail any signature comparison, signatures must be placed in the signature script using the same order as their corresponding public keys were placed in the <<glossary:pubkey script>> or <<glossary:redeem script>>. See the `OP_CHECKMULTISIG` warning below for more details.
+    Because public keys are not checked again if they fail any signature comparison, signatures must be placed in the signature script using the same order as their corresponding public keys were placed in the [pubkey script](../resources/glossary.md#pubkey-script) or [redeem script](../resources/glossary.md#redeem-script). See the `OP_CHECKMULTISIG` warning below for more details.
 
 A complete list of Bitcoin opcodes can be found on the Bitcoin Wiki [Script Page](https://en.bitcoin.it/wiki/Script), with an authoritative list in the `opcodetype` enum of the Dash Core [script header file](https://github.com/dashpay/dash/blob/master/src/script/script.h).
 
@@ -68,11 +68,11 @@ Several opcodes were disabled in the Bitcoin scripting system due to the discove
 
 ### Signature Script Modification
 
-![Warning icon](https://dash-docs.github.io/img/icons/icon_warning.svg) **<span id="signature_script_modification_warning">Signature script modification warning</span>:** <<glossary:Signature scripts>> are not signed, so anyone can modify them. This means signature scripts should only contain data and <<glossary:data-pushing opcode>> which can't be modified without causing the pubkey script to fail. Placing non-data-pushing opcodes in the signature script currently makes a transaction non-standard, and future consensus rules may forbid such transactions altogether. (Non-data-pushing opcodes are already forbidden in signature scripts when spending a <<glossary:P2SH pubkey script>>.)
+![Warning icon](https://dash-docs.github.io/img/icons/icon_warning.svg) **<span id="signature_script_modification_warning">Signature script modification warning</span>:** [Signature scripts](../resources/glossary.md#signature-script) are not signed, so anyone can modify them. This means signature scripts should only contain data and [data-pushing opcode](../resources/glossary.md#data-pushing-opcode) which can't be modified without causing the pubkey script to fail. Placing non-data-pushing opcodes in the signature script currently makes a transaction non-standard, and future consensus rules may forbid such transactions altogether. (Non-data-pushing opcodes are already forbidden in signature scripts when spending a [P2SH pubkey script](../resources/glossary.md#p2sh-pubkey-script).)
 
 ### Multisig Signature Order
 
-![Warning icon](https://dash-docs.github.io/img/icons/icon_warning.svg) **`OP_CHECKMULTISIG` warning:** The <<glossary:multisig>> verification process described above requires that signatures in the signature script be provided in the same order as their corresponding public keys in the pubkey script or redeem script. For example, the following combined signature and pubkey script will produce the stack and comparisons shown:
+![Warning icon](https://dash-docs.github.io/img/icons/icon_warning.svg) **`OP_CHECKMULTISIG` warning:** The [multisig](../resources/glossary.md#multisig) verification process described above requires that signatures in the signature script be provided in the same order as their corresponding public keys in the pubkey script or redeem script. For example, the following combined signature and pubkey script will produce the stack and comparisons shown:
 
 ``` text
 OP_0 <A sig> <B sig> OP_2 <A pubkey> <B pubkey> <C pubkey> OP_3

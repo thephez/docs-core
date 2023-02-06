@@ -1,12 +1,12 @@
 # P2SH Multisig
 
-In this subsection, we will create a <<glossary:P2SH multisig>> address, spend <<glossary:duffs>> to it, and then spend those duffs from it to another <<glossary:address>>.
+In this subsection, we will create a [P2SH multisig](../resources/glossary.md#p2sh-multisig) address, spend [duffs](../resources/glossary.md#duffs) to it, and then spend those duffs from it to another [address](../resources/glossary.md#address).
 
-Creating a <<glossary:multisig>> address is easy. Multisig <<glossary:outputs>> have two parameters, the *minimum* number of signatures required (*m*) and the *number* of <<glossary:public keys>> to use to validate those signatures. This is called m-of-n, and in this case we'll be using 2-of-3.
+Creating a [multisig](../resources/glossary.md#multisig) address is easy. Multisig [outputs](../resources/glossary.md#output) have two parameters, the *minimum* number of signatures required (*m*) and the *number* of [public keys](../resources/glossary.md#public-key) to use to validate those signatures. This is called m-of-n, and in this case we'll be using 2-of-3.
 
 ## 1. Get new addresses
 
-Generate three new P2PKH addresses. A <<glossary:P2PKH address>> cannot be used with the multisig redeem script created below. (Hashing each public key is unnecessary anyway---all the public keys are protected by a hash when the <<glossary:redeem script>> is hashed.) However, Dash Core uses addresses as a way to reference the underlying full (unhashed) public keys it knows about, so we get the three new addresses above in order to use their public keys.
+Generate three new P2PKH addresses. A [P2PKH address](../resources/glossary.md#p2pkh-address) cannot be used with the multisig redeem script created below. (Hashing each public key is unnecessary anyway---all the public keys are protected by a hash when the [redeem script](../resources/glossary.md#redeem-script) is hashed.) However, Dash Core uses addresses as a way to reference the underlying full (unhashed) public keys it knows about, so we get the three new addresses above in order to use their public keys.
 
 Recall from the Guide that the hashed public keys used in addresses obfuscate the full public key, so you cannot give an address to another person or device as part of creating a typical multisig output or P2SH multisig redeem script. You must give them a full public key.
 
@@ -89,9 +89,9 @@ Neither the address nor the redeem script are stored in the wallet when you use 
 
 ## 4. Fund multisig address
 
-Paying the P2SH multisig address with Dash Core is as simple as paying a more common P2PKH address. Here we use the same command (but different variable) we used in the [Simple Spending subsection](../examples/transaction-tutorial-simple-spending.md). As before, this command automatically selects an UTXO, creates a <<glossary:change output>> to a new one of our P2PKH addresses if necessary, and pays a <<glossary:transaction fee>> if necessary.
+Paying the P2SH multisig address with Dash Core is as simple as paying a more common P2PKH address. Here we use the same command (but different variable) we used in the [Simple Spending subsection](../examples/transaction-tutorial-simple-spending.md). As before, this command automatically selects an UTXO, creates a [change output](../resources/glossary.md#change-output) to a new one of our P2PKH addresses if necessary, and pays a [transaction fee](../resources/glossary.md#transaction-fee) if necessary.
 
-We save that <<glossary:TXID>> to a shell variable as the TXID of the UTXO we plan to spend next.
+We save that [TXID](../resources/glossary.md#transaction-identifiers) to a shell variable as the TXID of the UTXO we plan to spend next.
 
 ``` bash
 > dash-cli -regtest sendtoaddress $P2SH_ADDRESS 10.00
@@ -102,7 +102,7 @@ ddb2a2eb2402a9ae61d7db93a9a48c0747859d899e704b10f5b72145779f9c52
 
 ## 5. Get decoded transaction
 
-We use the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) with the optional second argument (*true*) to get the decoded transaction we just created with `sendtoaddress`. We choose one of the <<glossary:outputs>> (the multisig address one) to be our UTXO and get its <<glossary:output index>> number (vout) and <<glossary:pubkey script>> (scriptPubKey).
+We use the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) with the optional second argument (*true*) to get the decoded transaction we just created with `sendtoaddress`. We choose one of the [outputs](../resources/glossary.md#output) (the multisig address one) to be our UTXO and get its [output index](../resources/glossary.md#output-index) number (vout) and [pubkey script](../resources/glossary.md#pubkey-script) (scriptPubKey).
 
 ``` bash
 > dash-cli -regtest getrawtransaction $UTXO_TXID 1
@@ -190,7 +190,7 @@ yZSxAakpoWGG3vcsvpk9qNtsYREhump4Cr
 
 ## 7. Create raw transaction
 
-We generate the <<glossary:raw transaction>> the same way we did in the [Simple Raw Transaction subsection](../examples/transaction-tutorial-simple-raw-transaction.md).
+We generate the [raw transaction](../resources/glossary.md#raw-transaction) the same way we did in the [Simple Raw Transaction subsection](../examples/transaction-tutorial-simple-raw-transaction.md).
 
 ``` bash
 ## Outputs - inputs = transaction fee, so always double-check your math!
@@ -219,7 +219,7 @@ e38f25ead28817df7929c06fe847ee88ac00000000
 
 ## 8. Get private key
 
-We get the <<glossary:private keys>> for two of the <<glossary:public keys>> we used to create the transaction, the same way we got private keys in the [Complex Raw Transaction subsection](../examples/transaction-tutorial-complex-raw-transaction.md). Recall that we created a 2-of-3 multisig pubkey script, so signatures from two private keys are needed.
+We get the [private keys](../resources/glossary.md#private-key) for two of the [public keys](../resources/glossary.md#public-key) we used to create the transaction, the same way we got private keys in the [Complex Raw Transaction subsection](../examples/transaction-tutorial-complex-raw-transaction.md). Recall that we created a 2-of-3 multisig pubkey script, so signatures from two private keys are needed.
 
 >❗️ Private Key Warning
 >
@@ -239,7 +239,7 @@ cUbYymPeHhRszTn64Xg7dzYKez8YC83M39ZTPJDiBDu8dRD3EjzF
 
 ### 9a. Private Key 1
 
-We make the first <<glossary:signature>>. The input argument (JSON object) takes the additional <<glossary:redeem script>> parameter so that it can append the redeem script to the <<glossary:signature script>> after the two signatures.
+We make the first [signature](../resources/glossary.md#signature). The input argument (JSON object) takes the additional [redeem script](../resources/glossary.md#redeem-script) parameter so that it can append the redeem script to the [signature script](../resources/glossary.md#signature-script) after the two signatures.
 
 ``` bash
 > dash-cli -regtest signrawtransactionwithkey $RAW_TX '''
@@ -333,7 +333,7 @@ The [`signrawtransactionwithkey`](../api/remote-procedure-calls-raw-transactions
 
 ## 10. Send raw transaction
 
-We send the transaction spending the P2SH multisig output to the local <<glossary:node>>, which accepts it.
+We send the transaction spending the P2SH multisig output to the local [node](../resources/glossary.md#node), which accepts it.
 
 ``` bash
 > dash-cli -regtest sendrawtransaction $SIGNED_RAW_TX

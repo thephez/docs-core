@@ -14,14 +14,14 @@ As of Dash Core 18.2.0, the most recent protocol version is 70224.
 | 70218  | Dash Core 0.16.0 <br>(Q3 2020)  | • Block reward [reallocation](../reference/block-chain-serialized-blocks.md#block-reward-reallocation)<br>• Concentrated recovery for LLMQ signatures<br>• Wallet GUI refresh<br>• Expanded [PoSe](../guide/dash-features-proof-of-service.md) (masternode version checks) <br>• Removal of [sporks](../reference/p2p-network-control-messages.md#spork) 15, 16, and 20<br>• PrivateSend updates
 | 70216  | Dash Core 0.15.0 <br>(Q1 2020)  | • Mempool sync (via [`mempool` message](../reference/p2p-network-data-messages.md#mempool))<br>• Updated [default P2P/RPC ports](../reference/p2p-network-constants-and-defaults.md) for RegTest and Devnet networks<br>• Removal of `alert` message<br>• Removal of legacy InstantSend<br>• Removal of [sporks](../reference/p2p-network-control-messages.md#spork) 5 and 12<br>• Deprecation of [sporks](../reference/p2p-network-control-messages.md#spork) 15, 16, and 20
 | 70215  | Dash Core 0.14.0.1 <br>(May 2019)  | • None (Governance bugfix only)
-| 70214  | Dash Core 0.14.0.0 <br>(May 2019)  | • <<glossary:Long-Living Masternode Quorum>><br>• <<glossary:ChainLocks>><br>• PrivateSend improvements<br>• Experimental LLMQ InstantSend<br>• Bitcoin Core 0.15 backports
-| 70213  | Dash Core 0.13.0.x <br>(Jan 2019)  | • <<glossary:Special Transactions>><br>• Deterministic Masternode List<br>• Coinbase Special Transaction<br>• Automatic InstantSend
+| 70214  | Dash Core 0.14.0.0 <br>(May 2019)  | • [Long-Living Masternode Quorum](../resources/glossary.md#long-living-masternode-quorum)<br>• [ChainLocks](../resources/glossary.md#chainlock)<br>• PrivateSend improvements<br>• Experimental LLMQ InstantSend<br>• Bitcoin Core 0.15 backports
+| 70213  | Dash Core 0.13.0.x <br>(Jan 2019)  | • [Special Transactions](../resources/glossary.md#special-transactions)<br>• Deterministic Masternode List<br>• Coinbase Special Transaction<br>• Automatic InstantSend
 | 70210  | Dash Core 0.12.3.x <br>(July 2018)  | • Named Devnets<br>• New signature format / Spork 6 addition<br>• Bitcoin Core 0.13/0.14 backports<br>• [BIP90](https://github.com/bitcoin/bips/blob/master/bip-0090.mediawiki): Buried deployments<br>• [BIP147](https://github.com/bitcoin/bips/blob/master/bip-0147.mediawiki): NULLYDUMMY enforcement<br>• [BIP152](https://github.com/bitcoin/bips/blob/master/bip-0152.mediawiki) Compact Blocks<br>• Transaction version increased to 2<br>• Zero fee transactions removed<br>• Pruning in Lite Mode
 | 70208  | Dash Core 0.12.2.x <br>(Nov 2017)  | • [DIP1](https://github.com/dashpay/dips/blob/master/dip-0001.md) (2MB blocks)<br>• Fee reduction (10x)<br>• InstantSend fix<br>• PrivateSend improvements<br>• _Experimental_ HD wallet<br>• Local Masternode support removed
 | 70206  | Dash Core 0.12.1.x <br>(Mar 2017)  | • Switch to Bitcoin Core 0.12.1<br>• BIP-0065 (CheckLockTimeVerify)<br>• BIP-0112 (CheckSequenceVerify)
 | 70103  | Dash Core 0.12.0.x <br>(Aug 2015)  | • Switch to Bitcoin Core 0.10<br>• Decentralized budget system<br>• New IX implementation
 | 70076  | Dash Core 0.11.2.x <br>(Mar 2015)  | • Masternode enhancements<br>• Mining/relay policy enhancements<br>• BIP-66 - strict DER encoding for signatures
-| 70066  | Dash Core 0.11.1.x <br>(Feb 2015)  | • InstantX fully implemented<br>• <<glossary:Spork>> fully implemented<br>• Masternode payment updates<br>• Rebrand to Dash (0.11.1.26)
+| 70066  | Dash Core 0.11.1.x <br>(Feb 2015)  | • InstantX fully implemented<br>• [Spork](../resources/glossary.md#spork) fully implemented<br>• Masternode payment updates<br>• Rebrand to Dash (0.11.1.26)
 | 70052  | Dash Core 0.11.0.x <br>(Jan 2015)  | • Switch from fork of Litecoin 0.8 to Bitcoin 0.9.3<br>• Rebrand to Darkcoin Core
 | 70051  | Dash Core 0.10.0.x <br>(Sep 2014)  | • Release of the originally closed source implementation of DarkSend
 | 70002  | Dash Core 0.9.0.x <br>(Mar 2014)   | • Masternode implementation<br>• Rebrand to Darkcoin
@@ -29,7 +29,7 @@ As of Dash Core 18.2.0, the most recent protocol version is 70224.
 
 ## Bitcoin Protocol Versions
 
-Historical Bitcoin protocol versions for reference shown below since Dash is a <<glossary:fork>> of Bitcoin Core.
+Historical Bitcoin protocol versions for reference shown below since Dash is a [fork](../resources/glossary.md#fork) of Bitcoin Core.
 
 | Version | Initial Release                    | Major Changes
 |---------|------------------------------------|--------------

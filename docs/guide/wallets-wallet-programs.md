@@ -1,8 +1,8 @@
 # Wallet Programs
 
-Permitting receiving and spending of <<glossary:duffs>> is the only essential feature of <<glossary:wallet>> software---but a particular wallet program doesn't need to do both things.  Two wallet programs can work together, one program distributing <<glossary:public keys>> in order to receive duffs and another program signing <<glossary:transactions>> spending those duffs.
+Permitting receiving and spending of [duffs](../resources/glossary.md#duffs) is the only essential feature of [wallet](../resources/glossary.md#wallet) software---but a particular wallet program doesn't need to do both things.  Two wallet programs can work together, one program distributing [public keys](../resources/glossary.md#public-key) in order to receive duffs and another program signing [transactions](../resources/glossary.md#transaction) spending those duffs.
 
-Wallet programs also need to interact with the peer-to-peer <<glossary:network>> to get information from the <<glossary:block chain>> and to broadcast new transactions. However, the programs which distribute public keys or sign transactions don't need to interact with the peer-to-peer network themselves.
+Wallet programs also need to interact with the peer-to-peer [network](../resources/glossary.md#network) to get information from the [block chain](../resources/glossary.md#block-chain) and to broadcast new transactions. However, the programs which distribute public keys or sign transactions don't need to interact with the peer-to-peer network themselves.
 
 This leaves us with three necessary, but separable, parts of a wallet system: a public key distribution program, a signing program, and a networked program.  In the subsections below, we will describe common combinations of these parts.
 
@@ -12,7 +12,7 @@ This leaves us with three necessary, but separable, parts of a wallet system: a 
 
 ## Full-Service Wallets
 
-The simplest wallet is a program which performs all three functions: it generates <<glossary:private keys>>, derives the corresponding <<glossary:public keys>>, helps distribute those public keys as necessary, monitors for outputs spent to those public keys, creates and signs transactions spending those outputs, and broadcasts the signed transactions.
+The simplest wallet is a program which performs all three functions: it generates [private keys](../resources/glossary.md#private-key), derives the corresponding [public keys](../resources/glossary.md#public-key), helps distribute those public keys as necessary, monitors for outputs spent to those public keys, creates and signs transactions spending those outputs, and broadcasts the signed transactions.
 
 ![Full-Service Wallets](https://dash-docs.github.io/img/dev/en-wallets-full-service.svg)
 
@@ -32,15 +32,15 @@ Signing-only wallets programs typically use deterministic key creation (describe
 
 ![Signing-Only Wallets](https://dash-docs.github.io/img/dev/en-wallets-signing-only.svg)
 
-When first run, the signing-only wallet creates a <<glossary:parent private key>> and transfers the corresponding <<glossary:parent public key>> to the networked wallet.
+When first run, the signing-only wallet creates a [parent private key](../resources/glossary.md#parent-private-key) and transfers the corresponding [parent public key](../resources/glossary.md#parent-public-key) to the networked wallet.
 
-The networked wallet uses the parent public key to derive each <<glossary:child public key>>, optionally helps distribute them, monitors for outputs spent to those public keys, creates unsigned transactions spending those outputs, and transfers the unsigned transactions to the signing-only wallet.
+The networked wallet uses the parent public key to derive each [child public key](../resources/glossary.md#child-public-key), optionally helps distribute them, monitors for outputs spent to those public keys, creates unsigned transactions spending those outputs, and transfers the unsigned transactions to the signing-only wallet.
 
 Often, users are given a chance to review the unsigned transactions' details (particularly the output details) using the signing-only wallet.
 
-After the optional review step, the signing-only wallet uses the parent private key to derive each appropriate <<glossary:child private key>> and signs the transactions, giving the signed transactions back to the networked wallet.
+After the optional review step, the signing-only wallet uses the parent private key to derive each appropriate [child private key](../resources/glossary.md#child-private-key) and signs the transactions, giving the signed transactions back to the networked wallet.
 
-The networked wallet then broadcasts the signed transactions to the peer-to-peer <<glossary:network>>.
+The networked wallet then broadcasts the signed transactions to the peer-to-peer [network](../resources/glossary.md#network).
 
 The following subsections describe the two most common variants of signing-only wallets: offline wallets and hardware wallets.
 

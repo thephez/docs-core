@@ -1,6 +1,6 @@
 # Message Headers
 
-All messages in the network protocol use the same container format, which provides a required multi-field <<glossary:message header>> and an optional payload. The message header format is:
+All messages in the network protocol use the same container format, which provides a required multi-field [message header](../resources/glossary.md#message-header) and an optional payload. The message header format is:
 
 | Bytes | Name         | Data Type | Description
 | :-------: |--------------|-----------|-------------
@@ -11,7 +11,7 @@ All messages in the network protocol use the same container format, which provid
 
 ## Example
 
-The following example is an annotated hex dump of a <<glossary:mainnet>> message header from a [`verack` message](../reference/p2p-network-control-messages.md#verack) which has no payload.
+The following example is an annotated hex dump of a [mainnet](../resources/glossary.md#mainnet) message header from a [`verack` message](../reference/p2p-network-control-messages.md#verack) which has no payload.
 
 ``` text
 bf0c6bbd ................... Start string: Mainnet

@@ -2,7 +2,7 @@
 
 ## Synchronization
 
-Dash Core synchronizes the governance system via the <<glossary:masternode>> <<glossary:network>> as the last stage of the Masternode sync process (following the sync of sporks, the Masternode list, and Masternode payments).
+Dash Core synchronizes the governance system via the [masternode](../resources/glossary.md#masternode) [network](../resources/glossary.md#network) as the last stage of the Masternode sync process (following the sync of sporks, the Masternode list, and Masternode payments).
 
 The [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) initiates a sync of the governance system. Masternodes ignore this request if they are not fully synced.  
 
@@ -20,7 +20,7 @@ Masternodes respond to the [`govsync` message](../reference/p2p-network-governan
 
 For Object Sync:
 
-* First, the Masternode sends a [`ssc` message](../reference/p2p-network-masternode-messages.md#ssc) (Sync Status Count) for `govobj` objects. This message indicates how many <<glossary:inventory>> items will be sent.
+* First, the Masternode sends a [`ssc` message](../reference/p2p-network-masternode-messages.md#ssc) (Sync Status Count) for `govobj` objects. This message indicates how many [inventory](../resources/glossary.md#inventory) items will be sent.
 
 * Second, the Masternode sends an [`inv` message](../reference/p2p-network-data-messages.md#inv) for the `govobj` and `govobjvote` objects.
 
@@ -30,7 +30,7 @@ For Vote Sync:
 
 * Second, the Masternode sends an [`inv` message](../reference/p2p-network-data-messages.md#inv) for the `govobjvote` object(s).
 
-Once the syncing <<glossary:node>> receives the counts and inventories, it may request any `govobj` and `govobjvote` objects from the masternode via a [`getdata` message](../reference/p2p-network-data-messages.md#getdata).
+Once the syncing [node](../resources/glossary.md#node) receives the counts and inventories, it may request any `govobj` and `govobjvote` objects from the masternode via a [`getdata` message](../reference/p2p-network-data-messages.md#getdata).
 
 ### Governance Sync Data Flow
 
@@ -63,7 +63,7 @@ Sentinel issues a [`gobject list` RPC](../api/remote-procedure-calls-dash.md#gob
 
 ### Sentinel Prune
 
-Sentinel 1.1.0 introduced proposal pruning which automatically votes to delete expired proposals following approximately half of a <<glossary:superblock>> cycle. This delay period ensures that proposals are not deleted prematurely. Prior to this, proposals remained in memory unless a sufficient number of masternodes manually voted to delete them.
+Sentinel 1.1.0 introduced proposal pruning which automatically votes to delete expired proposals following approximately half of a [superblock](../resources/glossary.md#superblock) cycle. This delay period ensures that proposals are not deleted prematurely. Prior to this, proposals remained in memory unless a sufficient number of masternodes manually voted to delete them.
 
 ### Sentinel Superblock
 

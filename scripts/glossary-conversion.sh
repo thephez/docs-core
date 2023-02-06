@@ -2,7 +2,6 @@
 
 # Replace readme.io's proprietary <<glossary:term>> syntax with markdown links to the terms on the
 # glossary page (glossary.md)
-<<<<<<< HEAD
 find . -iname "*.md" -exec sed -i 's~<<glossary:address>>~[address](../resources/glossary.md#address)~g' {} +
 find . -iname "*.md" -exec sed -i 's~<<glossary:block>>~[block](../resources/glossary.md#block)~g' {} +
 find . -iname "*.md" -exec sed -i 's~<<glossary:blocks-first>>~[blocks-first](../resources/glossary.md#blocks-first-sync)~g' {} +
@@ -69,11 +68,9 @@ find . -iname "*.md" -exec sed -i 's~<<glossary:locktime>>~[locktime](../resourc
 find . -iname "*.md" -exec sed -i 's~<<glossary:Long-Living Masternode Quorum>>~[Long-Living Masternode Quorum](../resources/glossary.md#long-living-masternode-quorum)~g' {} +
 find . -iname "*.md" -exec sed -i 's~<<glossary:M-of-N multisig>>~[M-of-N multisig](../resources/glossary.md#m-of-n-multisig)~g' {} +
 find . -iname "*.md" -exec sed -i 's~<<glossary:mainnet>>~[mainnet](../resources/glossary.md#mainnet)~g' {} +
-find . -iname "*.md" -exec sed -i 's~<<glossary:Majority Hash Rate Attack
->>~[Majority Hash Rate Attack](../resources/glossary.md#majority-hash-rate-attack)~g' {} +
+find . -iname "*.md" -exec sed -i 's~<<glossary:Majority Hash Rate Attack>>~[Majority Hash Rate Attack](../resources/glossary.md#majority-hash-rate-attack)~g' {} +
 find . -iname "*.md" -exec sed -i 's~<<glossary:malleability>>~[malleability](../resources/glossary.md#malleability)~g' {} +
-find . -iname "*.md" -exec sed -i 's~<<glossary:master chain code and private key
->>~[master chain code and private key](../resources/glossary.md#master-chain-code-and-private-key)~g' {} +
+find . -iname "*.md" -exec sed -i 's~<<glossary:master chain code and private key>>~[master chain code and private key](../resources/glossary.md#master-chain-code-and-private-key)~g' {} +
 find . -iname "*.md" -exec sed -i 's~<<glossary:master private key>>~[master private key](../resources/glossary.md#master-private-key)~g' {} +
 find . -iname "*.md" -exec sed -i 's~<<glossary:merkle block>>~[merkle block](../resources/glossary.md#merkle-block)~g' {} +
 find . -iname "*.md" -exec sed -i 's~<<glossary:merkle root>>~[merkle root](../resources/glossary.md#merkle-root)~g' {} +

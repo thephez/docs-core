@@ -215,23 +215,23 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:child private key>>~[child p
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:parent public key>>~[parent public key](../resources/glossary.md#parent public key)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:parent private key>>~[parent private key](../resources/glossary.md#parent private key)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:extended public key>>~[extended public key](../resources/glossary.md#extended public key)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_TX>>~[MSG_TX](../resources/glossary.md#MSG_TX)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_BLOCK>>~[MSG_BLOCK](../resources/glossary.md#MSG_BLOCK)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_FILTERED_BLOCK>>~[MSG_FILTERED_BLOCK](../resources/glossary.md#MSG_FILTERED_BLOCK)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_CLSIG>>~[MSG_CLSIG](../resources/glossary.md#MSG_CLSIG)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_LEGACY_TXLOCK_REQUEST>>~[MSG_LEGACY_TXLOCK_REQUEST](../resources/glossary.md#MSG_LEGACY_TXLOCK_REQUEST)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_ISLOCK>>~[MSG_ISLOCK](../resources/glossary.md#MSG_ISLOCK)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_TX>>~[MSG_TX](../resources/glossary.md#msg_tx)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_BLOCK>>~[MSG_BLOCK](../resources/glossary.md#msg_block)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_FILTERED_BLOCK>>~[MSG_FILTERED_BLOCK](../resources/glossary.md#msg_filtered_block)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_CLSIG>>~[MSG_CLSIG](../resources/glossary.md#msg_clsig)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_LEGACY_TXLOCK_REQUEST>>~[MSG_LEGACY_TXLOCK_REQUEST](../resources/glossary.md#msg_legacy_txlock_request)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_ISLOCK>>~[MSG_ISLOCK](../resources/glossary.md#msg_islock)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_SPORK>>~[MSG_SPORK](../resources/glossary.md#MSG_SPORK)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_DSTX>>~[MSG_DSTX](../resources/glossary.md#MSG_DSTX)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_GOVERNANCE_OBJECT>>~[MSG_GOVERNANCE_OBJECT](../resources/glossary.md#MSG_GOVERNANCE_OBJECT)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_GOVERNANCE_OBJECT_VOTE>>~[MSG_GOVERNANCE_OBJECT_VOTE](../resources/glossary.md#MSG_GOVERNANCE_OBJECT_VOTE)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_CMPCT_BLOCK>>~[MSG_CMPCT_BLOCK](../resources/glossary.md#MSG_CMPCT_BLOCK)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_QUORUM_FINAL_COMMITMENT>>~[MSG_QUORUM_FINAL_COMMITMENT](../resources/glossary.md#MSG_QUORUM_FINAL_COMMITMENT)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_QUORUM_CONTRIB>>~[MSG_QUORUM_CONTRIB](../resources/glossary.md#MSG_QUORUM_CONTRIB)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_QUORUM_COMPLAINT>>~[MSG_QUORUM_COMPLAINT](../resources/glossary.md#MSG_QUORUM_COMPLAINT)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_QUORUM_JUSTIFICATION>>~[MSG_QUORUM_JUSTIFICATION](../resources/glossary.md#MSG_QUORUM_JUSTIFICATION)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_QUORUM_PREMATURE_COMMITMENT>>~[MSG_QUORUM_PREMATURE_COMMITMENT](../resources/glossary.md#MSG_QUORUM_PREMATURE_COMMITMENT)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_QUORUM_RECOVERED_SIG>>~[MSG_QUORUM_RECOVERED_SIG](../resources/glossary.md#MSG_QUORUM_RECOVERED_SIG)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_GOVERNANCE_OBJECT>>~[MSG_GOVERNANCE_OBJECT](../resources/glossary.md#msg_governance_object)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_GOVERNANCE_OBJECT_VOTE>>~[MSG_GOVERNANCE_OBJECT_VOTE](../resources/glossary.md#msg_governance_object_vote)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_CMPCT_BLOCK>>~[MSG_CMPCT_BLOCK](../resources/glossary.md#msg_cmpct_block)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_QUORUM_FINAL_COMMITMENT>>~[MSG_QUORUM_FINAL_COMMITMENT](../resources/glossary.md#msg_quorum_final_commitment)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_QUORUM_CONTRIB>>~[MSG_QUORUM_CONTRIB](../resources/glossary.md#msg_quorum_contrib)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_QUORUM_COMPLAINT>>~[MSG_QUORUM_COMPLAINT](../resources/glossary.md#msg_quorum_complaint)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_QUORUM_JUSTIFICATION>>~[MSG_QUORUM_JUSTIFICATION](../resources/glossary.md#msg_quorum_justification)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_QUORUM_PREMATURE_COMMITMENT>>~[MSG_QUORUM_PREMATURE_COMMITMENT](../resources/glossary.md#msg_quorum_premature_commitment)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_QUORUM_RECOVERED_SIG>>~[MSG_QUORUM_RECOVERED_SIG](../resources/glossary.md#msg_quorum_recovered_sig)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_TXLOCK_VOTE>>~[MSG_TXLOCK_VOTE](../resources/glossary.md#MSG_TXLOCK_VOTE)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_MASTERNODE_PAYMENT_VOTE>>~[MSG_MASTERNODE_PAYMENT_VOTE](../resources/glossary.md#MSG_MASTERNODE_PAYMENT_VOTE)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_MASTERNODE_PAYMENT_BLOCK>>~[MSG_MASTERNODE_PAYMENT_BLOCK](../resources/glossary.md#MSG_MASTERNODE_PAYMENT_BLOCK)~g' {} +
@@ -252,4 +252,4 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:OP_RETURN>>~[OP_RETURN](../r
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:OP_VERIFY>>~[OP_VERIFY](../resources/glossary.md#OP_VERIFY)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:TXID>>~[TXID](../resources/glossary.md#transaction-identifiers)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:TXIDs>>~[TXIDs](../resources/glossary.md#transaction-identifiers)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_ISDLOCK>>~[MSG_ISDLOCK](../resources/glossary.md#MSG_ISDLOCK)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_ISDLOCK>>~[MSG_ISDLOCK](../resources/glossary.md#msg_isdlock)~g' {} +

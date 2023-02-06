@@ -3,7 +3,9 @@
 # Replace readme.io's proprietary <<glossary:term>> syntax with markdown links to the terms on the
 # glossary page (glossary.md)
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:address>>~[address](../resources/glossary.md#address)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:addresses>>~[addresses](../resources/glossary.md#address)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:block>>~[block](../resources/glossary.md#block)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:blocks>>~[blocks](../resources/glossary.md#block)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:blocks-first>>~[blocks-first](../resources/glossary.md#blocks-first-sync)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:block chain>>~[block chain](../resources/glossary.md#block-chain)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:block header>>~[block header](../resources/glossary.md#block-header)~g' {} +
@@ -11,6 +13,7 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:block height>>~[block height
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:block reward>>~[block reward](../resources/glossary.md#block-reward)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:bloom filter>>~[bloom filter](../resources/glossary.md#bloom-filter)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:masternode>>~[masternode](../resources/glossary.md#masternode)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:masternodes>>~[masternodes](../resources/glossary.md#masternode)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:block size limit>>~[block size limit](../resources/glossary.md#block-size-limit)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:blocks-first-sync>>~[blocks-first-sync](../resources/glossary.md#blocks-first-sync)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:blocktransactions>>~[blocktransactions](../resources/glossary.md#blocktransactions)~g' {} +
@@ -59,9 +62,11 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:high-priority transaction>>~
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:IBD>>~[IBD](../resources/glossary.md#ibd)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:initial block download>>~[initial block download](../resources/glossary.md#initial-block-download)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:input>>~[input](../resources/glossary.md#input)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:inputs>>~[inputs](../resources/glossary.md#input)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:InstantSend>>~[InstantSend](../resources/glossary.md#instantsend)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:internal byte order>>~[internal byte order](../resources/glossary.md#internal-byte-order)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:inventory>>~[inventory](../resources/glossary.md#inventory)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:inventories>>~[inventories](../resources/glossary.md#inventory)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:key index>>~[key index](../resources/glossary.md#key-index)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:key pair>>~[key pair](../resources/glossary.md#key-pair)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:locktime>>~[locktime](../resources/glossary.md#locktime)~g' {} +
@@ -86,8 +91,10 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:node>>~[node](../resources/g
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:null data (OP_RETURN) transaction>>~[null data (OP_RETURN) transaction](../resources/glossary.md#null-data-op_return-transaction)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:opcode>>~[opcode](../resources/glossary.md#opcode)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:orphan block>>~[orphan block](../resources/glossary.md#orphan-block)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:orphan blocks>>~[orphan blocks](../resources/glossary.md#orphan-block)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:outpoint>>~[outpoint](../resources/glossary.md#outpoint)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:output>>~[output](../resources/glossary.md#output)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:outputs>>~[outputs](../resources/glossary.md#output)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:output index>>~[output index](../resources/glossary.md#output-index)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:P2PKH address>>~[P2PKH address](../resources/glossary.md#p2pkh-address)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:P2SH address>>~[P2SH address](../resources/glossary.md#p2sh-address)~g' {} +
@@ -100,6 +107,7 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:PrivateSend>>~[PrivateSend](
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:proof of work>>~[proof of work](../resources/glossary.md#proof-of-work)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:pubkey script>>~[pubkey script](../resources/glossary.md#pubkey-script)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:public key>>~[public key](../resources/glossary.md#public-key)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:public keys>>~[public keys](../resources/glossary.md#public-key)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:raw format>>~[raw format](../resources/glossary.md#raw-format)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:redeem script>>~[redeem script(../resources/glossary.md#redeem-script)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:regression test mode>>~[regression test mode](../resources/glossary.md#regression-test-mode)~g' {} +
@@ -122,6 +130,7 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:soft fork>>~[soft fork](../r
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:special transactions>>~[special transactions](../resources/glossary.md#special-transactions)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:spork>>~[spork](../resources/glossary.md#spork)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:stale block>>~[stale block](../resources/glossary.md#stale-block)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:stale blocks>>~[stale blocks](../resources/glossary.md#stale-block)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:standard block relay>>~[standard block relay](../resources/glossary.md#standard-block-relay)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:standard transaction>>~[standard transaction](../resources/glossary.md#standard-transaction)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:Start String>>~[Start String](../resources/glossary.md#start-string)~g' {} +
@@ -130,6 +139,7 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:target>>~[target](../resourc
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:target threshold>>~[target threshold](../resources/glossary.md#target-threshold)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:testnet>>~[testnet](../resources/glossary.md#testnet)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:transaction>>~[transaction](../resources/glossary.md#transaction)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:transactions>>~[transactions](../resources/glossary.md#transaction)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:transaction fee>>~[transaction fee](../resources/glossary.md#transaction-fee)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:transaction identifiers>>~[transaction identifiers](../resources/glossary.md#transaction-identifiers)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:transaction version number>>~[transaction version number](../resources/glossary.md#transaction-version-number)~g' {} +
@@ -189,4 +199,5 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:OP_HASH160>>~[OP_HASH160](..
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:OP_RETURN>>~[OP_RETURN](../resources/glossary.md#OP_RETURN)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:OP_VERIFY>>~[OP_VERIFY](../resources/glossary.md#OP_VERIFY)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:TXID>>~[TXID](../resources/glossary.md#TXID)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:TXIDs>>~[TXIDs](../resources/glossary.md#TXID)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_ISDLOCK>>~[MSG_ISDLOCK](../resources/glossary.md#MSG_ISDLOCK)~g' {} +

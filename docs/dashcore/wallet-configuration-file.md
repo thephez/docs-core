@@ -14,7 +14,7 @@ You should also make the `dash.conf` file only readable to its owner.  On Linux,
 chmod 0600 dash.conf
 ```
 
-For development, it's safer and cheaper to use Dash's test network (<<glossary:testnet>>), <<glossary:regression test mode>> (regtest), or a developer network  (<<glossary:devnet>>) described below.
+For development, it's safer and cheaper to use Dash's test network ([testnet](../resources/glossary.md#testnet)), [regression test mode](../resources/glossary.md#regression-test-mode) (regtest), or a developer network  ([devnet](../resources/glossary.md#devnet)) described below.
 
 Questions about Dash use are best sent to the [Dash forum](https://www.dash.org/forum/categories/dash-support.61/) and [Discord channels](http://www.dashchat.org).
 

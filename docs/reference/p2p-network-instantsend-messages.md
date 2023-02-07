@@ -6,7 +6,7 @@ The following network messages all help control the InstantSend feature of Dash.
 
 *Added in protocol version 70214 of Dash Core*
 
-The [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig) is used to indicate a successful ChainLock for the designated <<glossary:block height>>. The Chainlock ensures that no other <<glossary:blocks>> can replace the one with the indicated block hash. This determination is made by agreement of a <<glossary:Long-Living Masternode Quorum>> (LLMQ) which creates the BLS signature in the message.
+The [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig) is used to indicate a successful ChainLock for the designated [block height](../resources/glossary.md#block-height). The Chainlock ensures that no other [blocks](../resources/glossary.md#block) can replace the one with the indicated block hash. This determination is made by agreement of a [Long-Living Masternode Quorum](../resources/glossary.md#long-living-masternode-quorum) (LLMQ) which creates the BLS signature in the message.
 
 Once a [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig) is received, clients must reject any other blocks for the indicated block height as described in [DIP8 (ChainLocks)](https://github.com/dashpay/dips/blob/master/dip-0008.md). This increases security by preventing reorganization of a block with a ChainLock (and all blocks below it).
 
@@ -40,7 +40,7 @@ dcd5497d105932e609016dac075f02df
 >
 > The [`isdlock` message](#isdlock) with expanded features will eventually replace this message. Protocol version 70220 maintains backwards compatibility for older clients.
 
-The [`islock` message](../reference/p2p-network-instantsend-messages.md#islock) is used to provide details of transactions that have been locked by LLMQ-based InstantSend. The message includes the details of all transaction <<glossary:inputs>> along with the transaction ID and the BLS <<glossary:signature>> of the <<glossary:LLMQ>> that approved the transaction lock.
+The [`islock` message](../reference/p2p-network-instantsend-messages.md#islock) is used to provide details of transactions that have been locked by LLMQ-based InstantSend. The message includes the details of all transaction [inputs](../resources/glossary.md#input) along with the transaction ID and the BLS [signature](../resources/glossary.md#signature) of the [LLMQ](../resources/glossary.md#long-living-masternode-quorum) that approved the transaction lock.
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |

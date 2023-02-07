@@ -2,7 +2,7 @@
 
 ## Overview
 
-Dash aims to be the most user-friendly and scalable payments-focused cryptocurrency in the world. The Dash <<glossary:network>> features instant transaction confirmation, double spend protection, anonymity similar to that of physical cash, a self-governing, self-funding model driven by incentivized full <<glossary:nodes>> (masternodes) and a clear [roadmap](https://www.dash.org/roadmap/) for future development.
+Dash aims to be the most user-friendly and scalable payments-focused cryptocurrency in the world. The Dash [network](../resources/glossary.md#network) features instant transaction confirmation, double spend protection, anonymity similar to that of physical cash, a self-governing, self-funding model driven by incentivized full [nodes](../resources/glossary.md#node) (masternodes) and a clear [roadmap](https://www.dash.org/roadmap/) for future development.
 
 ## Dash Nodes
 

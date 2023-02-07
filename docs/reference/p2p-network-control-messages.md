@@ -1,6 +1,6 @@
 # Control Messages
 
-The following <<glossary:network>> messages all help control the connection between two <<glossary:peers>> or allow them to advise each other about the rest of the network.
+The following [network](../resources/glossary.md#network) messages all help control the connection between two [peers](../resources/glossary.md#peer) or allow them to advise each other about the rest of the network.
 
 ![Overview Of P2P Protocol Control And Advisory Messages](https://dash-docs.github.io/img/dev/en-p2p-control-messages.svg)
 
@@ -26,7 +26,7 @@ Each encapsulated network IP address currently uses the following structure:
 | 16    | IP address | char      | IPv6 address in **big endian byte order**. IPv4 addresses can be provided as [IPv4-mapped IPv6 addresses](http://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses)
 | 2     | port       | uint16_t  | Port number in **big endian byte order**.  Note that Dash Core will only connect to nodes with non-standard port numbers as a last resort for finding peers.  This is to prevent anyone from trying to use the network to disrupt non-Dash services that run on other ports.
 
-The following annotated hexdump shows part of an [`addr` message](../reference/p2p-network-control-messages.md#addr). (The <<glossary:message header>> has been omitted and the actual IP address has been replaced with a [RFC5737](http://tools.ietf.org/html/rfc5737) reserved IP address.)
+The following annotated hexdump shows part of an [`addr` message](../reference/p2p-network-control-messages.md#addr). (The [message header](../resources/glossary.md#message-header) has been omitted and the actual IP address has been replaced with a [RFC5737](http://tools.ietf.org/html/rfc5737) reserved IP address.)
 
 ``` text
 fde803 ............................. Address count: 1000
@@ -56,7 +56,7 @@ Each encapsulated network IP address currently uses the following structure:
 | 2     | port       | uint16_t  | Port number in **big endian byte order**.  Note that Dash Core will only connect to nodes with non-standard port numbers as a last resort for finding peers.  This is to prevent anyone from trying to use the network to disrupt non-Dash services that run on other ports.
 
 
-The following annotated hexdump shows part of an `addrv2` message. (The <<glossary:message header>> has been omitted.)
+The following annotated hexdump shows part of an `addrv2` message. (The [message header](../resources/glossary.md#message-header) has been omitted.)
 
 ``` text
 01 ................................. Address count: 1
@@ -78,7 +78,7 @@ Peer address details
 
 *Added in protocol version 70001 as described by BIP37.*
 
-The [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd) tells the receiving <<glossary:peer>> to add a single element to a previously-set <<glossary:bloom filter>>, such as a new <<glossary:public key>>. The element is sent directly to the receiving peer; the peer then uses the parameters set in the [`filterload` message](../reference/p2p-network-control-messages.md#filterload) to add the element to the bloom filter.
+The [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd) tells the receiving [peer](../resources/glossary.md#peer) to add a single element to a previously-set [bloom filter](../resources/glossary.md#bloom-filter), such as a new [public key](../resources/glossary.md#public-key). The element is sent directly to the receiving peer; the peer then uses the parameters set in the [`filterload` message](../reference/p2p-network-control-messages.md#filterload) to add the element to the bloom filter.
 
 Because the element is sent directly to the receiving peer, there is no obfuscation of the element and none of the plausible-deniability privacy provided by the bloom filter. Clients that want to maintain greater privacy should recalculate the bloom filter themselves and send a new [`filterload` message](../reference/p2p-network-control-messages.md#filterload) with the recalculated bloom filter.
 
@@ -89,7 +89,7 @@ Because the element is sent directly to the receiving peer, there is no obfuscat
 
 Note: a [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd) will not be accepted unless a filter was previously set with the [`filterload` message](../reference/p2p-network-control-messages.md#filterload).
 
-The annotated hexdump below shows a [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd) adding a <<glossary:TXID>>. (The message header has been omitted.) This TXID appears in the same block used for the example hexdump in the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock); if that [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) is re-sent after sending this [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd), six hashes are returned instead of four.
+The annotated hexdump below shows a [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd) adding a [TXID](../resources/glossary.md#transaction-identifiers). (The message header has been omitted.) This TXID appears in the same block used for the example hexdump in the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock); if that [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) is re-sent after sending this [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd), six hashes are returned instead of four.
 
 ``` text
 20 ................................. Element bytes: 32
@@ -101,7 +101,7 @@ fdacf9b3eb077412e7a968d2e4f11b9a
 
 *Added in protocol version 70001 as described by BIP37.*
 
-The [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear) tells the receiving <<glossary:peer>> to remove a previously-set <<glossary:bloom filter>>.  This also undoes the effect of setting the relay field in the [`version` message](../reference/p2p-network-control-messages.md#version) to 0, allowing unfiltered access to [`inv` messages](../reference/p2p-network-data-messages.md#inv) announcing new transactions.
+The [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear) tells the receiving [peer](../resources/glossary.md#peer) to remove a previously-set [bloom filter](../resources/glossary.md#bloom-filter).  This also undoes the effect of setting the relay field in the [`version` message](../reference/p2p-network-control-messages.md#version) to 0, allowing unfiltered access to [`inv` messages](../reference/p2p-network-data-messages.md#inv) announcing new transactions.
 
 Dash Core does not require a [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear) before a replacement filter is loaded with `filterload`.  It also doesn't require a [`filterload` message](../reference/p2p-network-control-messages.md#filterload) before a [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear).
 
@@ -111,7 +111,7 @@ There is no payload in a [`filterclear` message](../reference/p2p-network-contro
 
 *Added in protocol version 70001 as described by BIP37.*
 
-The [`filterload` message](../reference/p2p-network-control-messages.md#filterload) tells the receiving <<glossary:peer>> to filter all relayed transactions and requested <<glossary:merkle blocks>> through the provided filter. This allows clients to receive transactions relevant to their <<glossary:wallet>> plus a configurable rate of false positive transactions which can provide plausible-deniability privacy.
+The [`filterload` message](../reference/p2p-network-control-messages.md#filterload) tells the receiving [peer](../resources/glossary.md#peer) to filter all relayed transactions and requested [merkle blocks](../resources/glossary.md#merkle-block) through the provided filter. This allows clients to receive transactions relevant to their [wallet](../resources/glossary.md#wallet) plus a configurable rate of false positive transactions which can provide plausible-deniability privacy.
 
 | Bytes    | Name         | Data Type | Description
 |----------|--------------|-----------|---------------
@@ -164,7 +164,7 @@ The actual hash function implementation used is the [32-bit Murmur3 hash functio
 
 > 🚧 Murmer3 Version
 >
-> **Warning:** the Murmur3 hash function has separate 32-bit and 64-bit versions that produce different results for the same <<glossary:input>>.  Only the 32-bit Murmur3 version is used with Dash bloom filters.
+> **Warning:** the Murmur3 hash function has separate 32-bit and 64-bit versions that produce different results for the same [input](../resources/glossary.md#input).  Only the 32-bit Murmur3 version is used with Dash bloom filters.
 
 The data to be hashed can be any transaction element which the bloom filter can match. See the next subsection for the list of transaction elements checked against the filter. The largest element which can be matched is a script data push of 520 bytes, so the data should never exceed 520 bytes.
 
@@ -183,21 +183,21 @@ After all data elements have been added to the filter, each set of eight bits is
 ### Comparing Transaction Elements To A Bloom Filter
 
 To compare an arbitrary data element against the bloom filter, it is hashed using the same parameters used to create the bloom filter. Specifically, it is hashed *nHashFuncs* times, each time using the same
-*nTweak* provided in the filter, and the resulting <<glossary:output>> is modulo the size of the bit field provided in the *filter* field.  After each hash is performed, the filter is checked to see if the bit at that indexed location is set.  For example if the result of a hash is `5` and the filter is `01001110`, the bit is considered set.
+*nTweak* provided in the filter, and the resulting [output](../resources/glossary.md#output) is modulo the size of the bit field provided in the *filter* field.  After each hash is performed, the filter is checked to see if the bit at that indexed location is set.  For example if the result of a hash is `5` and the filter is `01001110`, the bit is considered set.
 
 If the result of every hash points to a set bit, the filter matches. If any of the results points to an unset bit, the filter does not match.
 
-The following transaction elements are compared against bloom filters. All elements will be hashed in the byte order used in <<glossary:blocks>> (for example, <<glossary:TXIDs>> will be in <<glossary:internal byte order>>).
+The following transaction elements are compared against bloom filters. All elements will be hashed in the byte order used in [blocks](../resources/glossary.md#block) (for example, [TXIDs](../resources/glossary.md#transaction-identifiers) will be in [internal byte order](../resources/glossary.md#internal-byte-order)).
 
 * **TXIDs:** the transaction's SHA256(SHA256()) hash.
 
-* **Outpoints:** each 36-byte <<glossary:outpoint>> used this transaction's input section is individually compared to the filter.
+* **Outpoints:** each 36-byte [outpoint](../resources/glossary.md#outpoint) used this transaction's input section is individually compared to the filter.
 
-* **Signature Script Data:** each element pushed onto the stack by a <<glossary:data-pushing opcode>> in a <<glossary:signature script>> from this transaction is individually compared to the filter.  This includes data elements present in P2SH <<glossary:redeem script>> when they are being spent.
+* **Signature Script Data:** each element pushed onto the stack by a [data-pushing opcode](../resources/glossary.md#data-pushing-opcode) in a [signature script](../resources/glossary.md#signature-script) from this transaction is individually compared to the filter.  This includes data elements present in P2SH [redeem script](../resources/glossary.md#redeem-script) when they are being spent.
 
-* **PubKey Script Data:** each element pushed onto the the stack by a data-pushing opcode in any <<glossary:pubkey script>> from this transaction is individually compared to the filter. (If a pubkey script element matches the filter, the filter will be immediately updated if the `BLOOM_UPDATE_ALL` flag was set; if the pubkey script is in the P2PKH format and matches the filter, the filter will be immediately updated if the `BLOOM_UPDATE_P2PUBKEY_ONLY` flag was set. See the subsection below for details.)
+* **PubKey Script Data:** each element pushed onto the the stack by a data-pushing opcode in any [pubkey script](../resources/glossary.md#pubkey-script) from this transaction is individually compared to the filter. (If a pubkey script element matches the filter, the filter will be immediately updated if the `BLOOM_UPDATE_ALL` flag was set; if the pubkey script is in the P2PKH format and matches the filter, the filter will be immediately updated if the `BLOOM_UPDATE_P2PUBKEY_ONLY` flag was set. See the subsection below for details.)
 
-As of  Dash Core 0.14.0, elements in the extra payload section of [DIP2](https://github.com/dashpay/dips/blob/master/dip-0002.md)-based <<glossary:special transactions>> are also compared against bloom filters.
+As of  Dash Core 0.14.0, elements in the extra payload section of [DIP2](https://github.com/dashpay/dips/blob/master/dip-0002.md)-based [special transactions](../resources/glossary.md#special-transactions) are also compared against bloom filters.
 
 The following annotated hexdump of a transaction is from the [raw transaction format section](../reference/transactions-raw-transaction-format.md); the elements which would be checked by the filter are emphasized in bold. Note that this transaction's TXID (**`01000000017b1eab[...]`**) would also be checked, and that the outpoint TXID and index number below would be checked as a single 36-byte element.
 
@@ -236,7 +236,7 @@ The following annotated hexdump of a transaction is from the [raw transaction fo
 
 ### Updating A Bloom Filter
 
-Clients will often want to track <<glossary:inputs>> that spend <<glossary:outputs>> (outpoints) relevant to their wallet, so the filterload field *nFlags* can be set to allow the filtering <<glossary:node>> to update the filter when a match is found. When the filtering node sees a <<glossary:pubkey script>> that pays a pubkey, <<glossary:address>>, or other data element matching the filter, the filtering node immediately updates the filter with the <<glossary:outpoint>> corresponding to that pubkey script.
+Clients will often want to track [inputs](../resources/glossary.md#input) that spend [outputs](../resources/glossary.md#output) (outpoints) relevant to their wallet, so the filterload field *nFlags* can be set to allow the filtering [node](../resources/glossary.md#node) to update the filter when a match is found. When the filtering node sees a [pubkey script](../resources/glossary.md#pubkey-script) that pays a pubkey, [address](../resources/glossary.md#address), or other data element matching the filter, the filtering node immediately updates the filter with the [outpoint](../resources/glossary.md#outpoint) corresponding to that pubkey script.
 
 ![Automatically Updating Bloom Filters](https://dash-docs.github.io/img/dev/en-bloom-update.svg)
 
@@ -254,7 +254,7 @@ In addition, because the filter size stays the same even though additional eleme
 
 ## getaddr
 
-The [`getaddr` message](../reference/p2p-network-control-messages.md#getaddr) requests an [`addr` message](../reference/p2p-network-control-messages.md#addr) from the receiving <<glossary:node>>, preferably one with lots of IP addresses of other receiving nodes. The transmitting node can use those IP addresses to quickly update its database of available nodes rather than waiting for unsolicited [`addr` messages](../reference/p2p-network-control-messages.md#addr) to arrive over time.
+The [`getaddr` message](../reference/p2p-network-control-messages.md#getaddr) requests an [`addr` message](../reference/p2p-network-control-messages.md#addr) from the receiving [node](../resources/glossary.md#node), preferably one with lots of IP addresses of other receiving nodes. The transmitting node can use those IP addresses to quickly update its database of available nodes rather than waiting for unsolicited [`addr` messages](../reference/p2p-network-control-messages.md#addr) to arrive over time.
 
 There is no payload in a [`getaddr` message](../reference/p2p-network-control-messages.md#getaddr).  See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 
@@ -266,7 +266,7 @@ There is no payload in a [`getsporks` message](../reference/p2p-network-control-
 
 ## ping
 
-The [`ping` message](../reference/p2p-network-control-messages.md#ping) helps confirm that the receiving <<glossary:peer>> is still connected. If a TCP/IP error is encountered when sending the [`ping` message](../reference/p2p-network-control-messages.md#ping) (such as a connection timeout), the transmitting node can assume that the receiving node is disconnected. The response to a [`ping` message](../reference/p2p-network-control-messages.md#ping) is the [`pong` message](../reference/p2p-network-control-messages.md#pong).
+The [`ping` message](../reference/p2p-network-control-messages.md#ping) helps confirm that the receiving [peer](../resources/glossary.md#peer) is still connected. If a TCP/IP error is encountered when sending the [`ping` message](../reference/p2p-network-control-messages.md#ping) (such as a connection timeout), the transmitting node can assume that the receiving node is disconnected. The response to a [`ping` message](../reference/p2p-network-control-messages.md#ping) is the [`pong` message](../reference/p2p-network-control-messages.md#pong).
 
 Before protocol version 60000, the [`ping` message](../reference/p2p-network-control-messages.md#ping) had no payload. As of protocol version 60001 and all later versions, the message includes a single field, the nonce.
 
@@ -284,7 +284,7 @@ The annotated hexdump below shows a [`ping` message](../reference/p2p-network-co
 
 *Added in protocol version 60001 as described by BIP31.*
 
-The [`pong` message](../reference/p2p-network-control-messages.md#pong) replies to a [`ping` message](../reference/p2p-network-control-messages.md#ping), proving to the pinging <<glossary:node>> that the ponging node is still alive. Dash Core will, by default, disconnect from any clients which have not responded to a [`ping` message](../reference/p2p-network-control-messages.md#ping) within 20 minutes.
+The [`pong` message](../reference/p2p-network-control-messages.md#pong) replies to a [`ping` message](../reference/p2p-network-control-messages.md#ping), proving to the pinging [node](../resources/glossary.md#node) that the ponging node is still alive. Dash Core will, by default, disconnect from any clients which have not responded to a [`ping` message](../reference/p2p-network-control-messages.md#ping) within 20 minutes.
 
 To allow nodes to keep track of latency, the [`pong` message](../reference/p2p-network-control-messages.md#pong) sends back the same nonce received in the [`ping` message](../reference/p2p-network-control-messages.md#ping) it is replying to.
 
@@ -294,7 +294,7 @@ The format of the [`pong` message](../reference/p2p-network-control-messages.md#
 
 *Added in protocol version 70002 as described by BIP61.*
 
-The [`reject` message](../reference/p2p-network-control-messages.md#reject) informs the receiving <<glossary:node>> that one of its previous messages has been rejected.
+The [`reject` message](../reference/p2p-network-control-messages.md#reject) informs the receiving [node](../resources/glossary.md#node) that one of its previous messages has been rejected.
 
 | Bytes    | Name          | Data Type        | Description
 |----------|---------------|------------------|--------------
@@ -372,11 +372,11 @@ There is no payload in a `sendaddrv2` message. See the [message header section](
 
 *Added in protocol version 70209 of Dash Core as described by BIP152*
 
-The [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) tells the receiving <<glossary:peer>> whether or not to announce new <<glossary:blocks>> using a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock). It also sends the compact block protocol version it supports. The [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) is defined as a message containing a 1-byte integer followed by a 8-byte integer. The first integer is interpreted as a boolean and should have a value of either 1 or 0. The second integer is be interpreted as a little-endian version number.
+The [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) tells the receiving [peer](../resources/glossary.md#peer) whether or not to announce new [blocks](../resources/glossary.md#block) using a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock). It also sends the compact block protocol version it supports. The [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) is defined as a message containing a 1-byte integer followed by a 8-byte integer. The first integer is interpreted as a boolean and should have a value of either 1 or 0. The second integer is be interpreted as a little-endian version number.
 
-Upon receipt of a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) with the first and second integers set to 1, the <<glossary:node>> should announce new blocks by sending a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock).
+Upon receipt of a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) with the first and second integers set to 1, the [node](../resources/glossary.md#node) should announce new blocks by sending a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock).
 
-Upon receipt of a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) with the first integer set to 0, the node shouldn't announce new blocks by sending a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock), but instead announce new blocks by sending invs or <<glossary:headers>>, as defined by [BIP130](https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki).
+Upon receipt of a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) with the first integer set to 0, the node shouldn't announce new blocks by sending a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock), but instead announce new blocks by sending invs or [headers](../resources/glossary.md#header), as defined by [BIP130](https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki).
 
 Upon receipt of a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) with the second integer set to something other than 1, nodes should treat the peer as if they had not received the message (as it indicates the peer will provide an unexpected encoding in [`cmpctblock` messages](../reference/p2p-network-data-messages.md#cmpctblock), and/or other, messages). This allows future versions to send duplicate [`sendcmpct` messages](../reference/p2p-network-control-messages.md#sendcmpct) with different versions as a part of a version handshake.
 
@@ -400,7 +400,7 @@ The annotated hexdump below shows a [`sendcmpct` message](../reference/p2p-netwo
 
 *Added in protocol version 70214 of Dash Core*
 
-The [`senddsq` message](../reference/p2p-network-control-messages.md#senddsq) is used to notify a <<glossary:peer>> whether or not to send [`dsq` messages](../reference/p2p-network-privatesend-messages.md#dsq). This allows clients that are not interested in participating in CoinJoin processing (e.g. mobile <<glossary:wallet>>) to minimize data usage.
+The [`senddsq` message](../reference/p2p-network-control-messages.md#senddsq) is used to notify a [peer](../resources/glossary.md#peer) whether or not to send [`dsq` messages](../reference/p2p-network-privatesend-messages.md#dsq). This allows clients that are not interested in participating in CoinJoin processing (e.g. mobile [wallet](../resources/glossary.md#wallet)) to minimize data usage.
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -414,7 +414,7 @@ The following annotated hexdump shows a [`senddsq` message](../reference/p2p-net
 
 ## sendheaders
 
-The [`sendheaders` message](../reference/p2p-network-control-messages.md#sendheaders) tells the receiving <<glossary:peer>> to send new <<glossary:block>> announcements using a [`headers` message](../reference/p2p-network-data-messages.md#headers) rather than an [`inv` message](../reference/p2p-network-data-messages.md#inv).
+The [`sendheaders` message](../reference/p2p-network-control-messages.md#sendheaders) tells the receiving [peer](../resources/glossary.md#peer) to send new [block](../resources/glossary.md#block) announcements using a [`headers` message](../reference/p2p-network-data-messages.md#headers) rather than an [`inv` message](../reference/p2p-network-data-messages.md#inv).
 
 There is no payload in a [`sendheaders` message](../reference/p2p-network-control-messages.md#sendheaders).  See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 
@@ -422,7 +422,7 @@ There is no payload in a [`sendheaders` message](../reference/p2p-network-contro
 
 *Added in protocol version 70223 of Dash Core.*
 
-The [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2) tells the receiving <<glossary:peer>> to send new <<glossary:block>> announcements using a [`headers2` message](../reference/p2p-network-data-messages.md#headers2) rather than an [`inv` message](../reference/p2p-network-data-messages.md#inv).
+The [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2) tells the receiving [peer](../resources/glossary.md#peer) to send new [block](../resources/glossary.md#block) announcements using a [`headers2` message](../reference/p2p-network-data-messages.md#headers2) rather than an [`inv` message](../reference/p2p-network-data-messages.md#inv).
 
 There is no payload in a [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2).  See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 
@@ -432,7 +432,7 @@ Sporks are a mechanism by which updated code is released to the network, but not
 
 A [`spork` message](../reference/p2p-network-control-messages.md#spork) may be sent in response to a [`getsporks` message](../reference/p2p-network-control-messages.md#getsporks).
 
-The [`spork` message](../reference/p2p-network-control-messages.md#spork) tells the receiving peer the status of the spork defined by the SporkID field. Upon receiving a <<glossary:spork>> message, the client must verify the <<glossary:signature>> before accepting the spork message as valid.
+The [`spork` message](../reference/p2p-network-control-messages.md#spork) tells the receiving peer the status of the spork defined by the SporkID field. Upon receiving a [spork](../resources/glossary.md#spork) message, the client must verify the [signature](../resources/glossary.md#signature) before accepting the spork message as valid.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
@@ -516,15 +516,15 @@ d32020c827a89f8128a00acd210f4ea4
 
 ## verack
 
-The [`verack` message](../reference/p2p-network-control-messages.md#verack) acknowledges a previously-received [`version` message](../reference/p2p-network-control-messages.md#version), informing the connecting <<glossary:node>> that it can begin to send other messages. The [`verack` message](../reference/p2p-network-control-messages.md#verack) has no payload; for an example of a message with no payload, see the [message headers section](../reference/p2p-network-message-headers.md).
+The [`verack` message](../reference/p2p-network-control-messages.md#verack) acknowledges a previously-received [`version` message](../reference/p2p-network-control-messages.md#version), informing the connecting [node](../resources/glossary.md#node) that it can begin to send other messages. The [`verack` message](../reference/p2p-network-control-messages.md#verack) has no payload; for an example of a message with no payload, see the [message headers section](../reference/p2p-network-message-headers.md).
 
 ## version
 
-The [`version` message](../reference/p2p-network-control-messages.md#version) provides information about the transmitting <<glossary:node>> to the receiving node at the beginning of a connection. Until both <<glossary:peers>> have exchanged [`version` messages](../reference/p2p-network-control-messages.md#version), no other messages will be accepted.
+The [`version` message](../reference/p2p-network-control-messages.md#version) provides information about the transmitting [node](../resources/glossary.md#node) to the receiving node at the beginning of a connection. Until both [peers](../resources/glossary.md#peer) have exchanged [`version` messages](../reference/p2p-network-control-messages.md#version), no other messages will be accepted.
 
 If a [`version` message](../reference/p2p-network-control-messages.md#version) is accepted, the receiving node should send a [`verack` message](../reference/p2p-network-control-messages.md#verack)---but no node should send a [`verack` message](../reference/p2p-network-control-messages.md#verack) before initializing its half of the connection by first sending a [`version` message](../reference/p2p-network-control-messages.md#version).
 
-Protocol version 70214 added a <<glossary:masternode>> authentication (challenge/response) system. Following the [`verack` message](../reference/p2p-network-control-messages.md#verack), masternodes should send a [`mnauth` message](../reference/p2p-network-masternode-messages.md#mnauth) that signs the `mnauth_challenge` with their BLS operator key.
+Protocol version 70214 added a [masternode](../resources/glossary.md#masternode) authentication (challenge/response) system. Following the [`verack` message](../reference/p2p-network-control-messages.md#verack), masternodes should send a [`mnauth` message](../reference/p2p-network-masternode-messages.md#mnauth) that signs the `mnauth_challenge` with their BLS operator key.
 
 | Bytes    | Name                  | Data<br>Type        | Required/<br>Optional                        | Description
 |----------|-----------------------|------------------|------------------------------------------|-------------

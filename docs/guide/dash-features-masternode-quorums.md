@@ -1,10 +1,10 @@
 # Masternode Quorums
 
-Dash's <<glossary:masternode>> quorums are used to facilitate the operation of masternode provided features in a decentralized, deterministic way. The original quorums (used largely for <<glossary:InstantSend>> and masternode payments) were ephemeral and used for a single purpose (e.g. voting on one specific InstantSend transaction).
+Dash's [masternode](../resources/glossary.md#masternode) quorums are used to facilitate the operation of masternode provided features in a decentralized, deterministic way. The original quorums (used largely for [InstantSend](../resources/glossary.md#instantsend) and masternode payments) were ephemeral and used for a single purpose (e.g. voting on one specific InstantSend transaction).
 
-Dash Core 0.14 (protocol version 70214) introduced the <<glossary:Long-Living Masternode Quorum>>  (LLMQ) system described in detail by [DIP6](https://github.com/dashpay/dips/blob/master/dip-0006.md). These LLMQs are deterministic subsets of the global deterministic masternode list that are formed via a distributed key generation (DKG) protocol and remain active for a long periods of time (e.g. hours to days).
+Dash Core 0.14 (protocol version 70214) introduced the [Long-Living Masternode Quorum](../resources/glossary.md#long-living-masternode-quorum)  (LLMQ) system described in detail by [DIP6](https://github.com/dashpay/dips/blob/master/dip-0006.md). These LLMQs are deterministic subsets of the global deterministic masternode list that are formed via a distributed key generation (DKG) protocol and remain active for a long periods of time (e.g. hours to days).
 
-The main task of LLMQs is to perform threshold signing of consensus-related messages (e.g. <<glossary:ChainLocks>>).
+The main task of LLMQs is to perform threshold signing of consensus-related messages (e.g. [ChainLocks](../resources/glossary.md#chainlock)).
 
 ## LLMQ Creation (DKG)
 
@@ -47,7 +47,7 @@ The following table details the data flow of P2P messages exchanged during the d
 
 ## LLMQ Signing Session
 
-The following table details the data flow of P2P messages exchanged during an LLMQ signing session. These sessions take advantage of BLS threshold signatures to enable quorums to sign arbitrary messages. For example, Dash Core 0.14 uses this capability to create the quorum signature found in the [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig) that enables <<glossary:ChainLocks>>.
+The following table details the data flow of P2P messages exchanged during an LLMQ signing session. These sessions take advantage of BLS threshold signatures to enable quorums to sign arbitrary messages. For example, Dash Core 0.14 uses this capability to create the quorum signature found in the [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig) that enables [ChainLocks](../resources/glossary.md#chainlock).
 
 Please read [DIP7 LLMQ Signing Requests / Sessions](https://github.com/dashpay/dips/blob/master/dip-0007.md) for additional details.
 

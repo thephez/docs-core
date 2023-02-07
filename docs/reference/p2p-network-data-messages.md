@@ -4,7 +4,7 @@ The following network messages all request or provide data related to transactio
 
 ![Overview Of P2P Protocol Data Request And Reply Messages](https://dash-docs.github.io/img/dev/en-p2p-data-messages.svg)
 
-Many of the data messages use <<glossary:inventories>> as unique identifiers for <<glossary:transactions>> and <<glossary:blocks>>.  Inventories have a simple 36-byte structure:
+Many of the data messages use [inventories](../resources/glossary.md#inventory) as unique identifiers for [transactions](../resources/glossary.md#transaction) and [blocks](../resources/glossary.md#block).  Inventories have a simple 36-byte structure:
 
 | Bytes | Name            | Data Type | Description
 |-------|-----------------|-----------|-------------
@@ -15,24 +15,24 @@ The currently-available type identifiers are:
 
 | Type Identifier | Name                                                                          | Description
 |-----------------|-------------------------------------------------------------------------------|---------------
-| 1               | <<glossary:MSG_TX>>                                     | The hash is a TXID.
-| 2               | <<glossary:MSG_BLOCK>>                            | The hash is of a block header.
-| 3               | <<glossary:MSG_FILTERED_BLOCK>> | The hash is of a block header; identical to `MSG_BLOCK`. When used in a [`getdata` message](../reference/p2p-network-data-messages.md#getdata), this indicates the response should be a [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) rather than a [`block` message](../reference/p2p-network-data-messages.md#block) (but this only works if a bloom filter was previously configured).  **Only for use in [`getdata` messages](../reference/p2p-network-data-messages.md#getdata).**
-| 4               | <<glossary:MSG_LEGACY_TXLOCK_REQUEST>> | `MSG_TXLOCK_REQUEST` prior to Dash Core 0.15.0. The hash is an Instant Send transaction lock request. Transactions received this way are automatically converted to a standard [`tx` message](../reference/p2p-network-data-messages.md#tx) as of Dash Core 0.15.0.
-| 6               | <<glossary:MSG_SPORK>>                            | The hash is Spork ID.
-| 16              | <<glossary:MSG_DSTX>>                              | The hash is CoinJoin Broadcast TX.
-| 17               | <<glossary:MSG_GOVERNANCE_OBJECT>>                                     | The hash is a Governance Object.
-| 18               | <<glossary:MSG_GOVERNANCE_OBJECT_VOTE>>                                     | The hash is a Governance Object Vote.
-| 20               | <<glossary:MSG_CMPCT_BLOCK>>                                     | The hash is of a block header; identical to `MSG_BLOCK`. When used in a [`getdata` message](../reference/p2p-network-data-messages.md#getdata), this indicates the response should be a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock). **Only for use in [`getdata` messages](../reference/p2p-network-data-messages.md#getdata).**
-| 21               | <<glossary:MSG_QUORUM_FINAL_COMMITMENT>>                | The hash is a long-living masternode quorum final commitment.<br>_Added in 0.13.0_
-| 23               | <<glossary:MSG_QUORUM_CONTRIB>>                                     | The hash is a long-living masternode quorum contribution.<br>_Added in 0.14.0_
-| 24               | <<glossary:MSG_QUORUM_COMPLAINT>>                                     | The hash is a long-living masternode quorum complaint.<br>_Added in 0.14.0_
-| 25               | <<glossary:MSG_QUORUM_JUSTIFICATION>>                   | The hash is a long-living masternode quorum justification.<br>_Added in 0.14.0_
-| 26               | <<glossary:MSG_QUORUM_PREMATURE_COMMITMENT>>    | The hash is a long-living masternode quorum premature commitment.<br>_Added in 0.14.0_
-| 28               | <<glossary:MSG_QUORUM_RECOVERED_SIG>>                        | The hash is a long-living masternode quorum recovered signature. <br><br>**Note**: Only relayed to other masternodes in the same quorum and nodes that have sent a [`qwatch` message](../reference/p2p-network-quorum-messages.md#qwatch) as of Dash Core 0.17.0<br>_Added in 0.14.0_
-| 29               | <<glossary:MSG_CLSIG>>                                     | The hash is a ChainLock signature.<br>_Added in 0.14.0_
-| 30               | <<glossary:MSG_ISLOCK>>                                   | The hash is an LLMQ-based InstantSend lock ([DIP10](https://github.com/dashpay/dips/blob/master/dip-0010.md)).<br>_Added in 0.14.0_
-| 31               | <<glossary:MSG_ISDLOCK>>                                   | The hash is an LLMQ-based deterministic InstantSend lock ([DIP22](https://github.com/dashpay/dips/blob/master/dip-0022.md)).<br>_Added in 18.0_
+| 1               | MSG_TX                                     | The hash is a TXID.
+| 2               | MSG_BLOCK                            | The hash is of a block header.
+| 3               | MSG_FILTERED_BLOCK | The hash is of a block header; identical to `MSG_BLOCK`. When used in a [`getdata` message](../reference/p2p-network-data-messages.md#getdata), this indicates the response should be a [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) rather than a [`block` message](../reference/p2p-network-data-messages.md#block) (but this only works if a bloom filter was previously configured).  **Only for use in [`getdata` messages](../reference/p2p-network-data-messages.md#getdata).**
+| 4               | MSG_LEGACY_TXLOCK_REQUEST | `MSG_TXLOCK_REQUEST` prior to Dash Core 0.15.0. The hash is an Instant Send transaction lock request. Transactions received this way are automatically converted to a standard [`tx` message](../reference/p2p-network-data-messages.md#tx) as of Dash Core 0.15.0.
+| 6               | MSG_SPORK                            | The hash is Spork ID.
+| 16              | MSG_DSTX                              | The hash is CoinJoin Broadcast TX.
+| 17               | MSG_GOVERNANCE_OBJECT                                     | The hash is a Governance Object.
+| 18               | MSG_GOVERNANCE_OBJECT_VOTE                                     | The hash is a Governance Object Vote.
+| 20               | MSG_CMPCT_BLOCK                                     | The hash is of a block header; identical to `MSG_BLOCK`. When used in a [`getdata` message](../reference/p2p-network-data-messages.md#getdata), this indicates the response should be a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock). **Only for use in [`getdata` messages](../reference/p2p-network-data-messages.md#getdata).**
+| 21               | MSG_QUORUM_FINAL_COMMITMENT                | The hash is a long-living masternode quorum final commitment.<br>_Added in 0.13.0_
+| 23               | MSG_QUORUM_CONTRIB                                     | The hash is a long-living masternode quorum contribution.<br>_Added in 0.14.0_
+| 24               | MSG_QUORUM_COMPLAINT                                     | The hash is a long-living masternode quorum complaint.<br>_Added in 0.14.0_
+| 25               | MSG_QUORUM_JUSTIFICATION                   | The hash is a long-living masternode quorum justification.<br>_Added in 0.14.0_
+| 26               | MSG_QUORUM_PREMATURE_COMMITMENT    | The hash is a long-living masternode quorum premature commitment.<br>_Added in 0.14.0_
+| 28               | MSG_QUORUM_RECOVERED_SIG                        | The hash is a long-living masternode quorum recovered signature. <br><br>**Note**: Only relayed to other masternodes in the same quorum and nodes that have sent a [`qwatch` message](../reference/p2p-network-quorum-messages.md#qwatch) as of Dash Core 0.17.0<br>_Added in 0.14.0_
+| 29               | MSG_CLSIG                                     | The hash is a ChainLock signature.<br>_Added in 0.14.0_
+| 30               | MSG_ISLOCK                                   | The hash is an LLMQ-based InstantSend lock ([DIP10](https://github.com/dashpay/dips/blob/master/dip-0010.md)).<br>_Added in 0.14.0_
+| 31               | MSG_ISDLOCK                                   | The hash is an LLMQ-based deterministic InstantSend lock ([DIP22](https://github.com/dashpay/dips/blob/master/dip-0022.md)).<br>_Added in 18.0_
 
 
 **Deprecated Type Identifiers**
@@ -41,25 +41,25 @@ The following type identifiers have been deprecated recently. To see type identi
 
 | Type Identifier | Name                                                                          | Description
 |-----------------|-------------------------------------------------------------------------------|---------------
-| 5               | <<glossary:MSG_TXLOCK_VOTE>>          | **Deprecated in 0.15.0**<br><br>The hash is an Instant Send transaction vote.
+| 5               | MSG_TXLOCK_VOTE          | **Deprecated in 0.15.0**<br><br>The hash is an Instant Send transaction vote.
 
 Type identifier zero and type identifiers greater than those shown in the table above are reserved for future implementations. Dash Core ignores all inventories with one of these unknown types.
 
 ## block
 
-The [`block` message](../reference/p2p-network-data-messages.md#block) transmits a single <<glossary:serialized block>> in the format described in the [serialized blocks section](../reference/block-chain-serialized-blocks.md). See that section for an example hexdump.  It can be sent for two different reasons:
+The [`block` message](../reference/p2p-network-data-messages.md#block) transmits a single [serialized block](../resources/glossary.md#serialized-block) in the format described in the [serialized blocks section](../reference/block-chain-serialized-blocks.md). See that section for an example hexdump.  It can be sent for two different reasons:
 
-1. **GetData Response:** Nodes will always send it in response to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) that requests the block with an <<glossary:inventory>> type of `MSG_BLOCK` (provided the node has that block available for relay).
+1. **GetData Response:** Nodes will always send it in response to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) that requests the block with an [inventory](../resources/glossary.md#inventory) type of `MSG_BLOCK` (provided the node has that block available for relay).
 
-2. **Unsolicited:** Some miners will send unsolicited [`block` messages](../reference/p2p-network-data-messages.md#block) broadcasting their newly-mined blocks to all of their <<glossary:peers>>. Many <<glossary:mining>> pools do the same thing, although some may be misconfigured to send the block from multiple nodes, possibly sending the same block to some peers more than once.
+2. **Unsolicited:** Some miners will send unsolicited [`block` messages](../reference/p2p-network-data-messages.md#block) broadcasting their newly-mined blocks to all of their [peers](../resources/glossary.md#peer). Many [mining](../resources/glossary.md#mining) pools do the same thing, although some may be misconfigured to send the block from multiple nodes, possibly sending the same block to some peers more than once.
 
 ## blocktxn
 
 *Added in protocol version 70209 of Dash Core as described by BIP152*
 
-The [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn) sends requested <<glossary:block>> <<glossary:transactions>> to a node which previously requested them with a [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn). It is defined as a message containing a serialized `BlockTransactions` message.
+The [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn) sends requested [block](../resources/glossary.md#block) [transactions](../resources/glossary.md#transaction) to a node which previously requested them with a [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn). It is defined as a message containing a serialized `BlockTransactions` message.
 
-Upon receipt of a properly-formatted requested [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn), <<glossary:nodes>> should:
+Upon receipt of a properly-formatted requested [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn), [nodes](../resources/glossary.md#node) should:
 
 1. Attempt to reconstruct the full block by taking the prefilledtxn transactions from the original [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) and placing them in the marked positions
 2. For each short transaction ID from the original [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock), in order, find the corresponding transaction (from either the [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn) or from other sources)
@@ -170,13 +170,13 @@ The [`cfilter` message](../reference/p2p-network-data-messages.md#cfilter)  is s
 
 *Added in protocol version 70209 of Dash Core as described by BIP152*
 
-The [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested a <<glossary:block>> using the <<glossary:inventory>> type `MSG_CMPCT_BLOCK`. If the requested block was recently announced and is close to the tip of the best chain of the receiver and after having sent the requesting <<glossary:peer>> a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct), nodes respond with a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) containing data for the block.
+The [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested a [block](../resources/glossary.md#block) using the [inventory](../resources/glossary.md#inventory) type `MSG_CMPCT_BLOCK`. If the requested block was recently announced and is close to the tip of the best chain of the receiver and after having sent the requesting [peer](../resources/glossary.md#peer) a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct), nodes respond with a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) containing data for the block.
 
 **If the requested block is too old, the node responds with a *full non-compact block***
 
-Upon receipt of a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock), after sending a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct), nodes should calculate the short transaction ID for each <<glossary:unconfirmed transaction>> they have available (i.e. in their mempool) and compare each to each short transaction ID in the [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock). After finding already-available transactions, nodes which do not have all transactions available to reconstruct the full block should request the missing transactions using a [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn).
+Upon receipt of a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock), after sending a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct), nodes should calculate the short transaction ID for each [unconfirmed transaction](../resources/glossary.md#unconfirmed-transaction) they have available (i.e. in their mempool) and compare each to each short transaction ID in the [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock). After finding already-available transactions, nodes which do not have all transactions available to reconstruct the full block should request the missing transactions using a [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn).
 
-A node must not send a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) unless they are able to respond to a [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn) which requests every transaction in the block. A node must not send a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) without having validated that the <<glossary:header>> properly commits to each transaction in the block, and properly builds on top of the existing, fully-validated chain with a valid proof-of-work either as a part of the current most-work valid chain, or building directly on top of it. A node may send a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) before validating that each transaction in the block validly spends existing UTXO set entries.
+A node must not send a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) unless they are able to respond to a [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn) which requests every transaction in the block. A node must not send a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) without having validated that the [header](../resources/glossary.md#header) properly commits to each transaction in the block, and properly builds on top of the existing, fully-validated chain with a valid proof-of-work either as a part of the current most-work valid chain, or building directly on top of it. A node may send a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) before validating that each transaction in the block validly spends existing UTXO set entries.
 
 The [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) contains a vector of `PrefilledTransaction` whose structure is defined below. A `PrefilledTransaction` is used in `HeaderAndShortIDs` to provide a list of a few transactions explicitly.
 
@@ -200,7 +200,7 @@ The [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock)
 
 Short transaction IDs are used to represent a transaction without sending a full 256-bit hash. They are calculated as follows,
 
-* A single-SHA256 hashing the <<glossary:block header>> with the nonce appended (in little-endian)
+* A single-SHA256 hashing the [block header](../resources/glossary.md#block-header) with the nonce appended (in little-endian)
 * Running SipHash-2-4 with the input being the transaction ID and the keys (k0/k1) set to the first two little-endian 64-bit integers from the above hash, respectively.
 * Dropping the 2 most significant bytes from the SipHash output to make it 6 bytes.
 
@@ -258,13 +258,13 @@ Prefilled Transactions
 
 ## getblocks
 
-The [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) requests an [`inv` message](../reference/p2p-network-data-messages.md#inv) that provides <<glossary:block header>> hashes starting from a particular point in the <<glossary:block chain>>. It allows a <<glossary:peer>> which has been disconnected or started for the first time to get the data it needs to request the blocks it hasn't seen.
+The [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) requests an [`inv` message](../reference/p2p-network-data-messages.md#inv) that provides [block header](../resources/glossary.md#block-header) hashes starting from a particular point in the [block chain](../resources/glossary.md#block-chain). It allows a [peer](../resources/glossary.md#peer) which has been disconnected or started for the first time to get the data it needs to request the blocks it hasn't seen.
 
-Peers which have been disconnected may have <<glossary:stale blocks>> in their locally-stored block chain, so the [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) allows the requesting peer to provide the receiving peer with multiple <<glossary:header>> hashes at heights on their local chain. This allows the receiving peer to find, within that list, the last header hash they had in common and reply with all subsequent header hashes.
+Peers which have been disconnected may have [stale blocks](../resources/glossary.md#stale-block) in their locally-stored block chain, so the [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) allows the requesting peer to provide the receiving peer with multiple [header](../resources/glossary.md#header) hashes at heights on their local chain. This allows the receiving peer to find, within that list, the last header hash they had in common and reply with all subsequent header hashes.
 
 **Note:** the receiving peer itself may respond with an [`inv` message](../reference/p2p-network-data-messages.md#inv) containing header hashes of stale blocks.  It is up to the requesting peer to poll all of its peers to find the best block chain.
 
-If the receiving peer does not find a common header hash within the list, it will assume the last common block was the <<glossary:genesis block>> (block zero), so it will reply with in [`inv` message](../reference/p2p-network-data-messages.md#inv) containing header hashes starting with block one (the first block after the genesis block).
+If the receiving peer does not find a common header hash within the list, it will assume the last common block was the [genesis block](../resources/glossary.md#genesis-block) (block zero), so it will reply with in [`inv` message](../reference/p2p-network-data-messages.md#inv) containing header hashes starting with block one (the first block after the genesis block).
 
 | Bytes    | Name                 | Data Type        | Description
 |----------|----------------------|------------------|----------------
@@ -293,7 +293,7 @@ d39f608a7775b537729884d4e6633bb2
 
 *Added in protocol version 70209 of Dash Core as described by BIP152*
 
-The [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn) requests a [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn) for any transactions that it has not seen after a compact block is received. It is defined as a message containing a serialized `BlockTransactionsRequest` message. Upon receipt of a properly-formatted [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn), <<glossary:nodes>> which recently provided the sender of such a message with a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) for the block hash identified in this message must respond with either an appropriate [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn), or a full block message.
+The [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn) requests a [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn) for any transactions that it has not seen after a compact block is received. It is defined as a message containing a serialized `BlockTransactionsRequest` message. Upon receipt of a properly-formatted [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn), [nodes](../resources/glossary.md#node) which recently provided the sender of such a message with a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) for the block hash identified in this message must respond with either an appropriate [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn), or a full block message.
 
 A [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn) response must contain exactly and only each transaction which is present in the appropriate block at the index specified in the [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn) indexes list, in the order requested.
 
@@ -353,11 +353,11 @@ The [`getcfilters` message](../reference/p2p-network-data-messages.md#getcfilter
 
 ## getdata
 
-The [`getdata` message](../reference/p2p-network-data-messages.md#getdata) requests one or more data objects from another <<glossary:node>>. The objects are requested by an inventory, which the requesting node typically previously received by way of an [`inv` message](../reference/p2p-network-data-messages.md#inv).
+The [`getdata` message](../reference/p2p-network-data-messages.md#getdata) requests one or more data objects from another [node](../resources/glossary.md#node). The objects are requested by an inventory, which the requesting node typically previously received by way of an [`inv` message](../reference/p2p-network-data-messages.md#inv).
 
 The response to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) can be a [`tx` message](../reference/p2p-network-data-messages.md#tx), [`block` message](../reference/p2p-network-data-messages.md#block), [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock), [`dstx` message](../reference/p2p-network-privatesend-messages.md#dstx), [`govobj` message](../reference/p2p-network-governance-messages.md#govobj), [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote), [`notfound` message](../reference/p2p-network-data-messages.md#notfound), [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock), or any other messages that are exchanged by way of [`inv` messages](../reference/p2p-network-data-messages.md#inv).
 
-This message cannot be used to request arbitrary data, such as historic transactions no longer in the memory pool or relay set. Full nodes may not even be able to provide older <<glossary:blocks>> if they've pruned old transactions from their block database. For this reason, the [`getdata` message](../reference/p2p-network-data-messages.md#getdata) should usually only be used to request data from a node which previously advertised it had that data by sending an [`inv` message](../reference/p2p-network-data-messages.md#inv).
+This message cannot be used to request arbitrary data, such as historic transactions no longer in the memory pool or relay set. Full nodes may not even be able to provide older [blocks](../resources/glossary.md#block) if they've pruned old transactions from their block database. For this reason, the [`getdata` message](../reference/p2p-network-data-messages.md#getdata) should usually only be used to request data from a node which previously advertised it had that data by sending an [`inv` message](../reference/p2p-network-data-messages.md#inv).
 
 The format and maximum size limitations of the [`getdata` message](../reference/p2p-network-data-messages.md#getdata) are identical to the [`inv` message](../reference/p2p-network-data-messages.md#inv); only the message header differs.
 
@@ -365,9 +365,9 @@ The format and maximum size limitations of the [`getdata` message](../reference/
 
 *Added in protocol version 70077.*
 
-The [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders) requests a [`headers` message](../reference/p2p-network-data-messages.md#headers) that provides block headers starting from a particular point in the <<glossary:block chain>>. It allows a <<glossary:peer>> which has been disconnected or started for the first time to get the <<glossary:headers>> it hasn’t seen yet.
+The [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders) requests a [`headers` message](../reference/p2p-network-data-messages.md#headers) that provides block headers starting from a particular point in the [block chain](../resources/glossary.md#block-chain). It allows a [peer](../resources/glossary.md#peer) which has been disconnected or started for the first time to get the [headers](../resources/glossary.md#header) it hasn’t seen yet.
 
-The [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders) is nearly identical to the [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks), with one minor difference: the `inv` reply to the [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) will include no more than 500 <<glossary:block header>> hashes; the `headers` reply to the [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders) will include as many as 2,000 block headers.
+The [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders) is nearly identical to the [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks), with one minor difference: the `inv` reply to the [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) will include no more than 500 [block header](../resources/glossary.md#block-header) hashes; the `headers` reply to the [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders) will include as many as 2,000 block headers.
 
 
 | Bytes    | Name                 | Data Type        | Description
@@ -381,7 +381,7 @@ The [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders)
 
 *Added in protocol version 70223 of Dash Core.*
 
-The [`getheaders2` message](../reference/p2p-network-data-messages.md#getheaders2) requests a [`headers2` message](../reference/p2p-network-data-messages.md#headers2) that provides block headers starting from a particular point in the <<glossary:block chain>>. It allows a <<glossary:peer>> which has been disconnected or started for the first time to get the <<glossary:headers>> it hasn’t seen yet.
+The [`getheaders2` message](../reference/p2p-network-data-messages.md#getheaders2) requests a [`headers2` message](../reference/p2p-network-data-messages.md#headers2) that provides block headers starting from a particular point in the [block chain](../resources/glossary.md#block-chain). It allows a [peer](../resources/glossary.md#peer) which has been disconnected or started for the first time to get the [headers](../resources/glossary.md#header) it hasn’t seen yet.
 
 The [`getheaders2` message](../reference/p2p-network-data-messages.md#getheaders2) contains the same fields as the [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders).
 
@@ -391,7 +391,7 @@ The [`getheaders2` message](../reference/p2p-network-data-messages.md#getheaders
 
 The [`getmnlistd` message](../reference/p2p-network-data-messages.md#getmnlistd) requests a [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff) that provides either:
 
-  1. A full <<glossary:masternode>> list (if `baseBlockHash` is all-zero)
+  1. A full [masternode](../resources/glossary.md#masternode) list (if `baseBlockHash` is all-zero)
   2. An update to a previously requested masternode list
 
 | Bytes | Name | Data type | Required | Description |
@@ -450,7 +450,7 @@ d7b9d67da4a3016c62fcc37157032126
 
 *Added in protocol version 31800 (of Bitcoin).*
 
-The [`headers` message](../reference/p2p-network-data-messages.md#headers) sends block headers to a <<glossary:node>> which previously requested certain <<glossary:headers>> with a [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders). A headers message can be empty.
+The [`headers` message](../reference/p2p-network-data-messages.md#headers) sends block headers to a [node](../resources/glossary.md#node) which previously requested certain [headers](../resources/glossary.md#header) with a [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders). A headers message can be empty.
 
 | Bytes    | Name    | Data Type        | Description
 |----------|---------|------------------|-----------------
@@ -478,7 +478,7 @@ fe9f0864 ........................... Nonce
 
 *Added in protocol version 70223 of Dash Core.*
 
-The [`headers2` message](../reference/p2p-network-data-messages.md#headers2) sends compressed block headers to a <<glossary:node>> which previously requested certain <<glossary:headers>> with a [`getheaders2` message](../reference/p2p-network-data-messages.md#getheaders) or indicated it wants to receive them by signaling with a [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2).
+The [`headers2` message](../reference/p2p-network-data-messages.md#headers2) sends compressed block headers to a [node](../resources/glossary.md#node) which previously requested certain [headers](../resources/glossary.md#header) with a [`getheaders2` message](../reference/p2p-network-data-messages.md#getheaders) or indicated it wants to receive them by signaling with a [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2).
 
 | Bytes    | Name    | Data Type        | Description
 |----------|---------|------------------|-----------------
@@ -527,7 +527,7 @@ Header 3 (block version, previous header, time, and bits compressed)
 
 ## inv
 
-The [`inv` message](../reference/p2p-network-data-messages.md#inv) (inventory message) transmits one or more <<glossary:inventories>> of objects known to the transmitting <<glossary:peer>>.  It can be sent unsolicited to announce new <<glossary:transactions>> or <<glossary:blocks>>, or it can be sent in reply to a [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) or [`mempool` message](../reference/p2p-network-data-messages.md#mempool).
+The [`inv` message](../reference/p2p-network-data-messages.md#inv) (inventory message) transmits one or more [inventories](../resources/glossary.md#inventory) of objects known to the transmitting [peer](../resources/glossary.md#peer).  It can be sent unsolicited to announce new [transactions](../resources/glossary.md#transaction) or [blocks](../resources/glossary.md#block), or it can be sent in reply to a [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) or [`mempool` message](../reference/p2p-network-data-messages.md#mempool).
 
 The receiving peer can compare the inventories from an [`inv` message](../reference/p2p-network-data-messages.md#inv) against the inventories it has already seen, and then use a follow-up message to request unseen objects.
 
@@ -554,7 +554,7 @@ ab17057f9ce4b50c2aef4fadf3729a2e ... Hash (txlvote)
 
 *Added in protocol version 60002 (of Bitcoin).*
 
-The [`mempool` message](../reference/p2p-network-data-messages.md#mempool) requests the <<glossary:TXIDs>> of transactions that the receiving <<glossary:node>> has verified as valid but which have not yet appeared in a <<glossary:block>>. That is, transactions which are in the receiving node's memory pool. The response to the [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is one or more [`inv` messages](../reference/p2p-network-data-messages.md#inv) containing the TXIDs in the usual <<glossary:inventory>> format.
+The [`mempool` message](../reference/p2p-network-data-messages.md#mempool) requests the [TXIDs](../resources/glossary.md#transaction-identifiers) of transactions that the receiving [node](../resources/glossary.md#node) has verified as valid but which have not yet appeared in a [block](../resources/glossary.md#block). That is, transactions which are in the receiving node's memory pool. The response to the [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is one or more [`inv` messages](../reference/p2p-network-data-messages.md#inv) containing the TXIDs in the usual [inventory](../resources/glossary.md#inventory) format.
 
 Sending the [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is mostly useful when a program first connects to the network. Full nodes can use it to quickly gather most or all of the unconfirmed transactions available on the network; this is especially useful for miners trying to gather transactions for their transaction fees. SPV clients can set a filter before sending a `mempool` to only receive transactions that match that filter; this allows a recently-started client to get most or all unconfirmed transactions related to its wallet.
 
@@ -564,9 +564,9 @@ Sending the [`mempool` message](../reference/p2p-network-data-messages.md#mempoo
 >
 >Dash Core 0.17.0 expanded the mempool message to include syncing of [ChainLock](../reference/p2p-network-instantsend-messages.md#clsig) inventories. This allows nodes to more quickly show ChainLock status correctly after being offline.
 
-The `inv` response to the [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is, at best, one node's view of the network---not a complete list of every <<glossary:unconfirmed transaction>> on the network. Here are some additional reasons the list might not be complete:
+The `inv` response to the [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is, at best, one node's view of the network---not a complete list of every [unconfirmed transaction](../resources/glossary.md#unconfirmed-transaction) on the network. Here are some additional reasons the list might not be complete:
 
-* The [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is not currently fully compatible with the [`filterload` message](../reference/p2p-network-control-messages.md#filterload)'s `BLOOM_UPDATE_ALL` and `BLOOM_UPDATE_P2PUBKEY_ONLY` flags. Mempool transactions are not sorted like in-block transactions, so a transaction (tx2) spending an <<glossary:output>> can appear before the transaction (tx1) containing that output, which means the automatic filter update mechanism won't operate until the second-appearing transaction (tx1) is seen---missing the first-appearing transaction (tx2). It has been proposed in [Bitcoin Core issue #2381](https://github.com/bitcoin/bitcoin/issues/2381) that the transactions should be sorted before being processed by the filter.
+* The [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is not currently fully compatible with the [`filterload` message](../reference/p2p-network-control-messages.md#filterload)'s `BLOOM_UPDATE_ALL` and `BLOOM_UPDATE_P2PUBKEY_ONLY` flags. Mempool transactions are not sorted like in-block transactions, so a transaction (tx2) spending an [output](../resources/glossary.md#output) can appear before the transaction (tx1) containing that output, which means the automatic filter update mechanism won't operate until the second-appearing transaction (tx1) is seen---missing the first-appearing transaction (tx2). It has been proposed in [Bitcoin Core issue #2381](https://github.com/bitcoin/bitcoin/issues/2381) that the transactions should be sorted before being processed by the filter.
 
 There is no payload in a [`mempool` message](../reference/p2p-network-data-messages.md#mempool).  See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 
@@ -574,14 +574,14 @@ There is no payload in a [`mempool` message](../reference/p2p-network-data-messa
 
 *Added in protocol version 70001 as described by BIP37.*
 
-The [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested a <<glossary:block>> using the inventory type `MSG_MERKLEBLOCK`.  It is only part of the reply: if any matching transactions are found, they will be sent separately as [`tx` messages](../reference/p2p-network-data-messages.md#tx). As of Dash Core 0.17.0 [`islock` messages](../reference/p2p-network-instantsend-messages.md#islock) for matching transactions are sent if present.
+The [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested a [block](../resources/glossary.md#block) using the inventory type `MSG_MERKLEBLOCK`.  It is only part of the reply: if any matching transactions are found, they will be sent separately as [`tx` messages](../reference/p2p-network-data-messages.md#tx). As of Dash Core 0.17.0 [`islock` messages](../reference/p2p-network-instantsend-messages.md#islock) for matching transactions are sent if present.
 
 > 🚧
 >
 > Note: `islock` messages are currently dropped once a ChainLock is present so in most cases they will not actually be provided in response to a merkleblock request. Future updates may modify this behavior.
 
 
-If a filter has been previously set with the [`filterload` message](../reference/p2p-network-control-messages.md#filterload), the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) will contain the <<glossary:TXIDs>> of any transactions in the requested block that matched the filter, as well as any parts of the block's <<glossary:merkle tree>> necessary to connect those transactions to the block header's <<glossary:merkle root>>. The message also contains a complete copy of the <<glossary:block header>> to allow the client to hash it and confirm its <<glossary:proof of work>>.
+If a filter has been previously set with the [`filterload` message](../reference/p2p-network-control-messages.md#filterload), the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) will contain the [TXIDs](../resources/glossary.md#transaction-identifiers) of any transactions in the requested block that matched the filter, as well as any parts of the block's [merkle tree](../resources/glossary.md#merkle-tree) necessary to connect those transactions to the block header's [merkle root](../resources/glossary.md#merkle-root). The message also contains a complete copy of the [block header](../resources/glossary.md#block-header) to allow the client to hash it and confirm its [proof of work](../resources/glossary.md#proof-of-work).
 
 | Bytes    | Name               | Data Type        | Description
 |----------|--------------------|------------------|----------------
@@ -620,13 +620,13 @@ bb3183301d7a1fb3bd174fcfa40a2b65 ... Hash #2
 1d ................................. Flags: 1 0 1 1 1 0 0 0
 ```
 
-Note: when fully decoded, the above [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) provided the TXID for a single transaction that matched the filter. In the <<glossary:network>> traffic dump this output was taken from, the full transaction belonging to that TXID was sent immediately after the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) as a [`tx` message](../reference/p2p-network-data-messages.md#tx).
+Note: when fully decoded, the above [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) provided the TXID for a single transaction that matched the filter. In the [network](../resources/glossary.md#network) traffic dump this output was taken from, the full transaction belonging to that TXID was sent immediately after the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) as a [`tx` message](../reference/p2p-network-data-messages.md#tx).
 
 ### Parsing A MerkleBlock Message
 
 As seen in the annotated hexdump above, the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) provides three special data types: a transaction count, a list of hashes, and a list of one-bit flags.
 
-You can use the transaction count to construct an empty <<glossary:merkle tree>>. We'll call each entry in the tree a node; on the bottom are TXID nodes---the hashes for these nodes are <<glossary:TXIDs>>; the remaining nodes (including the <<glossary:merkle root>>) are non-TXID nodes---they may actually have the same hash as a TXID, but we treat them differently.
+You can use the transaction count to construct an empty [merkle tree](../resources/glossary.md#merkle-tree). We'll call each entry in the tree a node; on the bottom are TXID nodes---the hashes for these nodes are [TXIDs](../resources/glossary.md#transaction-identifiers); the remaining nodes (including the [merkle root](../resources/glossary.md#merkle-root)) are non-TXID nodes---they may actually have the same hash as a TXID, but we treat them differently.
 
 ![Example Of Parsing A MerkleBlock Message](https://dash-docs.github.io/img/dev/animated-en-merkleblock-parsing.gif)
 
@@ -653,9 +653,9 @@ Continue descending and ascending until you have enough information to obtain th
 
 * Fail if there are unused flag bits---except for the minimum number of bits necessary to pad up to the next full byte.
 
-* Fail if the hash of the merkle root node is not identical to the merkle root in the <<glossary:block header>>.
+* Fail if the hash of the merkle root node is not identical to the merkle root in the [block header](../resources/glossary.md#block-header).
 
-* Fail if the block header is invalid. Remember to ensure that the hash of the header is less than or equal to the <<glossary:target threshold>> encoded by the nBits header field. Your program should also, of course, attempt to ensure the header belongs to the best block chain and that the user knows how many confirmations this block has.
+* Fail if the block header is invalid. Remember to ensure that the hash of the header is less than or equal to the [target threshold](../resources/glossary.md#target) encoded by the nBits header field. Your program should also, of course, attempt to ensure the header belongs to the best block chain and that the user knows how many confirmations this block has.
 
 For a detailed example of parsing a [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock), please see the corresponding [merkle block examples section](../examples/p2p-network-parsing-a-merkleblock.md).
 
@@ -663,11 +663,11 @@ For a detailed example of parsing a [`merkleblock` message](../reference/p2p-net
 
 It's easier to understand how to create a [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) after you understand how to parse an already-created message, so we recommend you read the parsing section above first.
 
-Create a complete merkle tree with <<glossary:TXIDs>> on the bottom row and all the other hashes calculated up to the <<glossary:merkle root>> on the top row. For each transaction that matches the filter, track its TXID node and all of its ancestor nodes.
+Create a complete merkle tree with [TXIDs](../resources/glossary.md#transaction-identifiers) on the bottom row and all the other hashes calculated up to the [merkle root](../resources/glossary.md#merkle-root) on the top row. For each transaction that matches the filter, track its TXID node and all of its ancestor nodes.
 
 ![Example Of Creating A MerkleBlock Message](https://dash-docs.github.io/img/dev/animated-en-merkleblock-creation.gif)
 
-Start processing the tree with the <<glossary:merkle root>> node. The table below describes how to process both TXID nodes and non-TXID nodes based on whether the node is a match, a match ancestor, or neither a match nor a match ancestor.
+Start processing the tree with the [merkle root](../resources/glossary.md#merkle-root) node. The table below describes how to process both TXID nodes and non-TXID nodes based on whether the node is a match, a match ancestor, or neither a match nor a match ancestor.
 
 |                                      | TXID Node                                                              | Non-TXID Node
 |--------------------------------------|------------------------------------------------------------------------|----
@@ -686,7 +686,7 @@ After you fully process the merkle root node according to the instructions in th
 
 *Added in protocol version 70213*
 
-The [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff) is a reply to a [`getmnlistd` message](../reference/p2p-network-data-messages.md#getmnlistd) which requested either a full <<glossary:masternode>> list or a diff for a range of <<glossary:blocks>>.
+The [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff) is a reply to a [`getmnlistd` message](../reference/p2p-network-data-messages.md#getmnlistd) which requested either a full [masternode](../resources/glossary.md#masternode) list or a diff for a range of [blocks](../resources/glossary.md#block).
 
 | Bytes | Name | Data<br>type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
@@ -793,7 +793,7 @@ Masternode List
 
 *Added in protocol version 70001.*
 
-The [`notfound` message](../reference/p2p-network-data-messages.md#notfound) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested an object the receiving <<glossary:node>> does not have available for relay. (Nodes are not expected to relay historic transactions which are no longer in the memory pool or relay set. Nodes may also have pruned spent transactions from older <<glossary:blocks>>, making them unable to send those blocks.)
+The [`notfound` message](../reference/p2p-network-data-messages.md#notfound) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested an object the receiving [node](../resources/glossary.md#node) does not have available for relay. (Nodes are not expected to relay historic transactions which are no longer in the memory pool or relay set. Nodes may also have pruned spent transactions from older [blocks](../resources/glossary.md#block), making them unable to send those blocks.)
 
 The format and maximum size limitations of the [`notfound` message](../reference/p2p-network-data-messages.md#notfound) are identical to the [`inv` message](../reference/p2p-network-data-messages.md#inv); only the message header differs.
 
@@ -920,10 +920,10 @@ Last quorum hash per index
 
 ## tx
 
-The [`tx` message](../reference/p2p-network-data-messages.md#tx) transmits a single transaction in the <<glossary:raw transaction>> format. It can be sent in a variety of situations;
+The [`tx` message](../reference/p2p-network-data-messages.md#tx) transmits a single transaction in the [raw transaction](../resources/glossary.md#raw-transaction) format. It can be sent in a variety of situations;
 
-* **Transaction Response:** Dash Core will send it in response to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) that requests the transaction with an <<glossary:inventory>>  type of `MSG_TX`.
+* **Transaction Response:** Dash Core will send it in response to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) that requests the transaction with an [inventory](../resources/glossary.md#inventory)  type of `MSG_TX`.
 
-* **MerkleBlock Response:** Dash Core will send it in response to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) that requests a <<glossary:merkle block>> with an <<glossary:inventory>> type of `MSG_MERKLEBLOCK`. (This is in addition to sending a [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock).) Each [`tx` message](../reference/p2p-network-data-messages.md#tx) in this case provides a matched transaction from that <<glossary:block>>.
+* **MerkleBlock Response:** Dash Core will send it in response to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) that requests a [merkle block](../resources/glossary.md#merkle-block) with an [inventory](../resources/glossary.md#inventory) type of `MSG_MERKLEBLOCK`. (This is in addition to sending a [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock).) Each [`tx` message](../reference/p2p-network-data-messages.md#tx) in this case provides a matched transaction from that [block](../resources/glossary.md#block).
 
 For an example hexdump of the raw transaction format, see the [raw transaction section](../reference/transactions-raw-transaction-format.md).

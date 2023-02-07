@@ -1,6 +1,6 @@
 # CoinJoin Messages
 
-The following network messages all help control the CoinJoin features built into Dash and facilitated by the <<glossary:masternode>> network.
+The following network messages all help control the CoinJoin features built into Dash and facilitated by the [masternode](../resources/glossary.md#masternode) network.
 
 Since the messages are all related to a single process, this diagram shows them sequentially numbered. The [`dssu` message](../reference/p2p-network-privatesend-messages.md#dssu) (not shown) is sent by the masternode in conjunction with some responses. For additional details, refer to the Developer Guide [CoinJoin section](../guide/dash-features-privatesend.md).
 
@@ -8,7 +8,7 @@ Since the messages are all related to a single process, this diagram shows them 
 
 ## dsa
 
-The [`dsa` message](../reference/p2p-network-privatesend-messages.md#dsa) allows a <<glossary:node>> to join a CoinJoin pool. A collateral fee is required and may be forfeited if the client acts maliciously. The message operates in two ways:
+The [`dsa` message](../reference/p2p-network-privatesend-messages.md#dsa) allows a [node](../resources/glossary.md#node) to join a CoinJoin pool. A collateral fee is required and may be forfeited if the client acts maliciously. The message operates in two ways:
 
 1. When sent to a masternode without a current CoinJoin queue, it initiates the start of a new queue
 
@@ -21,7 +21,7 @@ Dash Core attempts to join an existing queue first and only requests a new one i
 | 4 | nDenom | int | Required | Denomination that will be exclusively used when submitting inputs into the pool
 | 216+ | txCollateral | [`tx` message](../reference/p2p-network-data-messages.md#tx) | Required | Collateral TX that will be charged if this client acts maliciously
 
-The following annotated hexdump shows a [`dsa` message](../reference/p2p-network-privatesend-messages.md#dsa). (The message header has been omitted.) Note that the 'Required inputs' bytes will only be preset if <<glossary:Spork>> 6 is active and protocol version => 70209.
+The following annotated hexdump shows a [`dsa` message](../reference/p2p-network-privatesend-messages.md#dsa). (The message header has been omitted.) Note that the 'Required inputs' bytes will only be preset if [Spork](../resources/glossary.md#spork) 6 is active and protocol version => 70209.
 
 ``` text
 02000000 ................................... Denomination: 1 Dash (2)
@@ -66,14 +66,14 @@ d9070700 ............................. Session ID: 791686
 
 ## dsf
 
-The [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf) is sent by the masternode as the final transaction in a CoinJoin session. The <<glossary:masternode>> expects <<glossary:nodes>> in the session to respond with a [`dss` message](../reference/p2p-network-privatesend-messages.md#dss).
+The [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf) is sent by the masternode as the final transaction in a CoinJoin session. The [masternode](../resources/glossary.md#masternode) expects [nodes](../resources/glossary.md#node) in the session to respond with a [`dss` message](../reference/p2p-network-privatesend-messages.md#dss).
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 4 | nSessionID | int | Required | ID of the session
 | # | txFinal | [`tx` message](../reference/p2p-network-data-messages.md#tx) | Required |  Final transaction with unsigned inputs
 
-The following annotated hexdump shows a [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf). (The message header has been omitted.) Transaction <<glossary:inputs>>/<<glossary:outputs>> are only shown for a single node (compare with the [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi) and [`dss` message](../reference/p2p-network-privatesend-messages.md#dss) hexdumps).
+The following annotated hexdump shows a [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf). (The message header has been omitted.) Transaction [inputs](../resources/glossary.md#input)/[outputs](../resources/glossary.md#output) are only shown for a single node (compare with the [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi) and [`dss` message](../reference/p2p-network-privatesend-messages.md#dss) hexdumps).
 
 ``` text
 86140c00 ............................. Session ID: 791686
@@ -173,7 +173,7 @@ Transaction Message
 
 ## dsi
 
-The [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi) replies to a [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq) that has the Ready field set to 0x01. The [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi) contains user <<glossary:inputs>> for processing along with the <<glossary:outputs>> and a collateral. Once the <<glossary:masternode>> receives [`dsi` messages](../reference/p2p-network-privatesend-messages.md#dsi) from all members of the pool, it responds with a [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf).
+The [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi) replies to a [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq) that has the Ready field set to 0x01. The [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi) contains user [inputs](../resources/glossary.md#input) for processing along with the [outputs](../resources/glossary.md#output) and a collateral. Once the [masternode](../resources/glossary.md#masternode) receives [`dsi` messages](../reference/p2p-network-privatesend-messages.md#dsi) from all members of the pool, it responds with a [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf).
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
@@ -299,9 +299,9 @@ User outputs
 
 ## dsq
 
-The [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq) provides <<glossary:nodes>> with queue details and notifies them when to sign final transaction messages.
+The [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq) provides [nodes](../resources/glossary.md#node) with queue details and notifies them when to sign final transaction messages.
 
-If the message indicates the queue is not ready, the node verifies the message is valid. It also verifies that the <<glossary:masternode>> is not flooding the <<glossary:network>> with [`dsq` messages](../reference/p2p-network-privatesend-messages.md#dsq) in an attempt to dominate the queuing process. It then relays the message to its connected <<glossary:peers>>.
+If the message indicates the queue is not ready, the node verifies the message is valid. It also verifies that the [masternode](../resources/glossary.md#masternode) is not flooding the [network](../resources/glossary.md#network) with [`dsq` messages](../reference/p2p-network-privatesend-messages.md#dsq) in an attempt to dominate the queuing process. It then relays the message to its connected [peers](../resources/glossary.md#peer).
 
 If the message indicates the queue is ready, the node responds with a [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi).
 
@@ -323,7 +323,7 @@ Denominations (per [`src/coinjoin.cpp`](https://github.com/dashpay/dash/blob/v0.
 | 8 | 0.01 Dash
 | 16 | 0.001 Dash
 
-The following annotated hexdump shows a [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq). (The message header has been omitted.) Note that the 'Required <<glossary:inputs>>' bytes will only be preset if <<glossary:Spork>> 6 is active and protocol version => 70209.
+The following annotated hexdump shows a [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq). (The message header has been omitted.) Note that the 'Required [inputs](../resources/glossary.md#input)' bytes will only be preset if [Spork](../resources/glossary.md#spork) 6 is active and protocol version => 70209.
 
 ``` text
 01000000 ............................. Denomination: 10 Dash (1)
@@ -349,7 +349,7 @@ Masternode Outpoint
 
 ## dss
 
-The [`dss` message](../reference/p2p-network-privatesend-messages.md#dss) replies to a [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf) sent by the <<glossary:masternode>> managing the session.  The [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf) provides the unsigned transaction <<glossary:inputs>> for all members of the pool. Each <<glossary:node>> verifies that the final transaction matches what is expected. They then sign any transaction inputs belonging to them and then relay them to the masternode via this [`dss` message](../reference/p2p-network-privatesend-messages.md#dss).
+The [`dss` message](../reference/p2p-network-privatesend-messages.md#dss) replies to a [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf) sent by the [masternode](../resources/glossary.md#masternode) managing the session.  The [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf) provides the unsigned transaction [inputs](../resources/glossary.md#input) for all members of the pool. Each [node](../resources/glossary.md#node) verifies that the final transaction matches what is expected. They then sign any transaction inputs belonging to them and then relay them to the masternode via this [`dss` message](../reference/p2p-network-privatesend-messages.md#dss).
 
 Once the masternode receives and validates all [`dss` messages](../reference/p2p-network-privatesend-messages.md#dss), it issues a [`dsc` message](../reference/p2p-network-privatesend-messages.md#dsc). If a node does not respond to a [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf) with signed transaction inputs, it may forfeit the collateral it provided. This is to minimize malicious behavior.
 
@@ -481,7 +481,7 @@ The following annotated hexdump shows a [`dssu` message](../reference/p2p-networ
 
 ## dstx
 
-The [`dstx` message](../reference/p2p-network-privatesend-messages.md#dstx) allows <<glossary:masternodes>> to broadcast subsidized transactions without fees (to provide security in processing).
+The [`dstx` message](../reference/p2p-network-privatesend-messages.md#dstx) allows [masternodes](../resources/glossary.md#masternode) to broadcast subsidized transactions without fees (to provide security in processing).
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |

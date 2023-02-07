@@ -1,16 +1,16 @@
 # Serialized Blocks
 
-Under current <<glossary:consensus rules>>, a <<glossary:block>> is not valid unless its serialized size is less than or equal to 2 MB. All fields described below are counted towards the serialized size.
+Under current [consensus rules](../resources/glossary.md#consensus-rules), a [block](../resources/glossary.md#block) is not valid unless its serialized size is less than or equal to 2 MB. All fields described below are counted towards the serialized size.
 
 | Bytes    | Name         | Data Type        | Description |
 | - | - | - | - |
-| 80       | block header | block_header     | The <<glossary:block header>> in the format described in the [block header section](../reference/block-chain-block-headers.md).
-| *Varies* | txn_count    | <<glossary:compactSize uint>> | The total number of transactions in this block, including the coinbase transaction.
-| *Varies* | txns         | <<glossary:raw transaction>>  | Every transaction in this block, one after another, in raw transaction format.  Transactions must appear in the data stream in the same order their TXIDs appeared in the first row of the merkle tree.  See the [merkle tree section](../reference/block-chain-block-headers.md#merkle-trees) for details.
+| 80       | block header | block_header     | The [block header](../resources/glossary.md#block-header) in the format described in the [block header section](../reference/block-chain-block-headers.md).
+| *Varies* | txn_count    | [compactSize uint](../resources/glossary.md#compactsize) | The total number of transactions in this block, including the coinbase transaction.
+| *Varies* | txns         | [raw transaction](../resources/glossary.md#raw-transaction)  | Every transaction in this block, one after another, in raw transaction format.  Transactions must appear in the data stream in the same order their TXIDs appeared in the first row of the merkle tree.  See the [merkle tree section](../reference/block-chain-block-headers.md#merkle-trees) for details.
 
 ## Coinbase
 
-The first transaction in a block must be a <<glossary:coinbase transaction>> which should collect and spend any <<glossary:transaction fee>> paid by transactions included in this block.
+The first transaction in a block must be a [coinbase transaction](../resources/glossary.md#coinbase-transaction) which should collect and spend any [transaction fee](../resources/glossary.md#transaction-fee) paid by transactions included in this block.
 
 ### Block Subsidy
 Until the coin limit (~18 million Dash) is hit, all blocks are entitled to receive a block subsidy of newly created Dash value. The newly created value should be spent in the coinbase transaction.
@@ -18,9 +18,9 @@ Until the coin limit (~18 million Dash) is hit, all blocks are entitled to recei
 The block subsidy declines by ~7.1% per year until all Dash is mined. Subsidy calculations are performed by the Dash Core [GetBlockSubsidy()](https://github.com/dashpay/dash/blob/v0.15.x/src/validation.cpp#L1012) function.
 
 ### Block Reward
-Together, the transaction fees and block subsidy are called the <<glossary:block reward>>. A coinbase transaction is invalid if it tries to spend more value than is available from the block reward.
+Together, the transaction fees and block subsidy are called the [block reward](../resources/glossary.md#block-reward). A coinbase transaction is invalid if it tries to spend more value than is available from the block reward.
 
-The block reward is divided into three parts: <<glossary:miner>>, <<glossary:masternode>>, and <<glossary:superblock>>. The miner and masternode portions add up to 90% of the block subsidy with the remaining 10% allocated to the governance system.
+The block reward is divided into three parts: [miner](../resources/glossary.md#miner), [masternode](../resources/glossary.md#masternode), and [superblock](../resources/glossary.md#superblock). The miner and masternode portions add up to 90% of the block subsidy with the remaining 10% allocated to the governance system.
 
 | Payee | Subsidy | Description |
 | ----- | -------- | ----------- |

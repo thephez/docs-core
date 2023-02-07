@@ -1,6 +1,6 @@
 # Proof of Service
 
-The Proof of Service (PoSe) scoring system helps incentivize <<glossary:masternodes>> to provide <<glossary:network>> services. Masternodes that neglect to participate receive an increased PoSe score which eventually results in them being excluded from masternode payment eligibility.
+The Proof of Service (PoSe) scoring system helps incentivize [masternodes](../resources/glossary.md#masternode) to provide [network](../resources/glossary.md#network) services. Masternodes that neglect to participate receive an increased PoSe score which eventually results in them being excluded from masternode payment eligibility.
 
 ## Distributed Key Generation Participation Requirements
 
@@ -14,7 +14,7 @@ The following table lists the aspects of the DKG process a masternode must compl
 
 ## Proof of Service Score Weighting
 
-The current PoSe scoring system is based only on participation in the <<glossary:LLMQ>> DKG process. This scoring system will expand over time to incorporate additional service requirements in support of the future Dash functionality.
+The current PoSe scoring system is based only on participation in the [LLMQ](../resources/glossary.md#long-living-masternode-quorum) DKG process. This scoring system will expand over time to incorporate additional service requirements in support of the future Dash functionality.
 
 | Service | Percent of Score | Requirement |
 | ----------- | :----: | ------------------- |
@@ -22,7 +22,7 @@ The current PoSe scoring system is based only on participation in the <<glossary
 
 ## **PoSe Score Calculation**
 
-As shown in the following table, the PoSe Score always decreases by 1 per <<glossary:block>> as long as a masternode has not been banned. Once banned, the masternode can only be restored by sending a Provider Update Service ([ProUpServTx](../reference/transactions-special-transactions.md#proupservtx)) special transaction.
+As shown in the following table, the PoSe Score always decreases by 1 per [block](../resources/glossary.md#block) as long as a masternode has not been banned. Once banned, the masternode can only be restored by sending a Provider Update Service ([ProUpServTx](../reference/transactions-special-transactions.md#proupservtx)) special transaction.
 
 | PoSe Parameter | Value | Example Value |
 | --- | --- | --- |

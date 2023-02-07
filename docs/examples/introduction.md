@@ -4,8 +4,8 @@ The following guide aims to provide examples to help you start building Dash-bas
 
 Once installed, you'll have access to three programs: `dashd`, `dash-qt`, and `dash-cli`.
 
-* `dash-qt` provides a combination full Dash <<glossary:peer>> and <<glossary:wallet>> frontend. From the Help menu, you can access a console where you can enter the RPC commands used throughout this document.
+* `dash-qt` provides a combination full Dash [peer](../resources/glossary.md#peer) and [wallet](../resources/glossary.md#wallet) frontend. From the Help menu, you can access a console where you can enter the RPC commands used throughout this document.
 
-* `dashd` is more useful for programming: it provides a full peer which you can interact with through RPCs to port 9998 (or 19998 for <<glossary:testnet>> / 19898 for regtest).
+* `dashd` is more useful for programming: it provides a full peer which you can interact with through RPCs to port 9998 (or 19998 for [testnet](../resources/glossary.md#testnet) / 19898 for regtest).
 
 * `dash-cli` allows you to send RPC commands to `dashd` from the command line.  For example, `dash-cli help`

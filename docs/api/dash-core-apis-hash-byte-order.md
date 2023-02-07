@@ -12,7 +12,7 @@ Dash Core RPCs accept and return the byte-wise reverse of computed SHA-256 hash 
 5472ac8b1187bfcf91d6d218bbda1eb2405d7c55f1f8cc820000000000000000 (Resulting hash)
 ```
 
-The result above is also how the hash appears in the previous-header-hash part of <<glossary:block>> 300,001's header:
+The result above is also how the hash appears in the previous-header-hash part of [block](../resources/glossary.md#block) 300,001's header:
 
 <pre>02000000<b>5472ac8b1187bfcf91d6d218bbda1eb2405d7c55f1f8cc82000\
 0000000000000</b>ab0aaa377ca3f49b1545e2ae6b0667a08f42e72d8c24ae\
@@ -29,7 +29,7 @@ However, Dash Core's RPCs use the byte-wise reverse for hashes, so if you want t
 >
 > Note: hex representation uses two characters to display each byte of data, which is why the reversed string looks somewhat mangled.
 
-The rationale for the reversal is unknown, but it likely stems from Dash Core's use of hashes (which are byte arrays in C++) as integers for the purpose of determining whether the hash is below the network target. Whatever the reason for reversing header hashes, the reversal also extends to other hashes used in RPCs, such as <<glossary:TXIDs>> and merkle roots.
+The rationale for the reversal is unknown, but it likely stems from Dash Core's use of hashes (which are byte arrays in C++) as integers for the purpose of determining whether the hash is below the network target. Whatever the reason for reversing header hashes, the reversal also extends to other hashes used in RPCs, such as [TXIDs](../resources/glossary.md#transaction-identifiers) and merkle roots.
 
 As header hashes and TXIDs are widely used as global identifiers in other Dash software, this reversal of hashes has become the standard way to refer to certain objects. The table below should make clear where each byte order is used.
 
@@ -50,7 +50,7 @@ As header hashes and TXIDs are widely used as global identifiers in other Dash s
 
 > 📘
 >
-> Note: RPCs which return raw results, such as `getrawtransaction` or the raw mode of `getblock`, always display hashes as they appear in blocks (<<glossary:internal byte order>>).
+> Note: RPCs which return raw results, such as `getrawtransaction` or the raw mode of `getblock`, always display hashes as they appear in blocks ([internal byte order](../resources/glossary.md#internal-byte-order)).
 
 The code below may help you check byte order by generating hashes from raw hex.
 

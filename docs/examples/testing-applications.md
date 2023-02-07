@@ -4,7 +4,7 @@ Dash Core provides several network options designed to let developers test their
 
 ## Testnet
 
-When run with no arguments, all Dash Core programs default to Dash's main network (<<glossary:mainnet>>). However, for development, it's safer and cheaper to use Dash's test network (<<glossary:testnet>>) where the <<glossary:duffs>> spent have no real-world value. Testnet also relaxes some restrictions (such as standard transaction checks) so you can test functions which might currently be disabled by default on <<glossary:mainnet>>.
+When run with no arguments, all Dash Core programs default to Dash's main network ([mainnet](../resources/glossary.md#mainnet)). However, for development, it's safer and cheaper to use Dash's test network ([testnet](../resources/glossary.md#testnet)) where the [duffs](../resources/glossary.md#duffs) spent have no real-world value. Testnet also relaxes some restrictions (such as standard transaction checks) so you can test functions which might currently be disabled by default on [mainnet](../resources/glossary.md#mainnet).
 
 To use testnet, use the argument `-testnet` with `dash-cli`, `dashd` or `dash-qt` or add `testnet=1` to your `dash.conf` file as [described earlier](../examples/configuration-file.md).  To get free duffs for testing, check the faucets listed below. Some are community supported and due to potentially frequent Testnet changes, one or more of them may be unavailable at a given time:
 
@@ -15,7 +15,7 @@ Testnet is a public resource provided for free by Dash Core Group and members of
 
 ## Regtest mode
 
-For situations where interaction with random <<glossary:peers>> and <<glossary:blocks>> is unnecessary or unwanted, Dash Core's <<glossary:regression test mode>> (regtest mode) lets you instantly create a brand-new private <<glossary:block chain>> with the same basic rules as testnet---but one major difference: you choose when to create new blocks, so you have complete control over the environment.
+For situations where interaction with random [peers](../resources/glossary.md#peer) and [blocks](../resources/glossary.md#block) is unnecessary or unwanted, Dash Core's [regression test mode](../resources/glossary.md#regression-test-mode) (regtest mode) lets you instantly create a brand-new private [block chain](../resources/glossary.md#block-chain) with the same basic rules as testnet---but one major difference: you choose when to create new blocks, so you have complete control over the environment.
 
 Many developers consider regtest mode the preferred way to develop new applications. The following example will let you create a regtest environment after you first [configure dashd](../examples/configuration-file.md).
 
@@ -31,7 +31,7 @@ Start `dashd` in regtest mode to create a private block chain.
 dash-cli -regtest generate 101
 ```
 
-Generate 101 blocks using a special RPC which is only available in regtest mode. This takes less than a second on a generic PC. Because this is a new block chain using Dash's default rules, the first blocks pay a <<glossary:block reward>> of 500 dash.  Unlike <<glossary:mainnet>>, in regtest mode only the first 150 blocks pay a reward of 500 dash. However, a block must have 100 <<glossary:confirmations>> before that reward can be spent, so we generate 101 blocks to get access to the <<glossary:coinbase transaction>> from block #1.
+Generate 101 blocks using a special RPC which is only available in regtest mode. This takes less than a second on a generic PC. Because this is a new block chain using Dash's default rules, the first blocks pay a [block reward](../resources/glossary.md#block-reward) of 500 dash.  Unlike [mainnet](../resources/glossary.md#mainnet), in regtest mode only the first 150 blocks pay a reward of 500 dash. However, a block must have 100 [confirmations](../resources/glossary.md#confirmations) before that reward can be spent, so we generate 101 blocks to get access to the [coinbase transaction](../resources/glossary.md#coinbase-transaction) from block #1.
 
 ``` bash
 dash-cli -regtest getbalance
@@ -52,9 +52,9 @@ The complete set of regtest-specific arguments can be found on the [`dashd` Argu
 
 Developer networks (devnets) have some aspects of testnet and some aspects of regtest. Unlike testnet, multiple independent devnets can be created and coexist without interference. Devnets can consist of nodes running on the same computer, on a small private network, or distributed across the internet.
 
-Each devnet is identified by a name which is hardened into a "devnet genesis" block that is automatically positioned at height 1. Validation rules ensure that a <<glossary:node>> from `devnet=test1` will not accept blocks from `devnet=test2`. This is done by checking the expected devnet <<glossary:genesis block>>. Also, the devnet name is put into the sub-version field of the [`version` message](../reference/p2p-network-control-messages.md#version). If a node connects to the wrong <<glossary:network>>, it will immediately be disconnected. 
+Each devnet is identified by a name which is hardened into a "devnet genesis" block that is automatically positioned at height 1. Validation rules ensure that a [node](../resources/glossary.md#node) from `devnet=test1` will not accept blocks from `devnet=test2`. This is done by checking the expected devnet [genesis block](../resources/glossary.md#genesis-block). Also, the devnet name is put into the sub-version field of the [`version` message](../reference/p2p-network-control-messages.md#version). If a node connects to the wrong [network](../resources/glossary.md#network), it will immediately be disconnected. 
 
-The genesis block of the devnet is the same as the one from regtest. This starts the devnet with a very low <<glossary:difficulty>>, allowing quick generation of a sufficient balance to create a <<glossary:masternode>>.
+The genesis block of the devnet is the same as the one from regtest. This starts the devnet with a very low [difficulty](../resources/glossary.md#difficulty), allowing quick generation of a sufficient balance to create a [masternode](../resources/glossary.md#masternode).
 
 ### Configuration
 

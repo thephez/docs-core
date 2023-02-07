@@ -128,7 +128,7 @@ Result:
 
 > 📘
 >
-> Requires <<glossary:wallet>> support (**unavailable on masternodes**)
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
 
 The `getreceivedbyaccount` RPC returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions.
 
@@ -280,7 +280,7 @@ setlogin: Updated credentials.
 
 > 📘 
 >
-> Requires <<glossary:wallet>> support (**unavailable on masternodes**)
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
 
 The `listaccounts` RPC lists accounts and their balances.
 
@@ -345,7 +345,7 @@ Result:
 
 > 📘
 >
-> Requires <<glossary:wallet>> support (**unavailable on masternodes**)
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
 
 The `listreceivedbyaccount` RPC lists the total number of dash received by each account.
 
@@ -426,7 +426,7 @@ Result (edited to only show the first two results):
 
 > 📘 
 >
-> Requires <<glossary:wallet>> support (**unavailable on masternodes**)
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
 
 The `move` RPC moves a specified amount from one account in your wallet to another using an off-block-chain transaction.
 
@@ -498,7 +498,7 @@ true
 
 > 📘
 >
-> Requires <<glossary:wallet>> support (**unavailable on masternodes**). Requires an unlocked wallet or an unencrypted wallet.
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Requires an unlocked wallet or an unencrypted wallet.
 
 The `sendfrom` RPC spends an amount from a local account to a dash address.
 

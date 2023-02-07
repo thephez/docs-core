@@ -139,7 +139,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 
 ## [Wallet RPCs](../api/remote-procedure-calls-wallet.md)
 
-**Note:** the wallet RPCs are only available if Dash Core was built with <<glossary:wallet support>>, which is the default.
+**Note:** the wallet RPCs are only available if Dash Core was built with [wallet support](../resources/glossary.md#wallet-support), which is the default.
 
 * [AbandonTransaction](../api/remote-procedure-calls-wallet.md#abandontransaction): marks an in-wallet transaction and all its in-wallet descendants as abandoned. This allows their inputs to be respent.
 * [AbortRescan](../api/remote-procedure-calls-wallet.md#abortrescan): stops current wallet rescan. _New in Dash Core 0.15.0_
@@ -203,7 +203,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 
 ## [Wallet RPCs (Deprecated)](../api/remote-procedure-calls-wallet-deprecated.md)
 
-**Note:** the wallet RPCs are only available if Dash Core was built with <<glossary:wallet support>>, which is the default.
+**Note:** the wallet RPCs are only available if Dash Core was built with [wallet support](../resources/glossary.md#wallet-support), which is the default.
 
 * [GetAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaccount): returns the name of the account associated with the given address. **_Deprecated_**
 * [GetAccountAddress](../api/remote-procedure-calls-wallet-deprecated.md#getaccountaddress): returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address. **_Deprecated_**

@@ -63,6 +63,7 @@ html_sidebars = {
 }
 
 html_theme_options = {
+   "announcement": "Test build of Dash Core documentation migrated from <a href='https://dashcore.readme.io'>Readme.io</a>!",
     "external_links": [
         {"name": "Platform docs", "url": "https://dashplatform.readme.io"},
         {"name": "User docs", "url": "https://docs.dash.org/"},        

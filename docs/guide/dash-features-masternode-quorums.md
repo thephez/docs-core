@@ -18,26 +18,26 @@ The following table details the data flow of P2P messages exchanged during the d
 
 > 🚧 Minimum Masternode Protocol Version
 >
-> As of Dash Core 0.16.0, masternodes perform a [version check](https://github.com/dashpay/dash/pull/3390) on their quorum peers during DKG. Masternodes that do not meet the `MIN_MASTERNODE_PROTO_VERSION` (70223 in Dash Core 18.0) will begin receiving increases in [PoSe](../guide/dash-features-proof-of-service.md) score once 60% of the masternodes on the network have upgraded to that version.
+> As of Dash Core 0.16.0, masternodes perform a [version check](https://github.com/dashpay/dash/pull/3390) on their quorum peers during DKG. Masternodes that do not meet the `MIN_MASTERNODE_PROTO_VERSION` (70227 in Dash Core 19.0) will begin receiving increases in [PoSe](../guide/dash-features-proof-of-service.md) score once 60% of the masternodes on the network have upgraded to that version.
 
 | **Masternode** | **Direction**  | **Peers**   | **Description** |
 | --- | :---: | --- | --- |
 | **[Initialization Phase](https://github.com/dashpay/dips/blob/master/dip-0006.md#1-initialization-phase)**| | | **Deterministically evaluate if quorum participation necessary** |
 | | | | Each quorum participant establishes connections to a set of quorum participants [as described in DIP6](https://github.com/dashpay/dips/blob/master/dip-0006.md#building-the-set-of-deterministic-connections) |
 | **[Contribution Phase](https://github.com/dashpay/dips/blob/master/dip-0006.md#2-contribution-phase)** | | | **Send quorum contributions (intra-quorum communication)** |
-|`inv` message (qcontrib)                        | → |                              | Masternode sends inventory for its quorum contribution _to other masternodes in the quorum_
+|`inv` message (qcontrib)                        | → |                              | Masternode sends inventory for its quorum contribution *to other masternodes in the quorum*
 |                                                | ← | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (qcontrib) | Peer(s) respond with request for quorum contribution
 | [`qcontrib` message](../reference/p2p-network-quorum-messages.md#qcontrib)                             | → |                              | Masternode sends the requested quorum contribution
 | **[Complaining Phase](https://github.com/dashpay/dips/blob/master/dip-0006.md#3-complaining-phase)** | | | **Send complaints for any peers with invalid or missing contributions (intra-quorum communication)** |
-|`inv` message (qcomplaint)                      | → |                              | Masternode sends inventory for any complaints _to other masternodes in the quorum_
+|`inv` message (qcomplaint)                      | → |                              | Masternode sends inventory for any complaints *to other masternodes in the quorum*
 |                                                | ← | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (qcomplaint) | Peer(s) respond with request for quorum complaints
 | [`qcomplaint` message](../reference/p2p-network-quorum-messages.md#qcomplaint)                           | → |                              | Masternode sends the requested complaints
 | **[Justification Phase](https://github.com/dashpay/dips/blob/master/dip-0006.md#4-justification-phase)** | | | **Send justification responses for any complaints against own contributions (intra-quorum communication)** |
-|`inv` message (qjustify)                        | → |                              | Masternode sends inventory for any justifications _to other masternodes in the quorum_
+|`inv` message (qjustify)                        | → |                              | Masternode sends inventory for any justifications *to other masternodes in the quorum*
 |                                                | ← | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (qjustify) | Peer(s) respond with request for quorum justifications
 | [`qjustify` message](../reference/p2p-network-quorum-messages.md#qjustify)                             | → |                              | Masternode sends the requested justifications
 | **[Commitment Phase](https://github.com/dashpay/dips/blob/master/dip-0006.md#5-commitment-phase)** | | | **Send premature commitment containing the quorum public key (intra-quorum communication)** |
-|`inv` message (qpcommit)                        | → |                              | Masternode sends inventory for its premature commitment _to other masternodes in the quorum_
+|`inv` message (qpcommit)                        | → |                              | Masternode sends inventory for its premature commitment *to other masternodes in the quorum*
 |                                                | ← | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (qpcommit) | Peer(s) respond with request for quorum premature commitment
 | [`qpcommit` message](../reference/p2p-network-quorum-messages.md#qpcommit)                             | → |                              | Masternode sends the requested premature commitment
 | **[Finalization Phase](https://github.com/dashpay/dips/blob/master/dip-0006.md#6-finalization-phase)** | | | **Send final commitment containing the quorum public key** |
@@ -56,11 +56,11 @@ Please read [DIP7 LLMQ Signing Requests / Sessions](https://github.com/dashpay/d
 | **Masternode** | **Direction**  | **Peers**   | **Description** |
 | --- | :---: | --- | --- |
 | **[Siging Request Phase](https://github.com/dashpay/dips/blob/master/dip-0007.md#signing-request)** | | | Request quorum signing of a message (e.g. InstantSend transaction input) (intra-quorum communication) |
-| [`qsigsesann` message](../reference/p2p-network-quorum-messages.md#qsigsesann)                             | → |                              | Masternode sends a signing session announcement _to other masternodes in the quorum_
+| [`qsigsesann` message](../reference/p2p-network-quorum-messages.md#qsigsesann)                             | → |                              | Masternode sends a signing session announcement *to other masternodes in the quorum*
 | **[Share Propagation Phase](https://github.com/dashpay/dips/blob/master/dip-0007.md#propagating-signature-shares)** | | | Members exchange signature shares within the quorum (intra-quorum communication) |
-| [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv)                             | → |                              | Masternode sends one or more quorum signature share inventories _to other masternodes in the quorum_<br>_May occur multiple times in this phase_
-|                                                | ← | [`qgetsigs` message](../reference/p2p-network-quorum-messages.md#qgetsigs) (qcontrib) | Peer(s) respond with request for signature shares<br>_May occur multiple times in this phase_
-| [`qbsigs` message](../reference/p2p-network-quorum-messages.md#qbsigs)                             | → |                              | Masternode sends the requested batched signature share(s)<br>_May occur multiple times in this phase_
+| [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv)                             | → |                              | Masternode sends one or more quorum signature share inventories *to other masternodes in the quorum*<br>*May occur multiple times in this phase*
+|                                                | ← | [`qgetsigs` message](../reference/p2p-network-quorum-messages.md#qgetsigs) (qcontrib) | Peer(s) respond with request for signature shares<br>*May occur multiple times in this phase*
+| [`qbsigs` message](../reference/p2p-network-quorum-messages.md#qbsigs)                             | → |                              | Masternode sends the requested batched signature share(s)<br>*May occur multiple times in this phase*
 | **[Threshold Signature Recovery Phase](https://github.com/dashpay/dips/blob/master/dip-0007.md#recovered-threshold-signatures)** | | | A recovered signature is created by a quorum member once valid signature shares from at least the threshold number of members have been received |
 | [`qsigrec` message](../reference/p2p-network-quorum-messages.md#qsigrec)                             | → |                              | Masternode sends the quorum recovered signature **to all peers** (except those that have asked to be excluded via a [`qsendrecsigs` message](../reference/p2p-network-quorum-messages.md#qsendrecsigs))
 
@@ -85,14 +85,14 @@ The specific quorum type used for a feature can vary based on the network. The f
 | ChainLocks ([DIP-8](https://github.com/dashpay/dips/blob/master/dip-0008.md)) | LLMQ_400_60 | LLMQ_50_60 | LLMQ_50_60 | LLMQ_TEST |
 | Deterministic InstantSend | LLMQ_60_75 | LLMQ_60_75 | LLMQ_60_75 | LLMQ_TEST_DIP0024 |
 | InstantSend (pre DIP-24) | LLMQ_50_60 | LLMQ_50_60 | LLMQ_50_60 | LLMQ_TEST_INSTANTSEND |
-| Platform | LLMQ_100_67 | LLMQ_100_67 | LLMQ_100_67 | LLMQ_TEST |
+| Platform | LLMQ_100_67 | LLMQ_25_67 | LLMQ_100_67 | LLMQ_TEST_PLATFORM |
 | Enhanced Hard Fork ([DIP-23](https://github.com/dashpay/dips/blob/master/dip-0023.md))| LLMQ_400_85 | LLMQ_50_60 | LLMQ_50_60 | LLMQ_TEST |
 
 \* Note that the quorum types used on RegTest and Devnets have customizable parameters as described above
 
 ### Quorum formation
 
-The quorum formation process operates regardless of quorum usage. So the [DKG process](#llmq-creation-dkg) will be attempted for _all quorum types enabled on a network_ regardless of whether or not that quorum type is going to be used.
+The quorum formation process operates regardless of quorum usage. So the [DKG process](#llmq-creation-dkg) will be attempted for *all quorum types enabled on a network* regardless of whether or not that quorum type is going to be used.
 
 The following table showing which quorums are enabled for each network type is derived from information taken from Dash Core's [chainparams.cpp](https://github.com/dashpay/dash/blob/master/src/chainparams.cpp) file:
 
@@ -103,9 +103,12 @@ The following table showing which quorums are enabled for each network type is d
 | LLMQ_400_60 | x | x | x | - |
 | LLMQ_400_85 | x | x | x | - |
 | LLMQ_100_67 | x | x | x | - |
+| LLMQ_25_67 | - | x | - | - |
 | LLMQ_DEVNET | - | - | x | - |
 | LLMQ_DEVNET_DIP0024 | - | - | x | - |
+| LLMQ_DEVNET_PLATFORM | - | - | x | - |
 | LLMQ_TEST | - | - | - | x |
 | LLMQ_TEST_INSTANTSEND | - | - | - | x |
 | LLMQ_TEST_V17 | - | - | - | x |
 | LLMQ_TEST_DIP0024 | - | - | - | x |
+| LLMQ_TEST_PLATFORM | - | - | - | x |

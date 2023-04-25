@@ -6,21 +6,25 @@ The `dash-cli` application provides a command-line option for accessing Dash Cor
 
 > 🚧 Multiple wallet support
 >
-> Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at the same time, wallet-related RPCs require using the `-rpcwallet` option any time more than one wallet file is loaded. This is to ensure the RPC command is executed using the correct wallet. The syntax is:
+> Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at the same time, wallet-related RPCs require using the `-rpcwallet` option any time more than one wallet file is loaded. This is to ensure the RPC command is executed using the correct wallet. The syntax is:  
 > `dash-cli -rpcwallet=<wallet-name> <command>`
 
 ```bash Send command
 dash-cli [options] <command> [params]
 ```
+
 ```bash Send command using wallet
 dash-cli [options] -rpcwallet=<wallet-name> <command> [params]
 ```
+
 ```bash Send command (with named arguments)
   dash-cli [options] -named <command> [name=value] ... 
 ```
+
 ```bash List commands
 dash-cli [options] help
 ```
+
 ```bash Get help for command
 dash-cli [options] help <command>
 ```
@@ -29,7 +33,7 @@ dash-cli [options] help <command>
 >
 > The list of RPCs can be found [here](../api/remote-procedure-call-quick-reference.md) with links to more detailed information. Using dash-cli, this information is available using the `dash-cli [options] help` and `dash-cli [options] help <command>` commands.
 
-### Options:
+### Options
 
 ```text
   -?
@@ -103,7 +107,7 @@ dash-cli [options] help <command>
        Print version and exit
 ```
 
-### Chain selection options:
+### Chain selection options
 
 ```text
   -devnet=<name>
@@ -133,6 +137,10 @@ dash-cli [options] help <command>
   -llmqinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. (default:
        llmq_60_75, devnet-only)
+
+  -llmqplatform=<quorum name>
+       Override the default LLMQ type used for Platform. (default: llmq_100_67,
+       devnet-only)
 
   -minimumdifficultyblocks=<n>
        The number of blocks that can be mined with the minimum difficulty at

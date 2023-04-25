@@ -12,7 +12,7 @@ With the exception of the [`qfcommit` message](../reference/p2p-network-quorum-m
 
 *Added in protocol version 70214 of Dash Core*
 
-> 🚧 
+> 🚧
 >
 > This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
@@ -21,15 +21,15 @@ The [`qcontrib` message](../reference/p2p-network-quorum-messages.md#qcontrib) i
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
 | 1 | llmqType | uint8_t | The type of LLMQ
-| 32 | quorumHash | uint256 | 	The quorum identifier
+| 32 | quorumHash | uint256 |  The quorum identifier
 | 32 | proTxHash | uint256 | The [ProRegTx](../reference/transactions-special-transactions.md#proregtx) hash of the complaining member
 | 1-9 | vvecSize | compactSize uint | The size of the verification vector
 | 48 * `vvecSize` | vvec | BLSPubKey[] | The verification vector
-| 48 | ephemeralPubKey | BLSPubKey | Ephemeral BLS public key used to encrypt secret key contributions
+| 48 | ephemeralPubKey | BLSPubKey | Ephemeral BLS public key used to encrypt secret key contributions<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
 | 32 | iv | uint256 | Initialization vector
 | 1-9 | skCount | compactSize uint | Number of encrypted secret key contributions
 | (1 + 32) * (`skCount`) | skContributions | byte[] | Secret key contributions encrypted to recipient masternodes’ BLS public operator key.<br><br>Each contribution consists of:<br>- Size: 1 byte<br>- Secret Key: 32 bytes
-| 96 | sig | byte[] | BLS signature, signed with the operator key of the contributing masternode
+| 96 | sig | byte[] | BLS signature, signed with the operator key of the contributing masternode<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
 
 More information can be found in the [Contribution phase section of DIP6](https://github.com/dashpay/dips/blob/master/dip-0006.md#2-contribution-phase).
 
@@ -93,27 +93,27 @@ e000da1aeda5f98ec9e64b801681bfc1 ........... BLS signature (Operator Key)
 
 *Added in protocol version 70214 of Dash Core*
 
-> 🚧 
+> 🚧
 >
 > This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qcomplaint` message](../reference/p2p-network-quorum-messages.md#qcomplaint) is used to notify other members in the DKG process of any members that provided no contribution or an invalid secret key contribution. The notifications are divided into 2 fields:
 
- - `badMembers` - Sets a bit for each member that failed to provide a contribution
- - `complaints` - Sets a bit for each member that provided an invalid contribution
+* `badMembers` - Sets a bit for each member that failed to provide a contribution
+* `complaints` - Sets a bit for each member that provided an invalid contribution
 
 If a threshold number of quorum participants indicate a masternode didn't contribute, that masternode will be excluded from the quorum. Members that simply have a complaint against them are given an opportunity to respond (via a [`qjustify` message](../reference/p2p-network-quorum-messages.md#qjustify)) to attempt to prove to all participants that they did participate.
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
 | 1 | llmqType | uint8_t | The type of LLMQ
-| 32 | quorumHash | uint256 | 	The quorum identifier
+| 32 | quorumHash | uint256 |  The quorum identifier
 | 32 | proTxHash | uint256 | The [ProRegTx](../reference/transactions-special-transactions.md#proregtx) hash of the complaining member
 | 1-9 | badBitSize | compactSize uint | Number of bits in the bad members bitvector
 | (`badBitSize` + 7) / 8 | badMembers | byte[] | The bad members bitvector
 | 1-9 | complaintsBitSize | compactSize uint | Number of bits in the complaints bitvector
 | (`complaints`<br>`BitSize` + 7) / 8 | complaints | byte[] | The complaints bitvector
-| 96 | sig | byte[] | BLS signature, signed with the operator key of the contributing masternode
+| 96 | sig | byte[] | BLS signature, signed with the operator key of the contributing masternode<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
 
 More information can be found in the [Complaining phase section of DIP6](https://github.com/dashpay/dips/blob/master/dip-0006.md#3-complaining-phase).
 
@@ -146,13 +146,14 @@ bb632eeb60f29e351963032a673abd61
 
 *Added in protocol version 70219 of Dash Core*
 
-> 🚧 
+> 🚧
 >
 > This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qdata` message](../reference/p2p-network-quorum-messages.md#qdata) is used to send quorum DKG data to a node that has requested it via a [`qgetdata` message](../reference/p2p-network-quorum-messages.md#qgetdata). The response will include one or more of the following depending on what was requested:
-- Quorum verification vector for the request quorum
-- Encrypted contributions for the request Protx hash
+
+* Quorum verification vector for the request quorum
+* Encrypted contributions for the request Protx hash
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -170,7 +171,6 @@ The [`qdata` message](../reference/p2p-network-quorum-messages.md#qdata) is used
 | --- | --- | --- | --- |
 | 1-9 | vvecSize | compactSize uint | The size of the verification vector
 | 48 * `vvecSize` | vvec | BLSPubKey[] | The verification vector
-
 
 **Encrypted Contributions**
 
@@ -227,7 +227,7 @@ Data (Verification Vectors)
 
 *Added in protocol version 70219 of Dash Core*
 
-> 🚧 
+> 🚧
 >
 > This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
@@ -258,7 +258,7 @@ c7ccb13df0c0e950b4d1b737808c2c72 ........... ProRegTx hash
 
 *Added in protocol version 70214 of Dash Core*
 
-> 🚧 
+> 🚧
 >
 > This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
@@ -267,11 +267,11 @@ The [`qjustify` message](../reference/p2p-network-quorum-messages.md#qjustify) i
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
 | 1 | llmqType | uint8_t | The type of LLMQ
-| 32 | quorumHash | uint256 | 	The quorum identifier
+| 32 | quorumHash | uint256 |  The quorum identifier
 | 32 | proTxHash | uint256 | The [ProRegTx](../reference/transactions-special-transactions.md#proregtx) hash of the complaining member
 | 1-9 | skContributions<br>Count | compactSize uint | Number of unencrypted secret key contributions
 | 36 * `skContributions`<br>`Count` | skContribution | SKContribution | Member index and secret key contribution for members justifying complaints
-| 96 | sig | byte[] | BLS signature, signed with the operator key of the contributing masternode
+| 96 | sig | byte[] | BLS signature, signed with the operator key of the contributing masternode<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
 
 An `SKContribution` consists of:
 
@@ -321,7 +321,7 @@ Contribution #2
 
 *Added in protocol version 70214 of Dash Core*
 
-> 🚧 
+> 🚧
 >
 > This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
@@ -334,10 +334,10 @@ The [`qpcommit` message](../reference/p2p-network-quorum-messages.md#qpcommit) i
 | 32 | proTxHash | uint256 | The [ProRegTx](../reference/transactions-special-transactions.md#proregtx) hash of the complaining member
 | 1-9 | validMembersSize | compactSize uint | Bit size of the `validMembers` bitvector
 | (`valid`<br>`MembersSize` + 7) / 8 | validMembers | byte[] | Bitset of valid members in this commitment
-| 48 | quorumPublicKey | uint256 | The quorum public key
+| 48 | quorumPublicKey | uint256 | The quorum public key<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
 | 32 | quorumVvecHash | byte[] | The hash of the quorum verification vector
-| 96 | quorumSig | BLSSig | Threshold signature, signed with the threshold signature share of the committing member
-| 96 | sig | byte[] | BLS signature, signed with the operator key of the contributing masternode
+| 96 | quorumSig | BLSSig | Threshold signature, signed with the threshold signature share of the committing member<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
+| 96 | sig | byte[] | BLS signature, signed with the operator key of the contributing masternode<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
 
 More information can be found in the [Commitment phase section of DIP6](https://github.com/dashpay/dips/blob/master/dip-0006.md#5-commitment-phase).
 
@@ -383,9 +383,12 @@ The [`qfcommit` message](../reference/p2p-network-quorum-messages.md#qfcommit) i
 
 It is possible to receive multiple valid final commitments for the same DKG session. These should only differ in the number of signers, which can be ignored as long as there are at least `quorumThreshold` number of signers. The set of valid members for these final commitments should always be the same, as each member only creates a single premature commitment. This means that only one set of valid members (and thus only one quorum verification vector and quorum [public key](../resources/glossary.md#public-key)) can gain a majority. If the threshold is not reached, there will be no valid final commitment.
 
-> 📘 Version 2
+> 📘 Versions
 >
-> Dash Core 18.0 updated the `qfcommit` message to support a new message of quorum creation for some quorum types. Note the addition of the `quorumIndex` field in version 2 messages.
+> * Version 2 (Dash Core 18.0) - updated the `qfcommit` message to support a [new method](https://github.com/dashpay/dips/blob/master/dip-0024.md) of quorum creation for some quorum types. Note the addition of the `quorumIndex` field in version 2 messages.
+> * Versions 3/4 (Dash Core 19.0) - `quorumPublicKey`, `quorumSig`, and `sig` serialized using the basic BLS scheme (versions <3 use the legacy BLS scheme).
+>
+> See the *Version differences summary* table below for more information.
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -397,16 +400,25 @@ It is possible to receive multiple valid final commitments for the same DKG sess
 | (bitSize + 7) / 8 | signers | byte[] | Bitset representing the aggregated signers of this final commitment
 | 1-9 | validMembersSize | compactSize uint | Bit size of the `validMembers` bitvector
 | (bitSize + 7) / 8 | validMembers | byte[] | Bitset of valid members in this commitment
-| 48 | quorumPublicKey | BLSPubKey | The quorum public key
+| 48 | quorumPublicKey | BLSPubKey | The quorum public key<br>**Note**: serialization varies based on `version`:<br>\* Version <3 - legacy BLS scheme<br>\* Version >= 3 - basic BLS scheme
 | 32 | quorumVvecHash | uint256 | The hash of the quorum verification vector
-| 96 | quorumSig | byte[] | Recovered threshold signature
-| 96 | sig | byte[] | Aggregated BLS signatures from all included commitments
+| 96 | quorumSig | byte[] | Recovered threshold signature<br>**Note**: serialization varies based on `version`:<br>\* Version <3 - legacy BLS scheme<br>\* Version >= 3 - basic BLS scheme
+| 96 | sig | byte[] | Aggregated BLS signatures from all included commitments<br>**Note**: serialization varies based on `version`:<br>\* Version <3 - legacy BLS scheme<br>\* Version >= 3 - basic BLS scheme
+
+**Version differences summary**
+
+| Version | Version Description | `quorumIndex` field |
+| :-: | - | :-: |
+| 1 | Non-rotated quorum `qfcommit` serialized using legacy BLS scheme | Absent |
+| 2 | [Rotated quorum](https://github.com/dashpay/dips/blob/master/dip-0024.md) `qfcommit` serialized using legacy BLS scheme     | Present |
+| 3 | Non-rotated quorum `qfcommit` serialized using basic BLS scheme  | Absent  |
+| 4 | [Rotated quorum](https://github.com/dashpay/dips/blob/master/dip-0024.md) `qfcommit` serialized using basic BLS scheme      | Present |
 
 More information can be found in the [Finalization phase section of DIP6](https://github.com/dashpay/dips/blob/master/dip-0006.md#6-finalization-phase).
 
-The following annotated hexdump shows a _version 1_ [`qfcommit` message](../reference/p2p-network-quorum-messages.md#qfcommit). (The message header has been omitted.)
+The following annotated hexdump shows a *version 1* [`qfcommit` message](../reference/p2p-network-quorum-messages.md#qfcommit). (The message header has been omitted.)
 
-``` text
+``` text Version 1 qfcommit
 0100 ....................................... Message Version: 1
 01 ......................................... LLMQ Type: 1 (LLMQ_50_60)
 
@@ -441,7 +453,7 @@ d78dc67e236b55086cbb0624c7f4abcc
 c8a042dc51aa58a26c134405fc3234ff ........... Quorum Aggregate BLS Sig
 ```
 
-The following annotated hexdump shows a _version 2_ [`qfcommit` message](../reference/p2p-network-quorum-messages.md#qfcommit). (The message header has been omitted.)
+The following annotated hexdump shows a *version 2* [`qfcommit` message](../reference/p2p-network-quorum-messages.md#qfcommit). (The message header has been omitted.)
 
 ``` text
 0200 ....................................... Message Version: 2
@@ -490,7 +502,7 @@ With the exception of the [`qsendrecsigs` message](../reference/p2p-network-quor
 
 *Added in protocol version 70214 of Dash Core*
 
-> 🚧 
+> 🚧
 >
 > This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
@@ -553,7 +565,7 @@ Signature Share Batch 2
 
 *Added in protocol version 70214 of Dash Core*
 
-> 🚧 
+> 🚧
 >
 > This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
@@ -618,7 +630,7 @@ The [`qsigrec` message](../reference/p2p-network-quorum-messages.md#qsigrec) is 
 | 32 | quorumHash | uint256 | The quorum hash
 | 32 | id | uint256 | The signing request id
 | 32 | msgHash | uint256 | The message hash
-| 96 | sig | byte[] | The final recovered BLS threshold signature
+| 96 | sig | byte[] | The final recovered BLS threshold signature<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
 
 More information can be found in the [Recovered threshold signatures section of DIP7](https://github.com/dashpay/dips/blob/master/dip-0007.md#recovered-threshold-signatures).
 
@@ -650,7 +662,7 @@ a11e5e7930deccc3e11a931fc9524f06 ........... LLMQ BLS Signature (96 bytes)
 
 *Added in protocol version 70214 of Dash Core*
 
-> 🚧 
+> 🚧
 >
 > This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
@@ -707,7 +719,7 @@ Session Announcement 2
 
 *Added in protocol version 70217 of Dash Core*
 
-> 🚧 
+> 🚧
 >
 > This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
@@ -724,7 +736,7 @@ The [`qsigshare` message](../reference/p2p-network-quorum-messages.md#qsigshare)
 | 32 | quorumHash | uint256 | The quorum hash
 | 32 | id | uint256 | The signing request id
 | 32 | msgHash | uint256 | The message hash
-| 96 | sigShare | byte[] | The final recovered BLS threshold signature
+| 96 | sigShare | byte[] | The final recovered BLS threshold signature<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
 
 The following annotated hexdump shows a [`qsigshare` message](../reference/p2p-network-quorum-messages.md#qsigshare). (The message header has been omitted.)
 
@@ -756,13 +768,13 @@ a277386b48a7ae627d075da826aab694 ......... Signature Share
 
 *Added in protocol version 70214 of Dash Core*
 
-> 🚧 
+> 🚧
 >
 > This message is used for intra-quorum communication and is only sent to the [masternodes](../resources/glossary.md#masternode) in the LLMQ and [nodes](../resources/glossary.md#node) that are monitoring in Watch Mode for auditing/debugging purposes.
 
 The [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv) (quorum signature inventory) announces one or more quorum signature share inventories known by the transmitting peer.
 
-Info callout 
+Info callout
 
 > 📘
 >

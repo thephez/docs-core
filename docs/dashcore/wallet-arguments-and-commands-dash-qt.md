@@ -12,7 +12,7 @@ dash-qt [command-line options]
 
 Dash Core QT GUI includes all the same command line options as [dashd](../dashcore/wallet-arguments-and-commands-dashd.md) with the exception of `-daemon`. It also provides additional options for UI as described below.
 
-### UI Options:
+### UI Options
 
 ```text
   -choosedatadir

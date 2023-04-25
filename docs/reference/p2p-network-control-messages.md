@@ -55,7 +55,6 @@ Each encapsulated network IP address currently uses the following structure:
 | Varies | addr | Vector<uint8_t> | Network address. The interpretation depends on networkID.
 | 2     | port       | uint16_t  | Port number in **big endian byte order**.  Note that Dash Core will only connect to nodes with non-standard port numbers as a last resort for finding peers.  This is to prevent anyone from trying to use the network to disrupt non-Dash services that run on other ports.
 
-
 The following annotated hexdump shows part of an `addrv2` message. (The [message header](../resources/glossary.md#message-header) has been omitted.)
 
 ``` text
@@ -290,76 +289,6 @@ To allow nodes to keep track of latency, the [`pong` message](../reference/p2p-n
 
 The format of the [`pong` message](../reference/p2p-network-control-messages.md#pong) is identical to the [`ping` message](../reference/p2p-network-control-messages.md#ping); only the message header differs.
 
-## reject
-
-*Added in protocol version 70002 as described by BIP61.*
-
-The [`reject` message](../reference/p2p-network-control-messages.md#reject) informs the receiving [node](../resources/glossary.md#node) that one of its previous messages has been rejected.
-
-| Bytes    | Name          | Data Type        | Description
-|----------|---------------|------------------|--------------
-| *Varies* | message bytes | compactSize uint | The number of bytes in the following message field.
-| *Varies* | message       | string           | The type of message rejected as ASCII text *without null padding*.  For example: "tx", "block", or "version".
-| 1        | code          | char             | The reject message code.  See the table below.
-| *Varies* | reason bytes  | compactSize uint | The number of bytes in the following reason field.  May be 0x00 if a text reason isn't provided.
-| *Varies* | reason        | string           | The reason for the rejection in ASCII text.  This should not be displayed to the user; it is only for debugging purposes.
-| *Varies* | extra data    | *varies*         | Optional additional data provided with the rejection.  For example, most rejections of [`tx` messages](../reference/p2p-network-data-messages.md#tx) or [`block` messages](../reference/p2p-network-data-messages.md#block) include the hash of the rejected transaction or block header.  See the code table below.
-
-The following table lists message reject codes.  Codes are tied to the type of message they reply to; for example there is a 0x10 reject code for transactions and a 0x10 reject code for blocks.
-
-| Code | In Reply To       | Extra Bytes | Extra Type | Description
-|------|-------------------|-------------|------------|----------------
-| 0x01 | *any message*     | 0           | N/A        | Message could not be decoded.  Be careful of [`reject` message](../reference/p2p-network-control-messages.md#reject) feedback loops where two peers each don't understand each other's [`reject` messages](../reference/p2p-network-control-messages.md#reject) and so keep sending them back and forth forever.
-| 0x10 | [`block` message](../reference/p2p-network-data-messages.md#block)   | 32          | char[32]   | Block is invalid for some reason (invalid proof-of-work, invalid signature, etc).  Extra data may include the rejected block's header hash.
-| 0x10 | [`tx` message](../reference/p2p-network-data-messages.md#tx)      | 32          | char[32]   | Transaction is invalid for some reason (invalid signature, output value greater than input, etc.).  Extra data may include the rejected transaction's TXID.
-| 0x10 | `ix` message      | 32          | char[32]   | InstantSend transaction is invalid for some reason (invalid tx lock request, conflicting tx lock request, etc.).  Extra data may include the rejected transaction's TXID.
-| 0x11 | [`block` message](../reference/p2p-network-data-messages.md#block)   | 32          | char[32]   | The block uses a version that is no longer supported.  Extra data may include the rejected block's header hash.
-| 0x11 | [`version` message](../reference/p2p-network-control-messages.md#version) | 0           | N/A        | Connecting node is using a protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`dsa` message](../reference/p2p-network-privatesend-messages.md#dsa)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`dsc` message](../reference/p2p-network-privatesend-messages.md#dsc)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`dssu` message](../reference/p2p-network-privatesend-messages.md#dssu)    | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) | 0           | N/A        | Connecting node is using a governance protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`govobj` message](../reference/p2p-network-governance-messages.md#govobj)  | 0           | N/A        | Connecting node is using a governance protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote) | 0           | N/A        | Connecting node is using a governance protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | `mnget` message   | 0           | N/A        | Connecting node is using a masternode payment protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | `mnw` message     | 0           | N/A        | Connecting node is using a masternode payment protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | `txlvote` message | 0           | N/A        | Connecting node is using an InstantSend protocol version that the rejecting node considers obsolete and unsupported.
-| 0x12 | [`tx` message](../reference/p2p-network-data-messages.md#tx)      | 32          | char[32]   | Duplicate input spend (double spend): the rejected transaction spends the same input as a previously-received transaction.  Extra data may include the rejected transaction's TXID.
-| 0x12 | [`version` message](../reference/p2p-network-control-messages.md#version) | 0           | N/A        | More than one [`version` message](../reference/p2p-network-control-messages.md#version) received in this connection.
-| 0x40 | [`tx` message](../reference/p2p-network-data-messages.md#tx)      | 32          | char[32]   | The transaction will not be mined or relayed because the rejecting node considers it non-standard---a transaction type or version unknown by the server.  Extra data may include the rejected transaction's TXID.
-| 0x41 | [`tx` message](../reference/p2p-network-data-messages.md#tx)      | 32          | char[32]   | One or more output amounts are below the dust threshold.  Extra data may include the rejected transaction's TXID.
-| 0x42 | [`tx` message](../reference/p2p-network-data-messages.md#tx)      |             | char[32]   | The transaction did not have a large enough fee or priority to be relayed or mined.  Extra data may include the rejected transaction's TXID.
-| 0x43 | [`block` message](../reference/p2p-network-data-messages.md#block)   | 32          | char[32]   | The block belongs to a block chain which is not the same block chain as provided by a compiled-in checkpoint.  Extra data may include the rejected block's header hash.
-
-Reject Codes
-
-| Code | Description
-|------|--------------
-| 0x01 | Malformed
-| 0x10 | Invalid
-| 0x11 | Obsolete
-| 0x12 | Duplicate
-| 0x40 | Non-standard
-| 0x41 | Dust
-| 0x42 | Insufficient fee
-| 0x43 | Checkpoint
-
-The annotated hexdump below shows a [`reject` message](../reference/p2p-network-control-messages.md#reject). (The message header has been omitted.)
-
-``` text
-02 ................................. Number of bytes in message: 2
-7478 ............................... Type of message rejected: tx
-12 ................................. Reject code: 0x12 (duplicate)
-15 ................................. Number of bytes in reason: 21
-6261642d74786e732d696e707574732d
-7370656e74 ......................... Reason: bad-txns-inputs-spent
-394715fcab51093be7bfca5a31005972
-947baf86a31017939575fb2354222821 ... TXID
-```
-
 ## sendaddrv2
 
 *Added in protocol version 70220 of Dash Core*
@@ -445,27 +374,29 @@ The [`spork` message](../reference/p2p-network-control-messages.md#spork) tells 
 
 | Spork ID | Num. | Name | Description |
 | :----------: | :----------: | ----------- | ----------- |
-| 10001 | 2 | `INSTANTSEND_ENABLED` | **_Updated in Dash Core 0.17.0_**<br>Turns InstantSend on and off network wide. Also determines if new mempool transactions should be locked or not.
+| 10001 | 2 | `INSTANTSEND_ENABLED` | ***Updated in Dash Core 0.17.0***<br>Turns InstantSend on and off network wide. Also determines if new mempool transactions should be locked or not.
 | 10002 | 3 | `INSTANTSEND_BLOCK_`<br>`FILTERING` | Turns on and off InstantSend block filtering
 | 10008 | 9 | `SUPERBLOCKS_ENABLED` | Superblocks are enabled (10% of the block reward allocated to fund the dash treasury for funding approved proposals)
 | 10016 | 17 | `SPORK_17_QUORUM_DKG_`<br>`ENABLED` | Enable long-living masternode quorum (LLMQ) distributed key generation (DKG). When enabled, simple PoSe  scoring and banning is active as well.
 | 10018 | 19 | `SPORK_19_CHAINLOCKS_`<br>`ENABLED` | Enable LLMQ-based ChainLocks.
-| 10020 | 21 | `SPORK_21_QUORUM_ALL_`<br>`CONNECTED` | **_Added in Dash Core 0.16.0_**<br>Enable connections between all masternodes in a quorum to optimize the signature recovery process.<br>Note: Prior to Dash Core 0.17.0 this spork also enforced [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
+| 10020 | 21 | `SPORK_21_QUORUM_ALL_`<br>`CONNECTED` | ***Added in Dash Core 0.16.0***<br>Enable connections between all masternodes in a quorum to optimize the signature recovery process.<br>Note: Prior to Dash Core 0.17.0 this spork also enforced [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
 | 10022 | 23 | `SPORK_23_QUORUM_POSE`<br>`CONNECTED` | **Added in Dash Core 0.17.0**<br>Enforce [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
 
 > 📘 Spork 2 Values
 >
 > As of Dash Core 0.17.0, spork 2 supports two different enabled values:
-> - `0` - Masternodes create locks for all transactions
-> - `1` - Masternodes only create locks for transactions included in a block. Transactions in the mempool are not locked.
+>
+> * `0` - Masternodes create locks for all transactions
+> * `1` - Masternodes only create locks for transactions included in a block. Transactions in the mempool are not locked.
 >
 >Mode 1 is only for use in the event of a sustained overload of InstantSend to ensure that ChainLocks can remain operational. See [PR 4024](https://github.com/dashpay/dash/pull/4024) for details.
 
 > 📘 Spork 21 and 23 Values
 >
 > Spork 21 and 23 support two different enabled values:
-> - `0` - The spork is active for all quorums regardless of quorum size.
-> - `1` - The spork is active only for quorums which have a member size less than 100.
+>
+> * `0` - The spork is active for all quorums regardless of quorum size.
+> * `1` - The spork is active only for quorums which have a member size less than 100.
 >
 > Mode 1 is only for use in the event of a sustained overload of InstantSend to ensure that ChainLocks can remain operational. See [PR 4024](https://github.com/dashpay/dash/pull/4024) for details.
 
@@ -478,13 +409,13 @@ The following sporks were used in the past but are no longer necessary and have 
 
 | Spork ID | Num. | Name | Description |
 | :----------: | :----------: | ----------- | ----------- |
-| _10004_ | _5_ | `INSTANTSEND_MAX_VALUE` | _Removed in Dash Core 0.15.0.<br>Controls the max value for an InstantSend transaction (currently 2000 DASH)_
-| _10005_ | _6_ | `NEW_SIGS` | _Removed in Dash Core 0.16.0.<br>Turns on and off new signature format for Dash-specific messages_
-| _10011_ | _12_ | `RECONSIDER_BLOCKS` | _Removed in Dash Core 0.15.0.<br>Forces reindex of a specified number of blocks to recover from unintentional network forks_
-| _10014_ | _15_ | `DETERMINISTIC_MNS_`<br>`ENABLED` | _Removed in Dash Core 0.16.0.<br>Deterministic masternode lists are enabled_
-| _10015_ | _16_ | `INSTANTSEND_AUTOLOCKS` | _Removed in Dash Core 0.16.0.<br>Automatic InstantSend for transactions with <=4 inputs (also eliminates the special InstantSend fee requirement for these transactions)_
-| _10019_ | _20_ | `SPORK_20_INSTANTSEND_`<br>`LLMQ_BASED` | _Removed in Dash Core 0.16.0.<br>Enable LLMQ-based InstantSend._
-| _10021_ | _22_ | `SPORK_22_PS_MORE_`<br>`PARTICIPANTS` | _Removed in Dash Core 0.17.0_<br>_Increase the maximum number of participants in CoinJoin sessions._
+| *10004* | *5* | `INSTANTSEND_MAX_VALUE` | _Removed in Dash Core 0.15.0.<br>Controls the max value for an InstantSend transaction (currently 2000 DASH)_
+| *10005* | *6* | `NEW_SIGS` | _Removed in Dash Core 0.16.0.<br>Turns on and off new signature format for Dash-specific messages_
+| *10011* | *12* | `RECONSIDER_BLOCKS` | _Removed in Dash Core 0.15.0.<br>Forces reindex of a specified number of blocks to recover from unintentional network forks_
+| *10014* | *15* | `DETERMINISTIC_MNS_`<br>`ENABLED` | _Removed in Dash Core 0.16.0.<br>Deterministic masternode lists are enabled_
+| *10015* | *16* | `INSTANTSEND_AUTOLOCKS` | _Removed in Dash Core 0.16.0.<br>Automatic InstantSend for transactions with <=4 inputs (also eliminates the special InstantSend fee requirement for these transactions)_
+| *10019* | *20* | `SPORK_20_INSTANTSEND_`<br>`LLMQ_BASED` | _Removed in Dash Core 0.16.0.<br>Enable LLMQ-based InstantSend._
+| *10021* | *22* | `SPORK_22_PS_MORE_`<br>`PARTICIPANTS` | *Removed in Dash Core 0.17.0*<br>*Increase the maximum number of participants in CoinJoin sessions.*
 
 To verify `vchSig`, compare the hard-coded spork public key (`strSporkPubKey` from [`src/chainparams.cpp`](https://github.com/dashpay/dash/blob/eaf90b77177efbaf9cbed46e822f0d794f1a0ee5/src/chainparams.cpp#L158)) with the public key recovered from the [`spork` message](../reference/p2p-network-control-messages.md#spork)'s hash and `vchSig` value (implementation details for Dash Core can be found in `CPubKey::RecoverCompact`). The hash is a double SHA-256 hash of:
 

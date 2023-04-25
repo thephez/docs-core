@@ -64,6 +64,10 @@ Usage:
        Override the default LLMQ type used for InstantSendDIP0024. (default:
        llmq_60_75, devnet-only)
 
+  -llmqplatform=<quorum name>
+       Override the default LLMQ type used for Platform. (default: llmq_100_67,
+       devnet-only)
+
   -minimumdifficultyblocks=<n>
        The number of blocks that can be mined with the minimum difficulty at
        the start of a chain (default: 0, devnet-only)

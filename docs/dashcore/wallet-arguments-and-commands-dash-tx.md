@@ -10,7 +10,7 @@ Usage:
   dash-tx [options] -create [commands]   Create hex-encoded dash transaction
 ```
 
-### Options:
+### Options
 
 ```
   -?
@@ -26,7 +26,8 @@ Usage:
        Output only the hex-encoded transaction id of the resultant transaction.
 ```
 
-### Chain selection options:
+### Chain selection options
+
 ```
   -devnet=<name>
        Use devnet chain with provided name
@@ -56,6 +57,10 @@ Usage:
        Override the default LLMQ type used for InstantSendDIP0024. (default:
        llmq_60_75, devnet-only)
 
+  -llmqplatform=<quorum name>
+       Override the default LLMQ type used for Platform. (default: llmq_100_67,
+       devnet-only)
+
   -minimumdifficultyblocks=<n>
        The number of blocks that can be mined with the minimum difficulty at
        the start of a chain (default: 0, devnet-only)
@@ -68,7 +73,8 @@ Usage:
        Use the test chain
 ```
 
-### Commands:
+### Commands
+
 ```
   delin=N
        Delete input N from TX
@@ -111,7 +117,8 @@ Usage:
        objects.
 ```
 
-### Register Commands:
+### Register Commands
+
 ```
   load=NAME:FILENAME
        Load JSON file FILENAME into register NAME

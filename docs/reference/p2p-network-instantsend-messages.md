@@ -14,7 +14,7 @@ Once a [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig)
 | --- | --- | --- | --- |
 | 4 | nHeight | int32_t | Block height
 | 32 | blockHash | uint256 | Block hash
-| 96 | sig | CBLSSignature | LLMQ BLS signature
+| 96 | sig | CBLSSignature | LLMQ BLS signature<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
 
 The following annotated hexdump shows a [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig). (The message header has been omitted.)
 
@@ -90,7 +90,7 @@ The [`isdlock` message](../reference/p2p-network-instantsend-messages.md#isdlock
 | 36 * `inputsSize`| inputs | COutPoint | Outpoints used in the transaction |
 | 32 | txid | uint256 | TXID of the locked transaction |
 | 32 | cycleHash | uint256 | Block hash of first block of the cycle in which the quorum signing this islock is active |
-| 96 | sig | byte[] | LLMQ BLS Signature |
+| 96 | sig | byte[] | LLMQ BLS Signature<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation |
 
 The following annotated hexdump shows a [`isdlock` message](../reference/p2p-network-instantsend-messages.md#isdlock). (The message header has been omitted.)
 

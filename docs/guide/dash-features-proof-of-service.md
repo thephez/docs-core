@@ -10,7 +10,7 @@ The following table lists the aspects of the DKG process a masternode must compl
 | :-: | - |
 | 70213+ | Exchange required messages (quorum contributions and quorum justifications) with other quorum members during the [LLMQ DKG process](../guide/dash-features-masternode-quorums.md#llmq-creation-dkg) (Dash Core 0.13.0+) |
 | 70218+ | Have an open P2P port ([Dash Core 0.16.0+](https://github.com/dashpay/dash/pull/3390)). _Enforcement of this requirement is dependent on Spork 23 being enabled_ |
-| 70218+ | Have a protocol version => [`MIN_MASTERNODE_PROTO_VERSION`](https://github.com/dashpay/dash/blob/v0.16.x/src/version.h#L26). During updates where this version is increased, masternodes will begin receiving PoSe score increases once > 80% of masternodes have upgrade ([Dash Core 0.16.0+](https://github.com/dashpay/dash/pull/3390)). _Enforcement of this requirement is dependent on Spork 23 being enabled_ |
+| 70218+ | Have a protocol version => [`MIN_MASTERNODE_PROTO_VERSION`](https://github.com/dashpay/dash/blob/v19.x/src/version.h#L23). During updates where this version is increased, masternodes will begin receiving PoSe score increases once > 80% of masternodes have upgrade ([Dash Core 0.16.0+](https://github.com/dashpay/dash/pull/3390)). _Enforcement of this requirement is dependent on Spork 23 being enabled_ |
 
 ## Proof of Service Score Weighting
 
@@ -34,9 +34,9 @@ The current PoSe scoring algorithm increases the PoSe score by 66% of the maximu
 
 For example, using the values from above with 5000 masternodes:
 
-- In the first 5000 block cycle, two DKG failures occur without the PoSe score exceeding the maximum. This happens since a sufficient number of blocks are mined prior to the second failure to drop the PoSe score below the threshold (`< 5000 - 3333`) that would result in banning.
+* In the first 5000 block cycle, two DKG failures occur without the PoSe score exceeding the maximum. This happens since a sufficient number of blocks are mined prior to the second failure to drop the PoSe score below the threshold (`< 5000 - 3333`) that would result in banning.
 
-- In the second 5000 block cycle, the second DKG failure occurs too close to the first and results in the PoSe score exceeding the maximum limit. This results in the masternode receiving a PoSe Ban.
+* In the second 5000 block cycle, the second DKG failure occurs too close to the first and results in the PoSe score exceeding the maximum limit. This results in the masternode receiving a PoSe Ban.
 
 | Payment Cycle | Block Number | Event | Score Change | PoSe Score | MN Status |
 | :---: | :--- | --- | :---: | :---: | :---: |

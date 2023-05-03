@@ -1,5 +1,5 @@
 *.db
 *.exe
 _build
-.DS_Store
+**/.DS_Store
 .vscode

@@ -41,6 +41,10 @@ hoverxref_role_types = {
     'hoverxref': 'tooltip',
 }
 
+hoverxref_roles = [
+    'term',
+]
+
 # -- Myst parser configuration -----------------------------------------------
 # Auto-generate header anchors for md headings
 myst_heading_anchors = 5

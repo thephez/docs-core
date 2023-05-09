@@ -1,3 +1,7 @@
+```{eval-rst}
+.. _guide-features-instantsend:
+```
+
 # InstantSend
 
 Dash Core's [InstantSend](../resources/glossary.md#instantsend) feature provides a way to lock transaction [inputs](../resources/glossary.md#input) and enable secure, instantaneous [transactions](../resources/glossary.md#transaction). The [network](../resources/glossary.md#network) automatically attempts to upgrade any qualifying transaction to InstantSend without a need for the sending [wallet](../resources/glossary.md#wallet) to explicitly request it.

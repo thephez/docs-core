@@ -1,3 +1,7 @@
+```{eval-rst}
+.. _ref-txs-special-txs:
+```
+
 # Special Transactions
 
 The [Special Transactions](../resources/glossary.md#special-transactions) framework established by [DIP2](https://github.com/dashpay/dips/blob/master/dip-0002.md) enabled the implementation of new on-chain features and [consensus](../resources/glossary.md#consensus) mechanisms. These transactions provide the flexibility to expand beyond the financial uses of classical transactions. DIP2 transactions modified classical transactions by:
@@ -20,6 +24,10 @@ Classical (financial) transactions have a `type` of 0 while special transactions
 | 0.13.0  | 3          | 5       | [CbTx](#cbtx)               | Masternode List Merkle Proof             | hex     | compactSize uint |
 | 0.13.0  | 3          | 6       | [QcTx](#qctx)               | Long-Living Masternode Quorum Commitment | hex     | compactSize uint |
 | 18.0.0  | 3          | 7       | [MnHfTx](#mnhftx)           | Masternode hard fork signal              | hex     | compactSize uint |
+
+```{eval-rst}
+.. _ref-txs-proregtx:
+```
 
 ## ProRegTx
 
@@ -248,6 +256,10 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
 
 ```
 
+```{eval-rst}
+.. _ref-txs-proupservtx:
+```
+
 ## ProUpServTx
 
 *Added in protocol version 70213 of Dash Core as described by [DIP3](https://github.com/dashpay/dips/blob/master/dip-0003.md)*
@@ -384,6 +396,10 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
   "instantlock_internal": false,
   "chainlock": true
 }
+```
+
+```{eval-rst}
+.. _ref-txs-proupregtx:
 ```
 
 ## ProUpRegTx
@@ -527,6 +543,10 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
 
 ```
 
+```{eval-rst}
+.. _ref-txs-prouprevtx:
+```
+
 ## ProUpRevTx
 
 *Added in protocol version 70213 of Dash Core as described by [DIP3](https://github.com/dashpay/dips/blob/master/dip-0003.md)*
@@ -646,6 +666,10 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
   "instantlock_internal": false,
   "chainlock": false
 }
+```
+
+```{eval-rst}
+.. _ref-txs-cbtx:
 ```
 
 ## CbTx
@@ -818,6 +842,10 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
 }
 ```
 
+```{eval-rst}
+.. _ref-txs-qctx:
+```
+
 ## QcTx
 
 *Added in protocol version 70213 of Dash Core as described by [DIP6](https://github.com/dashpay/dips/blob/master/dip-0006.md)*
@@ -956,6 +984,10 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
   "chainlock": true
 }
 
+```
+
+```{eval-rst}
+.. _ref-txs-mnhftx:
 ```
 
 ## MnHfTx

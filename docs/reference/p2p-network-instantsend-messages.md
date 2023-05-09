@@ -6,7 +6,7 @@ The following network messages all help control the InstantSend feature of Dash.
 
 *Added in protocol version 70214 of Dash Core*
 
-The [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig) is used to indicate a successful ChainLock for the designated [block height](../resources/glossary.md#block-height). The Chainlock ensures that no other [blocks](../resources/glossary.md#block) can replace the one with the indicated block hash. This determination is made by agreement of a [Long-Living Masternode Quorum](../resources/glossary.md#long-living-masternode-quorum) (LLMQ) which creates the BLS signature in the message.
+The [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig) is used to indicate a successful ChainLock for the designated [block height](../resources/glossary.md#block-height). The Chainlock ensures that no other {term}`blocks` can replace the one with the indicated block hash. This determination is made by agreement of a [Long-Living Masternode Quorum](../resources/glossary.md#long-living-masternode-quorum) (LLMQ) which creates the BLS signature in the message.
 
 Once a [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig) is received, clients must reject any other blocks for the indicated block height as described in [DIP8 (ChainLocks)](https://github.com/dashpay/dips/blob/master/dip-0008.md). This increases security by preventing reorganization of a block with a ChainLock (and all blocks below it).
 

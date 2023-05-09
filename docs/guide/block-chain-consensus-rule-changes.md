@@ -1,6 +1,6 @@
 # Consensus Rule Changes
 
-To maintain [consensus](../resources/glossary.md#consensus), all full [nodes](../resources/glossary.md#node) validate [blocks](../resources/glossary.md#block) using the same [consensus rules](../resources/glossary.md#consensus-rules). However, sometimes the consensus rules are changed to introduce new features or prevent network abuse. When the new rules are implemented, there will likely be a period of time when non-upgraded nodes follow the old rules and upgraded nodes follow the new rules, creating two possible ways consensus can break:
+To maintain [consensus](../resources/glossary.md#consensus), all full [nodes](../resources/glossary.md#node) validate {term}`blocks` using the same [consensus rules](../resources/glossary.md#consensus-rules). However, sometimes the consensus rules are changed to introduce new features or prevent network abuse. When the new rules are implemented, there will likely be a period of time when non-upgraded nodes follow the old rules and upgraded nodes follow the new rules, creating two possible ways consensus can break:
 
 1. A block following the new consensus rules is accepted by upgraded nodes but rejected by non-upgraded nodes. For example, a new transaction feature is used within a block: upgraded nodes understand the feature and accept it, but non-upgraded nodes reject it because it violates the old rules.
 

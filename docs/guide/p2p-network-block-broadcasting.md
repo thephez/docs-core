@@ -1,6 +1,6 @@
 # Block Broadcasting
 
-When a [miner](../resources/glossary.md#miner) discovers a new [block](../resources/glossary.md#block), it broadcasts the new block to its [peers](../resources/glossary.md#peer) using one of the following methods:
+When a [miner](../resources/glossary.md#miner) discovers a new {term}`block`, it broadcasts the new block to its [peers](../resources/glossary.md#peer) using one of the following methods:
 
 * **[Unsolicited Block Push](../resources/glossary.md#unsolicited-block-push):**
   The miner sends a [`block` message](../reference/p2p-network-data-messages.md#block) to each of its full node peers with the new block. The miner can reasonably bypass the standard relay method in this way because it knows none of its peers already have the just-discovered block.

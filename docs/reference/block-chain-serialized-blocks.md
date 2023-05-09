@@ -1,6 +1,6 @@
 # Serialized Blocks
 
-Under current [consensus rules](../resources/glossary.md#consensus-rules), a [block](../resources/glossary.md#block) is not valid unless its serialized size is less than or equal to 2 MB. All fields described below are counted towards the serialized size.
+Under current [consensus rules](../resources/glossary.md#consensus-rules), a {term}`block` is not valid unless its serialized size is less than or equal to 2 MB. All fields described below are counted towards the serialized size.
 
 | Bytes    | Name         | Data Type        | Description |
 | - | - | - | - |

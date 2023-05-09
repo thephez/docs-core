@@ -4,7 +4,7 @@
 
 | Bytes | Name                | Data Type | Description
 |-------|---------------------|-----------|----------------
-| 4     | version             |  int32_t  | The [block](../resources/glossary.md#block) version number indicates which set of block validation rules to follow. See the list of block versions below.
+| 4     | version             |  int32_t  | The {term}`block` version number indicates which set of block validation rules to follow. See the list of block versions below.
 | 32    | previous block header hash | char[32]  | An X11() hash in internal byte order of the previous block's header.  This ensures no previous block can be changed without also changing this block's header.
 | 32    | merkle root hash    | char[32]  | A SHA256(SHA256()) hash in internal byte order. The merkle root is derived from the hashes of all transactions included in this block, ensuring that none of those transactions can be modified without modifying the header.  See the [merkle trees section](#merkle-trees) below.
 | 4     | time                | uint32_t  | The block time is a Unix epoch time when the miner started hashing the header (according to the miner).  Must be strictly greater than the median time of the previous 11 blocks.  Full nodes will not accept blocks with headers more than two hours in the future according to their clock.
@@ -53,7 +53,7 @@ The [merkle root](../resources/glossary.md#merkle-root) is constructed using all
 
 * Any [input](../resources/glossary.md#input) within this block can spend an [output](../resources/glossary.md#output) which also appears in this block (assuming the spend is otherwise valid). However, the TXID corresponding to the output must be placed at some point before the TXID corresponding to the input. This ensures that any program parsing block chain transactions linearly will encounter each output before it is used as an input.
 
-If a [block](../resources/glossary.md#block) only has a coinbase transaction, the coinbase TXID is used as the merkle root hash.
+If a {term}`block` only has a coinbase transaction, the coinbase TXID is used as the merkle root hash.
 
 If a block only has a coinbase transaction and one other transaction, the TXIDs of those two transactions are placed in order, concatenated as 64 raw bytes, and then SHA256(SHA256()) hashed together to form the merkle root.
 

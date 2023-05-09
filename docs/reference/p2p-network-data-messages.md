@@ -4,7 +4,7 @@ The following network messages all request or provide data related to transactio
 
 ![Overview Of P2P Protocol Data Request And Reply Messages](https://dash-docs.github.io/img/dev/en-p2p-data-messages.svg)
 
-Many of the data messages use [inventories](../resources/glossary.md#inventory) as unique identifiers for [transactions](../resources/glossary.md#transaction) and [blocks](../resources/glossary.md#block).  Inventories have a simple 36-byte structure:
+Many of the data messages use [inventories](../resources/glossary.md#inventory) as unique identifiers for [transactions](../resources/glossary.md#transaction) and {term}`blocks`.  Inventories have a simple 36-byte structure:
 
 | Bytes | Name            | Data Type | Description
 |-------|-----------------|-----------|-------------
@@ -56,7 +56,7 @@ The [`block` message](../reference/p2p-network-data-messages.md#block) transmits
 
 _Added in protocol version 70209 of Dash Core as described by BIP152_
 
-The [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn) sends requested [block](../resources/glossary.md#block) [transactions](../resources/glossary.md#transaction) to a node which previously requested them with a [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn). It is defined as a message containing a serialized `BlockTransactions` message.
+The [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn) sends requested {term}`block` [transactions](../resources/glossary.md#transaction) to a node which previously requested them with a [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn). It is defined as a message containing a serialized `BlockTransactions` message.
 
 Upon receipt of a properly-formatted requested [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn), [nodes](../resources/glossary.md#node) should:
 
@@ -168,7 +168,7 @@ The [`cfilter` message](../reference/p2p-network-data-messages.md#cfilter)  is s
 
 _Added in protocol version 70209 of Dash Core as described by BIP152_
 
-The [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested a [block](../resources/glossary.md#block) using the [inventory](../resources/glossary.md#inventory) type `MSG_CMPCT_BLOCK`. If the requested block was recently announced and is close to the tip of the best chain of the receiver and after having sent the requesting [peer](../resources/glossary.md#peer) a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct), nodes respond with a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) containing data for the block.
+The [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested a {term}`block` using the [inventory](../resources/glossary.md#inventory) type `MSG_CMPCT_BLOCK`. If the requested block was recently announced and is close to the tip of the best chain of the receiver and after having sent the requesting [peer](../resources/glossary.md#peer) a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct), nodes respond with a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) containing data for the block.
 
 **If the requested block is too old, the node responds with a _full non-compact block_**
 
@@ -354,7 +354,7 @@ The [`getdata` message](../reference/p2p-network-data-messages.md#getdata) reque
 
 The response to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) can be a [`tx` message](../reference/p2p-network-data-messages.md#tx), [`block` message](../reference/p2p-network-data-messages.md#block), [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock), [`dstx` message](../reference/p2p-network-privatesend-messages.md#dstx), [`govobj` message](../reference/p2p-network-governance-messages.md#govobj), [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote), [`notfound` message](../reference/p2p-network-data-messages.md#notfound), [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock), or any other messages that are exchanged by way of [`inv` messages](../reference/p2p-network-data-messages.md#inv).
 
-This message cannot be used to request arbitrary data, such as historic transactions no longer in the memory pool or relay set. Full nodes may not even be able to provide older [blocks](../resources/glossary.md#block) if they've pruned old transactions from their block database. For this reason, the [`getdata` message](../reference/p2p-network-data-messages.md#getdata) should usually only be used to request data from a node which previously advertised it had that data by sending an [`inv` message](../reference/p2p-network-data-messages.md#inv).
+This message cannot be used to request arbitrary data, such as historic transactions no longer in the memory pool or relay set. Full nodes may not even be able to provide older {term}`blocks` if they've pruned old transactions from their block database. For this reason, the [`getdata` message](../reference/p2p-network-data-messages.md#getdata) should usually only be used to request data from a node which previously advertised it had that data by sending an [`inv` message](../reference/p2p-network-data-messages.md#inv).
 
 The format and maximum size limitations of the [`getdata` message](../reference/p2p-network-data-messages.md#getdata) are identical to the [`inv` message](../reference/p2p-network-data-messages.md#inv); only the message header differs.
 
@@ -521,7 +521,7 @@ Header 3 (block version, previous header, time, and bits compressed)
 
 ## inv
 
-The [`inv` message](../reference/p2p-network-data-messages.md#inv) (inventory message) transmits one or more [inventories](../resources/glossary.md#inventory) of objects known to the transmitting [peer](../resources/glossary.md#peer).  It can be sent unsolicited to announce new [transactions](../resources/glossary.md#transaction) or [blocks](../resources/glossary.md#block), or it can be sent in reply to a [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) or [`mempool` message](../reference/p2p-network-data-messages.md#mempool).
+The [`inv` message](../reference/p2p-network-data-messages.md#inv) (inventory message) transmits one or more [inventories](../resources/glossary.md#inventory) of objects known to the transmitting [peer](../resources/glossary.md#peer).  It can be sent unsolicited to announce new [transactions](../resources/glossary.md#transaction) or {term}`blocks`, or it can be sent in reply to a [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) or [`mempool` message](../reference/p2p-network-data-messages.md#mempool).
 
 The receiving peer can compare the inventories from an [`inv` message](../reference/p2p-network-data-messages.md#inv) against the inventories it has already seen, and then use a follow-up message to request unseen objects.
 
@@ -548,7 +548,7 @@ ab17057f9ce4b50c2aef4fadf3729a2e ... Hash (txlvote)
 
 _Added in protocol version 60002 (of Bitcoin)._
 
-The [`mempool` message](../reference/p2p-network-data-messages.md#mempool) requests the [TXIDs](../resources/glossary.md#transaction-identifiers) of transactions that the receiving [node](../resources/glossary.md#node) has verified as valid but which have not yet appeared in a [block](../resources/glossary.md#block). That is, transactions which are in the receiving node's memory pool. The response to the [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is one or more [`inv` messages](../reference/p2p-network-data-messages.md#inv) containing the TXIDs in the usual [inventory](../resources/glossary.md#inventory) format.
+The [`mempool` message](../reference/p2p-network-data-messages.md#mempool) requests the [TXIDs](../resources/glossary.md#transaction-identifiers) of transactions that the receiving [node](../resources/glossary.md#node) has verified as valid but which have not yet appeared in a {term}`block`. That is, transactions which are in the receiving node's memory pool. The response to the [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is one or more [`inv` messages](../reference/p2p-network-data-messages.md#inv) containing the TXIDs in the usual [inventory](../resources/glossary.md#inventory) format.
 
 Sending the [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is mostly useful when a program first connects to the network. Full nodes can use it to quickly gather most or all of the unconfirmed transactions available on the network; this is especially useful for miners trying to gather transactions for their transaction fees. SPV clients can set a filter before sending a `mempool` to only receive transactions that match that filter; this allows a recently-started client to get most or all unconfirmed transactions related to its wallet.
 
@@ -568,7 +568,7 @@ There is no payload in a [`mempool` message](../reference/p2p-network-data-messa
 
 _Added in protocol version 70001 as described by BIP37._
 
-The [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested a [block](../resources/glossary.md#block) using the inventory type `MSG_MERKLEBLOCK`.  It is only part of the reply: if any matching transactions are found, they will be sent separately as [`tx` messages](../reference/p2p-network-data-messages.md#tx). As of Dash Core 0.17.0 [`islock` messages](../reference/p2p-network-instantsend-messages.md#islock) for matching transactions are sent if present.
+The [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested a {term}`block` using the inventory type `MSG_MERKLEBLOCK`.  It is only part of the reply: if any matching transactions are found, they will be sent separately as [`tx` messages](../reference/p2p-network-data-messages.md#tx). As of Dash Core 0.17.0 [`islock` messages](../reference/p2p-network-instantsend-messages.md#islock) for matching transactions are sent if present.
 
 > 🚧
 >
@@ -679,7 +679,7 @@ After you fully process the merkle root node according to the instructions in th
 
 _Added in protocol version 70213_
 
-The [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff) is a reply to a [`getmnlistd` message](../reference/p2p-network-data-messages.md#getmnlistd) which requested either a full [masternode](../resources/glossary.md#masternode) list or a diff for a range of [blocks](../resources/glossary.md#block).
+The [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff) is a reply to a [`getmnlistd` message](../reference/p2p-network-data-messages.md#getmnlistd) which requested either a full [masternode](../resources/glossary.md#masternode) list or a diff for a range of {term}`blocks`.
 
 | Bytes | Name | Data<br>type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
@@ -790,7 +790,7 @@ Masternode List
 
 _Added in protocol version 70001._
 
-The [`notfound` message](../reference/p2p-network-data-messages.md#notfound) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested an object the receiving [node](../resources/glossary.md#node) does not have available for relay. (Nodes are not expected to relay historic transactions which are no longer in the memory pool or relay set. Nodes may also have pruned spent transactions from older [blocks](../resources/glossary.md#block), making them unable to send those blocks.)
+The [`notfound` message](../reference/p2p-network-data-messages.md#notfound) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested an object the receiving [node](../resources/glossary.md#node) does not have available for relay. (Nodes are not expected to relay historic transactions which are no longer in the memory pool or relay set. Nodes may also have pruned spent transactions from older {term}`blocks`, making them unable to send those blocks.)
 
 The format and maximum size limitations of the [`notfound` message](../reference/p2p-network-data-messages.md#notfound) are identical to the [`inv` message](../reference/p2p-network-data-messages.md#inv); only the message header differs.
 
@@ -918,6 +918,6 @@ The [`tx` message](../reference/p2p-network-data-messages.md#tx) transmits a sin
 
 * **Transaction Response:** Dash Core will send it in response to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) that requests the transaction with an [inventory](../resources/glossary.md#inventory)  type of `MSG_TX`.
 
-* **MerkleBlock Response:** Dash Core will send it in response to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) that requests a [merkle block](../resources/glossary.md#merkle-block) with an [inventory](../resources/glossary.md#inventory) type of `MSG_MERKLEBLOCK`. (This is in addition to sending a [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock).) Each [`tx` message](../reference/p2p-network-data-messages.md#tx) in this case provides a matched transaction from that [block](../resources/glossary.md#block).
+* **MerkleBlock Response:** Dash Core will send it in response to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) that requests a [merkle block](../resources/glossary.md#merkle-block) with an [inventory](../resources/glossary.md#inventory) type of `MSG_MERKLEBLOCK`. (This is in addition to sending a [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock).) Each [`tx` message](../reference/p2p-network-data-messages.md#tx) in this case provides a matched transaction from that {term}`block`.
 
 For an example hexdump of the raw transaction format, see the [raw transaction section](../reference/transactions-raw-transaction-format.md).

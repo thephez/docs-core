@@ -1,6 +1,6 @@
 # Raw Transaction Format
 
-Dash transactions are broadcast between [peers](../resources/glossary.md#peer) in a serialized byte format, called [raw format](../resources/glossary.md#raw-format). It is this form of a transaction which is SHA256(SHA256()) hashed to create the [TXID](../resources/glossary.md#transaction-identifiers) and, ultimately, the [merkle root](../resources/glossary.md#merkle-root) of a [block](../resources/glossary.md#block) containing the transaction---making the transaction format part of the [consensus rules](../resources/glossary.md#consensus-rules).
+Dash transactions are broadcast between [peers](../resources/glossary.md#peer) in a serialized byte format, called [raw format](../resources/glossary.md#raw-format). It is this form of a transaction which is SHA256(SHA256()) hashed to create the [TXID](../resources/glossary.md#transaction-identifiers) and, ultimately, the [merkle root](../resources/glossary.md#merkle-root) of a {term}`block` containing the transaction---making the transaction format part of the [consensus rules](../resources/glossary.md#consensus-rules).
 
 Dash Core and many other tools print and accept [raw transactions](../resources/glossary.md#raw-transaction) encoded as hex.
 
@@ -168,7 +168,7 @@ The sample raw transaction itemized below is the one created in the [Simple Raw 
 
 ## Coinbase Input: The Input Of The First Transaction In A Block
 
-The first transaction in a [block](../resources/glossary.md#block), called the [coinbase transaction](../resources/glossary.md#coinbase-transaction), must have exactly one input, called a [coinbase](../resources/glossary.md#coinbase). The coinbase [input](../resources/glossary.md#input) currently has the following format.
+The first transaction in a {term}`block`, called the [coinbase transaction](../resources/glossary.md#coinbase-transaction), must have exactly one input, called a [coinbase](../resources/glossary.md#coinbase). The coinbase [input](../resources/glossary.md#input) currently has the following format.
 
 | Bytes    | Name               | Data Type            | Description
 |----------|--------------------|----------------------|--------------

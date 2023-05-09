@@ -12,7 +12,7 @@ Dash Core RPCs accept and return the byte-wise reverse of computed SHA-256 hash 
 5472ac8b1187bfcf91d6d218bbda1eb2405d7c55f1f8cc820000000000000000 (Resulting hash)
 ```
 
-The result above is also how the hash appears in the previous-header-hash part of [block](../resources/glossary.md#block) 300,001's header:
+The result above is also how the hash appears in the previous-header-hash part of {term}`block` 300,001's header:
 
 <pre>02000000<b>5472ac8b1187bfcf91d6d218bbda1eb2405d7c55f1f8cc82000\
 0000000000000</b>ab0aaa377ca3f49b1545e2ae6b0667a08f42e72d8c24ae\

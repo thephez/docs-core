@@ -19,7 +19,7 @@ Testnet is a public resource provided for free by Dash Core Group and members of
 
 ## Regtest mode
 
-For situations where interaction with random [peers](../resources/glossary.md#peer) and [blocks](../resources/glossary.md#block) is unnecessary or unwanted, Dash Core's [regression test mode](../resources/glossary.md#regression-test-mode) (regtest mode) lets you instantly create a brand-new private [block chain](../resources/glossary.md#block-chain) with the same basic rules as testnet---but one major difference: you choose when to create new blocks, so you have complete control over the environment.
+For situations where interaction with random [peers](../resources/glossary.md#peer) and {term}`blocks` is unnecessary or unwanted, Dash Core's [regression test mode](../resources/glossary.md#regression-test-mode) (regtest mode) lets you instantly create a brand-new private [block chain](../resources/glossary.md#block-chain) with the same basic rules as testnet---but one major difference: you choose when to create new blocks, so you have complete control over the environment.
 
 Many developers consider regtest mode the preferred way to develop new applications. The following example will let you create a regtest environment after you first [configure dashd](../examples/configuration-file.md).
 

@@ -676,7 +676,7 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
 
 *Added in protocol version 70213 of Dash Core as described by [DIP4](https://github.com/dashpay/dips/blob/master/dip-0004.md)*
 
-The Coinbase (CbTx) special transaction adds information to the [block](../resources/glossary.md#block) [coinbase transaction](../resources/glossary.md#coinbase-transaction) that enables verification of the deterministic masternode list without the full chain (e.g. from [SPV](../resources/glossary.md#simplified-payment-verification) clients). This allows light-clients to properly verify [InstantSend](../resources/glossary.md#instantsend) transactions and support additional deterministic masternode list functionality in the future.
+The Coinbase (CbTx) special transaction adds information to the {term}`block` [coinbase transaction](../resources/glossary.md#coinbase-transaction) that enables verification of the deterministic masternode list without the full chain (e.g. from [SPV](../resources/glossary.md#simplified-payment-verification) clients). This allows light-clients to properly verify [InstantSend](../resources/glossary.md#instantsend) transactions and support additional deterministic masternode list functionality in the future.
 
 The special transaction type used for CbTx Transactions is 5 and the extra payload consists of the following data:
 
@@ -856,7 +856,7 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
 
 The Quorum Commitment (QcTx) special transaction adds the best final commitment from a [Long-Living Masternode Quorum](../resources/glossary.md#long-living-masternode-quorum) (LLMQ) Distributed Key Generation (DKG) session to the chain.
 
-Since this special transaction pays no fees, it is mandatory by [consensus rules](../resources/glossary.md#consensus-rules) to ensure that miners include it. Exactly one quorum commitment transaction MUST be included in every [block](../resources/glossary.md#block) while in the mining phase of the LLMQ process until a valid commitment is present in a block.
+Since this special transaction pays no fees, it is mandatory by [consensus rules](../resources/glossary.md#consensus-rules) to ensure that miners include it. Exactly one quorum commitment transaction MUST be included in every {term}`block` while in the mining phase of the LLMQ process until a valid commitment is present in a block.
 
 If a DKG failed or a [miner](../resources/glossary.md#miner) did not receive a final commitment in-time, a null commitment has to be included in the special transaction payload. A null commitment must have the `signers` and `validMembers` bitsets set to the `quorumSize` and all bits set to zero. All other fields must be set to the null representation of the field’s types.
 

@@ -26,7 +26,7 @@ We parse the above [`merkleblock` message](../reference/p2p-network-data-message
 
 ![Parsing A MerkleBlock](https://dash-docs.github.io/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-001.svg)
 
-We start by building the structure of a [merkle tree](../resources/glossary.md#merkle-tree) based on the number of [transactions](../resources/glossary.md#transaction) in the [block](../resources/glossary.md#block).
+We start by building the structure of a [merkle tree](../resources/glossary.md#merkle-tree) based on the number of [transactions](../resources/glossary.md#transaction) in the {term}`block`.
 
 ![Parsing A MerkleBlock](https://dash-docs.github.io/img/dev/gifs/en-merkleblock-parsing/en-merkleblock-parsing-002.svg)
 

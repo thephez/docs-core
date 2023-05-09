@@ -1,6 +1,6 @@
 # Block Height and Forking
 
-Any Dash [miner](../resources/glossary.md#miner) who successfully hashes a [block header](../resources/glossary.md#block-header) to a value below the [target threshold](../resources/glossary.md#target) can add the entire [block](../resources/glossary.md#block) to the [block chain](../resources/glossary.md#block-chain) (assuming the block is otherwise valid). These blocks are commonly addressed by their [block height](../resources/glossary.md#block-height)---the number of blocks between them and the first Dash block (block 0, most commonly known as the [genesis block](../resources/glossary.md#genesis-block)).
+Any Dash [miner](../resources/glossary.md#miner) who successfully hashes a [block header](../resources/glossary.md#block-header) to a value below the [target threshold](../resources/glossary.md#target) can add the entire {term}`block` to the [block chain](../resources/glossary.md#block-chain) (assuming the block is otherwise valid). These blocks are commonly addressed by their [block height](../resources/glossary.md#block-height)---the number of blocks between them and the first Dash block (block 0, most commonly known as the [genesis block](../resources/glossary.md#genesis-block)).
 
 ![Common And Uncommon Block Chain Forks](https://dash-docs.github.io/img/dev/en-blockchain-fork.svg)
 
@@ -10,6 +10,6 @@ When miners produce simultaneous blocks at the end of the block chain, each [nod
 
 Eventually a miner produces another block which attaches to only one of the competing simultaneously-mined blocks. This makes that side of the fork stronger than the other side. Assuming a fork only contains valid blocks, normal [peers](../resources/glossary.md#peer) always follow the most difficult chain to recreate and throw away any [stale block](../resources/glossary.md#stale-block) belonging to shorter forks. (Stale blocks are also sometimes called orphans or orphan blocks, but those terms are also used for true orphan blocks without a known parent block.)
 
-Long-term forks are possible if different miners work at cross-purposes, such as some miners diligently working to extend the block chain at the same time other miners are attempting a [51 percent attack](../resources/glossary.md#51-percent-attack) to revise transaction history.
+Long-term forks are possible if different miners work at cross-purposes, such as some miners diligently working to extend the block chain at the same time other miners are attempting a {term}`51 percent attack` to revise transaction history.
 
 Since multiple blocks can have the same height during a block chain fork, block height should not be used as a globally unique identifier. Instead, blocks are usually referenced by the hash of their header (often with the byte order reversed, and in hexadecimal).

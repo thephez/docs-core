@@ -4,9 +4,10 @@
 
 # Glossary
 
-## 51 percent attack
-
-The ability of someone controlling a majority of network hash rate to revise transaction history and prevent new transactions from confirming.
+```{glossary}
+51 percent attack
+  The ability of someone controlling a majority of network hash rate to revise transaction history and prevent new transactions from confirming.
+```
 
 ## Address
 
@@ -28,9 +29,11 @@ The Hierarchical Deterministic (HD) key creation and transfer protocol (BIP32), 
 
 The protocol defined in BIP70 (and other BIPs) which lets spenders get signed payment details from receivers.
 
-## Block
-
-One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain.
+```{glossary}
+Block
+Blocks
+  One or more transactions prefaced by a block header and protected by proof of work. Blocks are the data stored on the block chain.
+```
 
 ## Block chain
 

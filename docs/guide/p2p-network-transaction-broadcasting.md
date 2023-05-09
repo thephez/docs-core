@@ -8,7 +8,7 @@ In order to send a [transaction](../resources/glossary.md#transaction) to a [pee
 
 ## Memory Pool
 
-Full peers may keep track of unconfirmed transactions which are eligible to be included in the next [block](../resources/glossary.md#block). This is essential for miners who will actually mine some or all of those transactions, but it's also useful for any peer who wants to keep track of unconfirmed transactions, such as peers serving unconfirmed transaction information to SPV clients.
+Full peers may keep track of unconfirmed transactions which are eligible to be included in the next {term}`block`. This is essential for miners who will actually mine some or all of those transactions, but it's also useful for any peer who wants to keep track of unconfirmed transactions, such as peers serving unconfirmed transaction information to SPV clients.
 
 Because unconfirmed transactions have no permanent status in Dash, Dash Core stores them in non-persistent memory, calling them a memory pool or mempool. When a peer shuts down, its memory pool is lost except for any transactions stored by its wallet. This means that never-mined unconfirmed transactions tend to slowly disappear from the network as peers restart or as they purge some transactions to make room in memory for others.
 

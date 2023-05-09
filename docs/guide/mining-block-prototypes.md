@@ -14,7 +14,7 @@ An improved method is the Dash Core [`getblocktemplate` RPC](../api/remote-proce
 
 2. A complete dump of the [transactions](../resources/glossary.md#transaction) `dashd` or the mining pool suggests including in the block, allowing the mining software to inspect the transactions, optionally add additional transactions, and optionally remove non-required transactions.
 
-3. Other information necessary to construct a [block header](../resources/glossary.md#block-header) for the next [block](../resources/glossary.md#block): the block version, previous block hash, and bits (target).
+3. Other information necessary to construct a [block header](../resources/glossary.md#block-header) for the next {term}`block`: the block version, previous block hash, and bits (target).
 
 4. The mining pool's current [target threshold](../resources/glossary.md#target) for accepting shares. (For solo miners, this is the network target.)
 

@@ -186,7 +186,7 @@ To compare an arbitrary data element against the bloom filter, it is hashed usin
 
 If the result of every hash points to a set bit, the filter matches. If any of the results points to an unset bit, the filter does not match.
 
-The following transaction elements are compared against bloom filters. All elements will be hashed in the byte order used in [blocks](../resources/glossary.md#block) (for example, [TXIDs](../resources/glossary.md#transaction-identifiers) will be in [internal byte order](../resources/glossary.md#internal-byte-order)).
+The following transaction elements are compared against bloom filters. All elements will be hashed in the byte order used in {term}`blocks` (for example, [TXIDs](../resources/glossary.md#transaction-identifiers) will be in [internal byte order](../resources/glossary.md#internal-byte-order)).
 
 * **TXIDs:** the transaction's SHA256(SHA256()) hash.
 
@@ -301,7 +301,7 @@ There is no payload in a `sendaddrv2` message. See the [message header section](
 
 *Added in protocol version 70209 of Dash Core as described by BIP152*
 
-The [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) tells the receiving [peer](../resources/glossary.md#peer) whether or not to announce new [blocks](../resources/glossary.md#block) using a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock). It also sends the compact block protocol version it supports. The [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) is defined as a message containing a 1-byte integer followed by a 8-byte integer. The first integer is interpreted as a boolean and should have a value of either 1 or 0. The second integer is be interpreted as a little-endian version number.
+The [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) tells the receiving [peer](../resources/glossary.md#peer) whether or not to announce new {term}`blocks` using a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock). It also sends the compact block protocol version it supports. The [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) is defined as a message containing a 1-byte integer followed by a 8-byte integer. The first integer is interpreted as a boolean and should have a value of either 1 or 0. The second integer is be interpreted as a little-endian version number.
 
 Upon receipt of a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) with the first and second integers set to 1, the [node](../resources/glossary.md#node) should announce new blocks by sending a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock).
 
@@ -343,7 +343,7 @@ The following annotated hexdump shows a [`senddsq` message](../reference/p2p-net
 
 ## sendheaders
 
-The [`sendheaders` message](../reference/p2p-network-control-messages.md#sendheaders) tells the receiving [peer](../resources/glossary.md#peer) to send new [block](../resources/glossary.md#block) announcements using a [`headers` message](../reference/p2p-network-data-messages.md#headers) rather than an [`inv` message](../reference/p2p-network-data-messages.md#inv).
+The [`sendheaders` message](../reference/p2p-network-control-messages.md#sendheaders) tells the receiving [peer](../resources/glossary.md#peer) to send new {term}`block` announcements using a [`headers` message](../reference/p2p-network-data-messages.md#headers) rather than an [`inv` message](../reference/p2p-network-data-messages.md#inv).
 
 There is no payload in a [`sendheaders` message](../reference/p2p-network-control-messages.md#sendheaders).  See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 
@@ -351,7 +351,7 @@ There is no payload in a [`sendheaders` message](../reference/p2p-network-contro
 
 *Added in protocol version 70223 of Dash Core.*
 
-The [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2) tells the receiving [peer](../resources/glossary.md#peer) to send new [block](../resources/glossary.md#block) announcements using a [`headers2` message](../reference/p2p-network-data-messages.md#headers2) rather than an [`inv` message](../reference/p2p-network-data-messages.md#inv).
+The [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2) tells the receiving [peer](../resources/glossary.md#peer) to send new {term}`block` announcements using a [`headers2` message](../reference/p2p-network-data-messages.md#headers2) rather than an [`inv` message](../reference/p2p-network-data-messages.md#inv).
 
 There is no payload in a [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2).  See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 

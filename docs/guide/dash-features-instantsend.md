@@ -35,7 +35,7 @@ Note: A transaction will **not** be included in the block template (from the [`g
  1. Has been locked, or
  2. Has been in the mempool for >=10 minutes (`WAIT_FOR_ISLOCK_TIMEOUT`)
 
-A [miner](../resources/glossary.md#miner) may still include any transaction, but [blocks](../resources/glossary.md#block) containing only locked transactions (or ones older than the timeout) should achieve a ChainLock faster. This is desirable to miners since it prevents any blockchain reorganizations that might orphan their block.
+A [miner](../resources/glossary.md#miner) may still include any transaction, but {term}`blocks` containing only locked transactions (or ones older than the timeout) should achieve a ChainLock faster. This is desirable to miners since it prevents any blockchain reorganizations that might orphan their block.
 
 ## InstantSend Data Flow
 

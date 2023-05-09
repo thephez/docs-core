@@ -2,7 +2,7 @@
 
 ![Block Chain Overview](https://dash-docs.github.io/img/dev/en-blockchain-overview.svg)
 
-The illustration above shows a simplified version of a [block chain](../resources/glossary.md#block-chain). A [block](../resources/glossary.md#block) of one or more new transactions is collected into the [transaction](../resources/glossary.md#transaction) data part of a block. Copies of each transaction are hashed, and the hashes are then paired, hashed, paired again, and hashed again until a single hash remains, the [merkle root](../resources/glossary.md#merkle-root) of a [merkle tree](../resources/glossary.md#merkle-tree).
+The illustration above shows a simplified version of a [block chain](../resources/glossary.md#block-chain). A {term}`block` of one or more new transactions is collected into the [transaction](../resources/glossary.md#transaction) data part of a block. Copies of each transaction are hashed, and the hashes are then paired, hashed, paired again, and hashed again until a single hash remains, the [merkle root](../resources/glossary.md#merkle-root) of a [merkle tree](../resources/glossary.md#merkle-tree).
 
 The merkle root is stored in the [block header](../resources/glossary.md#block-header). Each block also stores the hash of the previous block's header, chaining the blocks together. This ensures a transaction cannot be modified without modifying the block that records it and all following blocks.
 

@@ -159,7 +159,7 @@ Previous Version of Docs <https://dashcore.readme.io/v18.0.0/docs/>
 
 Questions about Dash development are best asked in one of the [Dash development
 communities](https://www.dash.org/community/). Errors or suggestions related to
-documentation can be submitted as via the "Suggest Edits" button on the top,
+documentation can be submitted as via the "Edit this page" button on the top,
 right of each page.
 
 ```{eval-rst}

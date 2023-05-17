@@ -5,11 +5,24 @@
 
 Dash Core Documentation
 
-Welcome to the Dash Core developer documentation. You’ll find sections for reference information, API details, guides, examples and Dash Core wallet information to help you start working with Dash as quickly as possible. This core developer documentation is available at https://docs.dash.org/projects/core, while user documentation is maintained at https://docs.dash.org/ and Platform developer documenation at https://dashplatform.readme.io/.
+Welcome to the Dash Core developer documentation. You’ll find sections for
+reference information, API details, guides, examples and Dash Core wallet
+information to help you start working with Dash as quickly as possible. This
+core developer documentation is available at
+https://docs.dash.org/projects/core, while user documentation is maintained at
+https://docs.dash.org/ and Platform developer documentation at
+https://dashplatform.readme.io/.
 
 ## Contributing
 
-This documentation is written in [reStructuredText](https://docutils.sourceforge.io/rst.html) and is designed to be built with [Sphinx](https://www.sphinx-doc.org/) and hosted by [Read the Docs](https://readthedocs.org/). Feel free to [open an issue](https://github.com/dashpay/docs-core/issues/new/choose) or submit PRs modifying the English source text in this repository.
+This documentation is written in primarily in
+[markdown](https://www.markdownguide.org/) and uses the [myst-parser
+extension](https://myst-parser.readthedocs.io/en/latest/index.html) for
+compatibility with [reStructuredText](https://docutils.sourceforge.io/rst.html).
+It is designed to be built with [Sphinx](https://www.sphinx-doc.org/) and hosted
+by [Read the Docs](https://readthedocs.org/). Feel free to [open an
+issue](https://github.com/dashpay/docs-core/issues/new/choose) or submit PRs
+modifying the English source text in this repository.
 
 ## License
 

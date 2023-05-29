@@ -140,9 +140,9 @@ The `protx diff` RPC calculates a diff and a proof between two masternode list.
 | → →<br>`votingAddress`         | string       | Required<br>(exactly 1) | The voting address                                                                                                                               |
 | → →<br>`isValid`               | bool         | Required<br>(exactly 1) | Set to `true` if masternode is valid                                                                                                             |
 | → →<br>`nVersion`              | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>BLS version<br>`1` - Legacy BLS scheme<br>`2` - [Basic BLS scheme](https://github.com/dashpay/dash/issues/5001) |
-| → →<br>`nType`                 | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>Type of masternode<br> `0` - Regular masternode<br>`1` - High-performance masternode                            |
-| → →<br>`platformHTTPPort`      | number       | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>TCP port of Platform HTTP/API interface (HPMNs only)                                                            |
-| → →<br>`platformNodeID`        | string (hex) | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P node ID, derived from P2P public key (HPMNs only)                                                  |
+| → →<br>`nType`                 | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>Type of masternode<br> `0` - Regular masternode<br>`1` - Evolution masternode                            |
+| → →<br>`platformHTTPPort`      | number       | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>TCP port of Platform HTTP/API interface (evonodes only)                                                            |
+| → →<br>`platformNodeID`        | string (hex) | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P node ID, derived from P2P public key (evonodes only)                                                  |
 | → →<br>`payoutAddress`         | string       | Optional<br>(0 or 1)    | **Added in Dash Core 18.1.0**<br>The owner's payout address. Only included if the `extended` parameter is set to `true`.                         |
 | → →<br>`operatorPayoutAddress` | string       | Required<br>(exactly 1) | **Added in Dash Core 18.1.0**<br>The operator's payout address.  Only included if the `extended` parameter is set to `true`.                     |
 | →<br>`deletedQuorums`          | array        | Required<br>(exactly 1) | An array of deleted quorums                                                                                                                      |
@@ -1301,7 +1301,7 @@ ec66f97568727a9e5188acb3ccf680086ae11217236efcccd67b0b72e83c79a043d6c6d064378fdd
 
 ### ProTx Register Fund HPMN
 
-The "protx register_fund_hpmn" RPC creates, funds, and sends a ProTx to the network. The resulting transaction will move 4000 Dash to the address specified by collateralAddress and will then function as the collateral of your HPMN. A few of the limitations you see in the arguments are temporary and might be lifted after DIP3 is fully deployed. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
+The "protx register_fund_hpmn" RPC creates, funds, and sends a ProTx to the network. The resulting transaction will move 4000 Dash to the address specified by collateralAddress and will then function as the collateral of your evonode. A few of the limitations you see in the arguments are temporary and might be lifted after DIP3 is fully deployed. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
 
 *Parameter #1---collateral address*
 
@@ -1536,7 +1536,7 @@ Result:
 
 ### ProTx Update Service HPMN
 
-The "protx update_service_hpmn" RPC creates and sends a ProUpServTx to the network. This will update the IP address and the Platform fields of a HPMN. If this is done for a HPMN that got PoSe-banned, the ProUpServTx will also revive this HPMN.
+The "protx update_service_hpmn" RPC creates and sends a ProUpServTx to the network. This will update the IP address and the Platform fields of an evonode. If this is done for an evonode that was PoSe-banned, the ProUpServTx will also revive this evonode.
 
 *Parameter #1---initial provider registration transaction hash*
 

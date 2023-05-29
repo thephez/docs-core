@@ -711,7 +711,7 @@ Simplified Masternode List (SML) Entry
 | 48 | pubKeyOperator | BLSPubKey | The operator public key<br>**Note**: serialization varies based on the Dash v19.0.0 fork:<br>-  Before hard fork - legacy BLS scheme<br>- After hard fork - basic BLS scheme
 | 20 |keyIDVoting | CKeyID | The public key hash used for voting.
 | 1 | isValid | bool | True if a masternode is not PoSe-banned
-| 0 or 2 | type | uint_16  | Masternode type:<br>0 - regular masternode<br>1 - high-performance masternode<br>**Note**: Only present after the Dash v19.0.0 hard fork. |
+| 0 or 2 | type | uint_16  | Masternode type:<br>0 - regular masternode<br>1 - Evolution masternode<br>**Note**: Only present after the Dash v19.0.0 hard fork. |
 | 0 or 2 | platformHTTPPort | uint_16 | TCP port of Platform HTTP/API interface (network byte order).<br>**Note**: Only present when mnlistdiff `version` is 2 and `type` is 1. |
 0 or 20 | platformNodeID | byte[] | Dash Platform P2P node ID, derived from P2P public key.<br>**Note**: Only present when mnlistdiff `version` is 2 and `type` is 1. |
 

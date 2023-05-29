@@ -200,6 +200,10 @@ In the context of HD wallets, a public key or private key extended with the chai
 
 In the context of HD wallets, a public key or private key extended with the chain code to allow them to derive child keys.
 
+## Evolution masternode (EvoNode)
+
+Evolution masternodes are a new type of [masternode](#masternode) created to host Dash Platform – a Web3 technology stack for building decentralized applications on the Dash network. The collateral required to own an evonode is 4000 DASH, as opposed to 1000 DASH for regular masternodes. Evonodes serve Platform along with Core, while regular masternodes only serve Core. The recommended specs for evonodes are higher than those for regular masternodes.
+
 ## Fork
 
 When two or more blocks have the same block height, forking the block chain. Typically occurs when two or more miners find blocks at nearly the same time. Can also happen as part of an attack.
@@ -227,10 +231,6 @@ The Hierarchical Deterministic (HD) key creation and transfer protocol (BIP32), 
 ## HD wallet seed
 
 A potentially-short value used as a seed to generate the master private key and master chain code for an HD wallet.
-
-## High-Performance Masternode (HPMN)
-
-High-Performance Masternodes are a new type of [masternode](#masternode) created to host Dash Platform – a Web3 technology stack for building decentralized applications on the Dash network. The collateral required to own an HPMN is 4000 DASH, as opposed to 1000 DASH for regular masternodes. HPMNs serve Platform along with Core, while regular masternodes only serve Core. The recommended specs for HPMNs are higher than those for regular masternodes.
 
 ## Header
 
@@ -320,7 +320,7 @@ In HD wallets, the master chain code and master private key are the two pieces o
 
 A computer that provides second-tier Dash functionality (InstantSend, CoinJoin, decentralized governance). Masternodes are incentivized by receiving part of the block reward, but must hold 1000 Dash as collateral to prevent sybil attacks.
 
-See also: [High-Performance Masternode](#high-performance-masternode-hpmn)
+See also: [Evolution masternode](#evolution-masternode-evonode)
 
 ## Merkle block
 

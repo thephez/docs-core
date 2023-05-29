@@ -1091,13 +1091,13 @@ The `masternode count` RPC prints the number of all known masternodes.
 | `result`         | object | Required<br>(exactly 1) | Masternode count by mode                                               |
 | →<br>`total`     | int    | Required<br>(exactly 1) | Count of all masternodes                                               |
 | →<br>`enabled`   | int    | Required<br>(exactly 1) | Count of enabled masternodes                                           |
-| →<br>`detailed`  | object | Required<br>(exactly 1) | *Added in Dash Core 19.0*<br>Breakdown of regular masternodes and HPMN |
+| →<br>`detailed`  | object | Required<br>(exactly 1) | *Added in Dash Core 19.0*<br>Breakdown of regular masternodes and evonodes |
 | →→<br>`regular`  | object | Required<br>(exactly 1) | Breakdown of regular masternodes                                       |
 | →→→<br>`total`   | int    | Required<br>(exactly 1) | Number of total regular masternodes                                    |
 | →→→<br>`enabled` | int    | Required<br>(exactly 1) | Number of enabled regular masternodes                                  |
-| →→<br>`hpmn`     | object | Required<br>(exactly 1) | Breakdown of HPMN                                                      |
-| →→→<br>`total`   | int    | Required<br>(exactly 1) | Number of total HPMN                                                   |
-| →→→<br>`enabled` | int    | Required<br>(exactly 1) | Number of enabled HPMN                                                 |
+| →→<br>`hpmn`     | object | Required<br>(exactly 1) | Breakdown of evonodes                                                     |
+| →→→<br>`total`   | int    | Required<br>(exactly 1) | Number of total evonodes                                                  |
+| →→→<br>`enabled` | int    | Required<br>(exactly 1) | Number of enabled evonodes                                                |
 
 *Example from Dash Core 19.0.0*
 
@@ -1321,9 +1321,9 @@ The `masternode status` RPC prints masternode status information.
 | → →<br>`revocationReason`      | int          | Required<br>(exactly 1) | Reason code for of masternode operator key revocation                                                                                                                                             |
 | → →<br>`ownerAddress`          | string       | Required<br>(exactly 1) | The owner address                                                                                                                                                                                 |
 | → →<br>`votingAddress`         | string       | Required<br>(exactly 1) | The voting address                                                                                                                                                                                |
-| → →<br>`platformNodeId`        | string       | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P node ID, derived from P2P public key (HPMNs only)                                                                                                   |
-| → →<br>`platformP2PPort`       | int          | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P port (HPMNs only)                                                                                                                                   |
-| → →<br>`platformHTTPPort`      | int          | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>TCP port of Platform HTTP/API interface (HPMNs only)                                                                                                             |
+| → →<br>`platformNodeId`        | string       | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P node ID, derived from P2P public key (evonodes only)                                                                                                   |
+| → →<br>`platformP2PPort`       | int          | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P port (evonodes only)                                                                                                                                   |
+| → →<br>`platformHTTPPort`      | int          | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>TCP port of Platform HTTP/API interface (evonodes only)                                                                                                             |
 | → →<br>`payoutAddress`         | string       | Required<br>(exactly 1) | The payout address                                                                                                                                                                                |
 | → →<br>`pubKeyOperator`        | string       | Required<br>(exactly 1) | The operator public key                                                                                                                                                                           |
 | → →<br>`operatorPayoutAddress` | string       | Optional<br>(0 or 1)    | The operator payout address                                                                                                                                                                       |

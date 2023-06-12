@@ -378,27 +378,36 @@ The [`spork` message](../reference/p2p-network-control-messages.md#spork) tells 
 | 10002 | 3 | `INSTANTSEND_BLOCK_`<br>`FILTERING` | Turns on and off InstantSend block filtering
 | 10008 | 9 | `SUPERBLOCKS_ENABLED` | Superblocks are enabled (10% of the block reward allocated to fund the dash treasury for funding approved proposals)
 | 10016 | 17 | `SPORK_17_QUORUM_DKG_`<br>`ENABLED` | Enable long-living masternode quorum (LLMQ) distributed key generation (DKG). When enabled, simple PoSe  scoring and banning is active as well.
-| 10018 | 19 | `SPORK_19_CHAINLOCKS_`<br>`ENABLED` | Enable LLMQ-based ChainLocks.
-| 10020 | 21 | `SPORK_21_QUORUM_ALL_`<br>`CONNECTED` | ***Added in Dash Core 0.16.0***<br>Enable connections between all masternodes in a quorum to optimize the signature recovery process.<br>Note: Prior to Dash Core 0.17.0 this spork also enforced [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
-| 10022 | 23 | `SPORK_23_QUORUM_POSE`<br>`CONNECTED` | **Added in Dash Core 0.17.0**<br>Enforce [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
+| 10018 | 19 | `SPORK_19_CHAINLOCKS_`<br>`ENABLED` | ***Updated in Dash Core 19.2.0***<br>Enable LLMQ-based ChainLocks.
+| 10020 | 21 | `SPORK_21_QUORUM_ALL_`<br>`CONNECTED` | *Added in Dash Core 0.16.0*<br>Enable connections between all masternodes in a quorum to optimize the signature recovery process.<br>Note: Prior to Dash Core 0.17.0 this spork also enforced [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
+| 10022 | 23 | `SPORK_23_QUORUM_POSE`<br>`CONNECTED` | *Added in Dash Core 0.17.0*<br>Enforce [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
 
-> 📘 Spork 2 Values
->
-> As of Dash Core 0.17.0, spork 2 supports two different enabled values:
->
-> * `0` - Masternodes create locks for all transactions
-> * `1` - Masternodes only create locks for transactions included in a block. Transactions in the mempool are not locked.
->
->Mode 1 is only for use in the event of a sustained overload of InstantSend to ensure that ChainLocks can remain operational. See [PR 4024](https://github.com/dashpay/dash/pull/4024) for details.
+**Spork 2 values**
 
-> 📘 Spork 21 and 23 Values
->
-> Spork 21 and 23 support two different enabled values:
->
-> * `0` - The spork is active for all quorums regardless of quorum size.
-> * `1` - The spork is active only for quorums which have a member size less than 100.
->
-> Mode 1 is only for use in the event of a sustained overload of InstantSend to ensure that ChainLocks can remain operational. See [PR 4024](https://github.com/dashpay/dash/pull/4024) for details.
+As of Dash Core 0.17.0, spork 2 supports two different enabled values:
+
+* `0` - Masternodes create InstantSend locks for all transactions
+* `1` - Masternodes only create InstantSend locks for transactions included in a block. Transactions
+  in the mempool are not locked.
+
+Mode 1 is only for use in the event of a sustained overload of InstantSend to ensure that ChainLocks
+can remain operational. See [PR 4024](https://github.com/dashpay/dash/pull/4024) for details.
+
+**Spork 19 values**
+
+As of Dash Core 19.2.0, spork 19 supports two different enable values:
+
+* `0` - Masternodes create ChainLocks for all blocks
+* `1` - Masternodes retain existing ChainLocks, but do not sign new ones
+
+See [PR 5398](https://github.com/dashpay/dash/pull/5398) for implementation details.
+
+**Spork 21 and 23 values**
+
+ Spork 21 and 23 support two different enabled values:
+
+* `0` - The spork is active for all quorums regardless of quorum size.
+* `1` - The spork is active only for quorums which have a member size less than 100.
 
 **Removed Sporks**
 The following sporks were used in the past but are no longer necessary and have been removed recently. To see sporks removed longer ago, please see the [previous version of documentation](https://dashcore.readme.io/v0.16.0/docs/core-ref-p2p-network-control-messages#spork).

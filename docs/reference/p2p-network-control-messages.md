@@ -370,7 +370,27 @@ The [`spork` message](../reference/p2p-network-control-messages.md#spork) tells 
 | 8 | nTimeSigned | int64_t | Required | Time the spork value was signed
 | 66 | vchSig | char[] | Required | Length (1 byte) + Signature (65 bytes)
 
-**Active Sporks (per [`src/spork.h`](https://github.com/dashpay/dash/blob/v19.x/src/spork.h#L34))**
+The following annotated hexdump shows a [`spork` message](../reference/p2p-network-control-messages.md#spork).
+
+``` text
+11270000 .................................... Spork ID: Spork 2 InstantSend enabled (10001)
+0000000000000000 ............................ Value (0)
+2478da5900000000 ............................ Epoch time: 2017-10-08 19:10:28 UTC (1507489828)
+
+41 .......................................... Signature length: 65
+
+1b6762d3e70890b5cfaed5d1fd72121c
+d32020c827a89f8128a00acd210f4ea4
+1b36c26c3767f8a24f48663e189865ed
+403ed1e850cdb4207cdd466419d9d183
+45 .......................................... Masternode Signature
+```
+
+### Active sporks
+
+The list of all active sporks can be found in
+[`src/spork.h`](https://github.com/dashpay/dash/blob/v19.x/src/spork.h#L34)). See the [removed
+sporks section](#removed-sporks) for a list of previously removed sporks.
 
 | Spork ID | Num. | Name | Description |
 | :----------: | :----------: | ----------- | ----------- |
@@ -409,7 +429,8 @@ See [PR 5398](https://github.com/dashpay/dash/pull/5398) for implementation deta
 * `0` - The spork is active for all quorums regardless of quorum size.
 * `1` - The spork is active only for quorums which have a member size less than 100.
 
-**Removed Sporks**
+### Removed sporks
+
 The following sporks were used in the past but are no longer necessary and have been removed recently. To see sporks removed longer ago, please see the [previous version of documentation](https://dashcore.readme.io/v0.16.0/docs/core-ref-p2p-network-control-messages#spork).
 
 Note that spork 6 was never enabled on mainnet and  was removed in Dash Core 0.16.0. The associated logic was hardened in [PR  3662](https://github.com/dashpay/dash/pull/3662) to support testnet (where it is enabled). If testnet is reset at some point in the future, the remaining logic will be removed.
@@ -422,6 +443,8 @@ Note that spork 6 was never enabled on mainnet and  was removed in Dash Core 0.1
 | *10019* | *20* | `SPORK_20_INSTANTSEND_`<br>`LLMQ_BASED` | _Removed in Dash Core 0.16.0.<br>Enable LLMQ-based InstantSend._
 | *10021* | *22* | `SPORK_22_PS_MORE_`<br>`PARTICIPANTS` | *Removed in Dash Core 0.17.0*<br>*Increase the maximum number of participants in CoinJoin sessions.*
 
+### Spork verification
+
 To verify `vchSig`, compare the hard-coded spork public key (`strSporkPubKey` from [`src/chainparams.cpp`](https://github.com/dashpay/dash/blob/eaf90b77177efbaf9cbed46e822f0d794f1a0ee5/src/chainparams.cpp#L158)) with the public key recovered from the [`spork` message](../reference/p2p-network-control-messages.md#spork)'s hash and `vchSig` value (implementation details for Dash Core can be found in `CPubKey::RecoverCompact`). The hash is a double SHA-256 hash of:
 
 * The spork magic message (`"DarkCoin Signed Message:\n"`)
@@ -433,22 +456,6 @@ To verify `vchSig`, compare the hard-coded spork public key (`strSporkPubKey` fr
 | Testnet3 | 046f78dcf911fbd61910136f7f0f8d90578f68d0b3ac973b5040fb7afb50<br>1b5939f39b108b0569dca71488f5bbf498d92e4d1194f6f941307ffd95f7<br>5e76869f0e |
 | RegTest | Undefined |
 | Devnets | 046f78dcf911fbd61910136f7f0f8d90578f68d0b3ac973b5040fb7afb50<br>1b5939f39b108b0569dca71488f5bbf498d92e4d1194f6f941307ffd95f7<br>5e76869f0e |
-
-The following annotated hexdump shows a [`spork` message](../reference/p2p-network-control-messages.md#spork).
-
-``` text
-11270000 .................................... Spork ID: Spork 2 InstantSend enabled (10001)
-0000000000000000 ............................ Value (0)
-2478da5900000000 ............................ Epoch time: 2017-10-08 19:10:28 UTC (1507489828)
-
-41 .......................................... Signature length: 65
-
-1b6762d3e70890b5cfaed5d1fd72121c
-d32020c827a89f8128a00acd210f4ea4
-1b36c26c3767f8a24f48663e189865ed
-403ed1e850cdb4207cdd466419d9d183
-45 .......................................... Masternode Signature
-```
 
 ## verack
 

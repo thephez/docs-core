@@ -386,7 +386,7 @@ The [`spork` message](../reference/p2p-network-control-messages.md#spork) tells 
 
 As of Dash Core 0.17.0, spork 2 supports two different enabled values:
 
-* `0` - Masternodes create InstantSend locks for all transactions
+* `0` - Masternodes create InstantSend locks for all transactions.
 * `1` - Masternodes only create InstantSend locks for transactions included in a block. Transactions
   in the mempool are not locked.
 
@@ -397,8 +397,8 @@ can remain operational. See [PR 4024](https://github.com/dashpay/dash/pull/4024)
 
 As of Dash Core 19.2.0, spork 19 supports two different enable values:
 
-* `0` - Masternodes create ChainLocks for all blocks
-* `1` - Masternodes retain existing ChainLocks, but do not sign new ones
+* `0` - Masternodes create ChainLocks for all blocks.
+* `1` - Masternodes retain existing ChainLocks, but do not sign new ones.
 
 See [PR 5398](https://github.com/dashpay/dash/pull/5398) for implementation details.
 

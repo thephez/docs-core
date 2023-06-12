@@ -370,65 +370,6 @@ The [`spork` message](../reference/p2p-network-control-messages.md#spork) tells 
 | 8 | nTimeSigned | int64_t | Required | Time the spork value was signed
 | 66 | vchSig | char[] | Required | Length (1 byte) + Signature (65 bytes)
 
-**Active Sporks (per [`src/spork.h`](https://github.com/dashpay/dash/blob/v0.17.x/src/spork.h#L24))**
-
-| Spork ID | Num. | Name | Description |
-| :----------: | :----------: | ----------- | ----------- |
-| 10001 | 2 | `INSTANTSEND_ENABLED` | ***Updated in Dash Core 0.17.0***<br>Turns InstantSend on and off network wide. Also determines if new mempool transactions should be locked or not.
-| 10002 | 3 | `INSTANTSEND_BLOCK_`<br>`FILTERING` | Turns on and off InstantSend block filtering
-| 10008 | 9 | `SUPERBLOCKS_ENABLED` | Superblocks are enabled (10% of the block reward allocated to fund the dash treasury for funding approved proposals)
-| 10016 | 17 | `SPORK_17_QUORUM_DKG_`<br>`ENABLED` | Enable long-living masternode quorum (LLMQ) distributed key generation (DKG). When enabled, simple PoSe  scoring and banning is active as well.
-| 10018 | 19 | `SPORK_19_CHAINLOCKS_`<br>`ENABLED` | Enable LLMQ-based ChainLocks.
-| 10020 | 21 | `SPORK_21_QUORUM_ALL_`<br>`CONNECTED` | ***Added in Dash Core 0.16.0***<br>Enable connections between all masternodes in a quorum to optimize the signature recovery process.<br>Note: Prior to Dash Core 0.17.0 this spork also enforced [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
-| 10022 | 23 | `SPORK_23_QUORUM_POSE`<br>`CONNECTED` | **Added in Dash Core 0.17.0**<br>Enforce [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
-
-> 📘 Spork 2 Values
->
-> As of Dash Core 0.17.0, spork 2 supports two different enabled values:
->
-> * `0` - Masternodes create locks for all transactions
-> * `1` - Masternodes only create locks for transactions included in a block. Transactions in the mempool are not locked.
->
->Mode 1 is only for use in the event of a sustained overload of InstantSend to ensure that ChainLocks can remain operational. See [PR 4024](https://github.com/dashpay/dash/pull/4024) for details.
-
-> 📘 Spork 21 and 23 Values
->
-> Spork 21 and 23 support two different enabled values:
->
-> * `0` - The spork is active for all quorums regardless of quorum size.
-> * `1` - The spork is active only for quorums which have a member size less than 100.
->
-> Mode 1 is only for use in the event of a sustained overload of InstantSend to ensure that ChainLocks can remain operational. See [PR 4024](https://github.com/dashpay/dash/pull/4024) for details.
-
-**Removed Sporks**
-The following sporks were used in the past but are no longer necessary and have been removed recently. To see sporks removed longer ago, please see the [previous version of documentation](https://dashcore.readme.io/v0.16.0/docs/core-ref-p2p-network-control-messages#spork).
-
-> 📘 Spork 6
->
-> Since spork 6 was never enabled on mainnet, it was removed in Dash Core 0.16.0. The associated logic was hardened in [PR  3662](https://github.com/dashpay/dash/pull/3662) to support testnet (where it is enabled). If testnet is reset at some point in the future, the remaining logic will be removed.
-
-| Spork ID | Num. | Name | Description |
-| :----------: | :----------: | ----------- | ----------- |
-| *10004* | *5* | `INSTANTSEND_MAX_VALUE` | _Removed in Dash Core 0.15.0.<br>Controls the max value for an InstantSend transaction (currently 2000 DASH)_
-| *10005* | *6* | `NEW_SIGS` | _Removed in Dash Core 0.16.0.<br>Turns on and off new signature format for Dash-specific messages_
-| *10011* | *12* | `RECONSIDER_BLOCKS` | _Removed in Dash Core 0.15.0.<br>Forces reindex of a specified number of blocks to recover from unintentional network forks_
-| *10014* | *15* | `DETERMINISTIC_MNS_`<br>`ENABLED` | _Removed in Dash Core 0.16.0.<br>Deterministic masternode lists are enabled_
-| *10015* | *16* | `INSTANTSEND_AUTOLOCKS` | _Removed in Dash Core 0.16.0.<br>Automatic InstantSend for transactions with <=4 inputs (also eliminates the special InstantSend fee requirement for these transactions)_
-| *10019* | *20* | `SPORK_20_INSTANTSEND_`<br>`LLMQ_BASED` | _Removed in Dash Core 0.16.0.<br>Enable LLMQ-based InstantSend._
-| *10021* | *22* | `SPORK_22_PS_MORE_`<br>`PARTICIPANTS` | *Removed in Dash Core 0.17.0*<br>*Increase the maximum number of participants in CoinJoin sessions.*
-
-To verify `vchSig`, compare the hard-coded spork public key (`strSporkPubKey` from [`src/chainparams.cpp`](https://github.com/dashpay/dash/blob/eaf90b77177efbaf9cbed46e822f0d794f1a0ee5/src/chainparams.cpp#L158)) with the public key recovered from the [`spork` message](../reference/p2p-network-control-messages.md#spork)'s hash and `vchSig` value (implementation details for Dash Core can be found in `CPubKey::RecoverCompact`). The hash is a double SHA-256 hash of:
-
-* The spork magic message (`"DarkCoin Signed Message:\n"`)
-* nSporkID + nValue + nTimeSigned
-
-| Network | Spork Pubkey (wrapped) |
-| ---------- | ---------- |
-| Mainnet | 04549ac134f694c0243f503e8c8a9a986f5de6610049c40b07816809b0d1<br>d06a21b07be27b9bb555931773f62ba6cf35a25fd52f694d4e1106ccd237<br>a7bb899fdd |
-| Testnet3 | 046f78dcf911fbd61910136f7f0f8d90578f68d0b3ac973b5040fb7afb50<br>1b5939f39b108b0569dca71488f5bbf498d92e4d1194f6f941307ffd95f7<br>5e76869f0e |
-| RegTest | Undefined |
-| Devnets | 046f78dcf911fbd61910136f7f0f8d90578f68d0b3ac973b5040fb7afb50<br>1b5939f39b108b0569dca71488f5bbf498d92e4d1194f6f941307ffd95f7<br>5e76869f0e |
-
 The following annotated hexdump shows a [`spork` message](../reference/p2p-network-control-messages.md#spork).
 
 ``` text
@@ -444,6 +385,77 @@ d32020c827a89f8128a00acd210f4ea4
 403ed1e850cdb4207cdd466419d9d183
 45 .......................................... Masternode Signature
 ```
+
+### Active sporks
+
+The list of all active sporks can be found in
+[`src/spork.h`](https://github.com/dashpay/dash/blob/v19.x/src/spork.h#L34). See the [removed
+sporks section](#removed-sporks) for a list of previously removed sporks.
+
+| Spork ID | Num. | Name | Description |
+| :----------: | :----------: | ----------- | ----------- |
+| 10001 | 2 | `INSTANTSEND_ENABLED` | *Updated in Dash Core 0.17.0*<br>Turns InstantSend on and off network wide. Also determines if new mempool transactions should be locked or not.
+| 10002 | 3 | `INSTANTSEND_BLOCK_`<br>`FILTERING` | Turns on and off InstantSend block filtering
+| 10008 | 9 | `SUPERBLOCKS_ENABLED` | Superblocks are enabled (10% of the block reward allocated to fund the dash treasury for funding approved proposals)
+| 10016 | 17 | `SPORK_17_QUORUM_DKG_`<br>`ENABLED` | Enable long-living masternode quorum (LLMQ) distributed key generation (DKG). When enabled, simple PoSe  scoring and banning is active as well.
+| 10018 | 19 | `SPORK_19_CHAINLOCKS_`<br>`ENABLED` | ***Updated in Dash Core 19.2.0***<br>Enable LLMQ-based ChainLocks.
+| 10020 | 21 | `SPORK_21_QUORUM_ALL_`<br>`CONNECTED` | *Added in Dash Core 0.16.0*<br>Enable connections between all masternodes in a quorum to optimize the signature recovery process.<br>Note: Prior to Dash Core 0.17.0 this spork also enforced [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
+| 10022 | 23 | `SPORK_23_QUORUM_POSE`<br>`CONNECTED` | *Added in Dash Core 0.17.0*<br>Enforce [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
+
+**Spork 2 values**
+
+As of Dash Core 0.17.0, spork 2 supports two different enabled values:
+
+* `0` - Masternodes create InstantSend locks for all transactions.
+* `1` - Masternodes only create InstantSend locks for transactions included in a block. Transactions
+  in the mempool are not locked.
+
+Mode 1 is only for use in the event of a sustained overload of InstantSend to ensure that ChainLocks
+can remain operational. See [PR 4024](https://github.com/dashpay/dash/pull/4024) for details.
+
+**Spork 19 values**
+
+As of Dash Core 19.2.0, spork 19 supports two different enable values:
+
+* `0` - Masternodes create ChainLocks for all blocks.
+* `1` - Masternodes retain existing ChainLocks, but do not sign new ones.
+
+See [PR 5398](https://github.com/dashpay/dash/pull/5398) for implementation details.
+
+**Spork 21 and 23 values**
+
+ Spork 21 and 23 support two different enabled values:
+
+* `0` - The spork is active for all quorums regardless of quorum size.
+* `1` - The spork is active only for quorums which have a member size less than 100.
+
+### Removed sporks
+
+The following sporks were used in the past but are no longer necessary and have been removed recently. To see sporks removed longer ago, please see the [previous version of documentation](https://dashcore.readme.io/v0.16.0/docs/core-ref-p2p-network-control-messages#spork).
+
+Note that spork 6 was never enabled on mainnet and  was removed in Dash Core 0.16.0. The associated logic was hardened in [PR  3662](https://github.com/dashpay/dash/pull/3662) to support testnet (where it is enabled). If testnet is reset at some point in the future, the remaining logic will be removed.
+
+| Spork ID | Num. | Name | Description |
+| :----------: | :----------: | ----------- | ----------- |
+| *10005* | *6* | `NEW_SIGS` | _Removed in Dash Core 0.16.0.<br>Turns on and off new signature format for Dash-specific messages_
+| *10014* | *15* | `DETERMINISTIC_MNS_`<br>`ENABLED` | _Removed in Dash Core 0.16.0.<br>Deterministic masternode lists are enabled_
+| *10015* | *16* | `INSTANTSEND_AUTOLOCKS` | _Removed in Dash Core 0.16.0.<br>Automatic InstantSend for transactions with <=4 inputs (also eliminates the special InstantSend fee requirement for these transactions)_
+| *10019* | *20* | `SPORK_20_INSTANTSEND_`<br>`LLMQ_BASED` | _Removed in Dash Core 0.16.0.<br>Enable LLMQ-based InstantSend._
+| *10021* | *22* | `SPORK_22_PS_MORE_`<br>`PARTICIPANTS` | *Removed in Dash Core 0.17.0*<br>*Increase the maximum number of participants in CoinJoin sessions.*
+
+### Spork verification
+
+To verify `vchSig`, compare the hard-coded spork public key (`strSporkPubKey` from [`src/chainparams.cpp`](https://github.com/dashpay/dash/blob/eaf90b77177efbaf9cbed46e822f0d794f1a0ee5/src/chainparams.cpp#L158)) with the public key recovered from the [`spork` message](../reference/p2p-network-control-messages.md#spork)'s hash and `vchSig` value (implementation details for Dash Core can be found in `CPubKey::RecoverCompact`). The hash is a double SHA-256 hash of:
+
+* The spork magic message (`"DarkCoin Signed Message:\n"`)
+* nSporkID + nValue + nTimeSigned
+
+| Network | Spork Pubkey (wrapped) |
+| ---------- | ---------- |
+| Mainnet | 04549ac134f694c0243f503e8c8a9a986f5de6610049c40b07816809b0d1<br>d06a21b07be27b9bb555931773f62ba6cf35a25fd52f694d4e1106ccd237<br>a7bb899fdd |
+| Testnet3 | 046f78dcf911fbd61910136f7f0f8d90578f68d0b3ac973b5040fb7afb50<br>1b5939f39b108b0569dca71488f5bbf498d92e4d1194f6f941307ffd95f7<br>5e76869f0e |
+| RegTest | Undefined |
+| Devnets | 046f78dcf911fbd61910136f7f0f8d90578f68d0b3ac973b5040fb7afb50<br>1b5939f39b108b0569dca71488f5bbf498d92e4d1194f6f941307ffd95f7<br>5e76869f0e |
 
 ## verack
 

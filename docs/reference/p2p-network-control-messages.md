@@ -403,9 +403,7 @@ The [`spork` message](../reference/p2p-network-control-messages.md#spork) tells 
 **Removed Sporks**
 The following sporks were used in the past but are no longer necessary and have been removed recently. To see sporks removed longer ago, please see the [previous version of documentation](https://dashcore.readme.io/v0.16.0/docs/core-ref-p2p-network-control-messages#spork).
 
-> 📘 Spork 6
->
-> Since spork 6 was never enabled on mainnet, it was removed in Dash Core 0.16.0. The associated logic was hardened in [PR  3662](https://github.com/dashpay/dash/pull/3662) to support testnet (where it is enabled). If testnet is reset at some point in the future, the remaining logic will be removed.
+Note that spork 6 was never enabled on mainnet and  was removed in Dash Core 0.16.0. The associated logic was hardened in [PR  3662](https://github.com/dashpay/dash/pull/3662) to support testnet (where it is enabled). If testnet is reset at some point in the future, the remaining logic will be removed.
 
 | Spork ID | Num. | Name | Description |
 | :----------: | :----------: | ----------- | ----------- |

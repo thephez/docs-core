@@ -416,9 +416,7 @@ Note that spork 6 was never enabled on mainnet and  was removed in Dash Core 0.1
 
 | Spork ID | Num. | Name | Description |
 | :----------: | :----------: | ----------- | ----------- |
-| *10004* | *5* | `INSTANTSEND_MAX_VALUE` | _Removed in Dash Core 0.15.0.<br>Controls the max value for an InstantSend transaction (currently 2000 DASH)_
 | *10005* | *6* | `NEW_SIGS` | _Removed in Dash Core 0.16.0.<br>Turns on and off new signature format for Dash-specific messages_
-| *10011* | *12* | `RECONSIDER_BLOCKS` | _Removed in Dash Core 0.15.0.<br>Forces reindex of a specified number of blocks to recover from unintentional network forks_
 | *10014* | *15* | `DETERMINISTIC_MNS_`<br>`ENABLED` | _Removed in Dash Core 0.16.0.<br>Deterministic masternode lists are enabled_
 | *10015* | *16* | `INSTANTSEND_AUTOLOCKS` | _Removed in Dash Core 0.16.0.<br>Automatic InstantSend for transactions with <=4 inputs (also eliminates the special InstantSend fee requirement for these transactions)_
 | *10019* | *20* | `SPORK_20_INSTANTSEND_`<br>`LLMQ_BASED` | _Removed in Dash Core 0.16.0.<br>Enable LLMQ-based InstantSend._

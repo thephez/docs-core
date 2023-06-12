@@ -389,7 +389,7 @@ d32020c827a89f8128a00acd210f4ea4
 ### Active sporks
 
 The list of all active sporks can be found in
-[`src/spork.h`](https://github.com/dashpay/dash/blob/v19.x/src/spork.h#L34)). See the [removed
+[`src/spork.h`](https://github.com/dashpay/dash/blob/v19.x/src/spork.h#L34). See the [removed
 sporks section](#removed-sporks) for a list of previously removed sporks.
 
 | Spork ID | Num. | Name | Description |

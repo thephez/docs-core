@@ -370,11 +370,11 @@ The [`spork` message](../reference/p2p-network-control-messages.md#spork) tells 
 | 8 | nTimeSigned | int64_t | Required | Time the spork value was signed
 | 66 | vchSig | char[] | Required | Length (1 byte) + Signature (65 bytes)
 
-**Active Sporks (per [`src/spork.h`](https://github.com/dashpay/dash/blob/v0.17.x/src/spork.h#L24))**
+**Active Sporks (per [`src/spork.h`](https://github.com/dashpay/dash/blob/v19.x/src/spork.h#L34))**
 
 | Spork ID | Num. | Name | Description |
 | :----------: | :----------: | ----------- | ----------- |
-| 10001 | 2 | `INSTANTSEND_ENABLED` | ***Updated in Dash Core 0.17.0***<br>Turns InstantSend on and off network wide. Also determines if new mempool transactions should be locked or not.
+| 10001 | 2 | `INSTANTSEND_ENABLED` | *Updated in Dash Core 0.17.0*<br>Turns InstantSend on and off network wide. Also determines if new mempool transactions should be locked or not.
 | 10002 | 3 | `INSTANTSEND_BLOCK_`<br>`FILTERING` | Turns on and off InstantSend block filtering
 | 10008 | 9 | `SUPERBLOCKS_ENABLED` | Superblocks are enabled (10% of the block reward allocated to fund the dash treasury for funding approved proposals)
 | 10016 | 17 | `SPORK_17_QUORUM_DKG_`<br>`ENABLED` | Enable long-living masternode quorum (LLMQ) distributed key generation (DKG). When enabled, simple PoSe  scoring and banning is active as well.

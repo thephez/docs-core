@@ -75,7 +75,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 ## [Evolution RPCs](../api/remote-procedure-calls-evo.md)
 
 * [BLS](../api/remote-procedure-calls-evo.md#bls): provides a set of commands to execute BLS-related actions. **Updated in Dash Core 19.0.0**
-* [ProTx](../api/remote-procedure-calls-evo.md#protx): provides a set of commands to execute ProTx related actions. **Updated in Dash Core 19.0.0**
+* [ProTx](../api/remote-procedure-calls-evo.md#protx): provides a set of commands to execute ProTx related actions. **Updated in Dash Core 19.2.0**
 * [Quorum](../api/remote-procedure-calls-evo.md#quorum): provides a set of commands for quorums (LLMQs). **Updated in Dash Core 19.0.0**
 * [VerifyChainLock](../api/remote-procedure-calls-evo.md#verifychainlock): tests if a quorum signature is valid for a ChainLock. **_New in Dash Core 0.17.0_**
 * [VerifyISLock](../api/remote-procedure-calls-evo.md#verifyislock): tests if a quorum signature is valid for an InstantSend lock. **_New in Dash Core 0.17.0_**

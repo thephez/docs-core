@@ -168,7 +168,7 @@ The `protx diff` RPC calculates a diff and a proof between two masternode list.
 *Example from Dash Core 19.2.0*
 
 ```bash
-dash-cli -testnet protx diff 854380 854390 true
+dash-cli -testnet protx diff 100000 100500 true
 ```
 
 Result (truncated):

@@ -393,15 +393,18 @@ _Result (if `detailed` was `true`)---JSON provider registration transaction deta
 | ----------------------------------- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------- |
 | `result`                            | array        | Required<br>(exactly 1) | An array of objects each containing a provider transaction, or JSON `null` if an error occurred |
 | <br>Provider Transaction            | object/null  | Required<br>(exactly 1) | An object containing a provider transaction                                                     |
+| →<br>`type`                         | string       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>The type of masternode                                         |
 | →<br>`proTxHash`                    | string (hex) | Required<br>(exactly 1) | The hash of the provider transaction as hex in RPC byte order                                   |
 | →<br>`collateralHash`               | string (hex) | Required<br>(exactly 1) | The hash of the collateral transaction as hex in RPC byte order                                 |
 | →<br>`collateralIndex`              | number (int) | Required<br>(exactly 1) | The collateral index                                                                            |
 | → →<br>`collateralAddress`          | string       | Required<br>(exactly 1) | The collateral address                                                                          |
 | →<br>`operatorReward`               | number (int) | Required<br>(exactly 1) | The operator reward %                                                                           |
 | →<br>`state`                        | object/null  | Required<br>(exactly 1) | An object containing a provider transaction state                                               |
+| → →<br>`version`                    | number (int) | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>The version of the most recent ProRegTx or ProUpRegTx                                           |
 | → →<br>`service`                    | string       | Required<br>(exactly 1) | The masternode's IP:Port                                                                        |
 | → →<br>`registeredHeight`           | number (int) | Required<br>(exactly 1) | The height where the masternode was registered                                                  |
 | → →<br>`lastPaidHeight`             | number (int) | Required<br>(exactly 1) | The height where the masternode was last paid                                                   |
+| → →<br>`consecutivePayments`        | number (int) | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>The number of consecutive payments the masternode has received in the payment cycle |
 | → →<br>`PoSePenalty`                | number (int) | Required<br>(exactly 1) | The masternode's proof of service penalty                                                       |
 | → →<br>`PoSeRevivedHeight`          | number (int) | Required<br>(exactly 1) | The height where the masternode recovered from a proof of service ban                           |
 | → →<br>`PoSeBanHeight`              | number (int) | Required<br>(exactly 1) | The height where the masternode was banned for proof of service violations                      |
@@ -419,15 +422,16 @@ _Result (if `detailed` was `true`)---JSON provider registration transaction deta
 | → →<br>`ownsCollateral`             | bool         | Required<br>(exactly 1) | The collateral is owned by this wallet                                                          |
 | → →<br>`ownsPayeeScript`            | bool         | Required<br>(exactly 1) | The payee script is owned by this wallet                                                        |
 | → →<br>`ownsOperatorRewardScript`   | bool         | Required<br>(exactly 1) | The operator reward script is owned by this wallet                                              |
-| →<br>`metaInfo`                     | object/null  | Required<br>(exactly 1) | **Added in Dash Core 0.16.0**<br><br>An object containing a metainfo related to this ProTx      |
+| →<br>`metaInfo`                     | object/null  | Required<br>(exactly 1) | **Added in Dash Core 0.16.0**<br>An object containing a metainfo related to this ProTx      |
 | → →<br>`lastDSQ`                    | string       | Required<br>(exactly 1) | The owner key is present in this wallet                                                         |
 | → →<br>`mixingTxCount`              | string       | Required<br>(exactly 1) | The operator key is present in this wallet                                                      |
+| → →<br>`outboundAttemptCount`       | integer      | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>Number of outbound attempts                                                                     |
 | → →<br>`lastOutboundAttempt`        | integer      | Required<br>(exactly 1) | Unix epoch time of the last outbound attempted                                                  |
 | → →<br>`lastOutboundAttemptElapsed` | integer      | Required<br>(exactly 1) | Elapsed time since last outbound attempt                                                        |
 | → →<br>`lastOutboundSuccess`        | integer      | Required<br>(exactly 1) | Unix epoch time of the last successful outbound connection                                      |
 | → →<br>`lastOutboundSuccessElapsed` | integer      | Required<br>(exactly 1) | Elapsed time since last successful outbound attempt                                             |
 
-*Example from Dash Core 0.16.0*
+*Example from Dash Core 19.2.0*
 
 ```bash
 dash-cli -testnet protx list
@@ -469,15 +473,17 @@ Result:
 ```json
 [
   {
+    "type": "Regular",
     "proTxHash": "c48a44a9493eae641bea36992bc8c27eaaa33adb1884960f55cd259608d26d2f",
     "collateralHash": "e3270ff48c4b802d56ee58d3d53777f7f9c289964e4df0842518075fc81345b1",
     "collateralIndex": 3,
-    "collateralAddress": "yYpzTXjVx7A5uohsmW8sRy7TJp4tihVuZg",
     "operatorReward": 0,
     "state": {
+      "version": 1,
       "service": "173.61.30.231:19013",
       "registeredHeight": 7090,
       "lastPaidHeight": 0,
+      "consecutivePayments": 0,
       "PoSePenalty": 0,
       "PoSeRevivedHeight": -1,
       "PoSeBanHeight": -1,
@@ -487,7 +493,7 @@ Result:
       "payoutAddress": "yU3UdrmS6KpWwBDLQTkp1KjXePwWsMbYdj",
       "pubKeyOperator": "8700add55a28ef22ec042a2f28e25fb4ef04b3024a7c56ad7eed4aebc736f312d18f355370dfb6a5fec9258f464b227e"
     },
-    "confirmations": 292830,
+    "confirmations": -1,
     "wallet": {
       "hasOwnerKey": false,
       "hasOperatorKey": false,
@@ -499,10 +505,11 @@ Result:
     "metaInfo": {
       "lastDSQ": 0,
       "mixingTxCount": 0,
+      "outboundAttemptCount": 0,
       "lastOutboundAttempt": 0,
-      "lastOutboundAttemptElapsed": 1588171141,
+      "lastOutboundAttemptElapsed": 1686684013,
       "lastOutboundSuccess": 0,
-      "lastOutboundSuccessElapsed": 1588171141
+      "lastOutboundSuccessElapsed": 1686684013
     }
   }
 ]

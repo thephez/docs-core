@@ -267,7 +267,7 @@ The `protx info` RPC returns detailed information about a deterministic masterno
 | → →<br>`collateralAddress`          | string       | Required<br>(exactly 1) | The collateral address                                                                          |
 | →<br>`operatorReward`               | number (int) | Required<br>(exactly 1) | The operator reward %                                                                           |
 | →<br>`state`                        | object/null  | Required<br>(exactly 1) | An object containing a provider transaction state                                               |
-| → →<br>`version`                    | number (int) | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>The version of the most recent ProRegTx or ProUpRegTx                                           |
+| → →<br>`version`                    | number (int) | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>The version of the most recent ProRegTx or ProUpRegTx          |
 | → →<br>`service`                    | string       | Required<br>(exactly 1) | The masternode's IP:Port                                                                        |
 | → →<br>`registeredHeight`           | number (int) | Required<br>(exactly 1) | The height where the masternode was registered                                                  |
 | → →<br>`lastPaidHeight`             | number (int) | Required<br>(exactly 1) | The height where the masternode was last paid                                                   |

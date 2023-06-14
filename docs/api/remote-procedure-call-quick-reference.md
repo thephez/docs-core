@@ -64,7 +64,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetCoinJoinInfo](../api/remote-procedure-calls-dash.md#getcoinjoininfo): returns an object containing an information about CoinJoin settings and state. _New in Dash Core 0.15.0_
 * [GetSuperblockBudget](../api/remote-procedure-calls-dash.md#getsuperblockbudget): returns the absolute maximum sum of superblock payments allowed.
 * [GObject](../api/remote-procedure-calls-dash.md#gobject): provides a set of commands for managing governance objects and displaying information about them. **Updated in Dash Core 19.0.0**
-* [Masternode](../api/remote-procedure-calls-dash.md#masternode): provides a set of commands for managing masternodes and displaying information about them. **Updated in Dash Core 19.0.0**
+* [Masternode](../api/remote-procedure-calls-dash.md#masternode): provides a set of commands for managing masternodes and displaying information about them. **Updated in Dash Core 19.2.0**
 * [MasternodeList](../api/remote-procedure-calls-dash.md#masternodelist): returns a list of masternodes in different modes. **Updated in Dash Core 19.0.0**
 * [MnSync](../api/remote-procedure-calls-dash.md#mnsync): returns the sync status, updates to the next step or resets it entirely. _Updated in Dash Core 0.14.0_
 * [CoinJoin](../api/remote-procedure-calls-dash.md#coinjoin): controls the CoinJoin process. _Updated in Dash Core 0.12.3_

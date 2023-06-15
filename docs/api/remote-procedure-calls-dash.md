@@ -1331,7 +1331,7 @@ The `masternode status` RPC prints masternode status information.
 | →<br>`state`                   | string       | Required<br>(exactly 1) | The masternode's state. Valid states are:<br>• `WAITING_FOR_PROTX`<br>• `POSE_BANNED`<br>• `REMOVED`<br>• `OPERATOR_KEY_CHANGED`<br>• `PROTX_IP_CHANGED`<br>• `READY`<br>• `ERROR`<br>• `UNKNOWN` |
 | →<br>`status`                  | string       | Required<br>(exactly 1) | The masternode's status (description based on current state)                                                                                                                                      |
 
-*Example from Dash Core 19.0.0*
+*Example from Dash Core 19.2.0*
 
 ``` bash
 dash-cli -testnet masternode status
@@ -1341,28 +1341,26 @@ Result:
 
 ``` json
 {
-  "outpoint": "01bb7dc587bb7306444eb5c8106b15a033b9c34c782d2fb46c4910552b59a067-1",
-  "service": "45.32.237.76:19999",
-  "proTxHash": "3979cfb79c4562e819aca69ffae2ea84b9b8f29bd89bdc68be67b88c6f31bf99",
-  "type": "HighPerformance",
-  "collateralHash": "01bb7dc587bb7306444eb5c8106b15a033b9c34c782d2fb46c4910552b59a067",
-  "collateralIndex": 1,
+  "outpoint": "14cc57ac58da79123bdc0ab90cc387dbccef6b73932a04425a036c381562015b-2",
+  "service": "54.188.46.38:19999",
+  "proTxHash": "a07dffc303cc8c8305380d7d1076d4a0b49bf8ea06352751a1480dd40bf806b0",
+  "type": "Regular",
+  "collateralHash": "14cc57ac58da79123bdc0ab90cc387dbccef6b73932a04425a036c381562015b",
+  "collateralIndex": 2,
   "dmnState": {
-    "service": "45.32.237.76:19999",
-    "registeredHeight": 854390,
-    "lastPaidHeight": 865943,
+    "version": 2,
+    "service": "54.188.46.38:19999",
+    "registeredHeight": 850097,
+    "lastPaidHeight": 0,
     "consecutivePayments": 0,
     "PoSePenalty": 0,
-    "PoSeRevivedHeight": 854739,
+    "PoSeRevivedHeight": 850228,
     "PoSeBanHeight": -1,
     "revocationReason": 0,
-    "ownerAddress": "yg1zQCne1gSVdJKwUy7LRB3X6tVd6hHiTF",
-    "votingAddress": "yiCk7DjwBbUGJuJofTA7eXU4hyybu123pD",
-    "platformNodeID": "71b5c04007f6af71d99893478feb52df0f5a7701",
-    "platformP2PPort": 22821,
-    "platformHTTPPort": 22822,
-    "payoutAddress": "ygRPwFLoC8WeW3ujqrskqHZiQvKpTHF6qv",
-    "pubKeyOperator": "a73d8c1e640d29e2257042a39bbbac8d867f69ae252e146884816b98ab0d0526ed4992d9cff22ef04878423f66583382"
+    "ownerAddress": "yYKfHoNGJkzwg5mkjCtKWgNLoBjHfBjgQf",
+    "votingAddress": "yYKfHoNGJkzwg5mkjCtKWgNLoBjHfBjgQf",
+    "payoutAddress": "yeRZBWYfeNE4yVUHV4ZLs83Ppn9aMRH57A",
+    "pubKeyOperator": "818b1f2d7341dbe7d236945a76a2798da654c792e1311a92736ba4de810af25f1b305ce9acb314eafddca5489f1db888"
   },
   "state": "READY",
   "status": "Ready"

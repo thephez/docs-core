@@ -1341,26 +1341,29 @@ Result:
 
 ``` json
 {
-  "outpoint": "14cc57ac58da79123bdc0ab90cc387dbccef6b73932a04425a036c381562015b-2",
-  "service": "54.188.46.38:19999",
-  "proTxHash": "a07dffc303cc8c8305380d7d1076d4a0b49bf8ea06352751a1480dd40bf806b0",
-  "type": "Regular",
-  "collateralHash": "14cc57ac58da79123bdc0ab90cc387dbccef6b73932a04425a036c381562015b",
-  "collateralIndex": 2,
+  "outpoint": "6ce8545e25d4f03aba1527062d9583ae01827c65b234bd979aca5954c6ae3a59-27",
+  "service": "34.214.48.68:19999",
+  "proTxHash": "9cb04f271ba050132c00cc5838fb69e77bc55b5689f9d2d850dc528935f8145c",
+  "type": "HighPerformance",
+  "collateralHash": "6ce8545e25d4f03aba1527062d9583ae01827c65b234bd979aca5954c6ae3a59",
+  "collateralIndex": 27,
   "dmnState": {
     "version": 2,
-    "service": "54.188.46.38:19999",
-    "registeredHeight": 850097,
-    "lastPaidHeight": 0,
+    "service": "34.214.48.68:19999",
+    "registeredHeight": 850334,
+    "lastPaidHeight": 852599,
     "consecutivePayments": 0,
     "PoSePenalty": 0,
-    "PoSeRevivedHeight": 850228,
+    "PoSeRevivedHeight": -1,
     "PoSeBanHeight": -1,
     "revocationReason": 0,
-    "ownerAddress": "yYKfHoNGJkzwg5mkjCtKWgNLoBjHfBjgQf",
-    "votingAddress": "yYKfHoNGJkzwg5mkjCtKWgNLoBjHfBjgQf",
+    "ownerAddress": "yeJdYWA1rNSKxxfo7mE2eBUj3ejBGUR6UB",
+    "votingAddress": "yeJdYWA1rNSKxxfo7mE2eBUj3ejBGUR6UB",
+    "platformNodeID": "62e960a3f6b650feed98a266b3ccdf6e363562cf",
+    "platformP2PPort": 36656,
+    "platformHTTPPort": 1443,
     "payoutAddress": "yeRZBWYfeNE4yVUHV4ZLs83Ppn9aMRH57A",
-    "pubKeyOperator": "818b1f2d7341dbe7d236945a76a2798da654c792e1311a92736ba4de810af25f1b305ce9acb314eafddca5489f1db888"
+    "pubKeyOperator": "b6ee48c7a71a9d8e0813e68ca09846245fa155285f24a62b0ce9cb0102b1994ec58af8ba2a01c09363bdcc395d41f3df"
   },
   "state": "READY",
   "status": "Ready"

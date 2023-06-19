@@ -135,13 +135,13 @@ The `protx diff` RPC calculates a diff and a proof between two masternode list.
 | →<br>`deletedMNs`              | array        | Required<br>(exactly 1) | An array of deleted masternode hashes                                                                                                            |
 | →<br>`mnlist`                  | array        | Required<br>(exactly 1) | An array of masternode details                                                                                                                   |
 | → →<br>`nVersion`              | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>BLS version<br>`1` - Legacy BLS scheme<br>`2` - [Basic BLS scheme](https://github.com/dashpay/dash/issues/5001) |
+| → →<br>`nType`                 | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>Type of masternode<br> `0` - Regular masternode<br>`1` - Evolution masternode                            |
 | → →<br>`proRegTxHash`          | string (hex) | Required<br>(exactly 1) | The hash of the initial provider registration transaction as hex in RPC byte order                                                               |
 | → →<br>`confirmedHash`         | string (hex) | Required<br>(exactly 1) | The hash of the block where the ProRegTx was mined                                                                                               |
 | → →<br>`service`               | string       | Required<br>(exactly 1) | The IP address/Port of the masternode                                                                                                            |
 | → →<br>`pubKeyOperator`        | string (hex) | Required<br>(exactly 1) | The operator public key                                                                                                                          |
 | → →<br>`votingAddress`         | string       | Required<br>(exactly 1) | The voting address                                                                                                                               |
 | → →<br>`isValid`               | bool         | Required<br>(exactly 1) | Set to `true` if masternode is valid                                                                                                             |
-| → →<br>`nType`                 | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>Type of masternode<br> `0` - Regular masternode<br>`1` - Evolution masternode                            |
 | → →<br>`platformHTTPPort`      | number       | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>TCP port of Platform HTTP/API interface (evonodes only)                                                            |
 | → →<br>`platformNodeID`        | string (hex) | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P node ID, derived from P2P public key (evonodes only)                                                  |
 | → →<br>`payoutAddress`         | string       | Optional<br>(0 or 1)    | **Added in Dash Core 18.1.0**<br>The owner's payout address. Only included if the `extended` parameter is set to `true`.                         |
@@ -186,23 +186,25 @@ Result (truncated):
   "mnList": [
     {
       "nVersion": 1,
+      "nType": 0,
       "proRegTxHash": "488910d2554fbc8f803011dd107b993b185ed6eeb7efef6dedfd74ec6656f58b",
       "confirmedHash": "00000000031c08dad48934c9e2a0bf3dac307aa1b6106ed8aa4345b5423166cd",
       "service": "51.38.80.34:19999",
       "pubKeyOperator": "8b63fa3eb2ed4caba1fec3647bcec7a2886b5cde5b2cec6b5a60dc04193e959d21e96cbfa41388159450f244578de9a9",
       "votingAddress": "yXRzKxTbQUGWCqYwXnMWw5SnNCPj19NBGZ",
       "isValid": true,
-      "nType": 0
+      "payoutAddress": "yWPKEmx59zHRyyVFgC5xYXAZvGoaHCxTDE"
     },
     {
       "nVersion": 1,
+      "nType": 0,
       "proRegTxHash": "9dadb2198c6c3f7d9aef77493ee2f8f0513198bada377078a99a1128ffa1b2b0",
       "confirmedHash": "00000000006fef47babe96126b70087c46defeb9527de07a52e417fe7fcd2fce",
       "service": "34.83.230.157:19999",
       "pubKeyOperator": "963984167b298d8d77b1be02e38e2493a75251cf9abecc7facee85512eabab7b05ffe053e8956d98ad4a3c20b77ade1e",
       "votingAddress": "yW5QUL6GqNswhSdMnWjcyAZ871VKrdY4jS",
       "isValid": true,
-      "nType": 0
+      "payoutAddress": "yMvjw8sFTBZy72sgGVHHwisF1ETmhr9ngq"
     }
   ],
   "deletedQuorums": [

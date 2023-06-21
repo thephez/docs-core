@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Wallet RPCs
+  :description: A list of deprecated Wallet RPCs.
+```
+
 # Wallet RPCs (Deprecated)
 
 >❗️ Wallet Support

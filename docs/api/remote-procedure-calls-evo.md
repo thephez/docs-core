@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Evo RPCs
+  :description: A list of all the Evolution-related remote procedure calls in Dash Core.
+```
+
 # Evo RPCs
 
 ## BLS

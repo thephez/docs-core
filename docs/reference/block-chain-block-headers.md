@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Block Headers
+  :description: Describes the structure of Dash block headers and provides related details on block versions, merkle trees, and mining difficulty.
+```
+
 # Block Headers
 
 [Block headers](../resources/glossary.md#block-header) are serialized in the 80-byte format described below and then hashed as part of the proof-of-work algorithm, making the serialized header format part of the [consensus rules](../resources/glossary.md#consensus-rules).

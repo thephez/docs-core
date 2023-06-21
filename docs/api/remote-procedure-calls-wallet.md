@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Wallet RPCs
+  :description: A list of remote procedure calls in Dash that are used to perform wallet operations such as sending, creating and categorizing addresses, etc. 
+```
+
 # Wallet RPCs
 
 >❗️ Wallet Support

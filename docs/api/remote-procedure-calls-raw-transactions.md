@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Raw Transaction RPCs
+  :description: A list of remote procedure calls in Dash Core that are used to work with raw transactions and partially signed transactions (PSBT).
+```
+
 # Raw Transactions
 
 ## AnalyzePSBT

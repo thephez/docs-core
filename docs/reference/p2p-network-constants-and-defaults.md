@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Core Constants and Defaults
+  :description: Details Dash network constants and defaults, including port configuration and start strings for Dash network messages.
+```
+
 # Constants and Defaults
 
 The following constants and defaults are taken from Dash Core's [chainparams.cpp](https://github.com/dashpay/dash/blob/master/src/chainparams.cpp) source code file.

@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Generating RPCs
+  :description: A list of all mining-related remote procedure calls in Dash Core.
+```
+
 # Generating RPCs
 
 ## GenerateBlock

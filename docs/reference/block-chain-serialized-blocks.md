@@ -1,3 +1,8 @@
+```{eval-rst}
+.. meta::
+  :title: Serialized Blocks
+  :description: Describes the structure of serialized Dash blocks and how the block reward is divided among miners, masternodes, and the governance system.
+```
 # Serialized Blocks
 
 Under current [consensus rules](../resources/glossary.md#consensus-rules), a [block](../resources/glossary.md#block) is not valid unless its serialized size is less than or equal to 2 MB. All fields described below are counted towards the serialized size.

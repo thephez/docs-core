@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Network RPCs
+  :description: A list of all network connection related remote procedure calls in Dash Core.
+```
+
 # Network RPCs
 
 ## AddNode

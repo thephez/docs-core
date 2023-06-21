@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Requests
+  :description: Provides details about Dash Core HTTP REST API endpoints.
+```
+
 # Requests
 
 ## GET Block

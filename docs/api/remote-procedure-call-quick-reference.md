@@ -1,5 +1,8 @@
 ```{eval-rst}
 .. _api-rpc-quick-reference:
+.. meta::
+  :title: Remote Procedure Call Quick Reference
+  :description: A quick reference guide for all the RPCs in Dash.
 ```
 
 # Quick Reference

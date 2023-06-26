@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Creating a Bloom Filter
+  :description: Demonstrates how to create a bloom filter using Python and represent it in a filterload message.
+```
+
 # Creating a Bloom Filter
 
 In this section, we'll use variable names that correspond to the field names in the [`filterload` message documentation](../reference/p2p-network-control-messages.md#filterload). Each code block precedes the paragraph describing it.

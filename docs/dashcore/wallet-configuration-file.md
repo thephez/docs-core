@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Core Configuration Files
+  :description: Details about the configuration files needed to run dashd and dash-cli, including dash.conf and settings.json.
+```
+
 # Configuration Files
 
 ## dash.conf

@@ -1,5 +1,8 @@
 ```{eval-rst}
 .. _dashcore-arguments-and-commands:
+.. meta::
+  :title: Dash Core Arguments and Commands
+  :description: Overview of arguments and commands for the components distributed with Dash Core, including dashd, dash-qt, and dash-cli.
 ```
 
 # Arguments and Commands

@@ -90,7 +90,7 @@ Create a new block to confirm the transaction above (takes less than a second) a
 
 ## Simple Spending Script
 
-Shell script to run the previous example (available [here](https://gist.github.com/dash-docs/f40bddfc0844ec0d66d196720dc936f8#file-regtest_transaction_simple_spending_example-sh)):
+Shell script to run the previous example ([view as a GitHub Gist](https://gist.github.com/dash-docs/f40bddfc0844ec0d66d196720dc936f8#file-regtest_transaction_simple_spending_example-sh)):
 
 ``` shell
 #!/bin/bash

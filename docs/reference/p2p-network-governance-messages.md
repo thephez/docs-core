@@ -156,7 +156,7 @@ The [`govsync` message](../reference/p2p-network-governance-messages.md#govsync)
 
 This message responds in one of two ways depending on the request:
 
-1. Object Sync - When a masternode receives a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) with a hash of all zeros, it responds with a [`ssc` message](../reference/p2p-network-masternode-messages.md#ssc) for `govobj` objects. The masternode also sends an [`inv` message](../reference/p2p-network-data-messages.md#inv) (MSG_GOVERNANCE_OBJECT - 0x17) for all valid `govobj` governance objects.
+1. Object Sync - When a masternode receives a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) with a hash of all zeros, it responds with a [`ssc` message](../reference/p2p-network-masternode-messages.md#ssc) for `govobj` objects. The masternode also sends an [`inv` message](../reference/p2p-network-data-messages.md#inv) (MSG_GOVERNANCE_OBJECT - 0x17) for all valid `govobj` governance objects. Do note that Dash limits how frequently object sync can be requested. Frequent requests will result in the node being banned.
 *Governance object votes are excluded in this type of response.*
 
 2. Vote Sync - When a masternode receives a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) with a specific hash, it responds with an [`ssc` message](../reference/p2p-network-masternode-messages.md#ssc) for `govobjvote` objects. The masternode also sends a `govobjvote` inventory messages (MSG_GOVERNANCE_OBJECT_VOTE - 0x18) for the object requested.
@@ -165,10 +165,6 @@ This message responds in one of two ways depending on the request:
 | ---------- | ----------- | --------- | -------- | -------- |
 | 32 | nHash | uint256 | Required | Hash of governance object to request<br>Set to all zeros to request all objects (excludes votes)
 | # | filter | CBloomFilter | Required | Can be set to all zeros.<br>Only supported since [protocol version 70206](../reference/p2p-network-protocol-versions.md)
-
-> 📘 Object sync rate limiting
->
-> Dash Core limits how frequently the first type of sync (object sync) can be requested. Frequent requests will result in the node being banned.
 
 The following annotated hexdump shows a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync). (The message header has been omitted.)
 

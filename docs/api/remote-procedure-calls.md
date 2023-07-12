@@ -203,10 +203,6 @@ Continuing with the example above, the output from the `dash-cli` command would 
 
 ### Multi-wallet Support
 
-> 👍
->
-> Introduced in Dash Core 18.0
-
 Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at the same time, wallet-related RPCs require using the `-rpcwallet` option when more than one wallet file is loaded. This is to ensure the RPC command is executed using the correct wallet. Pass the filename of the wallet to be acted on using the following syntax is:
 
 ```shell

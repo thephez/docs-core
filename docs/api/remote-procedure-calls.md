@@ -244,6 +244,19 @@ curl --user 'my_username:my_secret_password' --data-binary '''
   --header 'content-type: text/plain;' localhost:19998/wallet/testnet-wallet
 ```
 
+Access the default wallet using the format `<RPC IP address>:<RPC port>/wallet/`
+(the final "`/`" must be included):
+
+```shell
+curl --user 'my_username:my_secret_password' --data-binary '''
+  {
+    "method": "getwalletinfo",
+    "params": [],
+    "id":"foo"
+  }'''\
+  --header 'content-type: text/plain;' localhost:19998/wallet/
+```
+
 ### RPCs with sub-commands
 
 Dash Core has a number of RPC requests that use sub-commands to group access to related data under one RPC method name. Examples of this include the [`gobject`](../api/remote-procedure-calls-dash.md#gobject), [`masternode`](../api/remote-procedure-calls-dash.md#masternode), [`protx`](../api/remote-procedure-calls-evo.md#protx), and [`quorum`](../api/remote-procedure-calls-evo.md#quorum) RPCs. If using cURL, the sub-commands should be included in the requests `params` field as shown here:

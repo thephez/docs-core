@@ -207,7 +207,10 @@ Continuing with the example above, the output from the `dash-cli` command would 
 
 ### Multi-wallet Support
 
-Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at the same time, wallet-related RPCs require providing the wallet name when more than one wallet file is loaded. This is to ensure the RPC command is executed using the correct wallet.
+Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at
+the same time, wallet-related RPCs require providing the wallet name when more
+than one wallet file is loaded. This is to ensure the RPC command is executed
+using the correct wallet.
 
 **Dash-cli Example**
 

@@ -230,13 +230,11 @@ example:
 ```shell
 curl --user 'my_username:my_secret_password' --data-binary '''
   {
-    "jsonrpc": "1.0",
-    "id":"curltest",
     "method": "getwalletinfo",
-    "params": [] 
+    "params": [],
+    "id":"foo"
   }'''\
-  -H 'content-type: text/plain;'\
-  http://127.0.0.1:19998/wallet/testnet-wallet
+  --header 'content-type: text/plain;' localhost:19998/wallet/testnet-wallet
 ```
 
 ### RPCs with sub-commands

@@ -201,6 +201,10 @@ Continuing with the example above, the output from the `dash-cli` command would 
 00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c
 ```
 
+```{eval-rst}
+.. _api-rpc-multi-wallet-support:
+```
+
 ### Multi-wallet Support
 
 Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at the same time, wallet-related RPCs require providing the wallet name when more than one wallet file is loaded. This is to ensure the RPC command is executed using the correct wallet.
@@ -249,10 +253,6 @@ curl --user 'my_username:my_secret_password' --data-binary '''
       "id": "foo"
   }''' \
   --header 'Content-Type: text/plain;' localhost:9998
-```
-
-```{eval-rst}
-.. _api-rpc-multi-wallet-support:
 ```
 
 ### Error Handling

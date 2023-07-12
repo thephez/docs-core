@@ -203,16 +203,40 @@ Continuing with the example above, the output from the `dash-cli` command would 
 
 ### Multi-wallet Support
 
-Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at the same time, wallet-related RPCs require using the `-rpcwallet` option when more than one wallet file is loaded. This is to ensure the RPC command is executed using the correct wallet. Pass the filename of the wallet to be acted on using the following syntax is:
+Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at the same time, wallet-related RPCs require providing the wallet name when more than one wallet file is loaded. This is to ensure the RPC command is executed using the correct wallet.
+
+**Dash-cli Example**
+
+Use the dash-cli `-rpcwallet` option to specify the path of the wallet file to
+access, for example:
 
 ```shell
 dash-cli -rpcwallet=<wallet-filename> <command>
 ```
 
-To use the default wallet, use `""` for the wallet filename as shown in the example below:
+To use the default wallet, use `""` for the wallet filename as shown in the
+example below:
 
 ```shell
 dash-cli -rpcwallet="" getwalletinfo
+```
+
+**JSON-RPC Example**
+
+Specify which wallet file to access by setting the HTTP endpoint in the JSON-RPC
+request using the format `<RPC IP address>:<RPC port>/wallet/<wallet name>`, for
+example:
+
+```shell
+curl --user 'my_username:my_secret_password' --data-binary '''
+  {
+    "jsonrpc": "1.0",
+    "id":"curltest",
+    "method": "getwalletinfo",
+    "params": [] 
+  }'''\
+  -H 'content-type: text/plain;'\
+  http://127.0.0.1:19998/wallet/testnet-wallet
 ```
 
 ### RPCs with sub-commands

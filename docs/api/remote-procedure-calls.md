@@ -201,24 +201,6 @@ Continuing with the example above, the output from the `dash-cli` command would 
 00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c
 ```
 
-### RPCs with sub-commands
-
-Dash Core has a number of RPC requests that use sub-commands to group access to related data under one RPC method name. Examples of this include the [`gobject`](../api/remote-procedure-calls-dash.md#gobject), [`masternode`](../api/remote-procedure-calls-dash.md#masternode), [`protx`](../api/remote-procedure-calls-evo.md#protx), and [`quorum`](../api/remote-procedure-calls-evo.md#quorum) RPCs. If using cURL, the sub-commands should be included in the requests `params` field as shown here:
-
-```shell
-curl --user 'my_username:my_secret_password' --data-binary '''
-  {
-      "method": "gobject",
-      "params": ["list", "valid", "proposals"],
-      "id": "foo"
-  }''' \
-  --header 'Content-Type: text/plain;' localhost:9998
-```
-
-```{eval-rst}
-.. _api-rpc-multi-wallet-support:
-```
-
 ### Multi-wallet Support
 
 > 👍
@@ -235,6 +217,24 @@ To use the default wallet, use `""` for the wallet filename as shown in the exam
 
 ```shell
 dash-cli -rpcwallet="" getwalletinfo
+```
+
+### RPCs with sub-commands
+
+Dash Core has a number of RPC requests that use sub-commands to group access to related data under one RPC method name. Examples of this include the [`gobject`](../api/remote-procedure-calls-dash.md#gobject), [`masternode`](../api/remote-procedure-calls-dash.md#masternode), [`protx`](../api/remote-procedure-calls-evo.md#protx), and [`quorum`](../api/remote-procedure-calls-evo.md#quorum) RPCs. If using cURL, the sub-commands should be included in the requests `params` field as shown here:
+
+```shell
+curl --user 'my_username:my_secret_password' --data-binary '''
+  {
+      "method": "gobject",
+      "params": ["list", "valid", "proposals"],
+      "id": "foo"
+  }''' \
+  --header 'Content-Type: text/plain;' localhost:9998
+```
+
+```{eval-rst}
+.. _api-rpc-multi-wallet-support:
 ```
 
 ### Error Handling

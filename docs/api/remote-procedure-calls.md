@@ -201,6 +201,62 @@ Continuing with the example above, the output from the `dash-cli` command would 
 00000bafbc94add76cb75e2ec92894837288a481e5c005f6563d91623bf8bc2c
 ```
 
+```{eval-rst}
+.. _api-rpc-multi-wallet-support:
+```
+
+### Multi-wallet Support
+
+Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at
+the same time, wallet-related RPCs require providing the wallet name when more
+than one wallet file is loaded. This is to ensure the RPC command is executed
+using the correct wallet.
+
+**Dash-cli Example**
+
+Use the dash-cli `-rpcwallet` option to specify the path of the wallet file to
+access, for example:
+
+```shell
+dash-cli -rpcwallet=<wallet-filename> <command>
+```
+
+To use the default wallet, use `""` for the wallet filename as shown in the
+example below:
+
+```shell
+dash-cli -rpcwallet="" getwalletinfo
+```
+
+**JSON-RPC Example**
+
+Specify which wallet file to access by setting the HTTP endpoint in the JSON-RPC
+request using the format `<RPC IP address>:<RPC port>/wallet/<wallet name>`, for
+example:
+
+```shell
+curl --user 'my_username:my_secret_password' --data-binary '''
+  {
+    "method": "getwalletinfo",
+    "params": [],
+    "id":"foo"
+  }'''\
+  --header 'content-type: text/plain;' localhost:19998/wallet/testnet-wallet
+```
+
+Access the default wallet using the format `<RPC IP address>:<RPC port>/wallet/`
+(the final "`/`" must be included):
+
+```shell
+curl --user 'my_username:my_secret_password' --data-binary '''
+  {
+    "method": "getwalletinfo",
+    "params": [],
+    "id":"foo"
+  }'''\
+  --header 'content-type: text/plain;' localhost:19998/wallet/
+```
+
 ### RPCs with sub-commands
 
 Dash Core has a number of RPC requests that use sub-commands to group access to related data under one RPC method name. Examples of this include the [`gobject`](../api/remote-procedure-calls-dash.md#gobject), [`masternode`](../api/remote-procedure-calls-dash.md#masternode), [`protx`](../api/remote-procedure-calls-evo.md#protx), and [`quorum`](../api/remote-procedure-calls-evo.md#quorum) RPCs. If using cURL, the sub-commands should be included in the requests `params` field as shown here:
@@ -213,28 +269,6 @@ curl --user 'my_username:my_secret_password' --data-binary '''
       "id": "foo"
   }''' \
   --header 'Content-Type: text/plain;' localhost:9998
-```
-
-```{eval-rst}
-.. _api-rpc-multi-wallet-support:
-```
-
-### Multi-wallet Support
-
-> 👍
->
-> Introduced in Dash Core 18.0
-
-Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at the same time, wallet-related RPCs require using the `-rpcwallet` option when more than one wallet file is loaded. This is to ensure the RPC command is executed using the correct wallet. Pass the filename of the wallet to be acted on using the following syntax is:
-
-```shell
-dash-cli -rpcwallet=<wallet-filename> <command>
-```
-
-To use the default wallet, use `""` for the wallet filename as shown in the example below:
-
-```shell
-dash-cli -rpcwallet="" getwalletinfo
 ```
 
 ### Error Handling

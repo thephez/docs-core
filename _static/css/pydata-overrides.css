@@ -91,3 +91,26 @@ sphinx search extension interface.
 .search-button__wrapper.show .search-button__overlay {
   display: none;
 }
+
+.search__outer {
+  background-color: var(--pst-color-on-background);
+  border: var(--pst-color-border);
+  border-radius: 0.25em;
+}
+
+.search__outer__input {
+  background-color: var(--pst-color-on-background);
+  font-size: var(--pst-font-size-icon);
+}
+
+.rtd__search__credits {
+  background-color: var(--pst-color-background);
+  color: var(--pst-color-text-muted);
+  .a {
+    color: var(--dash-blue);
+  }
+}
+
+.search__outer__input {
+  color: var(--pst-color-text-base);
+}

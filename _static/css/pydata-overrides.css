@@ -106,9 +106,10 @@ sphinx search extension interface.
 .rtd__search__credits {
   background-color: var(--pst-color-background);
   color: var(--pst-color-text-muted);
-  .a {
-    color: var(--dash-blue);
-  }
+}
+
+.rtd__search__credits a {
+  color: var(--pst-color-link);
 }
 
 .search__outer__input {

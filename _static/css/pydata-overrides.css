@@ -116,6 +116,6 @@ sphinx search extension interface.
   color: var(--pst-color-text-base);
 }
 
-.search__result__content .search__result__subheading {
+.search__result__content, .search__result__subheading {
   color: var(--pst-color-text-base);
 }

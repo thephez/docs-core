@@ -133,3 +133,14 @@ sphinx search extension interface.
 .search__outer .search__result__title span {
   border-bottom-color: var(--pst-color-text-base);
 }
+
+.search__cross__img {
+  /* Make sure "X" remains visible */
+  fill: var(--pst-color-text-base);
+}
+
+.outer_div_page_results:hover, .search__result__box .active {
+  /* Prevent hover from actually changing the color by setting it to what it
+  already is */
+  background-color: var(--pst-color-on-background);
+}

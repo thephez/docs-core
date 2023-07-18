@@ -114,3 +114,7 @@ sphinx search extension interface.
 .search__outer__input {
   color: var(--pst-color-text-base);
 }
+
+.search__result__content .search__result__subheading {
+  color: var(--pst-color-text-base);
+}

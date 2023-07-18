@@ -100,6 +100,7 @@ sphinx search extension interface.
 
 .search__outer__input {
   background-color: var(--pst-color-on-background);
+  color: var(--pst-color-text-base);
   font-size: var(--pst-font-size-icon);
 }
 
@@ -110,10 +111,6 @@ sphinx search extension interface.
 
 .rtd__search__credits a {
   color: var(--pst-color-link);
-}
-
-.search__outer__input {
-  color: var(--pst-color-text-base);
 }
 
 .search__result__content, .search__result__subheading {

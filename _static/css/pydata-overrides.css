@@ -119,3 +119,15 @@ sphinx search extension interface.
 .search__result__content, .search__result__subheading {
   color: var(--pst-color-text-base);
 }
+
+.search__result__subheading span {
+  border-bottom-color: var(--pst-color-text-base);
+}
+
+[data-theme="dark"] .search__outer .search__result__content span {
+  background-color: var(--pst-color-muted-highlight); /* Dark mode background color */
+}
+
+.search__outer .search__result__content span {
+  border-bottom-color: var(--pst-color-text-base);
+}

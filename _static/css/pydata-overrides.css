@@ -124,10 +124,12 @@ sphinx search extension interface.
   border-bottom-color: var(--pst-color-text-base);
 }
 
-[data-theme="dark"] .search__outer .search__result__content span {
+[data-theme="dark"] .search__outer .search__result__content span,
+[data-theme="dark"] .search__outer .search__result__title span {
   background-color: var(--pst-color-muted-highlight); /* Dark mode background color */
 }
 
-.search__outer .search__result__content span {
+.search__outer .search__result__content span,
+.search__outer .search__result__title span {
   border-bottom-color: var(--pst-color-text-base);
 }

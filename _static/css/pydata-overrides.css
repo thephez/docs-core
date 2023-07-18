@@ -92,6 +92,12 @@ sphinx search extension interface.
   display: none;
 }
 
+/* Make sure it doesn't stick out on the sides of the RtD search screen */
+.search-button__wrapper.show .search-button__search-container {
+    width: 15%;
+}
+
+/* Handle actual styling of the RtD search extension's screen */
 .search__outer {
   background-color: var(--pst-color-on-background);
   border: var(--pst-color-border);
@@ -131,13 +137,15 @@ sphinx search extension interface.
   border-bottom-color: var(--pst-color-text-base);
 }
 
+/* Make sure "X" remains visible */
 .search__cross__img {
-  /* Make sure "X" remains visible */
   fill: var(--pst-color-text-base);
 }
 
-.outer_div_page_results:hover, .search__result__box .active {
-  /* Prevent hover from actually changing the color by setting it to what it
+/* Prevent hover from actually changing the color by setting it to what it
   already is */
+.outer_div_page_results:hover, .search__result__box .active {
   background-color: var(--pst-color-on-background);
 }
+
+/* End of styling of the RtD search extension's screen */

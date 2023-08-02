@@ -3,7 +3,11 @@
 # Directory containing the files
 dir='_external_repo'
 
+echo "Starting to process files in $dir..."
+
 for filename in "$dir"/*.md; do
+    echo "Processing $filename..."
+
     # Extract DIP number
     dip=$(grep '^  DIP:' "$filename" | awk -F: '{print $2}' | sed 's/^ *//')
 
@@ -17,7 +21,7 @@ for filename in "$dir"/*.md; do
     tempfile=$(mktemp)
 
     # Write heading to temp file
-    echo -e "$heading\n\n" > "$tempfile"
+    echo -e "$heading\n" > "$tempfile"
 
     # Append original file contents to temp file
     cat "$filename" >> "$tempfile"
@@ -25,3 +29,5 @@ for filename in "$dir"/*.md; do
     # Move temp file to original file
     mv "$tempfile" "$filename"
 done
+
+echo "Finished processing files."

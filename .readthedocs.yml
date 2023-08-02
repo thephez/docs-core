@@ -9,6 +9,10 @@ build:
    os: "ubuntu-22.04"
    tools:
       python: "3.10"
+   jobs:
+      pre_build:
+         - bash which git
+         - bash "git clone https://github.com/dashpay/dips"
 
 python:
    install:

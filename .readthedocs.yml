@@ -10,7 +10,7 @@ build:
    tools:
       python: "3.10"
    jobs:
-      pre_build:
+      pre_install:
          - bash which git
          - bash "git clone https://github.com/dashpay/dips.git"
 

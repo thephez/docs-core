@@ -16,6 +16,7 @@ for filename in "$dir"/*.md; do
 
     # Combine to make heading
     heading="# $dip - $title"
+    echo "Heading $heading..."
 
     # Create temp file
     tempfile=$(mktemp)
@@ -28,6 +29,7 @@ for filename in "$dir"/*.md; do
 
     # Move temp file to original file
     mv "$tempfile" "$filename"
+    cat "$filename"
 done
 
 echo "Finished processing files."

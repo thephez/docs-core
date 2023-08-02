@@ -1,4 +1,5 @@
 ```{eval-rst}
+.. _examples-receiving-zmq-notifications:
 .. meta::
   :title: Receiving ZMQ Notifications
   :description: Shows how to configure Dash Core's ZeroMQ support and subscribe to ZMQ notifications for block, transaction, and governance messages for efficient notification handling.

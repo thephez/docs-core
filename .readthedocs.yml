@@ -9,15 +9,15 @@ build:
    os: "ubuntu-22.04"
    tools:
       python: "3.10"
-   jobs:
-      pre_build:
-         # - bash which git
-         - bash which cd
-         - bash cd
-         - bash ls -alh
-         - bash cp _external_repo/dip-0006 docs/dips
-         - bash ls -alh docs/dips
-         # - bash "git clone https://github.com/dashpay/dips.git"
+   # jobs:
+   #    pre_build:
+   #       # - bash which git
+   #       - bash which cd
+   #       - bash cd
+   #       - bash ls -alh
+   #       - bash cp _external_repo/dip-0006 docs/dips
+   #       - bash ls -alh docs/dips
+   #       # - bash "git clone https://github.com/dashpay/dips.git"
 
 python:
    install:

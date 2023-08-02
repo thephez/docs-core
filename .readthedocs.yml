@@ -11,7 +11,7 @@ build:
       python: "3.10"
    jobs:
       pre_build:
-         - bash which git
+         # - bash which git
          - bash which cd
          - bash cd
          - bash ls -alh

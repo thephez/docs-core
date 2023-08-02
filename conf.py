@@ -1,3 +1,10 @@
+import os
+import subprocess
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+if not os.path.exists('_external_repo'):
+    subprocess.check_call(['git', 'clone', 'https://github.com/dashpay/dips.git', '_external_repo'])
+
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:

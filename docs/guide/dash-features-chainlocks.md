@@ -1,4 +1,5 @@
 ```{eval-rst}
+.. _guide-features-chainlocks:
 .. meta::
   :title: ChainLocks
   :description: Dash's ChainLock feature uses long-living masternode quorums to expedite transaction security and prevent 51% mining attacks. 

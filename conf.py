@@ -8,7 +8,7 @@ if not os.path.exists('_external_repo'):
     # subprocess.check_call(['cp', '_dips/dip-0006.md', 'docs/dips'])
     # subprocess.check_call(['cp', '-R', '_dips/dip-0006', 'docs/dips'])
     subprocess.check_call(['ls', '-alh', '_dips/'])
-    subprocess.check_call(['cp', '-nR', '_dips/', 'docs/dips/'])
+    subprocess.check_call(['cp', '-R', '_dips', 'docs/dips'])
 
 # Configuration file for the Sphinx documentation builder.
 #

@@ -30,7 +30,7 @@ for filename in "$dir"/*.md; do
 
     # Move temp file to original file
     mv "$tempfile" "$filename"
-    cat "$filename"
+    # cat "$filename"
 done
 
 echo "Finished processing files."

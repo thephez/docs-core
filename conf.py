@@ -5,8 +5,9 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 if not os.path.exists('_external_repo'):
     subprocess.check_call(['git', 'clone', 'https://github.com/dashpay/dips.git', '_dips'])
     subprocess.check_call(['./scripts/dip-format.sh'])
-    subprocess.check_call(['cp', '_dips/dip-0006.md', 'docs/dips'])
-    subprocess.check_call(['cp', '-R', '_dips/dip-0006', 'docs/dips'])
+    # subprocess.check_call(['cp', '_dips/dip-0006.md', 'docs/dips'])
+    # subprocess.check_call(['cp', '-R', '_dips/dip-0006', 'docs/dips'])
+    subprocess.check_call(['cp', '-Rn', '_dips/*', 'docs/dips'])
 
 # Configuration file for the Sphinx documentation builder.
 #

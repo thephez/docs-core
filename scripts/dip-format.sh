@@ -21,6 +21,7 @@ echo "$content" >> "$dir"/README.md
 
 for filename in "$dir"/*.md; do
     if [ $(basename "$filename") = "README.md" ]
+        echo "Skipping README.md"
     then
       continue
     fi
@@ -49,8 +50,8 @@ for filename in "$dir"/*.md; do
 
     # Move temp file to original file
     mv "$tempfile" "$filename"
-    # cat "$filename"
 
+    # Write the filename to the toctree
     echo "dip-$full_dip_num" >> "$dir"/README.md
 done
 
@@ -62,6 +63,7 @@ EOL
 
 echo "$closing_content" >> "$dir"/README.md
 
+# Output the updated readme
 cat "$dir"/README.md
 
 echo "Finished processing files."

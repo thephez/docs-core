@@ -28,11 +28,11 @@ for filename in "$dir"/*.md; do
     echo "Processing $filename..."
 
     # Extract DIP number
-    full_dip_num=$(grep '^  DIP:' "$filename" | awk -F: '{print $2}' | sed 's/^ *//')
+    full_dip_num=$(grep '^\s*DIP:' "$filename" | awk -F: '{print $2}' | sed 's/^ *//')
     dip="${full_dip_num#"${full_dip_num%%[!0]*}"}"
 
     # Extract title
-    title=$(grep '^  Title:' "$filename" | awk -F: '{print $2}' | sed 's/^ *//')
+    title=$(grep '^\s*Title:' "$filename" | awk -F: '{print $2}' | sed 's/^ *//')
 
     # Combine to make heading
     heading="# $dip - $title"

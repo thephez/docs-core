@@ -152,6 +152,7 @@ Testnet Block Explorer <https://testnet-insight.dashevo.org/insight/>
 Testnet Faucet <http://faucet.testnet.networks.dash.org/>
 API Services <https://www.dash.org/providers-and-tools/#custody-and-api>
 SDK Resources <https://docs.dash.org/en/stable/docs/user/developers/integration-sdks.html>
+Dash Improvement Proposals <dips/README>
 Dash Whitepaper <https://docs.dash.org/en/stable/introduction/about.html#whitepaper>
 Bitcoin Whitepaper <https://bitcoin.org/bitcoin.pdf>
 Previous Version of Docs <https://dashcore.readme.io/v18.0.0/docs/>

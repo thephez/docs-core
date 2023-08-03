@@ -5,16 +5,15 @@ dir='_dips'
 
 echo "Starting to process files in $dir..."
 
-
+# Add start of toctree
 content=$(cat <<EOL
-\n
+
 \`\`\`{toctree}
 :maxdepth: 2
 :titlesonly: 
 :caption: DIPs
 :hidden:
 
-\`\`\`
 EOL
 )
 
@@ -54,6 +53,14 @@ for filename in "$dir"/*.md; do
 
     echo "dip-$full_dip_num" >> "$dir"/README.md
 done
+
+# Close out the toctree
+closing_content=$(cat <<EOL
+\`\`\`
+EOL
+)
+
+echo "$closing_content" >> "$dir"/README.md
 
 cat "$dir"/README.md
 

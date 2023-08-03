@@ -55,4 +55,6 @@ for filename in "$dir"/*.md; do
     echo "dip-$full_dip_num" >> "$dir"/README.md
 done
 
+cat "$dir"/README.md
+
 echo "Finished processing files."

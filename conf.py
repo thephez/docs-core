@@ -2,10 +2,11 @@ import os
 import subprocess
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
+# Clone the DIPs repository and process DIPs so they are rendered properly
 if not os.path.exists('_external_repo'):
     subprocess.check_call(['git', 'clone', 'https://github.com/dashpay/dips.git', '_dips'])
     subprocess.check_call(['./scripts/dip-format.sh'])
-    subprocess.check_call('cp -TRv _dips/ docs/dips/', shell=True)
+    subprocess.check_call('cp -TR _dips/ docs/dips/', shell=True)
 
 # Configuration file for the Sphinx documentation builder.
 #

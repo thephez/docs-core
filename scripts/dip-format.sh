@@ -21,19 +21,19 @@ echo "$content" >> "$dir"/README.md
 
 for filename in "$dir"/*.md; do
     if [ $(basename "$filename") = "README.md" ]
-        echo "Skipping README.md"
     then
+      echo "Skipping README.md"
       continue
     fi
 
     echo "Processing $filename..."
 
     # Extract DIP number
-    full_dip_num=$(grep '^\s*DIP:' "$filename" | awk -F: '{print $2}' | sed 's/^ *//')
+    full_dip_num=$(grep '^\s*DIP:' "$filename" | awk -F: '{print $2}' | sed 's/^ *//'  | tr -d '\r')
     dip="${full_dip_num#"${full_dip_num%%[!0]*}"}"
 
     # Extract title
-    title=$(grep '^\s*Title:' "$filename" | awk -F: '{print $2}' | sed 's/^ *//')
+    title=$(grep '^\s*Title:' "$filename" | awk -F: '{print $2}' | sed 's/^ *//'  | tr -d '\r')
 
     # Combine to make heading
     heading="# $dip - $title"

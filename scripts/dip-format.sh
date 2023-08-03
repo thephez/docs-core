@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory containing the files
-dir='_external_repo'
+dir='_dips'
 
 echo "Starting to process files in $dir..."
 
@@ -9,7 +9,8 @@ for filename in "$dir"/*.md; do
     echo "Processing $filename..."
 
     # Extract DIP number
-    dip=$(grep '^  DIP:' "$filename" | awk -F: '{print $2}' | sed 's/^ *//')
+    full_dip_num=$(grep '^  DIP:' "$filename" | awk -F: '{print $2}' | sed 's/^ *//')
+    dip="${full_dip_num#"${full_dip_num%%[!0]*}"}"
 
     # Extract title
     title=$(grep '^  Title:' "$filename" | awk -F: '{print $2}' | sed 's/^ *//')

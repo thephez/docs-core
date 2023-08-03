@@ -5,7 +5,27 @@ dir='_dips'
 
 echo "Starting to process files in $dir..."
 
+
+content=$(cat <<EOL
+\n
+\`\`\`{toctree}
+:maxdepth: 2
+:titlesonly: 
+:caption: DIPs
+:hidden:
+
+\`\`\`
+EOL
+)
+
+echo "$content" >> "$dir"/README.md
+
 for filename in "$dir"/*.md; do
+    if [ $(basename "$filename") = "README.md" ]
+    then
+      continue
+    fi
+
     echo "Processing $filename..."
 
     # Extract DIP number
@@ -31,6 +51,8 @@ for filename in "$dir"/*.md; do
     # Move temp file to original file
     mv "$tempfile" "$filename"
     # cat "$filename"
+
+    echo "dip-$full_dip_num" >> "$dir"/README.md
 done
 
 echo "Finished processing files."

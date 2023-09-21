@@ -51,7 +51,7 @@ Check out the `official Dash website <https://www.dash.org/>`__ to learn how
          Start working with Dash Platform and discover how you can use its powerful capabilities to power your Web3 project.
          
          +++
-         `Click to begin <platform:platform-index>`
+         :ref:`Click to begin <platform:platform-index>`
 
 .. _core-reference:
 

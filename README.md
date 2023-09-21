@@ -11,7 +11,7 @@ information to help you start working with Dash as quickly as possible. This
 core developer documentation is available at
 https://docs.dash.org/projects/core, while user documentation is maintained at
 https://docs.dash.org/ and Platform developer documentation at
-https://dashplatform.readme.io/.
+https://docs.dash.org/projects/platform.
 
 ## Contributing
 

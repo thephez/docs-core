@@ -45,13 +45,13 @@ Check out the `official Dash website <https://www.dash.org/>`__ to learn how
 
     .. grid-item-card:: 🚀 Platform Docs
          :margin: 2 2 auto auto
-         :link-type: url
-         :link: https://dashplatform.readme.io
+         :link-type: ref
+         :link: platform:platform-index
 
          Start working with Dash Platform and discover how you can use its powerful capabilities to power your Web3 project.
          
          +++
-         `Click to begin <https://dashplatform.readme.io>`__
+         :ref:`Click to begin <platform:platform-index>`
 
 .. _core-reference:
 

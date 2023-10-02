@@ -14,17 +14,18 @@ The [`getgovernanceinfo` RPC](#getgovernanceinfo) returns an object containing g
 
 *Result---information about the governance system*
 
-| Name                            | Type         | Presence                | Description                                                                    |
-| ------------------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------ |
-| `result`                        | object       | Required<br>(exactly 1) | Information about the governance system                                        |
-| →<br>`governanceminquorum`      | number (int) | Required<br>(exactly 1) | The absolute minimum number of votes needed to trigger a governance action     |
+| Name                            | Type         | Presence                | Description |
+| ------------------------------- | ------------ | ----------------------- | ----------- |
+| `result`                        | object       | Required<br>(exactly 1) | Information about the governance system |
+| →<br>`governanceminquorum`      | number (int) | Required<br>(exactly 1) | The absolute minimum number of votes needed to trigger a governance action |
 | →<br>`proposalfee`              | number (int) | Required<br>(exactly 1) | The collateral transaction fee which must be paid to create a proposal in Dash |
-| →<br>`superblockcycle`          | number (int) | Required<br>(exactly 1) | The number of blocks between superblocks                                       |
-| →<br>`superblockmaturitywindow` | number (int) | Required<br>(exactly 1) | The superblock trigger creation window                                         |
-| →<br>`lastsuperblock`           | number (int) | Required<br>(exactly 1) | The block number of the last superblock                                        |
-| →<br>`nextsuperblock`           | number (int) | Required<br>(exactly 1) | The block number of the next superblock                                        |
+| →<br>`superblockcycle`          | number (int) | Required<br>(exactly 1) | The number of blocks between superblocks |
+| →<br>`superblockmaturitywindow` | number (int) | Required<br>(exactly 1) | The superblock trigger creation window |
+| →<br>`lastsuperblock`           | number (int) | Required<br>(exactly 1) | The block number of the last superblock |
+| →<br>`nextsuperblock`           | number (int) | Required<br>(exactly 1) | The block number of the next superblock |
+| →<br>`fundingthreshold`         | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The number of absolute yes votes required for a proposal to be passing |
 
-*Example from Dash Core 18.1.0*
+*Example from Dash Core 20.0.0*
 
 ``` bash
 dash-cli -testnet getgovernanceinfo
@@ -37,9 +38,10 @@ Result:
   "governanceminquorum": 1,
   "proposalfee": 1.00000000,
   "superblockcycle": 24,
-  "superblockmaturitywindow": 24,
-  "lastsuperblock": 827256,
-  "nextsuperblock": 827280
+  "superblockmaturitywindow": 8,
+  "lastsuperblock": 916632,
+  "nextsuperblock": 916656,
+  "fundingthreshold": 21
 }
 ```
 
@@ -876,7 +878,7 @@ prepare`.
 
 | Name   | Type         | Presence                | Description                                                   |
 | ------ | ------------ | ----------------------- | ------------------------------------------------------------- |
-| `data` | string (hex) | Required<br>(exactly 1) | Fee transaction ID - required for all objects except triggers |
+| `data` | string (hex) | Required<br>(exactly 1) | **Updated in Dash Core 20.0.0 to remove support for trigger objects.**<br><br>Fee transaction ID - required for all objects |
 
 *Result---governance object hash*
 
@@ -959,56 +961,6 @@ Result:
   "overall": "Voted successfully 1 time(s) and failed 0 time(s).",
   "detail": {
     "MN01": {
-      "result": "success"
-    }
-  }
-}
-```
-
-### GObject Vote-conf
-
-The `gobject vote-conf` RPC votes on a governance object by masternode configured in dash.conf.
-
-*Parameter #1---governance hash*
-
-| Name              | Type         | Presence                | Description                   |
-| ----------------- | ------------ | ----------------------- | ----------------------------- |
-| `governance-hash` | string (hex) | Required<br>(exactly 1) | Hash of the governance object |
-
-*Parameter #2---vote signal*
-
-| Name     | Type   | Presence                | Description                                  |
-| -------- | ------ | ----------------------- | -------------------------------------------- |
-| `signal` | string | Required<br>(exactly 1) | Vote signal: `funding`, `valid`, or `delete` |
-
-*Parameter #3---vote outcome*
-
-| Name      | Type   | Presence                | Description                             |
-| --------- | ------ | ----------------------- | --------------------------------------- |
-| `outcome` | string | Required<br>(exactly 1) | Vote outcome: `yes`, `no`, or `abstain` |
-
-*Result---votes for specified governance*
-
-| Name               | Type   | Presence                | Description                               |
-| ------------------ | ------ | ----------------------- | ----------------------------------------- |
-| Result             | object | Required<br>(exactly 1) | The governance object votes               |
-| →<br>`overall`     | string | Required<br>(1 or more) | Reports number of vote successes/failures |
-| →<br>`detail`      | object | Required<br>(exactly 1) | Vote details                              |
-| → →<br>`dash.conf` | object | Required<br>(1 or more) |                                           |
-| → → →<br>`result`  | string | Required<br>(exactly 1) | Vote result                               |
-
-*Example from Dash Core 0.12.2*
-
-``` bash
-dash-cli -testnet gobject vote-conf \
-0bf97bce78b3b642c36d4ca8e9265f8f66de8774c220221f57739c1956413e2b funding yes
-```
-
-``` json
-{
-  "overall": "Voted successfully 1 time(s) and failed 0 time(s).",
-  "detail": {
-    "dash.conf": {
       "result": "success"
     }
   }

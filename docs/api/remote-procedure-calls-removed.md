@@ -8,9 +8,7 @@
 
 ## EstimateFee
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 0.17.0._**
+>❗️**Warning:** **_Removed in Dash Core 0.17.0._**
 
 The `estimatefee` RPC estimates the transaction fee per kilobyte that needs to be paid for a transaction to begin confirmation within a certain number of blocks.
 
@@ -129,9 +127,7 @@ _See also:_
 
 ## GetReceivedByAccount
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 > 📘
 >
@@ -184,11 +180,61 @@ _See also_
 * [GetAddressesByAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
 * [ListAccounts](../api/remote-procedure-calls-removed.md#listaccounts): lists accounts and their balances.
 
+## GObject Vote-conf
+
+>❗️**Warning:** **Removed in Dash Core 20.0.0**
+
+The `gobject vote-conf` RPC votes on a governance object by masternode configured in dash.conf.
+
+*Parameter #1---governance hash*
+
+| Name              | Type         | Presence                | Description                   |
+| ----------------- | ------------ | ----------------------- | ----------------------------- |
+| `governance-hash` | string (hex) | Required<br>(exactly 1) | Hash of the governance object |
+
+*Parameter #2---vote signal*
+
+| Name     | Type   | Presence                | Description                                  |
+| -------- | ------ | ----------------------- | -------------------------------------------- |
+| `signal` | string | Required<br>(exactly 1) | Vote signal: `funding`, `valid`, or `delete` |
+
+*Parameter #3---vote outcome*
+
+| Name      | Type   | Presence                | Description                             |
+| --------- | ------ | ----------------------- | --------------------------------------- |
+| `outcome` | string | Required<br>(exactly 1) | Vote outcome: `yes`, `no`, or `abstain` |
+
+*Result---votes for specified governance*
+
+| Name               | Type   | Presence                | Description                               |
+| ------------------ | ------ | ----------------------- | ----------------------------------------- |
+| Result             | object | Required<br>(exactly 1) | The governance object votes               |
+| →<br>`overall`     | string | Required<br>(1 or more) | Reports number of vote successes/failures |
+| →<br>`detail`      | object | Required<br>(exactly 1) | Vote details                              |
+| → →<br>`dash.conf` | object | Required<br>(1 or more) |                                           |
+| → → →<br>`result`  | string | Required<br>(exactly 1) | Vote result                               |
+
+*Example from Dash Core 0.12.2*
+
+``` bash
+dash-cli -testnet gobject vote-conf \
+0bf97bce78b3b642c36d4ca8e9265f8f66de8774c220221f57739c1956413e2b funding yes
+```
+
+``` json
+{
+  "overall": "Voted successfully 1 time(s) and failed 0 time(s).",
+  "detail": {
+    "dash.conf": {
+      "result": "success"
+    }
+  }
+}
+```
+
 ## KeePass
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 The `keepass` RPC provides commands for configuring and managing KeePass authentication
 
@@ -200,11 +246,11 @@ Name | Type | Presence | Description
 
 _Command Options_
 
-Mode | Description
---- | --- | --- |
-`genkey` | Generates a base64 encoded 256 bit AES key that can be used for the communication with KeePassHttp. This is only necessary for manual configuration.
-`init` | Sets up the association between Dash Core and KeePass by generating an AES key and sending an association message to KeePassHttp. This will trigger KeePass to ask for an Id for the association. Returns the association and the base64 encoded string for the AES key.
-`setpassphrase` | Updates the passphrase in KeePassHttp to a new value. This should match the passphrase you intend to use for the wallet. Please note that the standard RPC commands walletpassphrasechange and the wallet encryption from the QT GUI already send the updates to KeePassHttp, so this is only necessary for manual manipulation of the password.
+| Mode | Description |
+| --- | --- |
+| `genkey` | Generates a base64 encoded 256 bit AES key that can be used for the communication with KeePassHttp. This is only necessary for manual configuration.
+| `init` | Sets up the association between Dash Core and KeePass by generating an AES key and sending an association message to KeePassHttp. This will trigger KeePass to ask for an Id for the association. Returns the association and the base64 encoded string for the AES key.
+| `setpassphrase` | Updates the passphrase in KeePassHttp to a new value. This should match the passphrase you intend to use for the wallet. Please note that the standard RPC commands walletpassphrasechange and the wallet encryption from the QT GUI already send the updates to KeePassHttp, so this is only necessary for manual manipulation of the password.
 
 **Command Mode - `genkey`**
 
@@ -283,9 +329,7 @@ _See also: none_
 
 ## ListAccounts
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 > 📘
 >
@@ -348,9 +392,7 @@ _See also_
 
 ## ListReceivedByAccount
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 > 📘
 >
@@ -429,9 +471,7 @@ _See also_
 
 ## Move
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 > 📘
 >
@@ -501,9 +541,7 @@ _See also_
 
 ## SendFrom
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 > 📘
 >
@@ -593,9 +631,7 @@ _See also_
 
 ## SignRawTransaction
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 The `signrawtransaction` RPC signs a transaction in the serialized transaction format using private keys stored in the wallet or provided in the call.
 
@@ -669,9 +705,7 @@ _See also_
 
 ## Generate
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.1.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.1.0_**
 
 The `generate` RPC mines blocks immediately (before the RPC call returns).
 

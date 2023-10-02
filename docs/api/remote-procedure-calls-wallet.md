@@ -1061,35 +1061,38 @@ _Parameters: none_
 
 _Result---information about the wallet_
 
-| Name                           | Type             | Presence                | Description                                                                                                                                                                                                                    |
-| ------------------------------ | ---------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `result`                       | object           | Required<br>(exactly 1) | An object describing the wallet                                                                                                                                                                                                |
-| →<br>`walletname`              | string           | Required<br>(exactly 1) | The name of the wallet                                                                                                                                                                                                         |
-| →<br>`walletversion`           | number (int)     | Required<br>(exactly 1) | The version number of the wallet                                                                                                                                                                                               |
-| →<br>`balance`                 | number (dash)    | Required<br>(exactly 1) | The total confirmed balance of the wallet.  The same as returned by the [`getbalance` RPC](../api/remote-procedure-calls-wallet.md#getbalance) with default parameters                                                      |
-| →<br>`coinjoin_balance`        | number (dash)    | Required<br>(exactly 1) | _Added in Dash Core 0.12.3_<br><br>The total CoinJoin balance of the wallet                                                                                                                                                    |
-| →<br>`unconfirmed_balance`     | number (dash)    | Required<br>(exactly 1) | The total unconfirmed balance of the wallet.  The same as returned by the [`getunconfirmedbalance` RPC](../api/remote-procedure-calls-wallet.md#getunconfirmedbalance) with default parameters                              |
-| →<br>`immature_balance`        | number (dash)    | Required<br>(exactly 1) | The total immature balance of the wallet.  This includes mining/masternode rewards that cannot be spent yet                                                                                                                    |
-| →<br>`txcount`                 | number (int)     | Required<br>(exactly 1) | The total number of transactions in the wallet (both spends and receives)                                                                                                                                                      |
-| →<br>`timefirstkey`            | number (int)     | Required<br>(exactly 1) | **Added in Dash Core 0.17.0**<br><br>The timestamp (seconds since Unix epoch) of the oldest known key in the wallet                                                                                                            |
-| →<br>`keypoololdest`           | number (int)     | Required<br>(exactly 1) | The date as Unix epoch time when the oldest key in the wallet key pool was created; useful for only scanning blocks created since this date for transactions                                                                   |
-| →<br>`keypoolsize`             | number (int)     | Required<br>(exactly 1) | The number of keys in the wallet keypool                                                                                                                                                                                       |
-| →<br>`keypoolsize_hd_internal` | number (int)     | Optional<br>(0 or 1)    | How many new keys are pre-generated for internal use (used for change outputs, only appears if the wallet is using this feature, otherwise external keys are used)                                                             |
-| →<br>`keys_left`               | number (int)     | Required<br>(exactly 1) | The number of unused keys left since the last automatic backup                                                                                                                                                                 |
+| Name                           | Type             | Presence                | Description |
+| ------------------------------ | ---------------- | ----------------------- | ----------- |
+| `result`                       | object           | Required<br>(exactly 1) | An object describing the wallet |
+| →<br>`walletname`              | string           | Required<br>(exactly 1) | The name of the wallet |
+| →<br>`walletversion`           | number (int)     | Required<br>(exactly 1) | The version  |
+| →<br>`format`                  | string           | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br><br>The database format (`bdb` or `sqlite`) |
+| →<br>`balance`                 | number (dash)    | Required<br>(exactly 1) | **Deprecated** The total confirmed balance of the wallet.  The same as returned by the [`getbalance` RPC](../api/remote-procedure-calls-wallet.md#getbalance) with default parameters |
+| →<br>`coinjoin_balance`        | number (dash)    | Required<br>(exactly 1) | **Deprecated** _Added in Dash Core 0.12.3_<br><br>The total CoinJoin balance of the wallet. Identical to `getbalances().mine.coinjoin`. |
+| →<br>`unconfirmed_balance`     | number (dash)    | Required<br>(exactly 1) | **Deprecated** The total unconfirmed balance of the wallet.  The same as returned by the [`getunconfirmedbalance` RPC](../api/remote-procedure-calls-wallet.md#getunconfirmedbalance) with default parameters. Identical to `getbalances().mine.untrusted_pending`. |
+| →<br>`immature_balance`        | number (dash)    | Required<br>(exactly 1) | **Deprecated**  The total immature balance of the wallet.  This includes mining/masternode rewards that cannot be spent yet. Identical to `getbalances().mine.immature`. |
+| →<br>`txcount`                 | number (int)     | Required<br>(exactly 1) | The total number of transactions in the wallet (both spends and receives) |
+| →<br>`timefirstkey`            | number (int)     | Required<br>(exactly 1) | **Added in Dash Core 0.17.0**<br><br>The timestamp (seconds since Unix epoch) of the oldest known key in the wallet |
+| →<br>`keypoololdest`           | number (int)     | Required<br>(exactly 1) | The date as Unix epoch time when the oldest key in the wallet key pool was created; useful for only scanning blocks created since this date for transactions |
+| →<br>`keypoolsize`             | number (int)     | Required<br>(exactly 1) | The number of keys in the wallet keypool |
+| →<br>`keypoolsize_hd_internal` | number (int)     | Optional<br>(0 or 1)    | How many new keys are pre-generated for internal use (used for change outputs, only appears if the wallet is using this feature, otherwise external keys are used) |
+| →<br>`keys_left`               | number (int)     | Required<br>(exactly 1) | The number of unused keys left since the last automatic backup |
 | →<br>`unlocked_until`          | number (int)     | Optional<br>(0 or 1)    | Only returned if the wallet was encrypted with the [`encryptwallet` RPC](../api/remote-procedure-calls-wallet.md#encryptwallet). A Unix epoch date when the wallet will be locked, or `0` if the wallet is currently locked |
-| →<br>`paytxfee`                | number (int)     | Required<br>(exactly 1) | The transaction fee configuration, set in DASH/kB                                                                                                                                                                              |
-| →<br>`hdchainid`               | string (hash)    | Optional<br>(0 or 1)    | The ID of the HD chain                                                                                                                                                                                                         |
-| →<br>`hdaccountcount`          | number (int)     | Optional<br>(0 or 1)    | How many accounts of the HD chain are in this wallet                                                                                                                                                                           |
-| →<br>`hdaccounts`              | array of objects | Optional<br>(0 or 1)    | Array of JSON objects containing account info                                                                                                                                                                                  |
-| → →<br> Account                | object           | Optional<br>(1 or more) | JSON object containing info about a specific account                                                                                                                                                                           |
-| → → →<br>`hdaccountcountindex` | number (int)     | Optional<br>(0 or 1)    | The index of the account                                                                                                                                                                                                       |
-| → → →<br>`hdexternalkeyindex`  | number (int)     | Optional<br>(0 or 1)    | Current external child key index                                                                                                                                                                                               |
-| → → →<br>`hdinternalkeyindex`  | number (int)     | Optional<br>(0 or 1)    | Current internal child key index                                                                                                                                                                                               |
-| →<br>`scanning`                | object           | Required<br>(exactly 1) | \_Added in Dash Core 0.16.1\_\_<br><br>JSON object containing current scanning details (false (0) if no scan is in progress)                                                                                                   |
-| → →<br>`duration`              | number (int)     | Optional<br>(0 or 1)    | Elapsed seconds since scan start                                                                                                                                                                                               |
-| → →<br>`progress`              | number (int)     | Optional<br>(0 or 1)    | Scanning progress percentage 0.0 to 1.0                                                                                                                                                                                        |
+| →<br>`paytxfee`                | number (int)     | Required<br>(exactly 1) | The transaction fee configuration, set in DASH/kB |
+| →<br>`hdchainid`               | string (hash)    | Optional<br>(0 or 1)    | The ID of the HD chain |
+| →<br>`hdaccountcount`          | number (int)     | Optional<br>(0 or 1)    | How many accounts of the HD chain are in this wallet |
+| →<br>`hdaccounts`              | array of objects | Optional<br>(0 or 1)    | Array of JSON objects containing account info |
+| → →<br> Account                | object           | Optional<br>(1 or more) | JSON object containing info about a specific account |
+| → → →<br>`hdaccountindex` | number (int)     | Optional<br>(0 or 1)    | The index of the account |
+| → → →<br>`hdexternalkeyindex`  | number (int)     | Optional<br>(0 or 1)    | Current external child key index |
+| → → →<br>`hdinternalkeyindex`  | number (int)     | Optional<br>(0 or 1)    | Current internal child key index |
+| →<br>`avoid_reuse`             | boolean          | Optional<br>(0 or 1)    | Whether this wallet tracks clean/dirty coins in terms of reuse |
+| →<br>`scanning`                | object           | Required<br>(exactly 1) | \_Added in Dash Core 0.16.1\_\_<br><br>JSON object containing current scanning details (false (0) if no scan is in progress) |
+| → →<br>`duration`              | number (int)     | Optional<br>(0 or 1)    | Elapsed seconds since scan start |
+| → →<br>`progress`              | number (int)     | Optional<br>(0 or 1)    | Scanning progress percentage 0.0 to 1.0 |
+| →<br>`private_keys_enabled`    | boolean          | Optional<br>(0 or 1)    | `false` if private keys are disabled for this wallet (enforced watch-only wallet) |
 
-_Example from Dash Core 0.17.0_
+_Example from Dash Core 20.0.0_
 
 ```bash
 dash-cli -testnet getwalletinfo
@@ -1100,18 +1103,31 @@ Result:
 ```json
 {
   "walletname": "",
-  "walletversion": 61000,
-  "balance": 188838.10331689,
-  "coinjoin_balance": 2007.81107791,
+  "walletversion": 120200,
+  "format": "bdb",
+  "balance": 178659.22849018,
+  "coinjoin_balance": 0.00100001,
   "unconfirmed_balance": 0.00000000,
-  "immature_balance": 104.46428575,
-  "txcount": 29137,
+  "immature_balance": 13.38239278,
+  "txcount": 37712,
   "timefirstkey": 1544808277,
-  "keypoololdest": 1601323587,
+  "keypoololdest": 1659558297,
   "keypoolsize": 1000,
+  "keypoolsize_hd_internal": 1000,
   "keys_left": 1000,
   "paytxfee": 0.00000000,
-  "scanning": false
+  "hdchainid": "xxxxxxxxe62a7766153dac6c90242b712dbb98f4d457b7fb46e09136zzzzzzzz",
+  "hdaccountcount": 1,
+  "hdaccounts": [
+    {
+      "hdaccountindex": 0,
+      "hdexternalkeyindex": 2838,
+      "hdinternalkeyindex": 7669
+    }
+  ],
+  "avoid_reuse": false,
+  "scanning": false,
+  "private_keys_enabled": true
 }
 ```
 
@@ -2667,65 +2683,65 @@ _Parameter #1---unused parameter_
 >
 > Note that this parameter has been removed in v0.17. To use this RPC with a "fromaccount" parameter, restart dashd with `-deprecatedrpc=accounts`.
 
-| Name   | Type   | Presence                | Description                                                                                                                                  |
-| ------ | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
 | Unused | string | Required<br>(exactly 1) | **Deprecated: (previously account) will be removed in a later version of Dash Core**<br><br>Must be set to `""` for backwards compatibility. |
 
 _Parameter #2---the addresses and amounts to pay_
 
-| Name                | Type                            | Presence                | Description                                                                                                                                          |
-| ------------------- | ------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
 | Outputs             | object                          | Required<br>(exactly 1) | An object containing key/value pairs corresponding to the addresses and amounts to pay                                                               |
 | →<br>Address/Amount | string (base58) : number (dash) | Required<br>(1 or more) | A key/value pair with a base58check-encoded string containing the P2PKH or P2SH address to pay as the key, and an amount of dash to pay as the value |
 
 _Parameter #3---minimum confirmations_
 
-| Name          | Type         | Presence             | Description                                     |
-| ------------- | ------------ | -------------------- | ----------------------------------------------- |
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
 | Confirmations | number (int) | Optional<br>(0 or 1) | _Deprecated and ignored since Dash Core 18.0.0_ |
 
 _Parameter #4--whether to add the balance from transactions locked via InstantSend_
 
-| Name      | Type | Presence             | Description                                     |
-| --------- | ---- | -------------------- | ----------------------------------------------- |
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
 | addlocked | bool | Optional<br>(0 or 1) | _Deprecated and ignored since Dash Core 18.0.0_ |
 
 _Parameter #5---a comment_
 
-| Name    | Type   | Presence             | Description                                                                                   |
-| ------- | ------ | -------------------- | --------------------------------------------------------------------------------------------- |
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
 | Comment | string | Optional<br>(0 or 1) | A locally-stored (not broadcast) comment assigned to this transaction.  Default is no comment |
 
 _Parameter #6---automatic fee subtraction_
 
-| Name                     | Type            | Presence             | Description                                                                                                                                                                                                             |
-| ------------------------ | --------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
 | Subtract Fee From Amount | array           | Optional<br>(0 or 1) | An array of addresses.  The fee will be equally divided by as many addresses as are entries in this array and subtracted from each address.  If this array is empty or not provided, the fee will be paid by the sender |
 | →<br>Address             | string (base58) | Optional (0 or more) | An address previously listed as one of the recipients.                                                                                                                                                                  |
 
 _Parameter #7---use InstantSend_
 
-| Name            | Type | Presence             | Description                                     |
-| --------------- | ---- | -------------------- | ----------------------------------------------- |
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
 | Use InstantSend | bool | Optional<br>(0 or 1) | _Deprecated and ignored since Dash Core 0.15.0_ |
 
 _Parameter #8---use CoinJoin_
 
-| Name         | Type | Presence             | Description                                                 |
-| ------------ | ---- | -------------------- | ----------------------------------------------------------- |
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
 | Use CoinJoin | bool | Optional<br>(0 or 1) | If set to `true`, use CoinJoin funds only (default: false). |
 
 _Parameter #9---confirmation target_
 
-| Name          | Type         | Presence             | Description                     |
-| ------------- | ------------ | -------------------- | ------------------------------- |
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
 | `conf_target` | number (int) | Optional<br>(0 or 1) | Confirmation target (in blocks) |
 
 _Parameter #10---fee estimate mode_
 
-| Name            | Type   | Presence             | Description                                                                                             |
-| --------------- | ------ | -------------------- | ------------------------------------------------------------------------------------------------------- |
-| `estimate_mode` | string | Optional<br>(0 or 1) | The fee estimate mode, must be one of:<br>`UNSET`<br>`ECONOMICAL`<br>`CONSERVATIVE`<br>Default: `UNSET` |
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
+| `estimate_mode` | string | Optional<br>(0 or 1) | The fee estimate mode, must be one of:<br>`unset`<br>`economical`<br>`conservative`<br>`DASH/kB`<br>`duff/B` |
 
 _Result---a TXID of the sent transaction_
 
@@ -2846,9 +2862,9 @@ _Parameter #8---confirmation target_
 
 _Parameter #9---fee estimate mode_
 
-| Name            | Type   | Presence             | Description                                                                                             |
-| --------------- | ------ | -------------------- | ------------------------------------------------------------------------------------------------------- |
-| `estimate_mode` | string | Optional<br>(0 or 1) | The fee estimate mode, must be one of:<br>`UNSET`<br>`ECONOMICAL`<br>`CONSERVATIVE`<br>Default: `UNSET` |
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
+| `estimate_mode` | string | Optional<br>(0 or 1) | The fee estimate mode, must be one of:<br>`unset`<br>`economical`<br>`conservative`<br>`DASH/kB`<br>`duff/B` |
 
 _Parameter #10---avoids partial respends_
 
@@ -3228,7 +3244,7 @@ _Parameter #1---wallet name_
 
 | Name     | Type   | Presence                | Description                       |
 | -------- | ------ | ----------------------- | --------------------------------- |
-| Filename | string | Required<br>(exactly 1) | The name of the wallet to unload. |
+| Filename | string | Required<br>(exactly 1) | The name of the wallet to unload. If provided both here and in the RPC endpoint, the two must be identical. |
 
 _Parameter #2---load of startup_
 
@@ -3356,18 +3372,18 @@ _Parameter #3---locktime_
 
 _Parameter #4---Additional options_
 
-| Name                           | Type              | Presence                | Description                                                                                                                                                                                                                                                                                                                                         |
-| ------------------------------ | ----------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Options                        | Object            | Optional<br>(0 or 1)    | Additional options                                                                                                                                                                                                                                                                                                                                  |
-| → <br>`changeAddress`          | string            | Optional<br>(0 or 1)    | The dash address to receive the change (default=pool address)                                                                                                                                                                                                                                                                                       |
-| → <br>`changePosition`         | numeric (int)     | Optional<br>(0 or 1)    | The index of the change output (default=random)                                                                                                                                                                                                                                                                                                     |
-| → <br>`includeWatching`        | bool              | Optional<br>(0 or 1)    | Also select inputs which are watch only (default=`false` for non-watching only wallets and `true` for watching only-wallets)                                                                                                                                                                                                                        |
-| → <br>`lockUnspents`           | bool              | Optional<br>(0 or 1)    | Lock selected unspent outputs (default=`false`)                                                                                                                                                                                                                                                                                                     |
-| → <br>`feeRate`                | numeric or string | Optional<br>(0 or 1)    | Set a specific fee rate in DASH/kB                                                                                                                                                                                                                                                                                                                  |
+| Name                           | Type              | Presence                | Description |
+| ------------------------------ | ----------------- | ----------------------- | ----------- |
+| Options                        | Object            | Optional<br>(0 or 1)    | Additional options |
+| → <br>`changeAddress`          | string            | Optional<br>(0 or 1)    | The dash address to receive the change (default=pool address) |
+| → <br>`changePosition`         | numeric (int)     | Optional<br>(0 or 1)    | The index of the change output (default=random) |
+| → <br>`includeWatching`        | bool              | Optional<br>(0 or 1)    | Also select inputs which are watch only (default=`false` for non-watching only wallets and `true` for watching only-wallets) |
+| → <br>`lockUnspents`           | bool              | Optional<br>(0 or 1)    | Lock selected unspent outputs (default=`false`) |
+| → <br>`feeRate`                | numeric or string | Optional<br>(0 or 1)    | Set a specific fee rate in DASH/kB |
 | → <br>`subtractFeeFromOutputs` | array             | Optional<br>(0 or 1)    | A json array of integers. The fee will be equally deducted from the amount of each specified output. The outputs are specified by their zero-based index, before any change output is added. Those recipients will receive less Dash than you enter in their corresponding amount field. If no outputs are specified here, the sender pays the fee. |
-| → →<br>Output index            | numeric (int)     | Optional<br>(0 or more) | An output index number (vout) from which the fee should be subtracted. If multiple vouts are provided, the total fee will be divided by the number of vouts listed and each vout will have that amount subtracted from it.                                                                                                                          |
-| → <br>`conf_target`            | numeric (int)     | Optional<br>(0 or 1)    | Confirmation target (in blocks)                                                                                                                                                                                                                                                                                                                     |
-| → <br>`estimate_mode`          | numeric (int)     | Optional<br>(0 or 1)    | The fee estimate mode, must be one of:<br>`UNSET` (default),<br>`ECONOMICAL`,<br>`CONSERVATIVE`                                                                                                                                                                                                                                                     |
+| → →<br>Output index            | numeric (int)     | Optional<br>(0 or more) | An output index number (vout) from which the fee should be subtracted. If multiple vouts are provided, the total fee will be divided by the number of vouts listed and each vout will have that amount subtracted from it. |
+| → <br>`conf_target`            | numeric (int)     | Optional<br>(0 or 1)    | Confirmation target (in blocks) |
+| → <br>`estimate_mode`          | numeric (int)     | Optional<br>(0 or 1)    | The fee estimate mode, must be one of:<br>`unset`<br>`economical`<br>`conservative`<br>`DASH/kB`<br>`duff/B` |
 
 _Parameter #5---bip32derivs_
 

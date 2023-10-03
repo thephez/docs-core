@@ -22,7 +22,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetBestBlockHash](../api/remote-procedure-calls-blockchain.md#getbestblockhash): returns the header hash of the most recent block on the best block chain.
 * [DumpTxOutset](../api/remote-procedure-calls-blockchain.md#dumptxoutset): Write the serialized UTXO set to disk. _New in Dash Core 18.1.0_
 * [GetBestChainLock](../api/remote-procedure-calls-blockchain.md#getbestchainlock): returns the block hash of the best chainlock. _New in Dash Core 0.15.0_
-* [GetBlock](../api/remote-procedure-calls-blockchain.md#getblock): gets a block with a particular header hash from the local block database either as a JSON object or as a serialized block. _Updated in Dash Core 0.16.0_
+* [GetBlock](../api/remote-procedure-calls-blockchain.md#getblock): gets a block with a particular header hash from the local block database either as a JSON object or as a serialized block. **Updated in Dash Core 20.0.0**
 * [GetBlockChainInfo](../api/remote-procedure-calls-blockchain.md#getblockchaininfo): provides information about the current state of the block chain. **Updated in Dash Core 20.0.0**
 * [GetBlockCount](../api/remote-procedure-calls-blockchain.md#getblockcount): returns the number of blocks in the local best block chain.
 * [GetBlockFilter](../api/remote-procedure-calls-blockchain.md#getblockfilter): retrieves a [BIP157](https://github.com/bitcoin/bips/blob/master/bip-0157.mediawiki) content filter for a particular block. _New in Dash Core 18.0.0_
@@ -129,6 +129,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [FinalizePSBT](../api/remote-procedure-calls-raw-transactions.md#finalizepsbt): finalizes the inputs of a PSBT. The PSBT produces a network serialized transaction if the transaction is fully signed. _New in Dash Core 18.0.0_
 * [FundRawTransaction](../api/remote-procedure-calls-raw-transactions.md#fundrawtransaction): adds inputs to a transaction until it has enough in value to meet its out value. **Updated in Dash Core 20.0.0**
 * [GetRawTransaction](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction): gets a hex-encoded serialized transaction or a JSON object describing the transaction. By default, Dash Core only stores complete transaction data for UTXOs and your own transactions, so the RPC may fail on historic transactions unless you use the non-default `txindex=1` in your Dash Core startup settings. _Updated in Dash Core 0.16.0_
+* [GetTxChainlocks](../api/remote-procedure-calls-raw-transactions.md#gettxchainlocks): returns the block height each transaction was mined at and whether it is ChainLocked or not. **Added in Dash Core 20.0.0**
 * [JoinPSBTs](../api/remote-procedure-calls-raw-transactions.md#joinpsbts): joins multiple distinct PSBTs with different inputs and outputs into one PSBT with inputs and outputs from all of the PSBTs.
 * [SendRawTransaction](../api/remote-procedure-calls-raw-transactions.md#sendrawtransaction): validates a transaction and broadcasts it to the peer-to-peer network. _Updated in Dash Core 0.15.0_
 * [SignRawTransactionWithKey](../api/remote-procedure-calls-raw-transactions.md#signrawtransactionwithkey): signs a transaction in the serialized transaction format using private keys provided in the call. _New in Dash Core 0.17.0_
@@ -141,6 +142,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [DeriveAddresses](../api/remote-procedure-calls-util.md#deriveaddresses): derives one or more addresses corresponding to an output descriptor. _Updated in Dash Core 18.1.0_
 * [EstimateSmartFee](../api/remote-procedure-calls-util.md#estimatesmartfee): estimates the transaction fee per kilobyte that needs to be paid for a transaction to begin confirmation within a certain number of blocks and returns the number of blocks for which the estimate is valid. _Updated in Dash Core 0.15.0_
 * [GetDescriptorInfo](../api/remote-procedure-calls-util.md#getdescriptorinfo): analyses a descriptor. _New in Dash Core 18.0.0_
+* [GetIndexInfo](../api/remote-procedure-calls-util.md#getindexinfo): returns the status of one or all available indices currently running in the node. **New in Dash Core 20.0.0**
 * [SignMessageWithPrivKey](../api/remote-procedure-calls-util.md#signmessagewithprivkey): signs a message with a given private key.  _New in Dash Core 0.12.3_
 * [ValidateAddress](../api/remote-procedure-calls-util.md#validateaddress): returns information about the given Dash address. _Updated in Dash Core 0.17.0_
 * [VerifyMessage](../api/remote-procedure-calls-util.md#verifymessage): verifies a signed message.

@@ -24,6 +24,7 @@ The [`getgovernanceinfo` RPC](#getgovernanceinfo) returns an object containing g
 | →<br>`lastsuperblock`           | number (int) | Required<br>(exactly 1) | The block number of the last superblock |
 | →<br>`nextsuperblock`           | number (int) | Required<br>(exactly 1) | The block number of the next superblock |
 | →<br>`fundingthreshold`         | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The number of absolute yes votes required for a proposal to be passing |
+| →<br>`governancebudget`         | number (real) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The governance budget for the next superblock in DASH |
 
 *Example from Dash Core 20.0.0*
 
@@ -41,7 +42,8 @@ Result:
   "superblockmaturitywindow": 8,
   "lastsuperblock": 916632,
   "nextsuperblock": 916656,
-  "fundingthreshold": 21
+  "fundingthreshold": 21,
+  "governancebudget": 44.60797584
 }
 ```
 
@@ -1053,11 +1055,11 @@ The `masternode count` RPC prints the number of all known masternodes.
 | →→<br>`regular`  | object | Required<br>(exactly 1) | Breakdown of regular masternodes                                       |
 | →→→<br>`total`   | int    | Required<br>(exactly 1) | Number of total regular masternodes                                    |
 | →→→<br>`enabled` | int    | Required<br>(exactly 1) | Number of enabled regular masternodes                                  |
-| →→<br>`hpmn`     | object | Required<br>(exactly 1) | Breakdown of evonodes                                                     |
+| →→<br>`evo`      | object | Required<br>(exactly 1) | Breakdown of evonodes                                                     |
 | →→→<br>`total`   | int    | Required<br>(exactly 1) | Number of total evonodes                                                  |
 | →→→<br>`enabled` | int    | Required<br>(exactly 1) | Number of enabled evonodes                                                |
 
-*Example from Dash Core 19.0.0*
+*Example from Dash Core 20.0.0*
 
 ``` bash
 dash-cli -testnet masternode count
@@ -1067,16 +1069,16 @@ Result:
 
 ``` bash
 {
-  "total": 4446,
-  "enabled": 3842,
+  "total": 516,
+  "enabled": 116,
   "detailed": {
     "regular": {
-      "total": 4446,
-      "enabled": 3842
+      "total": 478,
+      "enabled": 83
     },
-    "hpmn": {
-      "total": 0,
-      "enabled": 0
+    "evo": {
+      "total": 38,
+      "enabled": 33
     }
   }
 }
@@ -1480,7 +1482,7 @@ The [`masternodelist` RPC](#masternodelist) returns a list of masternodes in dif
 | `addr`           | Print IP address associated with a masternode (can be additionally filtered, partial match)                        |
 | `recent`         | Print info in JSON format for active and recently banned masternodes (can be additionally filtered, partial match) |
 | `full`           | Print info in format 'status payee lastpaidtime lastpaidblock IP' (can be additionally filtered, partial match)    |
-| `hpmn`           | Print info in JSON format for HPMNs only. **Added in Dash Core 20.0.0**                                            |
+| `evo`            | Print info in JSON format for evonodes only. **Added in Dash Core 20.0.0**                                         |
 | `info`           | Print info in format 'status payee IP' (can be additionally filtered, partial match)                               |
 | `json` (Default) | Print info in JSON format (can be additionally filtered, partial match)                                            |
 | `lastpaidblock`  | Print the last block height a node was paid on the network                                                         |

@@ -758,8 +758,8 @@ _Result---psbt_
 
 | Name           | Type         | Presence                | Description                                                      |
 | -------------- | ------------ | ----------------------- | ---------------------------------------------------------------- |
-| → <br>psbt     | string       | Required<br>(Exactly 1) | The base64-encoded partially signed transaction if not extracted |
-| → <br>hex      | string (hex) | Required<br>(Exactly 1) | The hex-encoded network transaction if extracted                 |
+| → <br>psbt     | string       | Optional<br>(0 or 1)    | The base64-encoded partially signed transaction if not extracted (present if `complete` is `false`)|
+| → <br>hex      | string (hex) | Optional<br>(0 or 1)    | The hex-encoded network transaction if extracted (present if `complete` is `true`)                |
 | → <br>complete | bool         | Required<br>(Exactly 1) | If the transaction has a complete set of signatures              |
 
 _Example from Dash Core 18.0.0_
@@ -885,7 +885,7 @@ _Parameter #3---hash of a block to look in for the transaction_
 
 | Name       | Type | Presence             | Description                                                                                   |
 | ---------- | ---- | -------------------- | --------------------------------------------------------------------------------------------- |
-| Block Hash | bool | Optional<br>(0 or 1) | _Added in Dash Core 0.16.0_<br><br>The hash of the block in which to look for the transaction |
+| Block Hash | string | Optional<br>(0 or 1) | _Added in Dash Core 0.16.0_<br><br>The hash of the block in which to look for the transaction |
 
 _Result (if transaction not found)---`null`_
 
@@ -904,7 +904,7 @@ _Result (if verbose=`true`)---the decoded transaction_
 | Name                        | Type           | Presence                | Description                                                                                                                                                                                                                                                                                                                      |
 | --------------------------- | -------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `result`                    | object         | Required<br>(exactly 1) | If the transaction was found, this will be an object describing it                                                                                                                                                                                                                                                               |
-| →<br>`in_active_chain`      | bool           | Required<br>(exactly 1) | ) Whether specified block is in the active chain or not (only present with explicit `blockhash` argument)                                                                                                                                                                                                                        |
+| →<br>`in_active_chain`      | bool           | Optional<br>(0 or 1)    | ) Whether specified block is in the active chain or not (only present with explicit `blockhash` argument) |
 | →<br>`txid`                 | string (hex)   | Required<br>(exactly 1) | The transaction's TXID encoded as hex in RPC byte order                                                                                                                                                                                                                                                                          |
 | →<br>`size`                 | number (int)   | Required<br>(exactly 1) | _Added in Bitcoin Core 0.12.0_<br><br>The serialized transaction size                                                                                                                                                                                                                                                            |
 | →<br>`version`              | number (int)   | Required<br>(exactly 1) | The transaction format version number                                                                                                                                                                                                                                                                                            |
@@ -1391,7 +1391,7 @@ _Result---mempool acceptance test results_
 | `result`             | array        | Required<br>(exactly 1) | The result of the mempool acceptance test for each raw transaction in the input array.                 |
 | →<br>`txid`          | string (hex) | Required<br>(exactly 1) | The TXID of the transaction the output appeared in.  The TXID must be encoded in hex in RPC byte order |
 | →<br>`allowed`       | bool         | Required<br>(exactly 1) | If the mempool allows this tx to be inserted                                                           |
-| →<br>`reject-reason` | string       | Required<br>(exactly 1) | A rejection string that is only present when 'allowed' is false.                                       |
+| →<br>`reject-reason` | string       | Optional<br>(0 or 1)    | A rejection string that is only present when 'allowed' is false.                                       |
 
 _Example from Dash Core 18.0.0_
 

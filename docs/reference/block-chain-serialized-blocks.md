@@ -37,8 +37,8 @@ performed by the Dash Core
 In September of 2023, the Dash network approved a
 [proposal](https://www.dashcentral.org/p/TREASURY-REALLOCATION-60-20-20) to double the governance
 budget by modifying the block subsidy allocation. The new allocation designates 20% for miners, 20%
-for the governance system budget, and 60% for masternodes. The expansion will go into effect upon
-activation of the Dash Core v20 hard fork.
+for the governance system budget, and 60% for masternodes. The expansion went into effect when
+the Dash Core v20 hard fork activated in December 2023.
 
 | Subsidy allocation | Purpose |
 |-|-|
@@ -54,19 +54,21 @@ spend more value than is available from the block reward.
 
 The block reward is divided into three main parts: [miner](../resources/glossary.md#miner),
 [masternode](../resources/glossary.md#masternode), and
-[superblock](../resources/glossary.md#superblock). The miner and masternode portions add up to 90%
+[superblock](../resources/glossary.md#superblock). The miner and masternode portions add up to 80%
 of the block subsidy with the remainder allocated to the governance system.
 
-Once Dash Platform is released, Dash Core will  further divides the masternode reward into Core
+Once Dash Platform is released, Dash Core will further divides the masternode reward into Core
 (62.5%) and Platform (37.5%) portions. The Core portion will be paid out directly in the coinbase.
 The Platform portion will go into the Platform credit pool and then distributed by Platform to
 [evonodes](../resources/glossary.md#evolution-masternode-evonode) providing Platform services.
 
-| Payee | Subsidy | Description |
-| ----- | -------- | ----------- |
-| Miner | Varies | Payment for mining
-| Masternode | Varies | Payment for masternode services including [CoinJoin](../guide/dash-features-coinjoin.md), [InstantSend](../guide/dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc. (62.5%)<br>Payment for Platform services (37.5%)
-| Superblock | 10% | Payment for maintenance/expansion of the ecosystem (Core development, marketing, integration, etc.)
+The following table details how the block subsidy and fees are allocated between miners, masternodes, and the governance system.
+
+| Payee | Block subsidy | Transaction fees | Description |
+| ----- | :-----: | :-------: | -|
+| Superblock | 20% | - | Payment for maintenance/expansion of the ecosystem (Core development, marketing, integration, etc.)
+| Miner | 20% | 25% | Payment for mining
+| Masternode | 60% | 75% | Payment for masternode services including [CoinJoin](../guide/dash-features-coinjoin.md), [InstantSend](../guide/dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc.
 
 <img src="https://files.readme.io/fa5bfbe-mining-banner-1.svg" alt="Mining" style="width:50%;text-align:center;"/>
 
@@ -75,12 +77,12 @@ The Platform portion will go into the Platform credit pool and then distributed 
 > 🚧 **Superseded in Dash Core 20**
 >
 > This block reward reallocation process was superseded by the [treasury
-> expansion](#treasury-expansion) approved by the network in 2023. Once the related hard fork in
-> Dash Core 20.0.0 occurs, the process described below will no longer be active.
+> expansion](#treasury-expansion) that was approved by the network in 2023 and subsequently
+> activated by the v20 hard fork at block 1987776.
 
 Dash Core v0.16 included logic to gradually adjust the block reward allocation once the BIP-9
 activation threshold was met. The reward reallocation was signaled via BIP-9 bit 5 and was activated
-at block 1374912 upon signalling by a sufficient number of blocks.
+at block 1374912 upon signaling by a sufficient number of blocks.
 
 This reallocation will eventually result in miners receiving 40% of the non-governance block subsidy
 and masternodes receiving 60% of it rather than the 50/50 split that was used for several years.
@@ -88,8 +90,8 @@ and masternodes receiving 60% of it rather than the 50/50 split that was used fo
 **Reward reallocation changes**
 
 Reward reallocation changes began at the first superblock following activation (block 1379128) and
-then occur every three superblock cycles (approximately once per quarter) until the reallocation is
-complete.
+then occurred every three superblock cycles (approximately once per quarter) until the [treasury
+expansion](#treasury-expansion) hard fork went into effect.
 
 | Quarter | Block     | Miner % | Masternode % | Change \(%\) |
 | :-: | :-: | :-: | :-: | :-:
@@ -107,9 +109,12 @@ complete.
 | Q2 2023 | 1,877,608      | 42.3   | 57.7       | 0.50%     |
 | Q3 2023 | 1,927,456      | 41.8   | 58.2        | 0.50%       |
 | ***Q4 2023*** | ***1,977,304***      | ***41.5***   | ***58.5***        | ***0.30%***       |
-| Q1 2024  | 2,027,152      | 41.2   | 58.8        | 0.30%       |
-| Q2 2024 | 2,077,000     | 40.9   | 59.1        | 0.30%       |
-| Q3 2024 | 2,126,848      | 40.6   | 59.4        | 0.30%      |
-| Q4 2024 | 2,176,696      | 40.3   | 59.7        | 0.30%       |
-| Q1 2025  | 2,226,544     | 40.1   | 59.9        | 0.20%       |
-| Q2 2025 | 2,276,392     | 40      | 60           | 0.10%       |
+| Q1 2024 *  | 2,027,152      | 41.2   | 58.8        | 0.30%       |
+| Q2 2024 * | 2,077,000     | 40.9   | 59.1        | 0.30%       |
+| Q3 2024 * | 2,126,848      | 40.6   | 59.4        | 0.30%      |
+| Q4 2024 * | 2,176,696      | 40.3   | 59.7        | 0.30%       |
+| Q1 2025 *  | 2,226,544     | 40.1   | 59.9        | 0.20%       |
+| Q2 2025 * | 2,276,392     | 40      | 60           | 0.10%       |
+
+\* The 2024 and 2025 changes were superseded by the [treasury
+expansion](#treasury-expansion) activated by hard fork in December 2023.

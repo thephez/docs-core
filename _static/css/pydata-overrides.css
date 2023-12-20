@@ -147,6 +147,10 @@ sphinx search extension interface.
   background-color: var(--pst-color-muted-highlight); /* Dark mode background color */
 }
 
+[data-theme="dark"] .rtd__search__credits {
+  border: 1px solid var(--pst-color-muted-highlight);
+}
+
 .search__outer .search__result__content span,
 .search__outer .search__result__title span {
   border-bottom-color: var(--pst-color-text-base);

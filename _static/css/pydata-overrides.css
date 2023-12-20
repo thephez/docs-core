@@ -8,14 +8,14 @@
 }
 
 html[data-theme="light"] {
-  --pst-color-primary:var(--dash-blue);
-  --pst-color-link:var(--pst-color-primary);
-  --pst-color-link-hover:var(--dash-deep-blue);
+  --pst-color-primary: var(--dash-blue);
+  --pst-color-link: var(--pst-color-primary);
+  --pst-color-link-hover: var(--dash-deep-blue);
 }
 
 html[data-theme="dark"] {
-  --pst-color-primary:var(--dash-blue);
-  --pst-color-link:var(--pst-color-primary);
+  --pst-color-primary: var(--dash-blue);
+  --pst-color-link: var(--pst-color-primary);
   --pst-color-link-hover: var(--pst-color-warning)
 }
 
@@ -31,8 +31,8 @@ html {
 }
 
 html[data-theme=dark] .bd-content img:not(.only-dark):not(.dark-light) {
-    background: none;
-    border-radius: none;
+  background: none;
+  border-radius: none;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -42,7 +42,7 @@ h1,h2,h3,h4,h5,h6{
 
 p, a, li, ol {
   font-family: 'Open Sans', sans-serif;
-} 
+}
 
 p {
   font-size: 0.95em;
@@ -54,22 +54,22 @@ a.headerlink {
 }
 
 .sidebar-end-items__item {
-    position: relative;
+  position: relative;
 }
 
 select {
-    width: 100%;
-    padding: 10px;
-    appearance: none;
-    background: transparent;
-    border-radius: 0.25rem;
+  width: 100%;
+  padding: 10px;
+  appearance: none;
+  background: transparent;
+  border-radius: 0.25rem;
 }
 
 html[data-theme=dark] select {
   color: #fff;
 }
 
-html[data-theme="light"] select{
+html[data-theme="light"] select {
   color: #000;
 }
 
@@ -109,7 +109,7 @@ sphinx search extension interface.
 
 /* Make sure it doesn't stick out on the sides of the RtD search screen */
 .search-button__wrapper.show .search-button__search-container {
-    width: 15%;
+  width: 15%;
 }
 
 /* Handle actual styling of the RtD search extension's screen */
@@ -150,14 +150,14 @@ html[data-theme="dark"] {
   }
 
   /* Set color for the line between search text and results */
-  .search__outer .bar:after, 
+  .search__outer .bar:after,
   .search__outer .bar:before {
     background: var(--pst-color-primary);
   }
 
   .rtd__search__credits {
     border: 1px solid var(--pst-color-border);
-    border-width: 1px 0 0 0;  
+    border-width: 1px 0 0 0;
   }
 }
 
@@ -165,7 +165,7 @@ html[data-theme="dark"] {
   background-color: var(--pst-color-background);
   color: var(--pst-color-text-muted);
   /* So text is centered vertically */
-  height: 37px 
+  height: 37px;
 }
 
 .rtd__search__credits a {

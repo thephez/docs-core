@@ -35,12 +35,20 @@ html[data-theme=dark] .bd-content img:not(.only-dark):not(.dark-light) {
   border-radius: none;
 }
 
-h1,h2,h3,h4,h5,h6{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
 
-p, a, li, ol {
+p,
+a,
+li,
+ol {
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -130,7 +138,9 @@ sphinx search extension interface.
   border-bottom-color: var(--pst-color-primary)
 }
 
-.search__result__content, .search__result__subheading, .search__error__box {
+.search__result__content,
+.search__result__subheading,
+.search__error__box {
   color: var(--pst-color-text-base);
 }
 
@@ -184,7 +194,8 @@ html[data-theme="dark"] {
 
 /* Prevent hover from actually changing the color by setting it to what it
   already is */
-.outer_div_page_results:hover, .search__result__box .active {
+.outer_div_page_results:hover,
+.search__result__box .active {
   background-color: var(--pst-color-on-background);
 }
 

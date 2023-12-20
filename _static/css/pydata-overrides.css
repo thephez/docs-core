@@ -138,18 +138,27 @@ sphinx search extension interface.
   border-bottom-color: var(--pst-color-text-base);
 }
 
-[data-theme="dark"] .search__outer .search__result__content span,
-[data-theme="dark"] .search__outer .search__result__title span {
-  /* Dark mode background color */
-  /* background-color: var(--pst-color-muted-highlight); */
-  color: var(--pst-color-primary);
-  border-bottom-color: var(--pst-color-primary);
-}
+/* Dark theme config */
+html[data-theme="dark"] {
 
-/* Set color for the line between search text and results */
-[data-theme="dark"] .search__outer .bar:after, 
-[data-theme="dark"] .search__outer .bar:before {
-  background: var(--pst-color-primary);
+  .search__outer .search__result__content span,
+  .search__outer .search__result__title span {
+    /* Dark mode background color */
+    /* background-color: var(--pst-color-muted-highlight); */
+    color: var(--pst-color-primary);
+    border-bottom-color: var(--pst-color-primary);
+  }
+
+  /* Set color for the line between search text and results */
+  .search__outer .bar:after, 
+  .search__outer .bar:before {
+    background: var(--pst-color-primary);
+  }
+
+  .rtd__search__credits {
+    border: 1px solid var(--pst-color-border);
+    border-width: 1px 0 0 0;  
+  }
 }
 
 .rtd__search__credits {
@@ -161,11 +170,6 @@ sphinx search extension interface.
 
 .rtd__search__credits a {
   color: var(--pst-color-link);
-}
-
-[data-theme="dark"] .rtd__search__credits {
-  border: 1px solid var(--pst-color-border);
-  border-width: 1px 0 0 0;  
 }
 
 .search__outer .search__result__content span,

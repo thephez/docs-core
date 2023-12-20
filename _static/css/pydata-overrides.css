@@ -96,6 +96,8 @@ tbody tr:nth-child(even) { background-color: var(--table-bg-color-even); }
 /* Adjust scroll-to-top button */
 #pst-back-to-top {
   background-color: var(--pst-color-primary);
+  /* Make sure it doesn't display on to of the RTD search dialog */
+  z-index: 499;
 }
 
 /* Adjust sphinx-design card */

@@ -16,6 +16,7 @@ html[data-theme="light"] {
 html[data-theme="dark"] {
   --pst-color-primary:var(--dash-blue);
   --pst-color-link:var(--pst-color-primary);
+  --pst-color-link-hover: var(--pst-color-warning)
 }
 
 html {
@@ -48,6 +49,10 @@ p {
   line-height: 1.5;
 }
 
+a.headerlink {
+  color: var(--pst-color-primary)
+}
+
 .sidebar-end-items__item {
     position: relative;
 }
@@ -78,6 +83,11 @@ tbody tr:nth-child(even) { background-color: var(--table-bg-color-even); }
 
 .table thead th.head {
   vertical-align: middle;
+}
+
+/* Adjust scroll-to-top button */
+#pst-back-to-top {
+  background-color: var(--pst-color-primary);
 }
 
 /* These are hacks to hide the pydata-theme search popup behind the readthedocs

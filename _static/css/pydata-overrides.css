@@ -128,6 +128,8 @@ sphinx search extension interface.
 .rtd__search__credits {
   background-color: var(--pst-color-background);
   color: var(--pst-color-text-muted);
+  /* So text is centered vertically */
+  height: 37px 
 }
 
 .rtd__search__credits a {
@@ -148,7 +150,8 @@ sphinx search extension interface.
 }
 
 [data-theme="dark"] .rtd__search__credits {
-  border: 1px solid var(--pst-color-muted-highlight);
+  border: 1px solid var(--pst-color-border);
+  border-width: 1px 0 0 0;  
 }
 
 .search__outer .search__result__content span,

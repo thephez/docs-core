@@ -125,17 +125,6 @@ sphinx search extension interface.
   font-size: var(--pst-font-size-icon);
 }
 
-.rtd__search__credits {
-  background-color: var(--pst-color-background);
-  color: var(--pst-color-text-muted);
-  /* So text is centered vertically */
-  height: 37px 
-}
-
-.rtd__search__credits a {
-  color: var(--pst-color-link);
-}
-
 .search__result__title {
   color: var(--pst-color-primary);
   border-bottom-color: var(--pst-color-primary)
@@ -157,9 +146,21 @@ sphinx search extension interface.
   border-bottom-color: var(--pst-color-primary);
 }
 
+/* Set color for the line between search text and results */
 [data-theme="dark"] .search__outer .bar:after, 
 [data-theme="dark"] .search__outer .bar:before {
   background: var(--pst-color-primary);
+}
+
+.rtd__search__credits {
+  background-color: var(--pst-color-background);
+  color: var(--pst-color-text-muted);
+  /* So text is centered vertically */
+  height: 37px 
+}
+
+.rtd__search__credits a {
+  color: var(--pst-color-link);
 }
 
 [data-theme="dark"] .rtd__search__credits {

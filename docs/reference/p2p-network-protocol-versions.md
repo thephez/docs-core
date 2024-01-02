@@ -10,10 +10,11 @@
 
 The table below lists some notable versions of the P2P network protocol, with the most recent versions listed first.
 
-As of Dash Core 19.2.0, the most recent protocol version is 70228.
+As of Dash Core 20.0, the most recent protocol version is 70230.
 
 | Version | Initial Release                    | Major Changes
 |---------|------------------------------------|--------------
+| 70230 | Dash Core 20.0 <br> (Nov 2023) | • [DIP 29](https://github.com/dashpay/dips/blob/master/dip-0028.md): ChainLock-based random beacon<br>• Treasury expansion<br>• Sentinel functionality integrated into Core<br> • Asset lock transactions
 | 70228 | Dash Core 19.2.0 <br> (Jun 2023) | • Store protx version in simplified masternode list entries and use to serialize/deserialize masternode BLS operator keys
 | 70227 | Dash Core 19.0.0 <br> (Apr 2023) | • [DIP 28](https://github.com/dashpay/dips/blob/master/dip-0028.md): Evolution masternodes (4000 DASH collateral)<br>• Removed [`reject` message](../reference/p2p-network-deprecated-messages.md#reject)
 | 70224 | Dash Core 18.2.0 <br> (Jan 2023) | • None (CoinJoin bugfix only)

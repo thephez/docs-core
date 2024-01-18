@@ -733,75 +733,116 @@ The content of `quorumsCLSigsObject`:
 | 1-9 | indexSetCount | compactSize uint | Number of quorum indexes using the same `signature` for their member calculation |
 | uint16_t[] | indexSet | variable | Quorum indexes corresponding in `newQuorums` using `signature` for their member calculation |
 
-The following annotated hexdump shows a [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff). (The message header has been omitted.)
+The following annotated hexdump shows a Dash Core v20.0 [`mnlistdiff`
+message](../reference/p2p-network-data-messages.md#mnlistdiff). (The message header has been
+omitted.)
 
-``` text Pre-Dash v19.0.0 mnlistdiff
-000001ee5108348a2c59396da29dc576
-9b2a9bb303d7577aee9cd95136c49b9b ........... Base block hash
+``` text Dash v20.0.0 mnlistdiff
+0100 ....................................... Message version (1)
 
-0000030f51f12e7069a7aa5f1bc9085d
-db3fe368976296fd3b6d73fdaf898cc0 ........... Block hash
+de524e1b726ad0d574a15206c24db7cd
+6f4d293b3f1c65f3b11523a988020000 ........... Base block hash
 
-05000000 ................................... Transactions: 5
+4d25794f4e7601e349077d52138c12d3
+7761061e83b38426763646d269000000 ........... Block hash
 
-04 ......................................... Merkle hash count: 4
+0b000000 ................................... Transactions: 11
 
-4488a599e5d61709664c32305befd58b
-ef29e33bc6e718af0233f938557a57a9 ........... Merkle hash 1
-5c8119b7b136d94e477a0d2917d5f724
-5ff299cc6e31994f6236a8fb34fec88f ........... Merkle hash 2
-905efa3e6743c889823f00147d36d12f
-d12ad401c19089f0affcabd423deef67 ........... Merkle hash 3
-3f3a7f84d7ad33214994b5aecf4c1e19
-2cb65b86750b1377e069073d1eba477a ........... Merkle hash 4
+05 ......................................... Merkle hash count: 5
 
-01 ......................................... Merkle flag count: 1
-0f ......................................... Flags: 0 0 0 0 1 1 1 1
+a7d9e339ce9f4671c0d16cbfea4acaa5
+43cf96f52145b18b447f386cbf7abd4f ........... Merkle hash 1
+c71dd34648a0b7040f33b39823f90a96
+80f1108d1f07fde1f385d5a91ee1e487 ........... Merkle hash 2
+20ec215cf0420a0c5d3e894dc8c49d64
+49ab46f1be37d2c7d4a2fed84706d33d ........... Merkle hash 3
+51b0c2dbf57f45eb5d6a1341c6ceb199
+d4cbf6a63d892a69364a4d254c120f20 ........... Merkle hash 4
+72c3210f840aa0d827d63d98456dabf4
+2906d0715214735871178b12af8a6eda ........... Merkle hash 5
+
+
+02 ......................................... Merkle flag count: 2
+1f ......................................... Flags: 0 0 0 1 1 1 1 1
+00 ......................................... Flags: 0 0 0 0 0 0 0 0
 
 [...]....................................... Coinbase Tx (Not shown)
 
 00 ......................................... Deleted masternodes: 0
 
-02 ......................................... Masternode list entries: 2
+00 ......................................... Masternode list entries: 0
 
-00 ......................................... Deleted quorums: 0
+03 ......................................... Deleted quorums: 3
 
-00 ......................................... New quorums: 0
-
-Masternode List
-| Masternode 1
-| | 01040eb32f760490054543356cff4638
-| | 65633439dd073cffa570305eb086f70e ....... ProRegTx hash
-| |
-| | 000001ee5108348a2c59396da29dc576
-| | 9b2a9bb303d7577aee9cd95136c49b9b ....... Confirmed block hash
-| |
-| | 00000000000000000000000000000000 ....... IP Address: ::ffff:0.0.0.0
-| | 0000 ................................... Port: 0
-| |
-| | 0000000000000000000000000000000000000000
-| | 0000000000000000000000000000000000000000
-| | 0000000000000000 ....................... Operator public key (BLS)
-| | c2ae01fb4084cbc3bc31e7f59b36be228a320404 Voting pubkey hash (ECDSA)
-| |
-| | 0 ...................................... Valid (0 - No)
+Deleted quorums
+| 01 ....................................... Quorum type (1)
+| e8d70272cb891e97e8302c41e6d72ca0
+| c0743624b6797d85bebbc5d311000000 ......... Quorum hash
 |
-| Masternode 2
-| | f7737beb39779971e9bc59632243e13f
-| | c5fc9ada93b69bf48c2d4c463296cd5a ....... ProRegTx hash
+| 04 ....................................... Quorum type (4)
+| 16c6383a1fc5a765bd93674c5b9b47cf
+| e199589c4258e7b259464e4fea000000 ......... Quorum hash
+|
+| 06 ....................................... Quorum type (6)
+| e8d70272cb891e97e8302c41e6d72ca0
+| c0743624b6797d85bebbc5d311000000 ......... Quorum hash
+
+03 ......................................... New quorums: 3
+
+New quorums
+| Quorum 1
+| | 0300 ................................... Version (3)
 | |
-| | 0000030f51f12e7069a7aa5f1bc9085d
-| | db3fe368976296fd3b6d73fdaf898cc0 ....... Confirmed block hash
+| | 01 ..................................... Quorum type (1)
+| | 05beb3edd9207ede3a42a15bbd04d597
+| | 744f6f9db9b9a68a025c7e5637000000........ Quorum hash
 | |
-| | 000000000000000000000000cf9af40d ....... IP Address: ::ffff:207.154.244.13
-| | 4e1f ................................... Port: 19999
+| | 32 ..................................... Signers (50)
+| | ffffffffffff03 ......................... Signers bitvector
 | |
-| | 88d719278eef605d9c19037366910b59bc28d437
-| | de4a8db4d76fda6d6985dbdf10404fb9bb5cd0e8
-| | c22f4a914a6c5566 ....................... Operator public key (BLS)
-| | 43ce12751c4ba45dcdfe2c16cefd61461e17a54d Voting pubkey hash (ECDSA)
+| | 32 ..................................... Valid members (50)
+| | ffffffffffff03 ......................... Valid members bitvector
 | |
-| | 1 ...................................... Valid (1 - Yes)
+| | 91e6dfd0d8f33e4306afe0483d7649cc
+| | 68b5346f5c658206269083d49d2f1db7
+| | 8eedd22eecf748404a1fe12e24f074e1 ....... Quorum public key (BLS)
+| |
+| | bc7da59621015e70e31310982e66acfe
+| | 25468daede7142234e7f3bf3b3297b21 ....... Quorum verification vector hash
+| |
+| | Quorum threshold signature (BLS)
+| | 99f4d8af79cf99ba49c8c9295cbc0827
+| | b2b6611a905dc347eec9ecbe6ec6ec64
+| | c167ca252f2fc0ff772394c696c58f0c
+| | 0e00c4f556ab528e07d06d2e57391fd1
+| | 0c57e0521e43f8dfcfc8448665d41eba
+| | 7c103b915506476672b531b9ceca266f ....... BLS signature
+| |
+| | Aggregated signatures from all commitments (BLS)
+| | 8f7bb2a10d4cbf6fe7c6cfc1ec52817f
+| | 97f025ba9c4c52ac4cfa02ba1c28f3aa
+| | fb83c2f4b246f730b5e4aac36e9479d5
+| | 0d72db9055dbdc9e2c27dee6f876be66
+| | 928abbdf636d1405c59a5e35d4775049
+| | 97f0e3b5acd2c53448deaaf61fed9343 ....... BLS signature
+|
+| [...] .................................... Remaining quorums truncated
+
+01 ......................................... ChainLock signature count
+ChainLock signature object
+| ae1ccf19235d06ae370f3538796525c1
+| d8e404252b0a91109c031d60f7d0c740
+| 7e5678b1ea4792ff32fffdafb061bf1d
+| 0c7a53afa399e203719e73cee1c0640d
+| ca24fb16f6950f7aba1b655f7fa195d8
+| 0476e65b987bc51689d7946680b04dcf ......... ChainLock signature
+| 
+| 03 ....................................... Index set count (3)
+|
+| Index set
+| | 0000 ................................... Quorum index (0)
+| | 0100 ................................... Quorum index (1)
+| | 0200 ................................... Quorum index (2)
 ```
 
 ## notfound

@@ -80,6 +80,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [BLS](../api/remote-procedure-calls-evo.md#bls): provides a set of commands to execute BLS-related actions. **_Updated in Dash Core 19.0.0_**
 * [ProTx](../api/remote-procedure-calls-evo.md#protx): provides a set of commands to execute ProTx related actions. **Updated in Dash Core 20.0.0**
 * [Quorum](../api/remote-procedure-calls-evo.md#quorum): provides a set of commands for quorums (LLMQs). **Updated in Dash Core 20.1.0**
+* [SubmitChainLock](../api/remote-procedure-calls-evo.md#submitchainlock): allows the submission of a ChainLock signature. **New in Dash Core 20.1.0**
 * [VerifyChainLock](../api/remote-procedure-calls-evo.md#verifychainlock): tests if a quorum signature is valid for a ChainLock. _New in Dash Core 0.17.0_
 * [VerifyISLock](../api/remote-procedure-calls-evo.md#verifyislock): tests if a quorum signature is valid for an InstantSend lock. _New in Dash Core 0.17.0_
 
@@ -123,6 +124,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [CombineRawTransaction](../api/remote-procedure-calls-raw-transactions.md#combinerawtransaction): combine multiple partially signed transactions into one transaction. _New in Dash Core 0.15.0_
 * [ConvertToPSBT](../api/remote-procedure-calls-raw-transactions.md#converttopsbt): converts a network serialized transaction to a PSBT. _New in Dash Core 18.0.0_
 * [CreatePSBT](../api/remote-procedure-calls-raw-transactions.md#createpsbt): creates a transaction in the Partially Signed Transaction (PST) format. _New in Dash Core 18.0.0_
+* [GetAssetUnlockStatuses](../api/remote-procedure-calls-raw-transactions.md#getassetunlockstatuses): returns the status of the provided Asset Unlock indexes at the tip of the chain or at a particular block height if specified. **New in Dash Core 20.1.0**
 * [CreateRawTransaction](../api/remote-procedure-calls-raw-transactions.md#createrawtransaction): creates an unsigned serialized transaction that spends a previous output to a new output with a P2PKH or P2SH address. The transaction is not stored in the wallet or transmitted to the network. _Updated in Dash Core 0.17.0_
 * [DecodePSBT](../api/remote-procedure-calls-raw-transactions.md#decodepsbt): returns a JSON object representing the serialized, base64-encoded partially signed Dash transaction. _New in Dash Core 18.0.0_
 * [DecodeRawTransaction](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction): decodes a serialized transaction hex string into a JSON object describing the transaction. _Updated in Dash Core 0.13.0_
@@ -130,6 +132,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [FinalizePSBT](../api/remote-procedure-calls-raw-transactions.md#finalizepsbt): finalizes the inputs of a PSBT. The PSBT produces a network serialized transaction if the transaction is fully signed. _New in Dash Core 18.0.0_
 * [FundRawTransaction](../api/remote-procedure-calls-raw-transactions.md#fundrawtransaction): adds inputs to a transaction until it has enough in value to meet its out value. **Updated in Dash Core 20.0.0**
 * [GetRawTransaction](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction): gets a hex-encoded serialized transaction or a JSON object describing the transaction. By default, Dash Core only stores complete transaction data for UTXOs and your own transactions, so the RPC may fail on historic transactions unless you use the non-default `txindex=1` in your Dash Core startup settings. _Updated in Dash Core 0.16.0_
+* [GetRawTransactionMulti](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti): gets hex-encoded serialized transactions or a JSON object describing the multiple transactions. **Added in Dash Core 20.1.0**
 * [GetTxChainlocks](../api/remote-procedure-calls-raw-transactions.md#gettxchainlocks): returns the block height each transaction was mined at and whether it is ChainLocked or not. **Added in Dash Core 20.0.0**
 * [JoinPSBTs](../api/remote-procedure-calls-raw-transactions.md#joinpsbts): joins multiple distinct PSBTs with different inputs and outputs into one PSBT with inputs and outputs from all of the PSBTs.
 * [SendRawTransaction](../api/remote-procedure-calls-raw-transactions.md#sendrawtransaction): validates a transaction and broadcasts it to the peer-to-peer network. _Updated in Dash Core 0.15.0_

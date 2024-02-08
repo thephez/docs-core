@@ -254,7 +254,7 @@ Result:
 cHNidP8BAEICAAAAAXgRxzbShUlivVFKgoLyhk0RCCYLZKCYTl/tYRd+yGImAAAAAAD/////AQAAAAAAAAAABmoEAAECAwAAAAAAAAA=
 ```
 
-_See also_
+_See also:_
 
 * [CombinePSBT](../api/remote-procedure-calls-raw-transactions.md#combinepsbt): combine multiple partially-signed Dash transactions into one transaction.
 * [ConvertToPSBT](../api/remote-procedure-calls-raw-transactions.md#converttopsbt): converts a network serialized transaction to a PSBT.
@@ -328,7 +328,7 @@ Result:
 acc0a8f9be010000001976a914811eacc14db8ebb5b64486dc43400c0226b428a488ac00000000
 ```
 
-_See also_
+_See also:_
 
 * [CombineRawTransaction](../api/remote-procedure-calls-raw-transactions.md#combinerawtransaction): combine multiple partially signed transactions into one transaction.
 * [DecodeRawTransaction](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction): decodes a serialized transaction hex string into a JSON object describing the transaction.
@@ -677,7 +677,7 @@ Result:
 }
 ```
 
-_See also_
+_See also:_
 
 * [CombineRawTransaction](../api/remote-procedure-calls-raw-transactions.md#combinerawtransaction): combine multiple partially signed transactions into one transaction.
 * [CreateRawTransaction](../api/remote-procedure-calls-raw-transactions.md#createrawtransaction): creates an unsigned serialized transaction that spends a previous output to a new output with a P2PKH or P2SH address. The transaction is not stored in the wallet or transmitted to the network.
@@ -733,7 +733,7 @@ Result:
 }
 ```
 
-_See also_
+_See also:_
 
 * [CreateMultiSig](../api/remote-procedure-calls-util.md#createmultisig): creates a P2SH multi-signature address.
 
@@ -845,13 +845,60 @@ Result:
 }
 ```
 
-_See also_
+_See also:_
 
 * [CreateRawTransaction](../api/remote-procedure-calls-raw-transactions.md#createrawtransaction): creates an unsigned serialized transaction that spends a previous output to a new output with a P2PKH or P2SH address. The transaction is not stored in the wallet or transmitted to the network.
 * [DecodeRawTransaction](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction): decodes a serialized transaction hex string into a JSON object describing the transaction.
 * [SignRawTransactionWithKey](#signrawtransactionwithkey): signs inputs for a transaction in the serialized transaction format using private keys provided in the call.
 * [SendRawTransaction](../api/remote-procedure-calls-raw-transactions.md#sendrawtransaction): validates a transaction and broadcasts it to the peer-to-peer network.
 * [Serialized Transaction Format](../reference/transactions-raw-transaction-format.md)
+
+```{eval-rst}
+.. _api-rpc-raw-transactions-getassetunlockstatuses:
+```
+
+## GetAssetUnlockStatuses
+
+The [`getassetunlockstatuses` RPC](../api/remote-procedure-calls-raw-transactions.md#getassetunlockstatuses) returns the status of the provided Asset Unlock indexes at the tip of the chain or at a particular block height if specified.
+
+_Parameters_
+
+| Name    | Type  | Presence | Description |
+| ------- | ----- | -------- | ----------- |
+| Indexes | array | Required | An array of Asset Unlock indexes (no more than 100). Each element is a numeric Asset Unlock index. |
+| height | numeric | Optional (0 or 1) | The maximum block height to check. If not specified, the chain's tip is used. |
+
+_Result---Status of the Asset Unlock indexes_
+
+| Name   | Type  | Presence                | Description |
+| ------ | ----- | ----------------------- | ----------- |
+| Result | array | Required (Exactly 1)    | An array with the status of each Asset Unlock index. Each element in the array is a JSON object containing the index and its status. |
+| → Index data | object | Required<br>(1 or more) | Details for an Asset Unlock index |
+| → → <br>index | numeric | Required<br>(Exactly 1) | The Asset Unlock index |
+| → → <br>status | string | Required<br>(Exactly 1) | Status of the Asset Unlock index. The possible outcomes per each index are:<br>- `chainlocked`: If the Asset Unlock index is mined on a ChainLocked block or up to the given block height.<br>- `mined`: If no ChainLock information is available for the mined Asset Unlock index.<br>- `mempooled`: If the Asset Unlock index is in the mempool.<br>- `unknown`: If none of the above are valid.<br>Note: If a specific block height is passed on request, then only `chainlocked` and `unknown` outcomes are possible. |
+
+_Example from Dash Core 20.1.0_
+
+```bash
+dash-cli getassetunlockstatuses '["1", "2"]'
+```
+
+Result:
+
+```json
+[
+  {
+    "index": 1,
+    "status": "chainlocked"
+  },
+  {
+    "index": 2,
+    "status": "mempooled"
+  }
+]
+```
+
+_See also: none_
 
 ```{eval-rst}
 .. _api-rpc-raw-transactions-getrawtransaction:
@@ -893,11 +940,19 @@ _Result (if transaction not found)---`null`_
 | -------- | ---- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `result` | null | Required<br>(exactly 1) | If the transaction wasn't found, the result will be JSON `null`.  This can occur because the transaction doesn't exist in the block chain or memory pool, or because it isn't part of the transaction index.  See the Dash Core `-help` entry for `-txindex` |
 
+```{eval-rst}
+.. _rpc-raw-txs-getrawtx-hex:
+```
+
 _Result (if verbose=`false`)---the serialized transaction_
 
 | Name     | Type         | Presence                | Description                                                                          |
 | -------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | If the transaction was found, this will be the serialized transaction encoded as hex |
+
+```{eval-rst}
+.. _rpc-raw-txs-getrawtx-decoded:
+```
 
 _Result (if verbose=`true`)---the decoded transaction_
 
@@ -1142,8 +1197,70 @@ Result:
 }
 ```
 
-_See also_
+_See also:_
 
+* [GetRawTransactionMulti](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti): gets hex-encoded serialized transactions or a JSON object describing the transactions.
+* [GetSpecialTxes](../api/remote-procedure-calls-blockchain.md#getspecialtxes): returns an array of special transactions found in the specified block
+* [GetTransaction](../api/remote-procedure-calls-wallet.md#gettransaction): gets detailed information about an in-wallet transaction.
+
+## GetRawTransactionMulti
+
+The [`getrawtransactionmulti` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti) gets hex-encoded serialized transactions or a JSON object describing the transactions. This RPC returns the same type of information as the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction).
+
+_Parameter #1---block hashes and transaction hash list_
+
+| Name | Type         | Presence                | Description |
+| ---- | ------------ | ----------------------- | ----------- |
+| Transactions | object | Required<br>(exactly 1) | A JSON object with block hashes as keys and lists of transaction hashes as values (no more than 100 in total) |
+|→<br>Block Hash | array | Required<br>(1 or more) | The block hash and the list of transaction ids to fetch. Note: if a block hash of `0` is provided, mempool transactions will be returned. |
+|→ →<br>Transaction ID | string | Required<br>(1 or more) | A transaction ID |
+
+_Parameter #2---whether to get the serialized or decoded transaction_
+
+| Name    | Type | Presence             | Description |
+| ------- | ---- | -------------------- | ----------- |
+| Verbose | bool | Optional<br>(0 or 1) | Set to `false` (the default) to return the serialized transaction as hex.  Set to `true` to return a decoded transaction in JSON. |
+
+_Result (if transactions not found)---`null`_
+
+| Name     | Type | Presence                | Description |
+| -------- | ---- | ----------------------- | ----------- |
+| `result` | null | Required<br>(exactly 1) | If no transactions were found, the result will be JSON `null`.  This can occur because the transactions don't exist in the block chain or memory pool, or because it isn't part of the transaction index.  See the Dash Core `-help` entry for `-txindex` |
+
+_Result (if verbose=`false`)---the serialized transactions_
+
+| Name     | Type         | Presence                | Description |
+| -------- | ------------ | ----------------------- | ----------- |
+| `result` | object | Required<br>(exactly 1) | If the transaction was found, this will be an object containing the serialized transaction encoded as hex. |
+|→<br>TXID / Raw tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and raw transaction data (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#rpc-raw-txs-getrawtx-hex) for an example of the hex transaction data. |
+
+_Result (if verbose=`true`)---the decoded transactions_
+
+| Name                        | Type           | Presence                | Description |
+| --------------------------- | -------------- | ----------------------- | ----------- |
+| `result`                    | object         | Required<br>(exactly 1) | If the transaction was found, this will be an object describing it |
+|→<br>TXID / Decoded tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and decoded transaction data represented in JSON (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#rpc-raw-txs-getrawtx-decoded) for an example of the decoded transaction data. |
+
+_Examples from Dash Core 20.1.0_
+
+Transactions in serialized transaction format:
+
+```bash
+dash-cli -testnet getrawtransactionmulti '{"0000014b04deb0fe0884d3ca81a6239016c2a4838cd4b34494858630e457c62c": ["0667ab03bebb827057fcd55285d68dc10f30ef07dd04d1468c9f25888c22333c", "5c278dd4ca54b9c14789357f0311bcbf1b6d3182bcc76d229cb15cfbe6255ed0"]}' false
+```
+
+Result:
+
+```json
+{
+  "0667ab03bebb827057fcd55285d68dc10f30ef07dd04d1468c9f25888c22333c": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff060373ad0e0101ffffffff0283706e04000000001976a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac89514b0d000000001976a91464f2b2b84f62d68a2cd7f7f5fb2b5aa75ef716d788ac00000000af030073ad0e00c63f1ca6d2a0570754d3851f70fae6215fa7741b3d4fd1d988e35add12b22827731b17f8cc2324ca927164dc67064a73aed41a19f418b05dcd57415a627ed9b90081a911644ec88204526c31b16666ba3f514caaaef72ce5bbaa4babb19f35bdd4ef1c7adefd414879f5805526fb9b9cd01566dc35d9599ed58e679373666e938ea0214c14368673f4e5b9766686b6d147ec567c4cd004766a0fa8f2280ab5494e9eca329808000000",
+  "5c278dd4ca54b9c14789357f0311bcbf1b6d3182bcc76d229cb15cfbe6255ed0": "03000600000000000000fd4901010073ad0e00030001d0c2ab39e1fddbcdee48d2c2c2e807586603d6ff1b31189e46b95849eb00000032ffffffffffff0332ffffffffffff03a1f0b0ce837010f234e3b5906ac171adf25b46fb535e7de4831128c19dc9939a71039d227e355a9b47d7612dd0a3a3d51c588284eb43a9ba7b4f62589db5a16ae1b50305a16093fe5a7c8d9c6ab35e4e97021398ecabbf90ab1199e9c649c8abe65af1a77de449980720775ec2efda5cb1b0e23a002f32a2825f02b070c627e90220bb30a37dd4072ffebffeaa81ba5ca2335137a76da711c86b11666b7e8794846caf4170f9bb99b31f9837408f9f13a5b548cda8a6bf6c980f0351584079b5e4c710123217e7876c4bd2f935b6f098306cd75c07231780cd68e27e97283e37180372cd266ebba1e0c514bd6c304ae58c71c9b1653f4df6bc33553fa22adde4429cbc3ecb9eda76bd4d256eabbb98d4"
+}
+```
+
+_See also:_
+
+* [GetRawTransaction](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction): gets a hex-encoded serialized transaction or a JSON object describing the transaction.
 * [GetSpecialTxes](../api/remote-procedure-calls-blockchain.md#getspecialtxes): returns an array of special transactions found in the specified block
 * [GetTransaction](../api/remote-procedure-calls-wallet.md#gettransaction): gets detailed information about an in-wallet transaction.
 
@@ -1219,7 +1336,7 @@ Result:
 cHNidP8BAHoCAAAAAvisRhf3kqdGJdB8vKvQz81ze9cH6bh0RKZfFTMsXatUAAAAAAD/////eBHHNtKFSWK9UUqCgvKGTREIJgtkoJhOX+1hF37IYiYAAAAAAP////8CAAAAAAAAAAAGagQAAQIDAAAAAAAAAAAGagQAAQIDAAAAAAAAAAAA
 ```
 
-_See also_
+_See also:_
 
 * [CombinePSBT](../api/remote-procedure-calls-raw-transactions.md#combinepsbt): combine multiple partially-signed Dash transactions into one transaction.
 * [ConvertToPSBT](../api/remote-procedure-calls-raw-transactions.md#converttopsbt): converts a network serialized transaction to a PSBT.
@@ -1287,7 +1404,7 @@ Result:
 2f124cb550d9967b81914b544dea3783de23e85d67a9816f9bada665ecfe1cd5
 ```
 
-_See also_
+_See also:_
 
 * [CombineRawTransaction](../api/remote-procedure-calls-raw-transactions.md#combinerawtransaction): combine multiple partially signed transactions into one transaction.
 * [CreateRawTransaction](../api/remote-procedure-calls-raw-transactions.md#createrawtransaction): creates an unsigned serialized transaction that spends a previous output to a new output with a P2PKH or P2SH address. The transaction is not stored in the wallet or transmitted to the network.
@@ -1361,7 +1478,7 @@ Result:
 }
 ```
 
-_See also_
+_See also:_
 
 * [CombineRawTransaction](../api/remote-procedure-calls-raw-transactions.md#combinerawtransaction): combine multiple partially signed transactions into one transaction.
 * [CreateRawTransaction](../api/remote-procedure-calls-raw-transactions.md#createrawtransaction): creates an unsigned serialized transaction that spends a previous output to a new output with a P2PKH or P2SH address. The transaction is not stored in the wallet or transmitted to the network.
@@ -1411,7 +1528,7 @@ Result:
 ]
 ```
 
-_See also_
+_See also:_
 
 * [CombineRawTransaction](../api/remote-procedure-calls-raw-transactions.md#combinerawtransaction): combine multiple partially signed transactions into one transaction.
 * [CreateRawTransaction](../api/remote-procedure-calls-raw-transactions.md#createrawtransaction): creates an unsigned serialized transaction that spends a previous output to a new output with a P2PKH or P2SH address. The transaction is not stored in the wallet or transmitted to the network.
@@ -1457,7 +1574,7 @@ Result:
 cHNidP8BAEICAAAAAXgRxzbShUlivVFKgoLyhk0RCCYLZKCYTl/tYRd+yGImAAAAAAD/////AQAAAAAAAAAABmoEAAECAwAAAAAAAAA=
 ```
 
-_See also_
+_See also:_
 
 * [CombinePSBT](../api/remote-procedure-calls-raw-transactions.md#combinepsbt): combine multiple partially-signed Dash transactions into one transaction.
 * [ConvertToPSBT](../api/remote-procedure-calls-raw-transactions.md#converttopsbt): converts a network serialized transaction to a PSBT.

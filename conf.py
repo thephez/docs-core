@@ -65,7 +65,7 @@ myst_enable_extensions = ["colon_fence"]
 # -- intersphinx configuration -----------------------------------------------
 intersphinx_mapping = {
     "user": ("https://docs.dash.org/en/stable/", None),
-    "platform": ("https://docs.dash.org/projects/platform/en/stable/", None),
+    "platform": ("https://docs.dash.org/projects/platform/en/latest/", None),
 }
 
 # We recommend adding the following config value.

@@ -1366,7 +1366,7 @@ _Parameter #2--whether to allow high fees_
 
 | Name         | Type   | Presence             | Description                                                                                                                                                                                                                                                                                                                            |
 | ------------ | ------ | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `maxfeerate` | number | Optional<br>(0 or 1) | Reject transactions whose fee rate is higher than the specified value, expressed in DASH/kB. **Breaking change: parameter changed from `allowhighfees` to `maxfeerate` in Dash Core 18.0.0. See [previous version](https://dashcore.readme.io/v0.17.0/docs/core-api-ref-remote-procedure-calls-raw-transactions#sendrawtransaction).** |
+| `maxfeerate` | number | Optional<br>(0 or 1) | Reject transactions whose fee rate is higher than the specified value, expressed in DASH/kB. **Breaking change: parameter changed from `allowhighfees` to `maxfeerate` in Dash Core 18.0.0.** |
 
 _Parameter #3--whether to use InstantSend_
 
@@ -1502,7 +1502,7 @@ _Parameter #2---set max fee rate_
 
 | Name         | Type   | Presence             | Description |
 | ------------ | ------ | -------------------- | ----------- |
-| `maxfeerate` | number | Optional<br>(0 or 1) | Reject transactions whose fee rate is higher than the specified value, expressed in DASH/kB. Changed from `allowhighfees` in Dash Core 18.0.0. See [previous version](https://dashcore.readme.io/v0.17.0/docs/core-api-ref-remote-procedure-calls-raw-transactions#sendrawtransaction). |
+| `maxfeerate` | number | Optional<br>(0 or 1) | Reject transactions whose fee rate is higher than the specified value, expressed in DASH/kB. Changed from `allowhighfees` in Dash Core 18.0.0. |
 
 _Result---mempool acceptance test results_
 

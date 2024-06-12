@@ -195,36 +195,26 @@ Result (no output from `dash-cli` because result is set to `null`).
 
 The [`getaddednodeinfo` RPC](../api/remote-procedure-calls-network.md#getaddednodeinfo) returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode) will have their information displayed.
 
-Prior to Dash Core 0.12.3, this dummy parameter was required for historical purposes but not used:
-
-*DEPRECATED Parameter #1---whether to display connection information*
-
-| Name    | Type   | Presence                  | Description                   |
-| ------- | ------ | ------------------------- | ----------------------------- |
-| *Dummy* | *bool* | _Required<br>(exactly 1)_ | *Removed in Dash Core 0.12.3* |
-
-Beginning with Dash Core 0.12.3, this is the single (optional) parameter:
-
 *Parameter #1---what node to display information about*
 
-| Name   | Type   | Presence             | Description                                                                                                                                                                                                                                    |
-| ------ | ------ | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `node` | string | Optional<br>(0 or 1) | The node to get information about in the same `<IP address>:<port>` format as the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode).  If this parameter is not provided, information about all added nodes will be returned |
+| Name   | Type   | Presence             | Description                        |
+| ------ | ------ | -------------------- | ---------------------------------- |
+| `node` | string | Optional<br>(0 or 1) | The node to get information about in the same `<IP address>:<port>` format as the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode).  If provided, return information about this specific node, otherwise all nodes are returned. |
 
 *Result---a list of added nodes*
 
-| Name                   | Type   | Presence                | Description                                                                                                                                                                                                                      |
-| ---------------------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `result`               | array  | Required<br>(exactly 1) | An array containing objects describing each added node.  If no added nodes are present, the array will be empty.  Nodes added with `onetry` will not be returned                                                                 |
-| →<br>Added Node        | object | Optional<br>(0 or more) | An object containing details about a single added node                                                                                                                                                                           |
-| → →<br>`addednode`     | string | Required<br>(exactly 1) | An added node in the same `<IP address>:<port>` format as used in the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode).                                                                                      |
-| → →<br>`connected`     | bool   | Optional<br>(0 or 1)    | This will be set to `true` if the node is currently connected and `false` if it is not                                                                                                                                           |
-| → →<br>`addresses`     | array  | Required<br>(exactly 1) | This will be an array of addresses belonging to the added node                                                                                                                                                                   |
-| → → →<br>Address       | object | Optional<br>(0 or more) | An object describing one of this node's addresses                                                                                                                                                                                |
-| → → → →<br>`address`   | string | Required<br>(exactly 1) | An IP address and port number of the node.  If the node was added using a DNS address, this will be the resolved IP address                                                                                                      |
+| Name                   | Type   | Presence                | Description                         |
+| ---------------------- | ------ | ----------------------- | ----------------------------------- |
+| `result`               | array  | Required<br>(exactly 1) | An array containing objects describing each added node.  If no added nodes are present, the array will be empty.  Nodes added with `onetry` will not be returned |
+| →<br>Added Node        | object | Optional<br>(0 or more) | An object containing details about a single added node |
+| → →<br>`addednode`     | string | Required<br>(exactly 1) | An added node in the same `<IP address>:<port>` format as used in the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode). |
+| → →<br>`connected`     | bool   | Optional<br>(0 or 1)    | This will be set to `true` if the node is currently connected and `false` if it is not |
+| → →<br>`addresses`     | array  | Optional<br>(0 or 1) | This will be an array of addresses belonging to the added node. Only present when `connected` is `true` |
+| → → →<br>Address       | object | Optional<br>(0 or more) | An object describing one of this node's addresses |
+| → → → →<br>`address`   | string | Required<br>(exactly 1) | An IP address and port number of the node.  If the node was added using a DNS address, this will be the resolved IP address |
 | → → → →<br>`connected` | string | Required<br>(exactly 1) | Whether or not the local node is connected to this addnode using this IP address.  Valid values are:<br>• `false` for not connected<br>• `inbound` if the addnode connected to us<br>• `outbound` if we connected to the addnode |
 
-*Example from Dash Core 0.12.3*
+*Example from Dash Core 21.0.0*
 
 ```bash
 dash-cli getaddednodeinfo
@@ -292,6 +282,12 @@ The [`getnodeaddresses` RPC](../api/remote-procedure-calls-network.md#getnodeadd
 | ------- | ------------ | -------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `count` | number (int) | Optional<br>(0 or 1) | The number of addresses to return. Limited to the smaller of 2500 or 23% of all known addresses (default = 1). |
 
+*Parameter #2---network*
+
+| Name       | Type   | Presence             | Description                                                   |
+| ---------- | ------ | -------------------- | ------------------------------------------------------------- |
+| `network`  | string | Optional<br>(0 or 1) | The network (ipv4, ipv6, onion, i2p) the node connected through. |
+
 *Result---the current bytes in, bytes out, and current time*
 
 | Name            | Type         | Presence                | Description                                                |
@@ -301,8 +297,9 @@ The [`getnodeaddresses` RPC](../api/remote-procedure-calls-network.md#getnodeadd
 | →<br>`services` | number (int) | Required<br>(exactly 1) | The services offered                                       |
 | →<br>`address`  | string       | Required<br>(exactly 1) | The address of the node                                    |
 | →<br>`port`     | number (int) | Required<br>(exactly 1) | The port of the node                                       |
+| →<br>`network`  | string       | Required<br>(exactly 1) | The network (ipv4, ipv6, onion, i2p) the node connected through |
 
-*Example from Dash Core 18.0.0*
+*Example from Dash Core 21.0.0*
 
 ```bash
 dash-cli -testnet getnodeaddresses
@@ -313,10 +310,11 @@ Result:
 ```json
 [
   {
-    "time": 1634187034,
-    "services": 1029,
+    "time": 1713783495,
+    "services": 3077,
     "address": "34.214.102.160",
-    "port": 19999
+    "port": 19999,
+    "network": "ipv4"
   }
 ]
 ```
@@ -394,11 +392,11 @@ The [`getnetworkinfo` RPC](../api/remote-procedure-calls-network.md#getnetworkin
 | →<br>`timeoffset`                      | number (int)  | Required<br>(exactly 1) | The offset of the node's clock from the computer's clock (both in UTC) in seconds.  The offset may be up to 4200 seconds (70 minutes)                                                                                                             |
 | →<br>`networkactive`                   | bool          | Required<br>(exactly 1) | Set to `true` if P2P networking is enabled.  Set to `false` if P2P networking is disabled. Enabling/disabling done via [SetNetworkActive](../api/remote-procedure-calls-network.md#setnetworkactive)                                     |
 | →<br>`connections`                     | number (int)  | Required<br>(exactly 1) | The total number of open connections (both outgoing and incoming) between this node and other nodes                                                                                                                                               |
-| →<br>`inboundconnections`              | number (int)  | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br><br>The number of inbound connections                                                                                                                                                                            |
-| →<br>`outboundconnections`             | number (int)  | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br><br>The number of outbound connections                                                                                                                                                                           |
-| →<br>`mnconnections`                   | number (int)  | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br><br>The number of verified masternode connections                                                                                                                                                                |
-| →<br>`inboundmnconnections`            | number (int)  | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br><br>The number of inbound verified masternode connections                                                                                                                                                        |
-| →<br>`outboundmnconnections`           | number (int)  | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br><br>The number of outbound verified masternode connections                                                                                                                                                       |
+| →<br>`connections_in`                  | number (int)  | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br><br>The number of inbound connections                                                                                                                                                                            |
+| →<br>`connections_out`             | number (int)  | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br><br>The number of outbound connections                                                                                                                                                                           |
+| →<br>`connections_mn`                   | number (int)  | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br><br>The number of verified masternode connections                                                                                                                                                                |
+| →<br>`connections_mn_in`            | number (int)  | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br><br>The number of inbound verified masternode connections                                                                                                                                                        |
+| →<br>`connections_mn_out`           | number (int)  | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br><br>The number of outbound verified masternode connections                                                                                                                                                       |
 | →<br>`socketevents`                    | string        | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br><br>The socket events mode, either `epoll`, `poll`, or `select`                                                                                                                                                  |
 | →<br>`networks`                        | array         | Required<br>(exactly 1) | An array with three objects: one describing the IPv4 connection, one describing the IPv6 connection, and one describing the Tor hidden service (onion) connection                                                                                 |
 | → →<br>Network                         | object        | Optional<br>(0 to 3)    | An object describing a network.  If the network is unroutable, it will not be returned                                                                                                                                                            |
@@ -416,7 +414,7 @@ The [`getnetworkinfo` RPC](../api/remote-procedure-calls-network.md#getnetworkin
 | → → →<br>`score`                       | number (int)  | Required<br>(exactly 1) | The number of incoming connections during the uptime of this node that have used this `address` in their [`version` message](../reference/p2p-network-control-messages.md#version)                                                                       |
 | →<br>`warnings`                        | string        | Required<br>(exactly 1) | *Added in Bitcoin Core 0.11.0*<br><br>A plain-text description of any network warnings. If there are no warnings, an empty string will be returned.                                                                                               |
 
-*Example from Dash Core 18.0.0*
+*Example from Dash Core 21.0.0*
 
 ```bash
 dash-cli getnetworkinfo
@@ -425,22 +423,29 @@ dash-cli getnetworkinfo
 Result (actual addresses have been replaced with [RFC5737](http://tools.ietf.org/html/rfc5737) reserved addresses):
 
 ```json
+
+16:31:29
 {
-  "version": 170003,
-  "buildversion": "v0.17.0.3-649273e70",
-  "subversion": "/Dash Core:0.17.0.3/",
-  "protocolversion": 70220,
-  "localservices": "0000000000000445",
+  "version": 210000,
+  "buildversion": "v20.1.1-541-gc617d4a50bff",
+  "subversion": "/Dash Core:21.0.0/",
+  "protocolversion": 70231,
+  "localservices": "0000000000000c05",
   "localservicesnames": [
     "NETWORK",
     "BLOOM",
-    "COMPACT_FILTERS",
-    "NETWORK_LIMITED"
+    "NETWORK_LIMITED",
+    "HEADERS_COMPRESSED"
   ],
   "localrelay": true,
   "timeoffset": 0,
   "networkactive": true,
-  "connections": 8,
+  "connections": 10,
+  "connections_in": 0,
+  "connections_out": 10,
+  "connections_mn": 6,
+  "connections_mn_in": 0,
+  "connections_mn_out": 6,
   "socketevents": "epoll",
   "networks": [
     {
@@ -465,16 +470,9 @@ Result (actual addresses have been replaced with [RFC5737](http://tools.ietf.org
       "proxy_randomize_credentials": false
     },
     {
-      "name": "",
-      "limited": false,
-      "reachable": true,
-      "proxy": "",
-      "proxy_randomize_credentials": false
-    },
-    {
-      "name": "",
-      "limited": false,
-      "reachable": true,
+      "name": "i2p",
+      "limited": true,
+      "reachable": false,
       "proxy": "",
       "proxy_randomize_credentials": false
     }
@@ -483,7 +481,7 @@ Result (actual addresses have been replaced with [RFC5737](http://tools.ietf.org
   "incrementalfee": 0.00001000,
   "localaddresses": [
   ],
-  "warnings": "Warning: unknown new rules activated (versionbit 3)"
+  "warnings": "Make sure to encrypt your wallet and delete all non-encrypted backups after you have verified that the wallet works!"
 }
 ```
 
@@ -533,12 +531,15 @@ The [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) re
 | → →<br>`inbound`                | bool                | Required<br>(exactly 1) | Set to `true` if this node connected to us (inbound); set to `false` if we connected to this node (outbound) |
 | → →<br>`addnode`                | bool                | Required<br>(exactly 1) | Set to `true` if this node was added via the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode). |
 | → →<br>`masternode`             | bool                | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Whether connection was due to masternode connection attempt |
+| → →<br>`banscore`               | number (int)        | Required<br>(exactly 1) | *DEPRECATED, returned only if config option -deprecatedrpc=banscore is passed*<br>The ban score we've assigned the node based on any misbehavior it's made.  By default, Dash Core disconnects when the ban score reaches `100` |
 | → →<br>`startingheight`         | number (int)        | Required<br>(exactly 1) | The height of the remote node's block chain when it connected to us as reported in its [`version` message](../reference/p2p-network-control-messages.md#version) |
-| → →<br>`banscore`               | number (int)        | Required<br>(exactly 1) | The ban score we've assigned the node based on any misbehavior it's made.  By default, Dash Core disconnects when the ban score reaches `100` |
 | → →<br>`synced_headers` | number (int) | Required<br>(exactly 1) | The highest-height header we have in common with this node based the last P2P [`headers` message](../reference/p2p-network-data-messages.md#headers) it sent us. If a [`headers` message](../reference/p2p-network-data-messages.md#headers) has not been received, this will be set to `-1` |
 | → →<br>`synced_blocks` | number (int) | Required<br>(exactly 1) | The highest-height block we have in common with this node based on P2P [`inv` messages](../reference/p2p-network-data-messages.md#inv) this node sent us. If no block [`inv` messages](../reference/p2p-network-data-messages.md#inv) have been received from this node, this will be set to `-1` |
 | → →<br>`inflight` | array | Required<br>(exactly 1) | An array of blocks which have been requested from this peer. May be empty |
 | → → →<br>Blocks | number (int) | Optional<br>(0 or more) | The height of a block being requested from the remote peer |
+| `addr_relay_enabled`            | bool                | Required<br>(exactly 1) | Whether we participate in address relay with this peer. |
+| `addr_processed`                | number (int)        | Required<br>(exactly 1) | The total number of addresses processed, excluding those dropped due to rate limiting. |
+| `addr_rate_limited`             | number (int)        | Required<br>(exactly 1) | The total number of addresses dropped due to rate limiting. |
 | → →<br>`whitelisted` | bool | Required<br>(exactly 1) | Set to `true` if the remote peer has been whitelisted; otherwise, set to `false`. Whitelisted peers will not be banned if their ban score exceeds the maximum (100 by default). By default, peers connecting from localhost are whitelisted |
 | → →<br>`permissions` | array | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>Any special permissions that have been granted to this peer |
 | → →<br>`bytessent_per_msg` | string : <br>object | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>Information about total sent bytes aggregated by message type |
@@ -547,7 +548,7 @@ The [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) re
 | → → →<br>Message Type | number (int) | Required<br>(1 or more) | Total received bytes aggregated by message type. One field for every used message type |
 | `connection_type` | string | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br>Type of connection:<br>outbound-full-relay, block-relay-only, inbound, manual, addr-fetch, feeler.<br>Describes how the connection was established.<br>**Note: This output is subject to change in future releases as connection behaviors are refined.** |
 
-*Example from Dash Core 20.1.0*
+*Example from Dash Core 21.0.0*
 
 ```bash
 dash-cli -testnet getpeerinfo
@@ -571,41 +572,42 @@ Result (edited to show only a single entry, with IP addresses changed to
       "NETWORK_LIMITED",
       "HEADERS_COMPRESSED"
     ],
-    "relaytxes": false,
-    "lastsend": 1707941906,
-    "lastrecv": 1707941902,
+    "lastsend": 1715200494,
+    "lastrecv": 1715200436,
     "last_transaction": 0,
-    "last_block": 1707934590,
-    "bytessent": 240367,
-    "bytesrecv": 252966,
-    "conntime": 1707934579,
+    "last_block": 1715200219,
+    "bytessent": 70135,
+    "bytesrecv": 486133,
+    "conntime": 1715200196,
     "timeoffset": 0,
-    "pingtime": 0.09482599999999999,
-    "minping": 0.093489,
-    "version": 70230,
-    "subver": "/Dash Core:20.0.2/",
+    "pingtime": 0.11961,
+    "minping": 0.100297,
+    "version": 70231,
+    "subver": "/Dash Core:21.0.0(dcg-masternode-61)/",
     "inbound": false,
     "addnode": false,
     "masternode": false,
-    "startingheight": 970213,
-    "banscore": 0,
-    "synced_headers": 970268,
-    "synced_blocks": 970268,
+    "startingheight": 1022323,
+    "synced_headers": 1022323,
+    "synced_blocks": 1022323,
     "inflight": [
     ],
+    "relaytxes": false,
+    "addr_relay_enabled": false,
+    "addr_processed": 0,
+    "addr_rate_limited": 0,
     "whitelisted": false,
     "permissions": [
     ],
     "bytessent_per_msg": {
-      "dsq": 151226,
-      "getdata": 10361,
+      "dsq": 7802,
+      "getdata": 35555,
       "getheaders2": 1053,
       "getsporks": 24,
-      "govsync": 69618,
-      "headers2": 3180,
-      "inv": 671,
-      "ping": 1984,
-      "pong": 1984,
+      "govsync": 25182,
+      "inv": 61,
+      "ping": 96,
+      "pong": 96,
       "sendaddrv2": 24,
       "sendcmpct": 33,
       "sendheaders2": 24,
@@ -614,22 +616,23 @@ Result (edited to show only a single entry, with IP addresses changed to
     },
     "bytesrecv_per_msg": {
       "addrv2": 40,
-      "block": 209737,
-      "clsig": 624,
+      "block": 361498,
       "getheaders2": 1053,
-      "headers2": 27918,
-      "inv": 4427,
+      "govobj": 916,
+      "govobjvote": 47150,
+      "headers2": 62247,
+      "inv": 9291,
       "mnauth": 152,
-      "ping": 1984,
-      "pong": 1984,
+      "ping": 96,
+      "pong": 96,
       "sendaddrv2": 24,
       "sendcmpct": 33,
       "senddsq": 25,
       "sendheaders2": 24,
       "spork": 2420,
-      "ssc": 2336,
+      "ssc": 864,
       "verack": 24,
-      "version": 161
+      "version": 180
     },
     "connection_type": "block-relay-only"
   }
@@ -656,15 +659,17 @@ The [`listbanned` RPC](../api/remote-procedure-calls-network.md#listbanned) list
 
 *Result---information about each banned IP/Subnet*
 
-| Name                    | Type            | Presence                    | Description                                                                                                                                                                                                                          |
-| ----------------------- | --------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `result`                | object          | Required<br>(exactly 1)     | An array of objects each describing one entry. If there are no entries in the ban list, the array will be empty                                                                                                                      |
-| →<br>Node               | object          | Optional<br>(0 or more)     | A ban list entry                                                                                                                                                                                                                     |
-| → →<br>`address`        | string          | Required<br>(exactly 1)     | The IP/Subnet of the entry                                                                                                                                                                                                           |
-| → →<br>`banned_until`   | number<br>(int) | Required<br>(exactly 1)     | The Unix epoch time when the entry was added to the ban list                                                                                                                                                                         |
-| → →<br>`ban_created`    | number<br>(int) | Required<br>(exactly 1)     | The Unix epoch time until the IP/Subnet is banned                                                                                                                                                                                    |
+| Name                    | Type            | Presence                    | Description |
+| ----------------------- | --------------- | --------------------------- | ----------- |
+| `result`                | object          | Required<br>(exactly 1)     | An array of objects each describing one entry. If there are no entries in the ban list, the array will be empty |
+| →<br>Node               | object          | Optional<br>(0 or more)     | A ban list entry |
+| → →<br>`address`        | string          | Required<br>(exactly 1)     | The IP/Subnet of the entry |
+| → →<br>`banned_until`   | number<br>(int) | Required<br>(exactly 1)     | The Unix epoch time when the entry was added to the ban list |
+| → →<br>`ban_created`    | number<br>(int) | Required<br>(exactly 1)     | The Unix epoch time until the IP/Subnet is banned |
+| `ban_duration`          | number (int)    | Required<br>(exactly 1)     | The ban duration, in seconds. |
+| `time_remaining`        | number (int)    | Required<br>(exactly 1)     | The time remaining until the ban expires, in seconds. |
 
-*Examples from Dash Core 18.1.0*
+*Examples from Dash Core 21.1.0*
 
 ```bash
 dash-cli listbanned
@@ -676,13 +681,17 @@ Result:
 [
   {
     "address": "192.0.2.201/32",
-    "banned_until": 1507906175,
-    "ban_created": 1507819775,
+    "ban_created": 1715614036,
+    "banned_until": 1715617636,
+    "ban_duration": 3600,
+    "time_remaining": 3577
   },
   {
     "address": "192.0.2.101/32",
-    "banned_until": 1507906199,
-    "ban_created": 1507819799,
+    "ban_created": 1715614056,
+    "banned_until": 1715617656,
+    "ban_duration": 3600,
+    "time_remaining": 3597
   }
 ]
 ```

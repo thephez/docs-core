@@ -45,7 +45,17 @@ extensions = [
 ]
 
 templates_path = ['_templates']
-exclude_patterns = ['_build', '_dips', 'Thumbs.db', '.DS_Store', 'README.md', '.devcontainer', 'scripts', 'img/dev/gifs/README.md']
+exclude_patterns = [
+    '_build',
+    '_dips',
+    'Thumbs.db',
+    '.DS_Store',
+    'README.md',
+    '.devcontainer',
+    'scripts',
+    'img/dev/gifs/README.md',
+    'docs/api/ai-prompt.md',
+]
 
 # The master toctree document.
 master_doc = 'index'
@@ -65,7 +75,7 @@ myst_enable_extensions = ["colon_fence"]
 # -- intersphinx configuration -----------------------------------------------
 intersphinx_mapping = {
     "user": ("https://docs.dash.org/en/stable/", None),
-    "platform": ("https://docs.dash.org/projects/platform/en/stable/", None),
+    "platform": ("https://docs.dash.org/projects/platform/en/latest/", None),
 }
 
 # We recommend adding the following config value.
@@ -98,7 +108,7 @@ html_sidebars = {
 html_theme_options = {
 #    "announcement": "Test build of Dash Core documentation migrated from <a href='https://dashcore.readme.io'>Readme.io</a>!",
     "external_links": [
-        {"name": "Platform docs", "url": "https://docs.dash.org/projects/platform/en/stable/docs/index.html"},
+        {"name": "Platform docs", "url": "https://docs.dash.org/projects/platform/en/latest/docs/index.html"},
         {"name": "User docs", "url": "https://docs.dash.org/"},        
         {"name": "Dash.org", "url": "https://www.dash.org"},
         {"name": "Forum", "url": "https://www.dash.org/forum"},
@@ -144,7 +154,7 @@ html_context = {
     # "github_url": "https://github.com", # or your GitHub Enterprise site
     "github_user": "dashpay",
     "github_repo": "docs-core",
-    "github_version": "20.0.0",
+    "github_version": "20.1.0",
     "doc_path": "",
 }
 

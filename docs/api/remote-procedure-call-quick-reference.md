@@ -42,7 +42,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetMerkleBlocks](../api/remote-procedure-calls-blockchain.md#getmerkleblocks): returns an array of hex-encoded merkleblocks for <count> blocks starting from <hash> which match <filter>. _New in Dash Core 0.15.0_
 * [GetSpecialTxes](../api/remote-procedure-calls-blockchain.md#getspecialtxes): returns an array of special transactions found in the specified block _New in Dash Core 0.13.1_
 * [GetSpentInfo](../api/remote-procedure-calls-blockchain.md#getspentinfo): returns the txid and index where an output is spent (requires `spentindex` to be enabled). New in Dash Core 0.12.1
-* [GetTxOut](../api/remote-procedure-calls-blockchain.md#gettxout): returns details about an unspent transaction output (UTXO). _Updated in Dash Core 0.15.0_
+* [GetTxOut](../api/remote-procedure-calls-blockchain.md#gettxout): returns details about an unspent transaction output (UTXO). **Updated in Dash Core 21.0.0**
 * [GetTxOutProof](../api/remote-procedure-calls-blockchain.md#gettxoutproof): returns a hex-encoded proof that one or more specified transactions were included in a block.
 * [GetTxOutSetInfo](../api/remote-procedure-calls-blockchain.md#gettxoutsetinfo): returns statistics about the confirmed unspent transaction output (UTXO) set. Note that this call may take some time and that it only counts outputs from confirmed transactions---it does not count outputs from the memory pool. _Updated in Dash Core 18.1.0_
 * [PreciousBlock](../api/remote-procedure-calls-blockchain.md#preciousblock): treats a block as if it were received before others with the same work. _New in Dash Core 0.12.3_
@@ -127,11 +127,11 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetAssetUnlockStatuses](../api/remote-procedure-calls-raw-transactions.md#getassetunlockstatuses): returns the status of the provided Asset Unlock indexes at the tip of the chain or at a particular block height if specified. **New in Dash Core 20.1.0**
 * [CreateRawTransaction](../api/remote-procedure-calls-raw-transactions.md#createrawtransaction): creates an unsigned serialized transaction that spends a previous output to a new output with a P2PKH or P2SH address. The transaction is not stored in the wallet or transmitted to the network. _Updated in Dash Core 0.17.0_
 * [DecodePSBT](../api/remote-procedure-calls-raw-transactions.md#decodepsbt): returns a JSON object representing the serialized, base64-encoded partially signed Dash transaction. _New in Dash Core 18.0.0_
-* [DecodeRawTransaction](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction): decodes a serialized transaction hex string into a JSON object describing the transaction. _Updated in Dash Core 0.13.0_
-* [DecodeScript](../api/remote-procedure-calls-raw-transactions.md#decodescript): decodes a hex-encoded P2SH redeem script.
+* [DecodeRawTransaction](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction): decodes a serialized transaction hex string into a JSON object describing the transaction. **Updated in Dash Core 21.0.0**
+* [DecodeScript](../api/remote-procedure-calls-raw-transactions.md#decodescript): decodes a hex-encoded P2SH redeem script. **Updated in Dash Core 21.0.0**
 * [FinalizePSBT](../api/remote-procedure-calls-raw-transactions.md#finalizepsbt): finalizes the inputs of a PSBT. The PSBT produces a network serialized transaction if the transaction is fully signed. _New in Dash Core 18.0.0_
 * [FundRawTransaction](../api/remote-procedure-calls-raw-transactions.md#fundrawtransaction): adds inputs to a transaction until it has enough in value to meet its out value. **Updated in Dash Core 21.0.0**
-* [GetRawTransaction](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction): gets a hex-encoded serialized transaction or a JSON object describing the transaction. By default, Dash Core only stores complete transaction data for UTXOs and your own transactions, so the RPC may fail on historic transactions unless you use the non-default `txindex=1` in your Dash Core startup settings. _Updated in Dash Core 0.16.0_
+* [GetRawTransaction](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction): gets a hex-encoded serialized transaction or a JSON object describing the transaction. By default, Dash Core only stores complete transaction data for UTXOs and your own transactions, so the RPC may fail on historic transactions unless you use the non-default `txindex=1` in your Dash Core startup settings. **Updated in Dash Core 21.0.0**
 * [GetRawTransactionMulti](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti): gets hex-encoded serialized transactions or a JSON object describing the multiple transactions. **Added in Dash Core 20.1.0**
 * [GetTxChainlocks](../api/remote-procedure-calls-raw-transactions.md#gettxchainlocks): returns the block height each transaction was mined at and whether it is ChainLocked or not. **Updated in Dash Core 20.1.0**
 * [JoinPSBTs](../api/remote-procedure-calls-raw-transactions.md#joinpsbts): joins multiple distinct PSBTs with different inputs and outputs into one PSBT with inputs and outputs from all of the PSBTs.
@@ -186,6 +186,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [KeyPoolRefill](../api/remote-procedure-calls-wallet.md#keypoolrefill): fills the cache of unused pre-generated keys (the keypool).
 * [ListAddressBalances](../api/remote-procedure-calls-wallet.md#listaddressbalances): lists addresses of this wallet and their balances _New in Dash Core 0.12.3_
 * [ListAddressGroupings](../api/remote-procedure-calls-wallet.md#listaddressgroupings): lists groups of addresses that may have had their common ownership made public by common use as inputs in the same transaction or from being used as change from a previous transaction. _Updated in Dash Core 0.17.0_
+* [ListDescriptors](../api/remote-procedure-calls-wallet.md#listdescriptors): lists descriptors imported into a descriptor-enabled wallet. **New in Dash Core 21.0.0**
 * [ListLabels](../api/remote-procedure-calls-wallet.md#listlabels): returns the list of all labels, or labels that are assigned to addresses with a specific purpose. _New in Dash Core 0.17.0_
 * [ListLockUnspent](../api/remote-procedure-calls-wallet.md#listlockunspent): returns a list of temporarily unspendable (locked) outputs.
 * [ListReceivedByAddress](../api/remote-procedure-calls-wallet.md#listreceivedbyaddress): lists the total number of dash received by each address. _Updated in Dash Core 0.17.0_
@@ -201,8 +202,10 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [RescanBlockChain](../api/remote-procedure-calls-wallet.md#rescanblockchain): rescans the local blockchain for wallet related transactions. _New in Dash Core 0.16.0_
 * [ScanTxOutset](../api/remote-procedure-calls-wallet.md#scantxoutset): scans the unspent transaction output set for entries that match certain output descriptors. _New in Dash Core 18.0.0_
 * [Send](../api/remote-procedure-calls-wallet.md#send): sends a transaction with specified outputs. **New in Dash Core 21.0.0**
-* [SendMany](../api/remote-procedure-calls-wallet.md#sendmany): creates and broadcasts a transaction which sends outputs to multiple addresses. **Updated in Dash Core 20.0.0**
-* [SendToAddress](../api/remote-procedure-calls-wallet.md#sendtoaddress): spends an amount to a given address. **Updated in Dash Core 20.0.0**
+* [SendMany](../api/remote-procedure-calls-wallet.md#sendmany): creates and broadcasts a transaction which sends outputs to multiple addresses. **Updated in Dash Core 21.0.0**
+* [SendToAddress](../api/remote-procedure-calls-wallet.md#sendtoaddress): spends an amount to a given address. **Updated in Dash Core 21.0.0**
+* [SetHDSeed](../api/remote-procedure-calls-wallet.md#sethdseed): sets or generates a new HD wallet seed **New in Dash Core 21.0.0**
+* [SetLabel](../api/remote-procedure-calls-wallet.md#setlabel): sets the label associated with the given address.
 * [SetCoinJoinAmount](../api/remote-procedure-calls-wallet.md#setcoinjoinamount): sets the amount of DASH to be processed _New in Dash Core 0.13.0_
 * [SetCoinJoinRounds](../api/remote-procedure-calls-wallet.md#setcoinjoinrounds): sets the number of rounds to use _New in Dash Core 0.13.0_
 * [SetTxFee](../api/remote-procedure-calls-wallet.md#settxfee): sets the transaction fee per kilobyte paid by transactions created by this wallet.

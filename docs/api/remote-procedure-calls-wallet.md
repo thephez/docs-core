@@ -946,8 +946,9 @@ _Result---a description of the transaction_
 | →<br>`fee`                   | number (dash)   | Optional<br>(0 or 1)        | If an outgoing transaction, this is the fee paid by the transaction reported as negative dash                                                                                                                                                                                                                                                                                                 |
 | → <br>`confirmations`        | number (int)    | Required<br>(exactly 1)     | The number of confirmations the transaction has received.  Will be `0` for unconfirmed and `-1` for conflicted                                                                                                                                                                                                                                                                                |
 | →<br>`instantlock`          | bool           | Required<br>(exactly 1) | If set to `true`, this transaction is either protected by an [InstantSend](../resources/glossary.md#instantsend) lock or it is in a block that has received a [ChainLock](../resources/glossary.md#chainlock) |
-| →<br>`instantlock_internal` | bool           | Required<br>(exactly 1) | If set to `true`, this transaction has an [InstantSend](../resources/glossary.md#instantsend) lock |
-| → <br>`chainlock`            | bool            | Required<br>(exactly 1)     | _Added in Dash Core 0.14.0_<br><br> If set to `true`, this transaction is in a block that is locked (not susceptible to a chain re-org)                                                                                                                                                                                                                                                       |
+| →<br>`instantlock-internal` | bool           | Required<br>(exactly 1) | If set to `true`, this transaction has an [InstantSend](../resources/glossary.md#instantsend) lock.  Available for 'send' and 'receive' category of transactions. |
+| → <br>`chainlock`            | bool            | Required<br>(exactly 1)     | _Added in Dash Core 0.14.0_<br><br> If set to `true`, this transaction is in a block that is locked (not susceptible to a chain re-org) |
+| → <br>`trusted`              | bool            | Optional<br>(0 or 1)        | Whether we consider the outputs of this unconfirmed transaction safe to spend. Only returned for unconfirmed transactions |
 | → <br>`generated`            | bool            | Optional<br>(0 or 1)        | Set to `true` if the transaction is a coinbase.  Not returned for regular transactions |
 | → <br>`blockhash`            | string (hex)    | Optional<br>(0 or 1)        | The hash of the block on the local best block chain which includes this transaction, encoded as hex in RPC byte order.  Only returned for confirmed transactions |
 | → <br>`blockheight`          | string (hex)    | Optional<br>(0 or 1)        | The block height containing the transaction. Only returned for confirmed transactions |
@@ -975,44 +976,41 @@ _Result---a description of the transaction_
 | →<br>`hex`                   | string (hex)    | Required<br>(exactly 1)     | The transaction in serialized transaction format                                                                                                                                                                                                                                                                                                                                              |
 | →<br>`decoded`               | object          | Optional<br>(0 or 1)        | The decoded transaction (only present when `verbose` is passed), equivalent to the RPC [`decoderawtransaction` method](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction), or the RPC [`getrawtransaction` method](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) when `verbose` is passed.                                                                                                                                                                                                                  |
 
-_Example from Dash Core 20.0.0_
+_Example from Dash Core 21.1.0_
 
 ```bash
 dash-cli -testnet gettransaction \
-  c099c882745ad150e9b2a55ef5818683c7ef597e1e5fc20856c67eabc3778ccc
+  88a3fe6bf2ab4425dbf57d75ce761efa2e45556ec36b4fd5b6af6c00f01ebd63
 ```
 
 Result:
 
 ```json
 {
-  "amount": -50.00000000,
-  "fee": -0.00030000,
-  "confirmations": 810136,
+  "amount": 2.37570000,
+  "confirmations": 192419,
   "instantlock": true,
   "instantlock_internal": false,
   "chainlock": true,
-  "blockhash": "00000a01007be2912c3123085534b58d341cb5e5980b967e8dcc021089487a1e",
-  "blockheight": 65859,
+  "blockhash": "0000009f3480f5e2b6821af57ccbfeb064d9e18b6e9e669aad238f2b0059df1a",
+  "blockheight": 886992,
   "blockindex": 1,
-  "blocktime": 1553290594,
-  "txid": "c099c882745ad150e9b2a55ef5818683c7ef597e1e5fc20856c67eabc3778ccc",
+  "blocktime": 1692025132,
+  "txid": "88a3fe6bf2ab4425dbf57d75ce761efa2e45556ec36b4fd5b6af6c00f01ebd63",
   "walletconflicts": [
   ],
-  "time": 1553290594,
-  "timereceived": 1688046610,
+  "time": 1692025132,
+  "timereceived": 1692213632,
   "details": [
     {
-      "address": "ycCsAUKsjdmoP4qAXiS1cjYA4ixM48zJWe",
-      "category": "send",
-      "amount": -50.00000000,
-      "label": "Electrum",
-      "vout": 1,
-      "fee": -0.00030000,
-      "abandoned": false
+      "address": "ygU1vv8a2fhiM2gYUF1GjQAcjxgZUKY5MD",
+      "category": "receive",
+      "amount": 2.37570000,
+      "label": "First address",
+      "vout": 1
     }
   ],
-  "hex": "0200000003aac865dba0e98fe32533df6bc3eaac160d04bb02966584fb61fc8d7788e09537010000006a47304402202d537257f23ab42b3e14f2ab533f39bb4586aa1b29a1f833f718a59493c8a601022019c6c156c20e66ef256519592b3c977b64d417c94aea4dca20cf18522a138993012103c67d86944315838aea7ec80d390b5d09b91b62483370d4979da5ccf7a7df77a9feffffff47833a270d2e2bac47bc5dc0df576c3a68b01bedbc89692060ac4113a6f9cb67010000006a4730440220442c19a913b10edc533bf63310f5294d6d91eec0eb9c510a3c6b0f33333f27320220501d5093ecdf603b8af9734e21d5de4710c8500309bfa4acdda243a294442b2c012103c67d86944315838aea7ec80d390b5d09b91b62483370d4979da5ccf7a7df77a9feffffffdcfd2d0fb30d79ffeadab8832e65be2310b67043ff3d74deac9a9cb825acda67000000006b483045022100cae8c025d3bec82903f356a5ec38d78a141447b6562e3aceac901f5fcc6f8567022076407835937514d6690c81c0c3b97f92d2b0ae9749249affaf539ead825692f4012102d6be44ab930ff67f084fbaf47a38b539b8d5da65c010952a972c9e524b6009dffeffffff0204fe2b00000000001976a914e3b0093477c2f629430d0a7b5813fe8b0153b0fd88ac00f2052a010000001976a914ae4365dedb1836ba215b9149602e0787a23376d288ac42010100"
+  "hex": "02000000016634e15fe22fe84554833f109916fced5af30fac0849a211f17f326162280f14010000006a47304402207b8f61bebe3560b6ef70de3e10b59bdc60931d09cf0626026bfe3064dcfcf1c00220048ad98398cb294fa19335110db3ce5a466b74cbbf234bf2b4855b264a03ef790121027b90f229e7027758f0c8b39d2d485b88ed5b63b34e58e0dad2a07e3e8eb03373feffffff0278f51104000000001976a9148907e625c343ac9c6b56e8180f73af1d23350d0c88acd007290e000000001976a914dd01754e43690f41feef2cc7974bc2e5101e9f2788accf880d00"
 }
 ```
 
@@ -1685,6 +1683,65 @@ _See also_
 * [GetAddressesByAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
 * [GetTransaction](../api/remote-procedure-calls-wallet.md#gettransaction): gets detailed information about an in-wallet transaction.
 * [ListAddressBalances](../api/remote-procedure-calls-wallet.md#listaddressbalances): lists addresses of this wallet and their balances
+
+## ListDescriptors
+
+> 📘
+>
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
+
+_Added in Dash Core 21.0.0_
+
+The [`listdescriptors` RPC](../api/remote-procedure-calls-wallet.md#listdescriptors) lists descriptors imported into a descriptor-enabled wallet.
+
+_Result---execution result_
+
+| Name              | Type           | Presence                | Description |
+| ----------------- | -------------- | ----------------------- | ----------- |
+| `wallet_name`     | string         | Required<br>(exactly 1) | Name of wallet this operation was performed on |
+| `descriptors`     | array          | Required<br>(exactly 1) | An array of JSON objects, each describing a descriptor |
+| → Descriptor      | object         | Required<br>(1 or more) | A JSON object describing a particular descriptor |
+| → →<br>`desc`     | string         | Required<br>(exactly 1) | Descriptor string representation |
+| → →<br>`timestamp`| number (int)   | Required<br>(exactly 1) | The creation time of the descriptor in Unix epoch time |
+| → →<br>`active`   | bool           | Required<br>(exactly 1) | Indicates whether this descriptor is currently used to generate new addresses |
+| → →<br>`internal` | bool           | Optional<br>(0 or 1)    | True if this descriptor is used to generate change addresses; False if used for receiving |
+| → →<br>`range`    | array          | Optional<br>(0 or 1)    | Defined only for ranged descriptors |
+| → →→<br>`start`   | number (int)   | Required<br>(exactly 1) | Range start inclusive |
+| → →→<br>`end`     | number (int)   | Required<br>(exactly 1) | Range end inclusive |
+| → →<br>`next`     | number (int)   | Optional<br>(0 or 1)    | The next index to generate addresses from; defined only for ranged descriptors |
+
+_Example from Dash Core 21.1.0_
+
+List all descriptors in a descriptor-enabled wallet:
+
+```bash
+dash-cli listdescriptors
+```
+
+Result (example output):
+
+```json
+{
+  "wallet_name": "test-descriptor",
+  "descriptors": [
+    {
+      "desc": "pkh([c7fe8acb/44'/1'/0']tpubDDgGSmowbmYWepHK5PJYCfzUFrKy1c7PHVumScWELYwwjaGBf73ZD1JD1xc2y4hKQDp4qHUKjxz8HQyJXmM5UQh797enQQSpq8vife8yva8/0/*)#tz4w30l2",
+      "timestamp": 1715259431,
+      "active": true,
+      "internal": false,
+      "range": [
+        0,
+        999
+      ],
+      "next": 0
+    }
+  ]
+}
+```
+
+_See also_
+
+* [ImportDescriptors](../api/remote-procedure-calls-wallet.md#importdescriptors): imports multiple descriptors into the wallet, each with specific attributes.
 
 ## ListLabels
 
@@ -2866,11 +2923,27 @@ _Parameter #10---fee estimate mode_
 | ---- | ---- | -------- | ----------- |
 | `estimate_mode` | string | Optional<br>(0 or 1) | The fee estimate mode, must be one of:<br>`unset`<br>`economical`<br>`conservative`<br>`DASH/kB`<br>`duff/B` |
 
-_Result---a TXID of the sent transaction_
+_Parameter #11---verbose_
 
-| Name     | Type   | Presence                | Description                                                        |
-| -------- | ------ | ----------------------- | ------------------------------------------------------------------ |
-| `result` | string | Required<br>(exactly 1) | The TXID of the sent transaction, encoded as hex in RPC byte order |
+| Name    | Type    | Presence                | Description                                                |
+| ------- | ------- | ----------------------- | ---------------------------------------------------------- |
+| verbose | boolean | Optional<br>(0 or 1)    | If `true`, return extra information about the transaction. Default is `false` |
+
+_Result---execution result_
+
+If `verbose` is not set or set to `false`:
+
+| Name | Type   | Presence                | Description                                       |
+| ---- | ------ | ----------------------- | ------------------------------------------------- |
+| hex  | string | Required<br>(exactly 1) | The transaction id for the send. Only one transaction is created regardless of the number of addresses |
+
+If `verbose` is set to `true`:
+
+| Name          | Type         | Presence                | Description                                       |
+| ------------- | ------------ | ----------------------- | ------------------------------------------------- |
+| result        | json object  | Required<br>(exactly 1) | A JSON object containing transaction details      |
+| → txid        | string       | Required<br>(exactly 1) | The transaction id for the send. Only one transaction is created regardless of the number of addresses |
+| → fee reason  | string       | Required<br>(exactly 1) | The transaction fee reason                        |
 
 _Example from Dash Core 0.17.0_
 
@@ -2996,11 +3069,27 @@ _Parameter #10---avoids partial respends_
 | ------------- | ------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `avoid_reuse` | boolean | Optional<br>(0 or 1) | Avoid spending from dirty addresses; addresses are considered dirty if they have previously been used in a transaction. |
 
-_Result---a TXID of the sent transaction_
+_Parameter #11---verbose_
 
-| Name     | Type   | Presence                | Description                                                        |
-| -------- | ------ | ----------------------- | ------------------------------------------------------------------ |
-| `result` | string | Required<br>(exactly 1) | The TXID of the sent transaction, encoded as hex in RPC byte order |
+| Name    | Type    | Presence                | Description                                                |
+| ------- | ------- | ----------------------- | ---------------------------------------------------------- |
+| verbose | boolean | Optional<br>(0 or 1)    | If `true`, return extra information about the transaction. Default is `false` |
+
+_Result---execution result_
+
+If `verbose` is not set or set to `false`:
+
+| Name | Type   | Presence                | Description                                       |
+| ---- | ------ | ----------------------- | ------------------------------------------------- |
+| hex  | string | Required<br>(exactly 1) | The transaction id for the send |
+
+If `verbose` is set to `true`:
+
+| Name          | Type         | Presence                | Description                                       |
+| ------------- | ------------ | ----------------------- | ------------------------------------------------- |
+| result        | json object  | Required<br>(exactly 1) | A JSON object containing transaction details      |
+| → txid        | string       | Required<br>(exactly 1) | The transaction id for the send                   |
+| → fee reason  | string       | Required<br>(exactly 1) | The transaction fee reason                        |
 
 _Example from Dash Core 0.12.2_
 
@@ -3070,6 +3159,50 @@ _See also_
 
 * [Send](../api/remote-procedure-calls-wallet.md#send): sends a transaction with specified outputs.
 * [SendMany](../api/remote-procedure-calls-wallet.md#sendmany): creates and broadcasts a transaction which sends outputs to multiple addresses.
+
+## SetHDSeed
+
+> 📘
+>
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+
+_Added in Dash Core 21.0.0_
+
+The `sethdseed` RPC sets or generates a new HD wallet seed. Non-HD wallets will not be upgraded to
+HD wallets. Wallets that are already HD cannot be updated to a new HD seed.
+
+**Note:** You will need to make a new backup of your wallet after setting the HD wallet seed.
+Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
+
+_Parameter #1---newkeypool_
+
+| Name        | Type    | Presence                | Description |
+| ----------- | ------- | ----------------------- | ----------- |
+| newkeypool  | boolean | Optional<br>(0 or 1)    | Whether to flush old unused addresses, including change addresses, from the keypool and regenerate it. Default is `true`. If `true`, the next address from `getnewaddress` and change address from `getrawchangeaddress` will be from this new seed. If `false`, addresses from the existing keypool will be used until it has been depleted. |
+
+_Parameter #2---seed_
+
+| Name | Type   | Presence                | Description |
+| ---- | ------ | ----------------------- | ----------- |
+| seed | string | Optional<br>(0 or 1)    | The WIF private key to use as the new HD seed. The seed value can be retrieved using the `dumpwallet` command. It is the private key marked `hdseed=1`. Default is a random seed. |
+
+_Result---execution result_
+
+| Name | Type     | Presence                | Description |
+| ---- | -------- | ----------------------- | ----------- |
+| null | json null| Required<br>(exactly 1) | No result   |
+
+_Examples_
+
+Set a new HD seed:
+
+```bash
+dash-cli sethdseed
+```
+
+_See also_
+
+* [UpgradeToHD](../api/remote-procedure-calls-wallet.md#upgradetohd): upgrades non-HD wallets to HD.
 
 ## SetLabel
 

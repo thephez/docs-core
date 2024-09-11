@@ -1024,7 +1024,11 @@ The following annotated hexdump shows a MnHfTx transaction. (Parts of the classi
 ``` text
 0300 ....................................... Version (3)
 0700 ....................................... Type (7 - Masternode Hard Fork Signal)
-00000000000082 ............................. Extra payload size (130)
+
+00 ......................................... Number of inputs (0)
+00 ......................................... Number of outputs (0)
+00000000 ................................... Locktime (0)
+82 ......................................... Extra payload size (130)
 
 Masternode Hard Fork Payload
 | 01 ....................................... MnHfTx version (1)

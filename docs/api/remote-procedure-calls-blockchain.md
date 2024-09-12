@@ -987,10 +987,6 @@ Result:
 
 The [`getblockstats` RPC](../api/remote-procedure-calls-blockchain.md#getblockstats) computes per block statistics for a given window.
 
->❗️
->
-> Breaking change(s) in Dash Core 18.0. See parameter and/or response information for details.
-
 This RPC won't work for some heights if pruning is enabled. Since Dash Core 18.1, `-txindex` is no longer required and it works for all non-pruned blocks.
 
 *Parameter #1---hash_or_height*

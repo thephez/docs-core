@@ -10,10 +10,6 @@
 
 The [`debug` RPC](../api/remote-procedure-calls-control.md#debug) changes the debug category from the console.
 
->❗️
->
-> Breaking change(s) in Dash Core 18.0. See parameter and/or response information for details.
-
 *Parameter #1---debug category*
 
 Name | Type | Presence | Description
@@ -184,10 +180,6 @@ Result:
 ## Logging
 
 The [`logging` RPC](../api/remote-procedure-calls-control.md#logging) gets and sets the logging configuration. When called without an argument, returns the list of categories with status that are currently being debug logged or not. When called with arguments, adds or removes categories from debug logging and return the lists above. The arguments are evaluated in order "include", "exclude". If an item is both included and excluded, it will thus end up being excluded.
-
->❗️
->
-> Breaking change(s) in Dash Core 18.0. See parameter and/or response information for details.
 
 *Parameter #1---include categories*
 

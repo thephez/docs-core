@@ -1,8 +1,8 @@
 # Historical Reference
 
->❗️ Deprecated Content
->
-> **The following information is deprecated and for historical reference only. It describes features that have been redesigned and no longer operate as described below.**
+:::{attention}
+The following information is deprecated and for historical reference only. It describes features that have been redesigned and no longer operate as described below.
+:::
 
 ## InstantSend (original)
 

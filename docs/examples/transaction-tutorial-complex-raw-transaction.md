@@ -82,10 +82,10 @@ For our two inputs, we select two UTXOs by placing the txid and output index num
 
 ## 3. Get private keys
 
->❗️ Private Key Warning
->
-> **Warning:** Users should never manually manage private keys on mainnet. As dangerous as raw transactions are (see warnings above), making a mistake with a private key can be much worse---as in the case of a HD wallet [cross-generational key compromise](../guide/wallets-wallet-files.md#hardened-keys).
+:::{attention}
+Users should never manually manage private keys on mainnet. As dangerous as raw transactions are (see warnings above), making a mistake with a private key can be much worse---as in the case of a HD wallet [cross-generational key compromise](../guide/wallets-wallet-files.md#hardened-keys).
 **These examples are to help you learn, not for you to emulate on mainnet.**
+:::
 
 Use the [`dumpprivkey` RPC](../api/remote-procedure-calls-wallet.md#dumpprivkey) to get the [private keys](../resources/glossary.md#private-key) corresponding to the [public keys](../resources/glossary.md#public-key) used in the two UTXOs our inputs we will be spending.  We need the private keys so we can sign each of the inputs separately.
 

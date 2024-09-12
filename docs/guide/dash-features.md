@@ -46,20 +46,6 @@ As with the previous Lite Mode, masternodes **_cannot_** be run in disable gover
 
 Disable governance mode is enable by setting `disablegovernance=1` in the `dash.conf` file or by running Dash Core with the command line parameter `-disablegovernance=1`.
 
-### Lite Mode
-
->❗️ Deprecated in Dash Core v0.16.0
->
-> Please use [disable governance](#disable-governance-mode) mode
-
-Lite mode provides a way to run Dash Core full nodes with Dash-specific functionality disabled. Masternodes **_cannot_** be run in lite mode since they are paid to provide the services that lite mode disables. Disabled items include: [InstantSend](../guide/dash-features-instantsend.md), [ChainLocks](../guide/dash-features-chainlocks.md), [CoinJoin](../guide/dash-features-coinjoin.md), Masternode-related information, and [Governance](../guide/dash-features-governance.md) details.
-
->❗️ Lite mode effects
->
-> Since nodes running in lite mode do not execute InstantSend/ChainLock logic, they are unaware of transaction lock status and will always show `false` for the lock status returned in RPC responses (e.g. [GetTransaction's](../api/remote-procedure-calls-wallet.md#gettransaction) `chainlock`, `instantlock`, and `instantlock_internal` fields).
-
-Lite mode is enable by setting `litemode=1` in the `dash.conf` file or by running Dash Core with the command line parameter `-litemode=1`.
-
 ```{toctree}
 :maxdepth: 3
 

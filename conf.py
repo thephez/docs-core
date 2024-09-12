@@ -75,7 +75,7 @@ myst_enable_extensions = ["colon_fence"]
 # -- intersphinx configuration -----------------------------------------------
 intersphinx_mapping = {
     "user": ("https://docs.dash.org/en/stable/", None),
-    "platform": ("https://docs.dash.org/projects/platform/en/latest/", None),
+    "platform": ("https://docs.dash.org/projects/platform/en/stable/", None),
 }
 
 # We recommend adding the following config value.
@@ -108,7 +108,7 @@ html_sidebars = {
 html_theme_options = {
 #    "announcement": "Test build of Dash Core documentation migrated from <a href='https://dashcore.readme.io'>Readme.io</a>!",
     "external_links": [
-        {"name": "Platform docs", "url": "https://docs.dash.org/projects/platform/en/latest/docs/index.html"},
+        {"name": "Platform docs", "url": "https://docs.dash.org/projects/platform/en/stable/docs/index.html"},
         {"name": "User docs", "url": "https://docs.dash.org/"},        
         {"name": "Dash.org", "url": "https://www.dash.org"},
         {"name": "Forum", "url": "https://www.dash.org/forum"},

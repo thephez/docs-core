@@ -1086,9 +1086,9 @@ Result:
 
 ### Masternode Current
 
-> ❗️ Deprecated in Dash Core 0.17.0
->
-> This RPC has been deprecated and will be removed in a future version of Dash Core
+:::{deprecated} 0.17.0
+This RPC has been deprecated and will be removed in a future version of Dash Core
+:::
 
 The `masternode current` RPC prints info on current masternode winner to be paid the next block (calculated locally).
 
@@ -1148,10 +1148,6 @@ Result:
 ### Masternode Outputs
 
 The `masternode outputs` RPC prints masternode compatible outputs.
-
-> ❗️ Breaking change
->
-> Dash Core 18.1.0 changed the response format from a JSON object (Key: TXID, Value: transaction index) to the current array representation
 
 *Parameters: none*
 
@@ -1332,9 +1328,9 @@ Result:
 
 ### Masternode Winner
 
-> ❗️ Deprecated in Dash Core 0.17.0
->
-> This RPC has been deprecated and will be removed in a future version of Dash Core
+:::{deprecated} 0.17.0
+This RPC has been deprecated and will be removed in a future version of Dash Core
+:::
 
 The `masternode winner` RPC prints info on the next masternode winner to vote for.
 

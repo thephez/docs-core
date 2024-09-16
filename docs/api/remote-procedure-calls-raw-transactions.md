@@ -1325,10 +1325,6 @@ _See also:_
 
 The [`sendrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#sendrawtransaction) validates a transaction and broadcasts it to the peer-to-peer network.
 
-> ❗️
->
-> Breaking change(s) in Dash Core 18.0. See parameter and/or response information for details.
-
 _Parameter #1---a serialized transaction to broadcast_
 
 | Name        | Type         | Presence                | Description                                            |

@@ -18,9 +18,9 @@ Required | number (int) | Required<br>(exactly 1) | The minimum (*m*) number of 
 
 *Parameter #2---the full public keys*
 
->❗️ Deprecation Warning
->
-> As of Dash Core 0.17.0, using addresses with `createmultisig` is unsupported. Clients must use [`addmultisigaddress`](../api/remote-procedure-calls-wallet.md#addmultisigaddress) to create multisig addresses.
+:::{attention}
+As of Dash Core 0.17.0, using addresses with `createmultisig` is unsupported. Clients must use [`addmultisigaddress`](../api/remote-procedure-calls-wallet.md#addmultisigaddress) to create multisig addresses.
+:::
 
 Name | Type | Presence | Description
 --- | --- | --- | ---

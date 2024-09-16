@@ -6,9 +6,9 @@
 
 # Wallet RPCs
 
->❗️ Wallet Support
->
-> RPCs that require wallet support are **not available on masternodes** for security reasons. Such RPCs are designated with a "_Requires wallet support_" message.
+:::{attention}
+RPCs that require wallet support are **not available on masternodes** for security reasons. Such RPCs are designated with a "_Requires wallet support_" message.
+:::
 
 ## AbandonTransaction
 
@@ -2686,9 +2686,9 @@ _See also_
 
 ## ScanTXOutset
 
-> ❗️
->
-> Experimental warning: this call may be removed or changed in future releases.
+:::{attention}
+Experimental warning: this call may be removed or changed in future releases.
+:::
 
 The [`scantxoutset` RPC](../api/remote-procedure-calls-wallet.md#scantxoutset) scans the unspent transaction output set for entries that match certain output descriptors.
 

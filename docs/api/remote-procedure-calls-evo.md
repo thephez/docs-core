@@ -1403,9 +1403,9 @@ ec66f97568727a9e5188acb3ccf680086ae11217236efcccd67b0b72e83c79a043d6c6d064378fdd
 
 ### ProTx Register HPMN
 
-> ❗️ Deprecated RPC
->
-> The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::{deprecated} 20.0.0
+The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::
 
 ### ProTx Register Fund Evo
 
@@ -1538,9 +1538,9 @@ c207ebd525793ccb43f60ce34a5cd5f4011976a9145a375814e9caf5b8575a8221be246457e5c5c2
 
 ### ProTx Register Fund HPMN
 
-> ❗️ Deprecated RPC
->
-> The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::{deprecated} 20.0.0
+The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::
 
 ### ProTx Register Prepare Evo
 
@@ -1650,9 +1650,9 @@ Result:
 
 ### ProTx Register Prepare HPMN
 
-> ❗️ Deprecated RPC
->
-> The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::{deprecated} 20.0.0
+The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::
 
 ### ProTx Update Service Evo
 
@@ -1730,9 +1730,9 @@ Result:
 
 ### ProTx Update Service HPMN
 
-> ❗️ Deprecated RPC
->
-> The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::{deprecated} 20.0.0
+The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::
 
 ### ProTx Register Submit
 
@@ -2172,10 +2172,6 @@ Result (truncated):
 ### Quorum DKGStatus
 
 The `quorum list` RPC displays the status of the current DKG process.
-
-> ❗️
->
-> Breaking change(s) in Dash Core 18.0. See parameter and/or response information for details.
 
 *Parameter #1---detail level*
 

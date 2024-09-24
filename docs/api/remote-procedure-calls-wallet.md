@@ -588,7 +588,6 @@ Result:
 
 _See also_
 
-* [GetAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaccount): returns the name of the account associated with the given address.
 * [GetBalance](../api/remote-procedure-calls-wallet.md#getbalance): gets the balance in decimal dash across all accounts or for a particular account.
 
 ## GetBalance
@@ -664,8 +663,6 @@ Result:
 _See also_
 
 * [GetBalances](../api/remote-procedure-calls-wallet.md#getbalances): returns an object with all balances denominated in DASH.
-* [ListAccounts](../api/remote-procedure-calls-removed.md#listaccounts): lists accounts and their balances.
-* [GetReceivedByAccount](../api/remote-procedure-calls-removed.md#getreceivedbyaccount): returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions.
 * [GetReceivedByAddress](../api/remote-procedure-calls-wallet.md#getreceivedbyaddress): returns the total amount received by the specified address in transactions with the specified number of confirmations. It does not count coinbase transactions.
 
 ## GetBalances
@@ -710,8 +707,6 @@ Result:
 _See also_
 
 * [GetBalance](../api/remote-procedure-calls-wallet.md#getbalance): gets the balance in decimal dash across all accounts or for a particular account.
-* [ListAccounts](../api/remote-procedure-calls-removed.md#listaccounts): lists accounts and their balances.
-* [GetReceivedByAccount](../api/remote-procedure-calls-removed.md#getreceivedbyaccount): returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions.
 * [GetReceivedByAddress](../api/remote-procedure-calls-wallet.md#getreceivedbyaddress): returns the total amount received by the specified address in transactions with the specified number of confirmations. It does not count coinbase transactions.
 
 ## GetNewAddress
@@ -750,7 +745,6 @@ yPuNTqCGzXtU3eEV5jHvhhJkzEPyJLmVkb
 
 _See also_
 
-* [GetAccountAddress](../api/remote-procedure-calls-wallet-deprecated.md#getaccountaddress): returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address.
 * [GetRawChangeAddress](../api/remote-procedure-calls-wallet.md#getrawchangeaddress): returns a new Dash address for receiving change. This is for use with raw transactions, not normal use.
 * [GetBalance](../api/remote-procedure-calls-wallet.md#getbalance): gets the balance in decimal dash across all accounts or for a particular account.
 
@@ -785,7 +779,6 @@ yXBr9BiJmugTzHPgByDmvjJMAkvhTmXVJ8
 _See also_
 
 * [GetNewAddress](../api/remote-procedure-calls-wallet.md#getnewaddress): returns a new Dash address for receiving payments. If an account is specified, payments received with the address will be credited to that account.
-* [GetAccountAddress](../api/remote-procedure-calls-wallet-deprecated.md#getaccountaddress): returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address.
 
 ## GetReceivedByAddress
 
@@ -849,11 +842,7 @@ Result:
 0.30000000
 ```
 
-_See also_
-
-* [GetReceivedByAccount](../api/remote-procedure-calls-removed.md#getreceivedbyaccount): returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions.
-* [GetAddressesByAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
-* [ListAccounts](../api/remote-procedure-calls-removed.md#listaccounts): lists accounts and their balances.
+_See also: none_
 
 ## GetReceivedByLabel
 
@@ -1589,7 +1578,6 @@ dash-cli -testnet keypoolrefill 1001
 _See also_
 
 * [GetNewAddress](../api/remote-procedure-calls-wallet.md#getnewaddress): returns a new Dash address for receiving payments. If an account is specified, payments received with the address will be credited to that account.
-* [GetAccountAddress](../api/remote-procedure-calls-wallet-deprecated.md#getaccountaddress): returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address.
 * [GetWalletInfo](../api/remote-procedure-calls-wallet.md#getwalletinfo): provides information about the wallet.
 
 ## ListAddressBalances
@@ -1680,7 +1668,6 @@ Result (edited to only three results):
 
 _See also_
 
-* [GetAddressesByAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
 * [GetTransaction](../api/remote-procedure-calls-wallet.md#gettransaction): gets detailed information about an in-wallet transaction.
 * [ListAddressBalances](../api/remote-procedure-calls-wallet.md#listaddressbalances): lists addresses of this wallet and their balances
 
@@ -1994,7 +1981,6 @@ Result:
 _See also_
 
 * [ListReceivedByAddress](../api/remote-procedure-calls-wallet.md#listreceivedbyaddress): lists the total number of dash received by each address.
-* [GetReceivedByAccount](../api/remote-procedure-calls-removed.md#getreceivedbyaccount): returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions.
 * [GetReceivedByAddress](../api/remote-procedure-calls-wallet.md#getreceivedbyaddress): returns the total amount received by the specified address in transactions with the specified number of confirmations. It does not count coinbase transactions.
 
 ```{eval-rst}

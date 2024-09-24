@@ -1830,9 +1830,9 @@ Result:
 
 ### ProTx Update Registrar
 
-> 🚧 Dash Core v19 hard fork
->
-> Following the hard fork activation, masternodes registered prior to the hard fork must use the [`protx update_registrar_legacy` RPC](#protx-update-registrar-legacy) unless they have already updated to a basic scheme BLS key.
+:::{attention}
+Following the Dash Core v19 hard fork activation, masternodes registered prior to the hard fork must use the [`protx update_registrar_legacy` RPC](#protx-update-registrar-legacy) unless they have already updated to a basic scheme BLS key.
+:::
 
 The `protx update_registrar` RPC creates and sends a ProUpRegTx to the network.
 
@@ -3009,9 +3009,9 @@ Result:
 
 The `quorum hasrecsig` RPC checks for a recovered signature for a previous threshold-signing message request.
 
-> 🚧 Regtest Network Only
->
-> Note: Used for RegTest testing only.
+:::{note}
+Used for testing on the RegTest network only.
+:::
 
 *Parameter #1---LLMQ Type*
 
@@ -3055,9 +3055,9 @@ true
 
 The `quorum isconflicting` RPC checks if there is a conflict for a threshold-signing message request.
 
-> 🚧 Regtest Network Only
->
-> Note: Used for RegTest testing only.
+:::{note}
+Used for testing on the RegTest network only.
+:::
 
 *Parameter #1---LLMQ Type*
 

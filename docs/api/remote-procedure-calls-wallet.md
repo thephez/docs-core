@@ -401,9 +401,9 @@ _See also_
 
 The [`encryptwallet` RPC](../api/remote-procedure-calls-wallet.md#encryptwallet) encrypts the wallet with a passphrase.  This is only to enable encryption for the first time. After encryption is enabled, you will need to enter the passphrase to use private keys.
 
-> 🚧
->
-> **Warning:** if using this RPC on the command line, remember that your shell probably saves your command lines (including the value of the passphrase parameter). In addition, there is no RPC to completely disable encryption. If you want to return to an unencrypted wallet, you must create a new wallet and restore your data from a backup made with the [`dumpwallet` RPC](../api/remote-procedure-calls-wallet.md#dumpwallet).
+:::{warning}
+If using this RPC on the command line, remember that your shell probably saves your command lines (including the value of the passphrase parameter). In addition, there is no RPC to completely disable encryption. If you want to return to an unencrypted wallet, you must create a new wallet and restore your data from a backup made with the [`dumpwallet` RPC](../api/remote-procedure-calls-wallet.md#dumpwallet).
+:::
 
 _Parameter #1---a passphrase_
 
@@ -2845,10 +2845,6 @@ The [`sendmany` RPC](../api/remote-procedure-calls-wallet.md#sendmany) creates a
 
 _Parameter #1---unused parameter_
 
-> 🚧
->
-> Note that this parameter has been removed in v0.17. To use this RPC with a "fromaccount" parameter, restart dashd with `-deprecatedrpc=accounts`.
-
 | Name | Type | Presence | Description |
 | ---- | ---- | -------- | ----------- |
 | Unused | string | Required<br>(exactly 1) | **Deprecated: (previously account) will be removed in a later version of Dash Core**<br><br>Must be set to `""` for backwards compatibility. |
@@ -3705,9 +3701,9 @@ _See also_
 
 The [`walletpassphrase` RPC](../api/remote-procedure-calls-wallet.md#walletpassphrase) stores the wallet decryption key in memory for the indicated number of seconds. Issuing the `walletpassphrase` command while the wallet is already unlocked will set a new unlock time that overrides the old one.
 
-> 🚧
->
-> **Warning:** if using this RPC on the command line, remember that your shell probably saves your command lines (including the value of the passphrase parameter).
+:::{warning}
+If using this RPC on the command line, remember that your shell probably saves your command lines (including the value of the passphrase parameter).
+:::
 
 _Parameter #1---the passphrase_
 
@@ -3765,9 +3761,9 @@ _See also_
 
 The [`walletpassphrasechange` RPC](../api/remote-procedure-calls-wallet.md#walletpassphrasechange) changes the wallet passphrase from 'old passphrase' to 'new passphrase'.
 
-> 🚧
->
-> **Warning:** if using this RPC on the command line, remember that your shell probably saves your command lines (including the value of the passphrase parameter).
+:::{warning}
+If using this RPC on the command line, remember that your shell probably saves your command lines (including the value of the passphrase parameter).
+:::
 
 _Parameter #1---the current passphrase_
 

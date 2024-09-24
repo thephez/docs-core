@@ -72,9 +72,9 @@ In this example, user1 can only call `getnetworkinfo`, user2 can only call `getn
 
 ### Restricted Access Users
 
-> 🚧
->
-> This feature is only available on masternodes
+:::{note}
+This feature is only available on masternodes
+:::
 
 As of Dash Core 0.17.0, an option is provided to add an RPC user that is restricted to a small subset of RPCs that will be used by Dash Platform. The `platform-user` configuration value sets the name of the RPC user to be restricted.
 
@@ -331,9 +331,9 @@ This translates into an JSON-RPC Request object of the form:
 }
 ```
 
-> 🚧 High-precision real numbers
->
-> **Warning:** if you write programs using the JSON-RPC interface, you must ensure they handle high-precision real numbers correctly.  See the [Proper Money Handling](https://en.bitcoin.it/wiki/Proper_Money_Handling_%28JSON-RPC%29) Bitcoin Wiki article for details and example code.
+:::{warning}
+If you write programs using the JSON-RPC interface, you must ensure they handle high-precision real numbers correctly.  See the [Proper Money Handling](https://en.bitcoin.it/wiki/Proper_Money_Handling_%28JSON-RPC%29) Bitcoin Wiki article for details and example code.
+:::
 
 ```{toctree}
 :maxdepth: 3

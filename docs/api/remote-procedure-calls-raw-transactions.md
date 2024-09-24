@@ -896,9 +896,9 @@ Note: By default this function only works for mempool transactions. When called 
 
 As of Dash Core 18.0.0, transactions with unspent outputs will no longer be included unless `-txindex` is enabled.
 
-> 🚧 Reindex note
->
-> If you begin using `txindex=1` after downloading the block chain, you must rebuild your indexes by starting Dash Core with the option  `-reindex`.  This may take several hours to complete, during which time your node will not process new blocks or transactions. This reindex only needs to be done once.
+:::{note}
+If you begin using `txindex=1` after downloading the block chain, you must rebuild your indexes by starting Dash Core with the option  `-reindex`.  This may take several hours to complete, during which time your node will not process new blocks or transactions. This reindex only needs to be done once.
+:::
 
 _Parameter #1---the TXID of the transaction to get_
 

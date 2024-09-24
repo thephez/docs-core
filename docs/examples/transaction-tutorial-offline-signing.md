@@ -10,9 +10,11 @@ We will now spend the [transaction](../resources/glossary.md#transaction) create
 
 Offline signing is safe. However, in this example we will also be spending an [output](../resources/glossary.md#output) which is not part of the [block chain](../resources/glossary.md#block-chain) because the transaction containing it has never been broadcast. That can be unsafe:
 
-> 🚧 Unconfirmed Transaction Spending
->
-> **Warning:** Transactions which spend outputs from unconfirmed transactions are vulnerable to transaction malleability. Be sure to read about transaction malleability and adopt good practices before spending unconfirmed transactions on mainnet.
+:::{warning}
+Transactions which spend outputs from unconfirmed transactions are vulnerable to transaction
+malleability. Be sure to read about transaction malleability and adopt good practices before
+spending unconfirmed transactions on mainnet.
+:::
 
 Put the previously signed (but not sent) transaction into a shell variable.
 
@@ -164,9 +166,9 @@ In the other raw transaction subsections above, the previous [output](../resourc
 
 ### 4a. Without Pubkey Script
 
-> 🚧
->
-> Note: This step demonstrates the error returned when an unknown output is referenced.
+:::{note}
+This step demonstrates the error returned when an unknown output is referenced.
+:::
 
 In this case, you're spending an [output](../resources/glossary.md#output) which is unknown to the wallet, so it can't automatically insert the previous pubkey script.
 

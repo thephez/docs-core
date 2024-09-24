@@ -167,9 +167,9 @@ If the seed resulting from the formula above is larger than four bytes, it must 
 
 The actual hash function implementation used is the [32-bit Murmur3 hash function](https://en.wikipedia.org/wiki/MurmurHash).
 
-> 🚧 Murmer3 Version
->
-> **Warning:** the Murmur3 hash function has separate 32-bit and 64-bit versions that produce different results for the same [input](../resources/glossary.md#input).  Only the 32-bit Murmur3 version is used with Dash bloom filters.
+:::{warning}
+The Murmur3 hash function has separate 32-bit and 64-bit versions that produce different results for the same [input](../resources/glossary.md#input).  Only the 32-bit Murmur3 version is used with Dash bloom filters.
+:::
 
 The data to be hashed can be any transaction element which the bloom filter can match. See the next subsection for the list of transaction elements checked against the filter. The largest element which can be matched is a script data push of 520 bytes, so the data should never exceed 520 bytes.
 

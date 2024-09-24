@@ -44,9 +44,9 @@ The JavaScript zeromq package is available from [npmjs.com](https://www.npmjs.co
 npm install zeromq@5
 ```
 
-> 🚧 ZeroMQ Version
->
-> Version 5 of the zeromq package should be used for compatibility reasons.
+:::{attention}
+Version 5 of the zeromq package should be used for compatibility reasons.
+:::
 
 ### 2. Subscribe to ZeroMQ Messages
 

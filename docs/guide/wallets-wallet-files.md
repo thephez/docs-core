@@ -122,9 +122,9 @@ Because creating child keys requires both a key and a chain code, the key and ch
 
 A [root seed](../resources/glossary.md#root-seed) is created from either 128 bits, 256 bits, or 512 bits of random data. This root seed of as little as 128 bits is the the only data the user needs to backup in order to derive every key created by a particular wallet program using particular settings.
 
-> 🚧 HD Wallet Compatibility
->
-> **Warning:** HD wallet programs are not always fully compatible, so users must only use the same HD wallet program with the same HD-related settings for a particular root seed.
+:::{warning}
+HD wallet programs are not always fully compatible, so users should only use the same HD wallet program with the same HD-related settings for a particular root seed.
+:::
 
 The root seed is hashed to create 512 bits of seemingly-random data, from which the master private key and master chain code are created (together, the master extended private key). The master public key is derived from the master private key using `point()`, which, together with the master chain code, is the master extended public key. The master extended keys are functionally equivalent to other extended keys; it is only their location at the top of the hierarchy which makes them special.
 

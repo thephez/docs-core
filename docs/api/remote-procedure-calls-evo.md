@@ -2138,9 +2138,8 @@ Result (truncated):
 
 ### Quorum DKGInfo
 
-> 👍
->
-> Added in Dash Core 20.1.0
+:::{versionadded} 20.1.0
+:::
 
 The `quorum dkginfo` RPC returns information about active and upcoming DKG sessions.
 
@@ -4007,10 +4006,6 @@ Result:
 
 ### Quorum Verify
 
-> 👍
->
-> Added in Dash Core 0.17.0
-
 The `quorum verify` RPC tests if a quorum signature is valid for a request id and a message hash.
 
 *Parameter #1---LLMQ Type*
@@ -4107,10 +4102,6 @@ Result:
 
 ## VerifyChainLock
 
-> 👍
->
-> Added in Dash Core 0.17.0
-
 The `verifychainlock` RPC tests if a quorum signature is valid for a ChainLock.
 
 *Parameter #1---block hash*
@@ -4154,10 +4145,6 @@ true
 ```
 
 ## VerifyISLock
-
-> 👍
->
-> Added in Dash Core 0.17.0
 
 The `verifyislock` RPC tests if a quorum signature is valid for an InstantSend Lock.
 

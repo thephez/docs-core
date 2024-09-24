@@ -668,11 +668,7 @@ Result (truncated):
 
 ### GObject Prepare
 
-The `gobject prepare` RPC prepares a governance object by signing and creating a collateral transaction.
-
-> 👍
->
-> Note: Dash Core v18.0.0 added support for directing proposal payouts to P2SH addresses such as multisig.
+The `gobject prepare` RPC prepares a governance object by signing and creating a collateral transaction. Dash Core v18.0.0 added support for directing proposal payouts to P2SH addresses such as multisig.
 
 *Parameter #1---parent hash*
 
@@ -1169,10 +1165,6 @@ Result:
 ```
 
 ### Masternode Payments
-
-> 👍
->
-> Added in Dash Core 0.17.0
 
 The `masternode payments` RPC prints an array of deterministic masternodes and their payments for the specified block.
 

@@ -170,10 +170,6 @@ _See also_
 
 ## CreateWallet
 
-> 👍
->
-> Added in Dash Core 0.17.0
-
 > 📘
 >
 > Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)

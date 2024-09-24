@@ -13,9 +13,9 @@
 dash-qt [command-line options]     
 ```
 
-> 🚧 Debug Options
->
-> The following sections show all available options including debug options that are not normally displayed. To see only regular options, run dash-qt --help.
+:::{attention}
+The following sections show all available options including debug options that are not normally displayed. To see only regular options, run dash-qt --help.
+:::
 
 Dash Core QT GUI includes all the same command line options as [dashd](../dashcore/wallet-arguments-and-commands-dashd.md) with the exception of `-daemon`. It also provides additional options for UI as described below.
 

@@ -1038,10 +1038,6 @@ The [`masternode` RPC](#masternode) provides a set of commands for managing mast
 
 The `masternode count` RPC prints the number of all known masternodes.
 
-> 🚧 Dash Core 0.17.0 change
->
-> The previously deprecated `mode` parameter was removed in Dash Core 0.17.0. Information regarding the previous functionality is available in [an older version of the documentation](https://dashcore.readme.io/v0.16.0/docs/core-api-ref-remote-procedure-calls-dash#masternode-count).
-
 *Parameters: none*
 
 *Result---number of known masternodes*

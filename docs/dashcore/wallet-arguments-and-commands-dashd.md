@@ -15,9 +15,9 @@
 dashd [options]
 ```
 
-> 🚧 Debug Options
->
-> The following sections show all available options including debug options that are not normally displayed. To see only regular options, run `dashd --help`.
+:::{attention}
+The following sections show all available options including debug options that are not normally displayed. To see only regular options, run `dashd --help`.
+:::
 
 ### Options
 
@@ -384,9 +384,9 @@ dashd [options]
 
 ### Wallet options
 
-> 🚧 zapwallettxes
->
-> Dash Core 18.1.0 removed the `-zapwallettxes` startup option and its functionality. This option was originally intended to allow for the fee bumping of transactions that did not signal RBF. This functionality has been superseded with the [abandon transaction capability](../api/remote-procedure-calls-wallet.md#abandontransaction) available via RPC/console or when right-clicking on unconfirmed transactions in Dash-Qt.
+:::{attention}
+Dash Core 18.1.0 removed the `-zapwallettxes` startup option and its functionality. This option was originally intended to allow for the fee bumping of transactions that did not signal RBF. This functionality has been superseded with the [abandon transaction capability](../api/remote-procedure-calls-wallet.md#abandontransaction) available via RPC/console or when right-clicking on unconfirmed transactions in Dash-Qt.
+:::
 
 ```text
   -avoidpartialspends
@@ -1090,9 +1090,9 @@ dashd [options]
 
 ### Wallet debugging/testing options
 
-> 🚧
->
-> These options are normally hidden and will only be shown if using the help debug option: `dashd --held -help-debug`
+:::{attention}
+These options are normally hidden and will only be shown if using the help debug option: `dashd --held -help-debug`
+:::
 
 ```text
   -dblogsize=<n>

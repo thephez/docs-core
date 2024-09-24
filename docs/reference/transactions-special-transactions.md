@@ -854,9 +854,9 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
 
 *Added in protocol version 70213 of Dash Core as described by [DIP6](https://github.com/dashpay/dips/blob/master/dip-0006.md)*
 
-> 🚧 Note
->
-> This special transaction has no inputs and no outputs and thus also pays no fee.
+:::{note}
+This special transaction has no inputs and no outputs and thus also pays no fee.
+:::
 
 The Quorum Commitment (QcTx) special transaction adds the best final commitment from a [Long-Living Masternode Quorum](../resources/glossary.md#long-living-masternode-quorum) (LLMQ) Distributed Key Generation (DKG) session to the chain.
 
@@ -998,9 +998,9 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
 
 *Fully implemented in protocol version 70230 of Dash Core as described by [DIP23](https://github.com/dashpay/dips/blob/master/dip-0023.md)*
 
-> 🚧 Note
->
-> This special transaction has no inputs and no outputs and thus also pays no fee
+:::{note}
+This special transaction has no inputs and no outputs and thus also pays no fee
+:::
 
 The Masternode Hard Fork Signal (MnHfTx) special transaction adds the masternode hard fork signal produced by an LLMQ_400_85 quorum to the chain. Since this special transaction pays no fees, it is mandatory by consensus rules to ensure that miners include it. This can be done by any miner in any block, but it should only be included once.
 
@@ -1227,9 +1227,9 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
 
 ## AssetUnlockTx
 
-> 🚧 Note
->
-> This special transaction has no inputs
+:::{note}
+This special transaction has no inputs
+:::
 
 The Asset Unlock transaction is a DIP2-based special transaction that enables Platform credits to be withdrawn back to Dash.
 

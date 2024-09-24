@@ -11,10 +11,10 @@ The `dash-cli` application provides a command-line option for accessing Dash Cor
 
 ## Usage
 
-> 🚧 Multiple wallet support
->
-> Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at the same time, wallet-related RPCs require using the `-rpcwallet` option any time more than one wallet file is loaded. This is to ensure the RPC command is executed using the correct wallet. The syntax is:  
-> `dash-cli -rpcwallet=<wallet-name> <command>`
+:::{attention}
+Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at the same time, wallet-related RPCs require using the `-rpcwallet` option any time more than one wallet file is loaded. This is to ensure the RPC command is executed using the correct wallet. The syntax is: 
+`dash-cli -rpcwallet=<wallet-name> <command>`
+:::
 
 ```bash Send command
 dash-cli [options] <command> [params]

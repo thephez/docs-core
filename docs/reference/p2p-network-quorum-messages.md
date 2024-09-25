@@ -517,9 +517,9 @@ This message is used for intra-quorum communication and is only sent to the [mas
 
 The [`qbsigs` message](../reference/p2p-network-quorum-messages.md#qbsigs) is used to send batched signature shares in response to a [`qgetsigs` message](../reference/p2p-network-quorum-messages.md#qgetsigs).
 
-> 📘
->
-> The number of messages that can be sent in a batch is limited to 400 (as defined by `MAX_MSGS_TOTAL_BATCHED_SIGS` in Dash Core).
+:::{note}
+The number of messages that can be sent in a batch is limited to 400 (as defined by `MAX_MSGS_TOTAL_BATCHED_SIGS` in Dash Core).
+:::
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -580,9 +580,9 @@ This message is used for intra-quorum communication and is only sent to the [mas
 
 The [`qgetsigs` message](../reference/p2p-network-quorum-messages.md#qgetsigs) is used to request signature shares. The response to a [`qgetsigs` message](../reference/p2p-network-quorum-messages.md#qgetsigs) is a [`qbsigs` message](../reference/p2p-network-quorum-messages.md#qbsigs).
 
-> 📘
->
-> The number of inventories in a [`qgetsigs` message](../reference/p2p-network-quorum-messages.md#qgetsigs) is limited to 200 (as defined by `MAX_MSGS_CNT_QGETSIGSHARES` in Dash Core).
+:::{note}
+The number of inventories in a [`qgetsigs` message](../reference/p2p-network-quorum-messages.md#qgetsigs) is limited to 200 (as defined by `MAX_MSGS_CNT_QGETSIGSHARES` in Dash Core).
+:::
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -613,9 +613,9 @@ Signature share request 2
 
 The [`qsendrecsigs` message](../reference/p2p-network-quorum-messages.md#qsendrecsigs) is used to notify a [peer](../resources/glossary.md#peer) to send plain [LLMQ](../resources/glossary.md#long-living-masternode-quorum) recovered signatures (inventory type `MSG_QUORUM_RECOVERED_SIG`). Otherwise the peer would only announce/send the higher level messages produced when a recovered signature is found (e.g. InstantSend [`isdlock` messages](../reference/p2p-network-instantsend-messages.md#isdlock) or ChainLock [`clsig` messages](../reference/p2p-network-instantsend-messages.md#clsig)).
 
-> 📘
->
-> SPV nodes should not send this message as they are usually only interested in the higher level messages.
+:::{note}
+SPV nodes should not send this message as they are usually only interested in the higher level messages.
+:::
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -677,9 +677,9 @@ This message is used for intra-quorum communication and is only sent to the [mas
 
 The [`qsigsesann` message](../reference/p2p-network-quorum-messages.md#qsigsesann) is used to announce the sessionId for a signing session. The sessionId will be used for all P2P messages related to that session.
 
-> 📘
->
-> The maximum number of inventories in a [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv) is limited to 200 (as defined by `MAX_MSGS_CNT_QSIGSHARESINV` in Dash Core).
+:::{note}
+The maximum number of inventories in a [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv) is limited to 200 (as defined by `MAX_MSGS_CNT_QSIGSHARESINV` in Dash Core).
+:::
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -734,9 +734,9 @@ This message is used for intra-quorum communication and is only sent to the [mas
 
 The [`qsigshare` message](../reference/p2p-network-quorum-messages.md#qsigshare) (quorum signature share) announces one or more quorum signature shares known by the transmitting peer.
 
-> 📘
->
-> The maximum number of inventories in a [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv) is limited to 200 (as defined by `MAX_MSGS_CNT_QSIGSHARESINV` in Dash Core).
+:::{note}
+The maximum number of inventories in a [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv) is limited to 200 (as defined by `MAX_MSGS_CNT_QSIGSHARESINV` in Dash Core).
+:::
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -785,9 +785,9 @@ The [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv) (
 
 Info callout
 
-> 📘
->
-> The maximum number of inventories in a [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv) is limited to 200 (as defined by `MAX_MSGS_CNT_QSIGSHARESINV` in Dash Core).
+:::{note}
+The maximum number of inventories in a [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv) is limited to 200 (as defined by `MAX_MSGS_CNT_QSIGSHARESINV` in Dash Core).
+:::
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |

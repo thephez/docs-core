@@ -241,9 +241,9 @@ Result:
 }
 ```
 
-> 📘
->
-> In the example above, a new directory named `new-wallet` was created in the current data directory (`~/.dashcore/testnet3/`). This new directory contains the wallet.dat file and other related wallet files for the new wallet.
+:::{note}
+In the example above, a new directory named `new-wallet` was created in the current data directory (`~/.dashcore/testnet3/`). This new directory contains the wallet.dat file and other related wallet files for the new wallet.
+:::
 
 _See also_
 

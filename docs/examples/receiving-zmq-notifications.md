@@ -15,9 +15,9 @@ Further information regarding ZMQ support may be found in the [ZMQ API Reference
 
 ## Enabling Dash Core ZMQ Notifications
 
-> 📘
->
-> This requires a Dash Core full node or masternode
+:::{note}
+This requires a Dash Core full node or masternode
+:::
 
 In the [`dash.conf` configuration file](../examples/configuration-file.md), add the following [ZMQ notifications](../api/zmq.md#available-notifications) and assign the address that Dash Core should listen on. The notifications selected here relate to InstantSend and ChainLocks.
 

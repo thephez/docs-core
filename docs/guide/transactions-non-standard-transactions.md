@@ -10,9 +10,9 @@ If you use anything besides a standard [pubkey script](../resources/glossary.md#
 
 If you create a [redeem script](../resources/glossary.md#redeem-script), hash it, and use the hash in a [P2SH](../resources/glossary.md#pay-to-script-hash) output, the network sees only the hash, so it will accept the output as valid no matter what the redeem script says. This allows payment to non-standard scripts, and as of Bitcoin Core 0.11, almost all valid redeem scripts can be spent. The exception is scripts that use unassigned [NOP opcodes](https://en.bitcoin.it/wiki/Script#Reserved_words); these opcodes are reserved for future soft forks and can only be relayed or mined by nodes that don't follow the standard mempool policy.
 
-> 📘
->
-> Note: standard transactions are designed to protect and help the network, not prevent you from making mistakes. It's easy to create standard transactions which make the duffs sent to them unspendable.
+:::{note}
+Standard transactions are designed to protect and help the network, not prevent you from making mistakes. It's easy to create standard transactions which make the duffs sent to them unspendable.
+:::
 
 Standard transactions must also meet the following conditions:
 

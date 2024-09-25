@@ -44,6 +44,6 @@ When a [blocks-first](../resources/glossary.md#blocks-first-sync) node downloads
 
 Headers-first nodes avoid some of this complexity by always requesting block headers with the [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders) before requesting a block with the [`getdata` message](../reference/p2p-network-data-messages.md#getdata). The broadcasting node will send a [`headers` message](../reference/p2p-network-data-messages.md#headers) containing all the block headers (up to 2,000) it thinks the downloading node needs to reach the tip of the best header chain; each of those headers will point to its parent, so when the downloading node receives the [`block` message](../reference/p2p-network-data-messages.md#block), the block shouldn't be an orphan block---all of its parents should be known (even if they haven't been validated yet). If, despite this, the block received in the [`block` message](../reference/p2p-network-data-messages.md#block) is an orphan block, a headers-first node will discard it immediately.
 
-> 📘
->
-> Note: Orphan discarding does mean that headers-first nodes will ignore orphan blocks sent by miners in an unsolicited block push.
+:::{note}
+Orphan discarding does mean that headers-first nodes will ignore orphan blocks sent by miners in an unsolicited block push.
+:::

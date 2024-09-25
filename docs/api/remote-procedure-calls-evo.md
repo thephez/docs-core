@@ -61,9 +61,9 @@ Result:
 
 The `bls generate` RPC creates a new BLS secret/public key pair.
 
-> 📘
->
-> Note: Upon v19 hard fork activation, BLS keys are generated using the basic scheme by default.
+:::{note}
+Since the v19 hard fork activation, BLS keys are generated using the basic scheme by default.
+:::
 
 *Parameter #1---legacy*
 
@@ -2869,9 +2869,9 @@ The `quorum sign` RPC requests threshold-signing for a message.
 | ---- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id` | string (hex) | Required<br>(exactly 1) | Signing request ID. Signing request ids for ChainLocks and InstantSend are calculated as described in:<br> \* The [ChainLocks DIP](https://github.com/dashpay/dips/blob/master/dip-0008.md#signing-attempts)<br> \* The [LLMQ InstantSend DIP](https://github.com/dashpay/dips/blob/master/dip-0010.md#finalization-and-creation-of-islock-messages). |
 
-> 📘
->
-> For general signing requests, any 32 byte hex string can be provided as the request id. Note that if a quorum hash is not specified in parameter 4, a quorum will be selected automatically based in part on this value.
+:::{note}
+For general signing requests, any 32 byte hex string can be provided as the request id. Note that if a quorum hash is not specified in parameter 4, a quorum will be selected automatically based in part on this value.
+:::
 
 *Parameter #3---message hash*
 

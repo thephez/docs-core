@@ -35,9 +35,9 @@ Alternatively, the authentication details can be provided using the `rpcauth` pr
 rpcauth=myuser:933fff1aaefa1fc5b3e981fd3ceacf03$f799757c0d36be8f1faa1dd3a01562b17ada82f2ff6c968c959103afda9e7c6f
 ```
 
-> 📘
->
-> The `rpcauth` option can be specified multiple times if multiple users are required.
+:::{note}
+The `rpcauth` option can be specified multiple times if multiple users are required.
+:::
 
 A canonical python script is included in Dash Core's repository under [share/rpcuser](https://github.com/dashpay/dash/tree/master/share/rpcauth) to generate the information required for the dash.conf file as well as the password required by clients using the rpcauth name.
 
@@ -183,9 +183,9 @@ The HTTP response data for this request would be:
 }
 ```
 
-> 📘
->
-> Note: In order to minimize its size, the raw JSON response from Dash Core doesn't include any extraneous whitespace characters.
+:::{note}
+To minimize its size, the raw JSON response from Dash Core does not include any extraneous whitespace characters.
+:::
 
 Here whitespace has been added to make the object more readable. `dash-cli` also transforms the raw response to make it more human-readable. It:
 

@@ -121,6 +121,6 @@ Each network type has some unique characteristics to support development and tes
 | [Regtest](#regtest-mode) | Mines blocks at the [minimum difficulty level](https://github.com/dashpay/dash/blob/v0.17.0.3/src/chainparams.cpp#L925) |
 | [Devnet](#devnet-mode) | Mainnet algorithm after [4001 blocks](https://github.com/dashpay/dash/blob/v0.17.0.3/src/chainparams.cpp#L749) unless overridden by [devnet-specific options](#devnet-specific-options) |
 
-> 📘
->
-> See [chainparams.cpp](https://github.com/dashpay/dash/blob/master/src/chainparams.cpp) for details on other differences
+:::{note}
+See [chainparams.cpp](https://github.com/dashpay/dash/blob/master/src/chainparams.cpp) for details on other differences
+:::

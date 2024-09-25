@@ -10,9 +10,9 @@ The [raw transaction RPCs](../api/remote-procedure-calls-raw-transactions.md) al
 
 This subsection covers one of the simplest possible raw transactions.
 
-> 📘
->
-> Note: the following steps pick up where the [Simple Spending Tutorial](../examples/transaction-tutorial-simple-spending.md) left off
+:::{note}
+The following steps pick up where the [Simple Spending Tutorial](../examples/transaction-tutorial-simple-spending.md) left off.
+:::
 
 ## 1. List unspent outputs
 

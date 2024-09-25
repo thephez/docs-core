@@ -643,9 +643,9 @@ Result:
 
 The [`getblockfilter` RPC](../api/remote-procedure-calls-blockchain.md#getblockfilter) retrieves a [BIP157](https://github.com/bitcoin/bips/blob/master/bip-0157.mediawiki) content filter for a particular block.
 
-> 📘
->
-> Requires the `-blockfilterindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::{note}
+Requires the `-blockfilterindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::
 
 *Parameter #1---blockhash*
 
@@ -684,9 +684,9 @@ Result:
 
 ## GetBlockHashes
 
-> 📘
->
-> Requires `timestampindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::{note}
+Requires `timestampindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::
 
 *Added in Dash Core 0.12.1*
 
@@ -1003,9 +1003,9 @@ stats | array | optional | Values to plot, by default all values (see result bel
 
 *Result---a JSON object containing the requested statistics*
 
-> 📘
->
-> Note: all amounts are in duffs.
+:::{note}
+All amounts are in duffs.
+:::
 
 Name | Type | Presence | Description
 --- | --- | --- | ---
@@ -1903,9 +1903,9 @@ Result:
 
 ## GetSpentInfo
 
-> 📘
->
-> Requires `spentindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::{note}
+Requires `spentindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::
 
 *Added in Dash Core 0.12.1*
 

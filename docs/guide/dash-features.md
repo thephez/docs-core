@@ -22,9 +22,9 @@ However, the Dash network has a second layer of network participants that provid
 
 #### Evolution Masternodes
 
-> 📘
->
-> New in Dash Core v19.0
+:::{note}
+New in Dash Core v19.0
+:::
 
 Evolution Masternodes (evonodes) are a new type of masternode created to host [Dash Platform](inv:platform:std#intro-dash-platform) – a Web3 technology stack for building decentralized applications on the Dash network. The collateral required to own an evonode is 4000 DASH, as opposed to 1000 DASH for regular masternodes.
 
@@ -35,10 +35,6 @@ Evonodes serve Platform along with Core, while regular masternodes only serve Co
 Full nodes in Dash are equivalent to full nodes in Bitcoin. They download and validate the entire blockchain against the consensus rules. Unlike masternodes, full nodes do not provide additional services and thus are not compensated.
 
 ### Disable Governance Mode
-
-> 📘
->
-> New in Dash Core v0.16.0
 
 Prior to Dash Core v0.16.0, Lite Mode disabled all Dash-specific functionality. Dash Core v0.16.0 introduced Disable Governance Mode to replace Lite Mode. This mode enables access to most Dash features (e.g., InstantSend, ChainLocks, and CoinJoin) while also supporting block pruning.
 

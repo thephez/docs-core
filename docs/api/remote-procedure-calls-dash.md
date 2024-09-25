@@ -1816,9 +1816,9 @@ Result:
 
 The [`sporkupdate` RPC](#sporkupdate) updates the value of the provided spork.
 
-> 📘
->
-> Signing spork update messages requires `-sporkkey` to be set via the command line or dash.conf file.
+:::{note}
+Signing spork update messages requires `-sporkkey` to be set via the command line or dash.conf file.
+:::
 
 To update the state of a spork activation, use the `<name> [value]` syntax.
 

@@ -122,9 +122,9 @@ Because creating child keys requires both a key and a chain code, the key and ch
 
 A [root seed](../resources/glossary.md#root-seed) is created from either 128 bits, 256 bits, or 512 bits of random data. This root seed of as little as 128 bits is the the only data the user needs to backup in order to derive every key created by a particular wallet program using particular settings.
 
-> 🚧 HD Wallet Compatibility
->
-> **Warning:** HD wallet programs are not always fully compatible, so users must only use the same HD wallet program with the same HD-related settings for a particular root seed.
+:::{warning}
+HD wallet programs are not always fully compatible, so users should only use the same HD wallet program with the same HD-related settings for a particular root seed.
+:::
 
 The root seed is hashed to create 512 bits of seemingly-random data, from which the master private key and master chain code are created (together, the master extended private key). The master public key is derived from the master private key using `point()`, which, together with the master chain code, is the master extended public key. The master extended keys are functionally equivalent to other extended keys; it is only their location at the top of the hierarchy which makes them special.
 
@@ -150,9 +150,9 @@ Because of that, a [hardened extended private key](../resources/glossary.md#hard
 
 The HD protocol uses different index numbers to indicate whether a normal or hardened key should be generated. Index numbers from `0x00` to `0x7fffffff` (0 to 2<sup>31</sup>-1) will generate a normal key; index numbers from `0x80000000` to `0xffffffff` will generate a hardened key. To make descriptions easy, many developers use the [prime symbol](https://en.wikipedia.org/wiki/Prime_%28symbol%29) to indicate hardened keys, so the first normal key (0x00) is 0 and the first hardened key (0x80000000) is 0´.
 
-> 📘
->
-> Dash developers typically use the ASCII apostrophe rather than the unicode prime symbol, a convention we will henceforth follow.
+:::{note}
+Dash developers typically use the ASCII apostrophe rather than the unicode prime symbol, a convention we will henceforth follow.
+:::
 
 This compact description is further combined with slashes prefixed by *m* or *M* to indicate hierarchy and key type, with *m* being a private key and *M* being a public key. For example, m/0'/0/122' refers to the 123rd hardened private child (by index number) of the first normal child (by index) of the first hardened child (by index) of the master private key. The following hierarchy illustrates prime notation and hardened key firewalls.
 

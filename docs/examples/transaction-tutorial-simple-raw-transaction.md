@@ -10,9 +10,9 @@ The [raw transaction RPCs](../api/remote-procedure-calls-raw-transactions.md) al
 
 This subsection covers one of the simplest possible raw transactions.
 
-> 📘
->
-> Note: the following steps pick up where the [Simple Spending Tutorial](../examples/transaction-tutorial-simple-spending.md) left off
+:::{note}
+The following steps pick up where the [Simple Spending Tutorial](../examples/transaction-tutorial-simple-spending.md) left off.
+:::
 
 ## 1. List unspent outputs
 
@@ -84,9 +84,9 @@ yfV9Wirf5RkYHgNDttjpBz8Wdi8BavLHcP
 
 Using two arguments to the [`createrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#createrawtransaction), we create a new raw format transaction. The first argument (a JSON array) references the txid of the coinbase transaction from block #2 and the [index](../resources/glossary.md#index) number (0) of the [output](../resources/glossary.md#output) from that transaction we want to spend. The second argument (a JSON object) creates the output with the address ( [public key](../resources/glossary.md#public-key) hash) and number of DASH we want to transfer. We save the resulting raw format transaction to a shell variable.
 
->❗️ Transaction fee warning
->
-> **Warning:** `createrawtransaction` does not automatically create change outputs, so you can easily accidentally pay a large transaction fee.
+:::{attention}
+`createrawtransaction` does not automatically create change outputs, so you can easily accidentally pay a large transaction fee.
+:::
 
 In this example, our input had 500.0000 DASH and our output (`$NEW_ADDRESS`) is being paid 499.9999 DASH, so the transaction will include a fee of 0.0001 DASH. If we had paid `$NEW_ADDRESS` only 100 DASH with no other changes to this transaction, the [transaction fee](../resources/glossary.md#transaction-fee) would be a whopping 400 DASH. See the [Complex Raw Transaction subsection](../examples/transaction-tutorial-complex-raw-transaction.md) below for how to create a transaction with multiple outputs so you can send the change back to yourself.
 

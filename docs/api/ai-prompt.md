@@ -22,9 +22,9 @@ Use this RPC documentation as a template to create documentation for new RPCs:
 
 ```## ImportMulti
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
+:::
 
 _Added in Dash Core 0.12.3 / Bitcoin Core 0.14.0_
 

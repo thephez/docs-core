@@ -74,11 +74,11 @@ The following table details how the block subsidy and fees are allocated between
 
 #### Block Reward Reallocation
 
-> 🚧 **Superseded in Dash Core 20**
->
-> This block reward reallocation process was superseded by the [treasury
-> expansion](#treasury-expansion) that was approved by the network in 2023 and subsequently
-> activated by the v20 hard fork at block 1987776.
+:::{attention}
+This block reward reallocation process was superseded by the [treasury
+expansion](#treasury-expansion) that was approved by the network in 2023 and subsequently activated
+by the Dash Core v20 hard fork at block 1987776.
+:::
 
 Dash Core v0.16 included logic to gradually adjust the block reward allocation once the BIP-9
 activation threshold was met. The reward reallocation was signaled via BIP-9 bit 5 and was activated

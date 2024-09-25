@@ -8,9 +8,9 @@
 
 ## GetAddressBalance
 
-> 📘
->
-> Requires `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::{note}
+Requires `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::
 
 The [`getaddressbalance` RPC](../api/remote-procedure-calls-address-index.md#getaddressbalance) returns the balance for address(es).
 
@@ -57,9 +57,9 @@ Result:
 
 ## GetAddressDeltas
 
-> 📘
->
-> Requires `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::{note}
+Requires `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::
 
 The [`getaddressdeltas` RPC](../api/remote-procedure-calls-address-index.md#getaddressdeltas) returns all changes for an address.
 
@@ -127,9 +127,9 @@ Result:
 
 ## GetAddressMempool
 
-> 📘
->
-> Requires `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::{note}
+Requires `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::
 
 The [`getaddressmempool` RPC](../api/remote-procedure-calls-address-index.md#getaddressmempool) returns all mempool deltas for an address.
 
@@ -178,9 +178,9 @@ Result:
 
 ## GetAddressTxids
 
-> 📘
->
-> Requires `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::{note}
+Requires `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::
 
 The [`getaddresstxids` RPC](../api/remote-procedure-calls-address-index.md#getaddresstxids) returns the txids for an address(es).
 
@@ -229,9 +229,9 @@ Result:
 
 ## GetAddressUtxos
 
-> 📘
->
-> Requires `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::{note}
+Requires `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
+:::
 
 The [`getaddressutxos` RPC](../api/remote-procedure-calls-address-index.md#getaddressutxos) returns all unspent outputs for an address.
 

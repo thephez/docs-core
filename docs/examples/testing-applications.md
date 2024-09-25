@@ -109,9 +109,9 @@ Each network type has some unique characteristics to support development and tes
 | Private network | No | No | Yes | Optional |
 | Number of networks | 1 | 1 | Unlimited | Unlimited / Unique (named) |
 
-> 📘 Using sporks
->
-> To enable or disable sporks on a regtest or devnet, set `sporkaddr` and `sporkkey` in the `dash.conf` config file. Any valid Dash address / private key can be used. You can get an address using the [`getnewaddress` RPC](../api/remote-procedure-calls-wallet.md#getnewaddress) and retrieve its private key using the [`dumpprivkey` RPC](../api/remote-procedure-calls-wallet.md#dumpprivkey).
+:::{note}
+To enable or disable sporks on a regtest or devnet, set `sporkaddr` and `sporkkey` in the `dash.conf` config file. Any valid Dash address / private key can be used. You can get an address using the [`getnewaddress` RPC](../api/remote-procedure-calls-wallet.md#getnewaddress) and retrieve its private key using the [`dumpprivkey` RPC](../api/remote-procedure-calls-wallet.md#dumpprivkey).
+:::
 
 ### Mining characteristics
 
@@ -121,6 +121,6 @@ Each network type has some unique characteristics to support development and tes
 | [Regtest](#regtest-mode) | Mines blocks at the [minimum difficulty level](https://github.com/dashpay/dash/blob/v0.17.0.3/src/chainparams.cpp#L925) |
 | [Devnet](#devnet-mode) | Mainnet algorithm after [4001 blocks](https://github.com/dashpay/dash/blob/v0.17.0.3/src/chainparams.cpp#L749) unless overridden by [devnet-specific options](#devnet-specific-options) |
 
-> 📘
->
-> See [chainparams.cpp](https://github.com/dashpay/dash/blob/master/src/chainparams.cpp) for details on other differences
+:::{note}
+See [chainparams.cpp](https://github.com/dashpay/dash/blob/master/src/chainparams.cpp) for details on other differences
+:::

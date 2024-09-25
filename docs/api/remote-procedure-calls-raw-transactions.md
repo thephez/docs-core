@@ -771,9 +771,9 @@ _See also:_
 
 ## FundRawTransaction
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`fundrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#fundrawtransaction) adds inputs to a transaction until it has enough in value to meet its out value.  This will not modify existing inputs, and will add one change output to the outputs.  
 Note that inputs which were signed may need to be resigned after completion since in/outputs have been added.  The inputs added will not be signed, use signrawtransaction for that.  
@@ -896,9 +896,9 @@ Note: By default this function only works for mempool transactions. When called 
 
 As of Dash Core 18.0.0, transactions with unspent outputs will no longer be included unless `-txindex` is enabled.
 
-> 🚧 Reindex note
->
-> If you begin using `txindex=1` after downloading the block chain, you must rebuild your indexes by starting Dash Core with the option  `-reindex`.  This may take several hours to complete, during which time your node will not process new blocks or transactions. This reindex only needs to be done once.
+:::{note}
+If you begin using `txindex=1` after downloading the block chain, you must rebuild your indexes by starting Dash Core with the option  `-reindex`.  This may take several hours to complete, during which time your node will not process new blocks or transactions. This reindex only needs to be done once.
+:::
 
 _Parameter #1---the TXID of the transaction to get_
 
@@ -1325,10 +1325,6 @@ _See also:_
 
 The [`sendrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#sendrawtransaction) validates a transaction and broadcasts it to the peer-to-peer network.
 
-> ❗️
->
-> Breaking change(s) in Dash Core 18.0. See parameter and/or response information for details.
-
 _Parameter #1---a serialized transaction to broadcast_
 
 | Name        | Type         | Presence                | Description                                            |
@@ -1388,10 +1384,6 @@ _See also:_
 * [SignRawTransactionWithKey](#signrawtransactionwithkey): signs inputs for a transaction in the serialized transaction format using private keys provided in the call.
 
 ## SignRawTransactionWithKey
-
-> 👍
->
-> Added in Dash Core 0.17.0
 
 The [`signrawtransactionwithkey` RPC](#signrawtransactionwithkey) signs inputs for a transaction in the serialized transaction format using private keys provided in the call.
 

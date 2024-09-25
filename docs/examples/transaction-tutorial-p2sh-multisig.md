@@ -64,11 +64,11 @@ We save the address returned to a shell variable.
 
 Use the [`createmultisig` RPC](../api/remote-procedure-calls-util.md#createmultisig) with two arguments, the number (*n*) of signatures required and a list of public keys. The P2SH address is returned along with the redeem script which must be provided when we spend duffs sent to the P2SH address.
 
->❗️ Redeem Script
->
-> **Warning:** You must not lose the redeem script, especially if you don't have a record of which public keys you used to create the P2SH multisig address. You need the redeem script to spend any dash sent to the P2SH address.
->
-> If you lose the redeem script, you can recreate it by running the same command above, with the public keys listed in the same order. **However, if you lose both the redeem script and even one of the public keys, you will never be able to spend duffs sent to that P2SH address.**
+:::{attention}
+You must not lose the redeem script, especially if you don't have a record of which public keys you used to create the P2SH multisig address. You need the redeem script to spend any dash sent to the P2SH address.
+
+If you lose the redeem script, you can recreate it by running the same command above, with the public keys listed in the same order. **However, if you lose both the redeem script and even one of the public keys, you will never be able to spend duffs sent to that P2SH address.**
+:::
 
 Neither the address nor the redeem script are stored in the wallet when you use `createmultisig`. To store them in the wallet, use the [`addmultisigaddress` RPC](../api/remote-procedure-calls-wallet.md#addmultisigaddress) instead.  If you add an address to the wallet, you should also make a new backup.
 
@@ -233,9 +233,9 @@ e38f25ead28817df7929c06fe847ee88ac00000000
 
 We get the [private keys](../resources/glossary.md#private-key) for two of the [public keys](../resources/glossary.md#public-key) we used to create the transaction, the same way we got private keys in the [Complex Raw Transaction subsection](../examples/transaction-tutorial-complex-raw-transaction.md). Recall that we created a 2-of-3 multisig pubkey script, so signatures from two private keys are needed.
 
->❗️ Private Key Warning
->
-> **Reminder:** Users should never manually manage private keys on mainnet. See the warning in the [complex raw transaction section](../examples/transaction-tutorial-complex-raw-transaction.md).
+:::{attention}
+Users should never manually manage private keys on mainnet. See the warning in the [complex raw transaction section](../examples/transaction-tutorial-complex-raw-transaction.md).
+:::
 
 ``` bash
 > dash-cli -regtest dumpprivkey $NEW_ADDRESS1

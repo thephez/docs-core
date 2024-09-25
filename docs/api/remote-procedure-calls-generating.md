@@ -8,9 +8,9 @@
 
 ## GenerateBlock
 
-> 🚧 Limited Support
->
-> This RPC is not available in the official Windows/Mac binaries. The Linux binary and binaries self-compiled (with the appropriate options) support this feature.
+:::{attention}
+This RPC is not available in the official Windows/Mac binaries. The Linux binary and binaries self-compiled (with the appropriate options) support this feature.
+:::
 
 *Added in Dash Core 18.1.0*
 
@@ -58,9 +58,9 @@ Result:
 
 ## GenerateToAddress
 
-> 🚧 Limited Support
->
-> Since Dash Core 0.14, this RPC is not available in the official Windows/Mac binaries. The Linux binary and binaries self-compiled (with the appropriate options) continue to support this feature. See [PR #2778](https://github.com/dashpay/dash/pull/2778) for additional details.
+:::{attention}
+This RPC is not available in the official Windows/Mac binaries. The Linux binary and binaries self-compiled (with the appropriate options) continue to support this feature. See [PR #2778](https://github.com/dashpay/dash/pull/2778) for additional details.
+:::
 
 *Added in Dash Core 0.12.3 / Bitcoin Core 0.13.0*
 
@@ -116,9 +116,9 @@ Result:
 
 ## GenerateToDescriptor
 
-> 🚧 Limited Support
->
-> This RPC is not available in the official Windows/Mac binaries. The Linux binary and binaries self-compiled (with the appropriate options) support this feature.
+:::{attention}
+This RPC is not available in the official Windows/Mac binaries. The Linux binary and binaries self-compiled (with the appropriate options) support this feature.
+:::
 
 *Added in Dash Core 18.1.0*
 

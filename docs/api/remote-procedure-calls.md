@@ -13,9 +13,9 @@ Dash Core provides a remote procedure call (RPC) interface for various administr
 
 Open-source client libraries for the RPC interface are readily available in most modern programming languages, so you probably don't need to write your own from scratch. Dash Core also ships with its own compiled C++ RPC client, `dash-cli`, located in the `bin` directory alongside `dashd` and `dash-qt`. The `dash-cli` program can be used as a command-line interface (CLI) to Dash Core or for making RPC calls from applications written in languages lacking a suitable native client. The remainder of this section describes the Dash Core RPC protocol in detail.
 
-> 📘 Dash Core Configuration
->
-> The following subsections reference setting configuration values. See the [Examples Page](../examples/introduction.md) for more information about setting Dash Core configuration values.
+:::{note}
+The following subsections reference setting configuration values. See the [Examples Page](../examples/introduction.md) for more information about setting Dash Core configuration values.
+:::
 
 ### Enabling RPC
 
@@ -35,9 +35,9 @@ Alternatively, the authentication details can be provided using the `rpcauth` pr
 rpcauth=myuser:933fff1aaefa1fc5b3e981fd3ceacf03$f799757c0d36be8f1faa1dd3a01562b17ada82f2ff6c968c959103afda9e7c6f
 ```
 
-> 📘
->
-> The `rpcauth` option can be specified multiple times if multiple users are required.
+:::{note}
+The `rpcauth` option can be specified multiple times if multiple users are required.
+:::
 
 A canonical python script is included in Dash Core's repository under [share/rpcuser](https://github.com/dashpay/dash/tree/master/share/rpcauth) to generate the information required for the dash.conf file as well as the password required by clients using the rpcauth name.
 
@@ -72,9 +72,9 @@ In this example, user1 can only call `getnetworkinfo`, user2 can only call `getn
 
 ### Restricted Access Users
 
-> 🚧
->
-> This feature is only available on masternodes
+:::{note}
+This feature is only available on masternodes
+:::
 
 As of Dash Core 0.17.0, an option is provided to add an RPC user that is restricted to a small subset of RPCs that will be used by Dash Platform. The `platform-user` configuration value sets the name of the RPC user to be restricted.
 
@@ -183,9 +183,9 @@ The HTTP response data for this request would be:
 }
 ```
 
-> 📘
->
-> Note: In order to minimize its size, the raw JSON response from Dash Core doesn't include any extraneous whitespace characters.
+:::{note}
+To minimize its size, the raw JSON response from Dash Core does not include any extraneous whitespace characters.
+:::
 
 Here whitespace has been added to make the object more readable. `dash-cli` also transforms the raw response to make it more human-readable. It:
 
@@ -331,9 +331,9 @@ This translates into an JSON-RPC Request object of the form:
 }
 ```
 
-> 🚧 High-precision real numbers
->
-> **Warning:** if you write programs using the JSON-RPC interface, you must ensure they handle high-precision real numbers correctly.  See the [Proper Money Handling](https://en.bitcoin.it/wiki/Proper_Money_Handling_%28JSON-RPC%29) Bitcoin Wiki article for details and example code.
+:::{warning}
+If you write programs using the JSON-RPC interface, you must ensure they handle high-precision real numbers correctly.  See the [Proper Money Handling](https://en.bitcoin.it/wiki/Proper_Money_Handling_%28JSON-RPC%29) Bitcoin Wiki article for details and example code.
+:::
 
 ```{toctree}
 :maxdepth: 3

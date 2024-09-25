@@ -12,9 +12,9 @@ Wallet programs also need to interact with the peer-to-peer [network](../resourc
 
 This leaves us with three necessary, but separable, parts of a wallet system: a public key distribution program, a signing program, and a networked program.  In the subsections below, we will describe common combinations of these parts.
 
-> 📘
->
-> Note: we speak about distributing public keys generically. In many cases, P2PKH or P2SH hashes will be distributed instead of public keys, with the actual public keys only being distributed when the outputs they control are spent.
+:::{note}
+We speak about distributing public keys generically. In many cases, P2PKH or P2SH hashes will be distributed instead of public keys, with the actual public keys only being distributed when the outputs they control are spent.
+:::
 
 ## Full-Service Wallets
 

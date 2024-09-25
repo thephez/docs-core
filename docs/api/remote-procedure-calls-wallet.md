@@ -6,9 +6,9 @@
 
 # Wallet RPCs
 
->❗️ Wallet Support
->
-> RPCs that require wallet support are **not available on masternodes** for security reasons. Such RPCs are designated with a "_Requires wallet support_" message.
+:::{attention}
+RPCs that require wallet support are **not available on masternodes** for security reasons. Such RPCs are designated with a "_Requires wallet support_" message.
+:::
 
 ## AbandonTransaction
 
@@ -74,9 +74,9 @@ _See also: none_
 
 ## AddMultiSigAddress
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`addmultisigaddress` RPC](../api/remote-procedure-calls-wallet.md#addmultisigaddress) adds a P2SH multisig address to the wallet. Each key is a Dash address or hex-encoded public key. This functionality is only intended for use with non-watchonly addresses. See [`importaddress` RPC](../api/remote-procedure-calls-wallet.md#importaddress) for watchonly p2sh address support. If 'label' is specified, assign address to that label.
 
@@ -139,9 +139,9 @@ _See also_
 
 ## BackupWallet
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`backupwallet` RPC](../api/remote-procedure-calls-wallet.md#backupwallet) safely copies `wallet.dat` to the specified file, which can be a directory or a path with filename.
 
@@ -170,13 +170,9 @@ _See also_
 
 ## CreateWallet
 
-> 👍
->
-> Added in Dash Core 0.17.0
-
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`createwallet` RPC](../api/remote-procedure-calls-wallet.md#createwallet) creates and loads a new wallet.
 
@@ -245,9 +241,9 @@ Result:
 }
 ```
 
-> 📘
->
-> In the example above, a new directory named `new-wallet` was created in the current data directory (`~/.dashcore/testnet3/`). This new directory contains the wallet.dat file and other related wallet files for the new wallet.
+:::{note}
+In the example above, a new directory named `new-wallet` was created in the current data directory (`~/.dashcore/testnet3/`). This new directory contains the wallet.dat file and other related wallet files for the new wallet.
+:::
 
 _See also_
 
@@ -288,9 +284,9 @@ _See also: none_
 
 ## DumpPrivKey
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Requires an unlocked wallet or an unencrypted wallet.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**) and an unlocked or unencrypted wallet.
+:::
 
 The [`dumpprivkey` RPC](../api/remote-procedure-calls-wallet.md#dumpprivkey) returns the wallet-import-format (WIP) private key corresponding to an address. (But does not remove it from the wallet.)
 
@@ -325,9 +321,9 @@ _See also_
 
 ## DumpWallet
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Requires an unlocked wallet or an unencrypted wallet.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**) and an unlocked or unencrypted wallet.
+:::
 
 The [`dumpwallet` RPC](../api/remote-procedure-calls-wallet.md#dumpwallet) creates or overwrites a file with all wallet keys in a human-readable format.
 
@@ -395,15 +391,15 @@ _See also_
 
 ## EncryptWallet
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`encryptwallet` RPC](../api/remote-procedure-calls-wallet.md#encryptwallet) encrypts the wallet with a passphrase.  This is only to enable encryption for the first time. After encryption is enabled, you will need to enter the passphrase to use private keys.
 
-> 🚧
->
-> **Warning:** if using this RPC on the command line, remember that your shell probably saves your command lines (including the value of the passphrase parameter). In addition, there is no RPC to completely disable encryption. If you want to return to an unencrypted wallet, you must create a new wallet and restore your data from a backup made with the [`dumpwallet` RPC](../api/remote-procedure-calls-wallet.md#dumpwallet).
+:::{warning}
+If using this RPC on the command line, remember that your shell probably saves your command lines (including the value of the passphrase parameter). In addition, there is no RPC to completely disable encryption. If you want to return to an unencrypted wallet, you must create a new wallet and restore your data from a backup made with the [`dumpwallet` RPC](../api/remote-procedure-calls-wallet.md#dumpwallet).
+:::
 
 _Parameter #1---a passphrase_
 
@@ -442,9 +438,9 @@ _See also_
 
 *Added in Dash Core 0.17.0*
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`getaddressinfo` RPC](../api/remote-procedure-calls-wallet.md#getaddressinfo) returns information about the given Dash address. Note: Some information requires the address to be in the wallet.
 
@@ -548,9 +544,9 @@ _See also_
 
 ## GetAddressesByLabel
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`getaddressesbylabel` RPC](../api/remote-procedure-calls-wallet.md#getaddressesbylabel) returns a list of every address assigned to a particular label.
 
@@ -588,14 +584,13 @@ Result:
 
 _See also_
 
-* [GetAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaccount): returns the name of the account associated with the given address.
 * [GetBalance](../api/remote-procedure-calls-wallet.md#getbalance): gets the balance in decimal dash across all accounts or for a particular account.
 
 ## GetBalance
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`getbalance` RPC](../api/remote-procedure-calls-wallet.md#getbalance) gets the total _available balance_ in Dash. The _available balance_ is what the wallet considers currently spendable, and is thus affected by options which limit spendability such as `-spendzeroconfchange`.
 
@@ -664,8 +659,6 @@ Result:
 _See also_
 
 * [GetBalances](../api/remote-procedure-calls-wallet.md#getbalances): returns an object with all balances denominated in DASH.
-* [ListAccounts](../api/remote-procedure-calls-removed.md#listaccounts): lists accounts and their balances.
-* [GetReceivedByAccount](../api/remote-procedure-calls-removed.md#getreceivedbyaccount): returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions.
 * [GetReceivedByAddress](../api/remote-procedure-calls-wallet.md#getreceivedbyaddress): returns the total amount received by the specified address in transactions with the specified number of confirmations. It does not count coinbase transactions.
 
 ## GetBalances
@@ -710,15 +703,13 @@ Result:
 _See also_
 
 * [GetBalance](../api/remote-procedure-calls-wallet.md#getbalance): gets the balance in decimal dash across all accounts or for a particular account.
-* [ListAccounts](../api/remote-procedure-calls-removed.md#listaccounts): lists accounts and their balances.
-* [GetReceivedByAccount](../api/remote-procedure-calls-removed.md#getreceivedbyaccount): returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions.
 * [GetReceivedByAddress](../api/remote-procedure-calls-wallet.md#getreceivedbyaddress): returns the total amount received by the specified address in transactions with the specified number of confirmations. It does not count coinbase transactions.
 
 ## GetNewAddress
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`getnewaddress` RPC](../api/remote-procedure-calls-wallet.md#getnewaddress) returns a new Dash address for receiving payments. If `label` is specified, the address is added to the address book so payments received with the address will be associated with `label`.
 
@@ -750,15 +741,14 @@ yPuNTqCGzXtU3eEV5jHvhhJkzEPyJLmVkb
 
 _See also_
 
-* [GetAccountAddress](../api/remote-procedure-calls-wallet-deprecated.md#getaccountaddress): returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address.
 * [GetRawChangeAddress](../api/remote-procedure-calls-wallet.md#getrawchangeaddress): returns a new Dash address for receiving change. This is for use with raw transactions, not normal use.
 * [GetBalance](../api/remote-procedure-calls-wallet.md#getbalance): gets the balance in decimal dash across all accounts or for a particular account.
 
 ## GetRawChangeAddress
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`getrawchangeaddress` RPC](../api/remote-procedure-calls-wallet.md#getrawchangeaddress) returns a new Dash address for receiving change. This is for use with raw transactions, not normal use.
 
@@ -785,13 +775,12 @@ yXBr9BiJmugTzHPgByDmvjJMAkvhTmXVJ8
 _See also_
 
 * [GetNewAddress](../api/remote-procedure-calls-wallet.md#getnewaddress): returns a new Dash address for receiving payments. If an account is specified, payments received with the address will be credited to that account.
-* [GetAccountAddress](../api/remote-procedure-calls-wallet-deprecated.md#getaccountaddress): returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address.
 
 ## GetReceivedByAddress
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 ![Warning icon](https://raw.githubusercontent.com/dashpay/docs-core/main/img/icons/icon_warning.svg) Note: This RPC only returns a balance for addresses contained in the local wallet.
 
@@ -849,17 +838,13 @@ Result:
 0.30000000
 ```
 
-_See also_
-
-* [GetReceivedByAccount](../api/remote-procedure-calls-removed.md#getreceivedbyaccount): returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions.
-* [GetAddressesByAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
-* [ListAccounts](../api/remote-procedure-calls-removed.md#listaccounts): lists accounts and their balances.
+_See also: none_
 
 ## GetReceivedByLabel
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`getreceivedbylabel` RPC](../api/remote-procedure-calls-wallet.md#getreceivedbylabel) returns the total amount received by addresses with <label> in transactions with specified minimum number of confirmations.
 
@@ -913,9 +898,9 @@ _See also_
 
 ## GetTransaction
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`gettransaction` RPC](../api/remote-procedure-calls-wallet.md#gettransaction) gets detailed information about an in-wallet transaction.
 
@@ -1020,9 +1005,9 @@ _See also_
 
 ## GetUnconfirmedBalance
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`getunconfirmedbalance` RPC](../api/remote-procedure-calls-wallet.md#getunconfirmedbalance) returns the wallet's total unconfirmed balance.
 
@@ -1052,9 +1037,9 @@ _See also_
 
 ## GetWalletInfo
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`getwalletinfo` RPC](../api/remote-procedure-calls-wallet.md#getwalletinfo) provides information about the wallet.
 
@@ -1138,9 +1123,9 @@ _See also_
 
 ## ImportAddress
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**)
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`importaddress` RPC](../api/remote-procedure-calls-wallet.md#importaddress) adds an address or pubkey script to the wallet without the associated private key, allowing you to watch for transactions affecting that address or pubkey script without being able to spend any of its outputs.
 
@@ -1207,11 +1192,11 @@ _See also_
 
 ## ImportDescriptors
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
->
-> Note: Importing descriptors can take a significant amount of time if a rescan is triggered, particularly if a timestamp far back in the past is used. During this time, other RPC calls may report that the imported keys, addresses, or scripts exist but related transactions are still missing.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
+
+Note: Importing descriptors can take a significant amount of time if a rescan is triggered, particularly if a timestamp far back in the past is used. During this time, other RPC calls may report that the imported keys, addresses, or scripts exist but related transactions are still missing.
+:::
 
 _Added in Dash Core 21.0.0_
 
@@ -1291,9 +1276,9 @@ _See also: none_
 
 ## ImportMulti
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
+:::
 
 _Added in Dash Core 0.12.3 / Bitcoin Core 0.14.0_
 
@@ -1378,9 +1363,9 @@ _See also_
 
 ## ImportPrivKey
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
+:::
 
 The [`importprivkey` RPC](../api/remote-procedure-calls-wallet.md#importprivkey) adds a private key to your wallet. The key should be formatted in the wallet import format created by the [`dumpprivkey` RPC](../api/remote-procedure-calls-wallet.md#dumpprivkey).
 
@@ -1432,9 +1417,9 @@ _See also_
 
 ## ImportPrunedFunds
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 _Added in Dash Core 0.12.3 / Bitcoin Core 0.13.0_
 
@@ -1523,9 +1508,9 @@ _See also:_
 
 ## ImportWallet
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Requires an unlocked wallet or an unencrypted wallet.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**) and an unlocked or unencrypted wallet.
+:::
 
 The [`importwallet` RPC](../api/remote-procedure-calls-wallet.md#importwallet) imports private keys from a file in wallet dump file format (see the [`dumpwallet` RPC](../api/remote-procedure-calls-wallet.md#dumpwallet)). These keys will be added to the keys currently in the wallet.  This call may need to rescan all or parts of the block chain for transactions affecting the newly-added keys, which may take several minutes.
 
@@ -1558,9 +1543,9 @@ _See also_
 
 ## KeyPoolRefill
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Requires an unlocked wallet or an unencrypted wallet.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**) and an unlocked or unencrypted wallet.
+:::
 
 The [`keypoolrefill` RPC](../api/remote-procedure-calls-wallet.md#keypoolrefill) fills the cache of unused pre-generated keys (the keypool).
 
@@ -1589,7 +1574,6 @@ dash-cli -testnet keypoolrefill 1001
 _See also_
 
 * [GetNewAddress](../api/remote-procedure-calls-wallet.md#getnewaddress): returns a new Dash address for receiving payments. If an account is specified, payments received with the address will be credited to that account.
-* [GetAccountAddress](../api/remote-procedure-calls-wallet-deprecated.md#getaccountaddress): returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address.
 * [GetWalletInfo](../api/remote-procedure-calls-wallet.md#getwalletinfo): provides information about the wallet.
 
 ## ListAddressBalances
@@ -1632,9 +1616,9 @@ _See also:_
 
 ## ListAddressGroupings
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`listaddressgroupings` RPC](../api/remote-procedure-calls-wallet.md#listaddressgroupings) lists groups of addresses that may have had their common ownership made public by common use as inputs in the same transaction or from being used as change from a previous transaction.
 
@@ -1680,15 +1664,14 @@ Result (edited to only three results):
 
 _See also_
 
-* [GetAddressesByAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
 * [GetTransaction](../api/remote-procedure-calls-wallet.md#gettransaction): gets detailed information about an in-wallet transaction.
 * [ListAddressBalances](../api/remote-procedure-calls-wallet.md#listaddressbalances): lists addresses of this wallet and their balances
 
 ## ListDescriptors
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
+:::
 
 _Added in Dash Core 21.0.0_
 
@@ -1745,9 +1728,9 @@ _See also_
 
 ## ListLabels
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`listlabels` RPC](../api/remote-procedure-calls-wallet.md#listlabels) returns the list of all labels, or labels that are assigned to addresses with a specific purpose.
 
@@ -1788,9 +1771,9 @@ _See also_
 
 ## ListLockUnspent
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`listlockunspent` RPC](../api/remote-procedure-calls-wallet.md#listlockunspent) returns a list of temporarily unspendable (locked) outputs.
 
@@ -1828,9 +1811,9 @@ _See also_
 
 ## ListReceivedByAddress
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`listreceivedbyaddress` RPC](../api/remote-procedure-calls-wallet.md#listreceivedbyaddress) lists the total number of dash received by each address.
 
@@ -1922,9 +1905,9 @@ _See also_
 
 ## ListReceivedByLabel
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`listreceivedbylabel` RPC](../api/remote-procedure-calls-wallet.md#listreceivedbylabel) lists the total number of Dash received by each label.
 
@@ -1994,7 +1977,6 @@ Result:
 _See also_
 
 * [ListReceivedByAddress](../api/remote-procedure-calls-wallet.md#listreceivedbyaddress): lists the total number of dash received by each address.
-* [GetReceivedByAccount](../api/remote-procedure-calls-removed.md#getreceivedbyaccount): returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions.
 * [GetReceivedByAddress](../api/remote-procedure-calls-wallet.md#getreceivedbyaddress): returns the total amount received by the specified address in transactions with the specified number of confirmations. It does not count coinbase transactions.
 
 ```{eval-rst}
@@ -2003,9 +1985,9 @@ _See also_
 
 ## ListSinceBlock
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`listsinceblock` RPC](../api/remote-procedure-calls-wallet.md#listsinceblock) gets all transactions affecting the wallet which have occurred since a particular block, plus the header hash of a block at a particular depth.
 
@@ -2138,9 +2120,9 @@ _See also_
 
 ## ListTransactions
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`listtransactions` RPC](../api/remote-procedure-calls-wallet.md#listtransactions) returns the most recent transactions that affect the wallet. If a label name is provided, this will return only incoming transactions paying to addresses with the specified label.
 
@@ -2245,9 +2227,9 @@ _See also_
 
 ## ListUnspent
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`listunspent` RPC](../api/remote-procedure-calls-wallet.md#listunspent) returns an array of unspent transaction outputs belonging to this wallet. **Note:** as of Bitcoin Core 0.10.0, outputs affecting watch-only addresses will be returned; see the _spendable_ field in the results described below.
 
@@ -2443,9 +2425,9 @@ _See also_
 
 ## LoadWallet
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`loadwallet` RPC](../api/remote-procedure-calls-wallet.md#loadwallet) loads a wallet from a wallet file or directory. Note that all wallet command-line options used when starting dashd will be applied to the new wallet (eg -zapwallettxes, upgradewallet, rescan, etc).
 
@@ -2491,9 +2473,9 @@ _See also_
 
 ## LockUnspent
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`lockunspent` RPC](../api/remote-procedure-calls-wallet.md#lockunspent) temporarily locks or unlocks specified transaction outputs. A locked transaction output will not be chosen by automatic coin selection when spending dash. Locks are stored in memory only, so nodes start with zero locked outputs and the locked output list is always cleared when a node stops or fails.
 
@@ -2607,9 +2589,9 @@ _See also_
 
 ## RemovePrunedFunds
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 _Added in Dash Core 0.12.3 / Bitcoin Core 0.13.0_
 
@@ -2686,9 +2668,9 @@ _See also_
 
 ## ScanTXOutset
 
-> ❗️
->
-> Experimental warning: this call may be removed or changed in future releases.
+:::{attention}
+Experimental warning: this call may be removed or changed in future releases.
+:::
 
 The [`scantxoutset` RPC](../api/remote-procedure-calls-wallet.md#scantxoutset) scans the unspent transaction output set for entries that match certain output descriptors.
 
@@ -2770,11 +2752,11 @@ _See also_
 
 ## Send
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
->
-> EXPERIMENTAL warning: This call may be changed in future releases.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+
+EXPERIMENTAL warning: This call may be changed in future releases.
+:::
 
 The [`send` RPC](../api/remote-procedure-calls-wallet.md#send) sends a transaction with specified outputs. This command creates and optionally broadcasts a transaction where none of the keys are duplicated in the output JSON array.
 
@@ -2851,17 +2833,13 @@ _See also_
 
 ## SendMany
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Requires an unlocked wallet or an unencrypted wallet.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**) and an unlocked or unencrypted wallet.
+:::
 
 The [`sendmany` RPC](../api/remote-procedure-calls-wallet.md#sendmany) creates and broadcasts a transaction which sends outputs to multiple addresses.
 
 _Parameter #1---unused parameter_
-
-> 🚧
->
-> Note that this parameter has been removed in v0.17. To use this RPC with a "fromaccount" parameter, restart dashd with `-deprecatedrpc=accounts`.
 
 | Name | Type | Presence | Description |
 | ---- | ---- | -------- | ----------- |
@@ -3003,9 +2981,9 @@ _See also_
 
 ## SendToAddress
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Requires an unlocked wallet or an unencrypted wallet.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**) and an unlocked or unencrypted wallet.
+:::
 
 The [`sendtoaddress` RPC](../api/remote-procedure-calls-wallet.md#sendtoaddress) spends an amount to a given address.
 
@@ -3162,9 +3140,9 @@ _See also_
 
 ## SetHDSeed
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 _Added in Dash Core 21.0.0_
 
@@ -3206,9 +3184,9 @@ _See also_
 
 ## SetLabel
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`setlabel` RPC](../api/remote-procedure-calls-wallet.md#setlabel) sets the label associated with the given address.
 
@@ -3299,9 +3277,9 @@ _See also:_
 
 ## SetTxFee
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`settxfee` RPC](../api/remote-procedure-calls-wallet.md#settxfee) sets the transaction fee per kilobyte paid by transactions created by this wallet.
 
@@ -3381,9 +3359,9 @@ _See also: none_
 
 ## SignMessage
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Requires an unlocked wallet or an unencrypted wallet.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**) and an unlocked or unencrypted wallet.
+:::
 
 The [`signmessage` RPC](../api/remote-procedure-calls-wallet.md#signmessage) signs a message with the private key of an address.
 
@@ -3425,9 +3403,9 @@ _See also_
 
 ## SignRawTransactionWithWallet
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Requires an unlocked wallet.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**) and an unlocked wallet.
+:::
 
 The [`signrawtransactionwithwallet` RPC](#signrawtransactionwithwallet) signs a transaction in the serialized transaction format using private keys stored in the wallet.
 
@@ -3492,9 +3470,9 @@ _See also_
 
 ## UnloadWallet
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`unloadwallet` RPC](../api/remote-procedure-calls-wallet.md#unloadwallet) unloads the wallet referenced by the request endpoint otherwise unloads the wallet specified in the argument. Specifying the wallet name on a wallet endpoint is invalid.
 
@@ -3530,9 +3508,9 @@ _See also_
 
 ## UpgradeToHD
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+:::
 
 The [`upgradetohd` RPC](../api/remote-procedure-calls-wallet.md#upgradetohd) upgrades non-HD wallets to HD.
 
@@ -3683,9 +3661,9 @@ Result:
 
 ## WalletLock
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Requires an unlocked wallet.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**) and an unlocked wallet.
+:::
 
 The [`walletlock` RPC](../api/remote-procedure-calls-wallet.md#walletlock) removes the wallet encryption key from memory, locking the wallet. After calling this method, you will need to call `walletpassphrase` again before being able to call any methods which require the wallet to be unlocked.
 
@@ -3713,15 +3691,15 @@ _See also_
 
 ## WalletPassphrase
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Requires an encrypted wallet.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**) and an encrypted wallet.
+:::
 
 The [`walletpassphrase` RPC](../api/remote-procedure-calls-wallet.md#walletpassphrase) stores the wallet decryption key in memory for the indicated number of seconds. Issuing the `walletpassphrase` command while the wallet is already unlocked will set a new unlock time that overrides the old one.
 
-> 🚧
->
-> **Warning:** if using this RPC on the command line, remember that your shell probably saves your command lines (including the value of the passphrase parameter).
+:::{warning}
+If using this RPC on the command line, remember that your shell probably saves your command lines (including the value of the passphrase parameter).
+:::
 
 _Parameter #1---the passphrase_
 
@@ -3773,15 +3751,15 @@ _See also_
 
 ## WalletPassphraseChange
 
-> 📘
->
-> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Requires an encrypted wallet.
+:::{note}
+Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**) and an encrypted wallet.
+:::
 
 The [`walletpassphrasechange` RPC](../api/remote-procedure-calls-wallet.md#walletpassphrasechange) changes the wallet passphrase from 'old passphrase' to 'new passphrase'.
 
-> 🚧
->
-> **Warning:** if using this RPC on the command line, remember that your shell probably saves your command lines (including the value of the passphrase parameter).
+:::{warning}
+If using this RPC on the command line, remember that your shell probably saves your command lines (including the value of the passphrase parameter).
+:::
 
 _Parameter #1---the current passphrase_
 

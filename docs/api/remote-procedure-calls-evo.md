@@ -61,9 +61,9 @@ Result:
 
 The `bls generate` RPC creates a new BLS secret/public key pair.
 
-> 📘
->
-> Note: Upon v19 hard fork activation, BLS keys are generated using the basic scheme by default.
+:::{note}
+Since the v19 hard fork activation, BLS keys are generated using the basic scheme by default.
+:::
 
 *Parameter #1---legacy*
 
@@ -732,11 +732,11 @@ ec66f97568727a9e5188acb3ccf680086ae11217236efcccd67b0b72e83c79a043d6c6d064378fdd
 
 ### ProTx Register Legacy
 
-> 📘 When to use
->
-> After v19 hard fork activation, this command must be used if a legacy scheme BLS key is being used to register a masternode. In all other cases the [`protx register`RPC](#protx-register) should be used instead.
->
-> Legacy scheme BLS keys are created if the [`bls generate` RPC](#bls-generate) is run prior to v19 hard fork activation OR if a legacy key is explicitly generated using the [`bls generate legacy` RPC](#bls-generate).
+:::{note}
+Since the v19 hard fork activation, this command must be used if a legacy scheme BLS key is being used to register a masternode. In all other cases the [`protx register`RPC](#protx-register) should be used instead.
+
+Legacy scheme BLS keys are created if the [`bls generate` RPC](#bls-generate) is run prior to v19 hard fork activation OR if a legacy key is explicitly generated using the [`bls generate legacy` RPC](#bls-generate).
+:::
 
 The `protx register_legacy` RPC works similar to `protx register`, but parses the operator key using the legacy BLS scheme. The collateral is specified through `collateralHash` and `collateralIndex` and must be an unspent transaction output spendable by this wallet. It must also not be used by any other masternode. This RPC requires a wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
 
@@ -966,11 +966,11 @@ c207ebd525793ccb43f60ce34a5cd5f4011976a9145a375814e9caf5b8575a8221be246457e5c5c2
 
 ### ProTx Register Fund Legacy
 
-> 📘 When to use
->
-> After v19 hard fork activation, this command must be used if a legacy scheme BLS key is being used to register a masternode. In all other cases the [`protx register_fund` RPC](#protx-register-fund) should be used instead.
->
-> Legacy scheme BLS keys are created if the [`bls generate` RPC](#bls-generate) is run prior to v19 hard fork activation OR if a legacy key is explicitly generated using the [`bls generate legacy` RPC](#bls-generate).
+:::{note}
+Since the v19 hard fork activation, this command must be used if a legacy scheme BLS key is being used to register a masternode. In all other cases the [`protx register_fund` RPC](#protx-register-fund) should be used instead.
+
+Legacy scheme BLS keys are created if the [`bls generate` RPC](#bls-generate) is run prior to v19 hard fork activation OR if a legacy key is explicitly generated using the [`bls generate legacy` RPC](#bls-generate).
+:::
 
 The `protx register_fund_legacy` RPC creates, funds, and sends a ProTx to the network. The resulting transaction will move 1000 DASH to the address specified by `collateralAddress` and will then function as the collateral of your masternode. A few of the limitations you see in the arguments are temporary and might be lifted after DIP3 is fully deployed.
 
@@ -1170,11 +1170,11 @@ Result:
 
 ### ProTx Register Prepare Legacy
 
-> 📘 When to use
->
-> After v19 hard fork activation, this command must be used if a legacy scheme BLS key is being used to register a masternode. In all other cases the [`protx register_prepare` RPC](#protx-register-prepare) should be used instead.
->
-> Legacy scheme BLS keys are created if the [`bls generate` RPC](#bls-generate) is run prior to v19 hard fork activation OR if a legacy key is explicitly generated using the [`bls generate legacy` RPC](#bls-generate).
+:::{note}
+Since the v19 hard fork activation, this command must be used if a legacy scheme BLS key is being used to register a masternode. In all other cases the [`protx register_prepare` RPC](#protx-register-prepare) should be used instead.
+
+Legacy scheme BLS keys are created if the [`bls generate` RPC](#bls-generate) is run prior to v19 hard fork activation OR if a legacy key is explicitly generated using the [`bls generate legacy` RPC](#bls-generate).
+:::
 
 The `protx register_prepare_legacy` RPC Creates an unsigned ProTx and a message that must be signed externally with the private key that corresponds to collateralAddress to prove collateral ownership. The prepared transaction will also contain inputs and outputs to cover fees.
 
@@ -1403,9 +1403,9 @@ ec66f97568727a9e5188acb3ccf680086ae11217236efcccd67b0b72e83c79a043d6c6d064378fdd
 
 ### ProTx Register HPMN
 
-> ❗️ Deprecated RPC
->
-> The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::{deprecated} 20.0.0
+The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::
 
 ### ProTx Register Fund Evo
 
@@ -1538,9 +1538,9 @@ c207ebd525793ccb43f60ce34a5cd5f4011976a9145a375814e9caf5b8575a8221be246457e5c5c2
 
 ### ProTx Register Fund HPMN
 
-> ❗️ Deprecated RPC
->
-> The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::{deprecated} 20.0.0
+The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::
 
 ### ProTx Register Prepare Evo
 
@@ -1650,9 +1650,9 @@ Result:
 
 ### ProTx Register Prepare HPMN
 
-> ❗️ Deprecated RPC
->
-> The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::{deprecated} 20.0.0
+The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::
 
 ### ProTx Update Service Evo
 
@@ -1730,9 +1730,9 @@ Result:
 
 ### ProTx Update Service HPMN
 
-> ❗️ Deprecated RPC
->
-> The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::{deprecated} 20.0.0
+The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+:::
 
 ### ProTx Register Submit
 
@@ -1830,9 +1830,9 @@ Result:
 
 ### ProTx Update Registrar
 
-> 🚧 Dash Core v19 hard fork
->
-> Following the hard fork activation, masternodes registered prior to the hard fork must use the [`protx update_registrar_legacy` RPC](#protx-update-registrar-legacy) unless they have already updated to a basic scheme BLS key.
+:::{attention}
+Following the Dash Core v19 hard fork activation, masternodes registered prior to the hard fork must use the [`protx update_registrar_legacy` RPC](#protx-update-registrar-legacy) unless they have already updated to a basic scheme BLS key.
+:::
 
 The `protx update_registrar` RPC creates and sends a ProUpRegTx to the network.
 
@@ -1889,9 +1889,9 @@ Result:
 
 ### ProTx Update Registrar Legacy
 
-> 📘 When to use
->
-> After v19 hard fork activation, this command must be used if a legacy scheme BLS key is being used to registrar update a masternode. This would include all masternodes registered prior to the hard fork that have not already updated to a new basic scheme BLS key.
+:::{note}
+Since the v19 hard fork activation, this command must be used if a legacy scheme BLS key is being used to registrar update a masternode. This would include all masternodes registered prior to the hard fork that have not already updated to a new basic scheme BLS key.
+:::
 
 The `protx update_registrar_legacy` RPC creates and sends a ProUpRegTx to the network. This will update the operator key, voting key and payout address of the masternode specified by `proTxHash`. The owner key of the masternode must be known to your wallet. Requires the wallet passphrase to be provide with the [`walletpassphrase` RPC](../api/remote-procedure-calls-wallet.md#walletpassphrase) if the wallet is encrypted.
 
@@ -2138,9 +2138,8 @@ Result (truncated):
 
 ### Quorum DKGInfo
 
-> 👍
->
-> Added in Dash Core 20.1.0
+:::{versionadded} 20.1.0
+:::
 
 The `quorum dkginfo` RPC returns information about active and upcoming DKG sessions.
 
@@ -2172,10 +2171,6 @@ Result (truncated):
 ### Quorum DKGStatus
 
 The `quorum list` RPC displays the status of the current DKG process.
-
-> ❗️
->
-> Breaking change(s) in Dash Core 18.0. See parameter and/or response information for details.
 
 *Parameter #1---detail level*
 
@@ -2874,9 +2869,9 @@ The `quorum sign` RPC requests threshold-signing for a message.
 | ---- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id` | string (hex) | Required<br>(exactly 1) | Signing request ID. Signing request ids for ChainLocks and InstantSend are calculated as described in:<br> \* The [ChainLocks DIP](https://github.com/dashpay/dips/blob/master/dip-0008.md#signing-attempts)<br> \* The [LLMQ InstantSend DIP](https://github.com/dashpay/dips/blob/master/dip-0010.md#finalization-and-creation-of-islock-messages). |
 
-> 📘
->
-> For general signing requests, any 32 byte hex string can be provided as the request id. Note that if a quorum hash is not specified in parameter 4, a quorum will be selected automatically based in part on this value.
+:::{note}
+For general signing requests, any 32 byte hex string can be provided as the request id. Note that if a quorum hash is not specified in parameter 4, a quorum will be selected automatically based in part on this value.
+:::
 
 *Parameter #3---message hash*
 
@@ -3013,9 +3008,9 @@ Result:
 
 The `quorum hasrecsig` RPC checks for a recovered signature for a previous threshold-signing message request.
 
-> 🚧 Regtest Network Only
->
-> Note: Used for RegTest testing only.
+:::{note}
+Used for testing on the RegTest network only.
+:::
 
 *Parameter #1---LLMQ Type*
 
@@ -3059,9 +3054,9 @@ true
 
 The `quorum isconflicting` RPC checks if there is a conflict for a threshold-signing message request.
 
-> 🚧 Regtest Network Only
->
-> Note: Used for RegTest testing only.
+:::{note}
+Used for testing on the RegTest network only.
+:::
 
 *Parameter #1---LLMQ Type*
 
@@ -4011,10 +4006,6 @@ Result:
 
 ### Quorum Verify
 
-> 👍
->
-> Added in Dash Core 0.17.0
-
 The `quorum verify` RPC tests if a quorum signature is valid for a request id and a message hash.
 
 *Parameter #1---LLMQ Type*
@@ -4111,10 +4102,6 @@ Result:
 
 ## VerifyChainLock
 
-> 👍
->
-> Added in Dash Core 0.17.0
-
 The `verifychainlock` RPC tests if a quorum signature is valid for a ChainLock.
 
 *Parameter #1---block hash*
@@ -4158,10 +4145,6 @@ true
 ```
 
 ## VerifyISLock
-
-> 👍
->
-> Added in Dash Core 0.17.0
 
 The `verifyislock` RPC tests if a quorum signature is valid for an InstantSend Lock.
 

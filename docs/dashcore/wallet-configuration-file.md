@@ -51,9 +51,9 @@ rpcport=19998
 
 Since Dash Core 0.16 it is possible for a single configuration file to set different options for different networks. This is done by using sections or by prefixing the option with the network as shown below:
 
->❗️ Valid Section Names
->
-> Please note that the only valid section names are **`[main]`**, **`[test]`**, **`[regtest]`**, and **`[devnet]`**.
+:::{attention}
+Please note that the only valid section names are **`[main]`**, **`[test]`**, **`[regtest]`**, and **`[devnet]`**.
+:::
 
 ``` text Example dash.conf
 # Enable RPC server for all networks
@@ -88,10 +88,10 @@ rpcport=21998
 
 With this configuration file, dashd, dash-qt, or dash-cli can be run with the `-conf=<configuration file>` along with the `-testnet`,  `-regtest`, or `-devnet=<devnet name>` parameter to select the correct settings.
 
->❗️
->
-> The following options will only apply to mainnet **_unless they are in a section_** (e.g., `[test]`): `addnode=`, `connect=`, `port=`, `bind=`, `rpcport=`, `rpcbind=` and `wallet=`.
+:::{attention}
+The following options will only apply to mainnet **_unless they are in a section_** (e.g., `[test]`): `addnode=`, `connect=`, `port=`, `bind=`, `rpcport=`, `rpcbind=` and `wallet=`.
 The options to choose a network (`regtest=` and `testnet=`) must be specified outside of sections.
+:::
 
 ## settings.json
 

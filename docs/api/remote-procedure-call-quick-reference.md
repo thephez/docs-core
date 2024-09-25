@@ -226,26 +226,10 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 
 **Note:** the wallet RPCs are only available if Dash Core was built with [wallet support](../resources/glossary.md#wallet-support), which is the default.
 
-* [GetAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaccount): returns the name of the account associated with the given address. **_Deprecated_**
-* [GetAccountAddress](../api/remote-procedure-calls-wallet-deprecated.md#getaccountaddress): returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address. **_Deprecated_**
-* [GetAddressesByAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account. **_Deprecated_**
-* [SetAccount](../api/remote-procedure-calls-wallet-deprecated.md#setaccount): puts the specified address in the given account. **_Deprecated_**
-
 ## [ZeroMQ (ZMQ) RPCs](../api/remote-procedure-calls-zmq.md)
 
 * [GetZmqNotifications](../api/remote-procedure-calls-zmq.md#getzmqnotifications): returns information about the active ZeroMQ notifications. _Updated in Dash Core 18.0.0_
 
 ## [Removed RPCs](../api/remote-procedure-calls-removed.md)
 
-* [EstimateFee](../api/remote-procedure-calls-removed.md#estimatefee): was removed in Dash Core 0.17.0.
-* [GetPoolInfo](../api/remote-procedure-calls-removed.md#getpoolinfo): returns an object containing pool related information. Deprecated in 0.15.0
-* [GetReceivedByAccount](../api/remote-procedure-calls-removed.md#getreceivedbyaccount): was removed in Dash Core 18.0.0.
 * [GObject vote-conf](../api/remote-procedure-calls-removed.md#gobject-vote-conf): **was removed in Dash Core 20.0.0**
-* [KeePass](../api/remote-procedure-calls-removed.md#keepass): was removed in Dash Core 18.0.0.
-* [ListAccounts](../api/remote-procedure-calls-removed.md#listaccounts): was removed in Dash Core 18.0.0.
-* [ListReceivedByAccount](../api/remote-procedure-calls-removed.md#listreceivedbyaccount): was removed in Dash Core 18.0.0.
-* [Move](../api/remote-procedure-calls-removed.md#move): was removed in Dash Core 18.0.0.
-* [SendFrom](../api/remote-procedure-calls-removed.md#sendfrom): was removed in Dash Core 18.0.0.
-* [SignRawTransaction](../api/remote-procedure-calls-removed.md#signrawtransaction): was removed in Dash Core 18.0.0.
-* [SignRawTransaction](../api/remote-procedure-calls-removed.md#signrawtransaction): was removed in Dash Core 18.0.0.
-* [Generate](../api/remote-procedure-calls-removed.md#generate): mines blocks immediately (before the RPC call returns).  was removed in Dash Core 18.1.0.

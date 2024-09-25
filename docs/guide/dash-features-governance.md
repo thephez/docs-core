@@ -18,9 +18,9 @@ There are two distinct stages of governance sync:
 
 2. Follow up request(s) (vote sync) - request governance object votes for a specific object via a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) containing the hash of the object. One message is required for each object. Dash Core periodically (~ every 6 seconds) sends messages to connected nodes until all the governance objects have been synchronized.
 
-> 📘 Governance Object Sync Limitation
->
-> Dash Core limits how frequently the first type of sync (object sync) can be requested. Frequent requests will result in the node being banned.
+:::{note}
+Dash Core limits how frequently the first type of sync (object sync) can be requested. Frequent requests will result in the node being banned.
+:::
 
 Masternodes respond to the [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) with several items:
 
@@ -58,9 +58,9 @@ Once the syncing [node](../resources/glossary.md#node) receives the counts and i
 
 ## Sentinel
 
-> 🚧 Sentinel Deprecation
->
-> Sentinel was deprecated in Dash Core v20.0 when its functionality was integrated into Dash Core.
+:::{attention}
+Sentinel was deprecated in Dash Core v20.0 when its functionality was integrated into Dash Core.
+:::
 
 [Sentinel](https://github.com/dashpay/sentinel/) is a Python application that connects to a masternode's local dashd instance to run as an autonomous agent for persisting, processing, and automating Dash 12.1+ governance objects and tasks. Sentinel abstracts some governance details away from Dash Core for easier extensibility of the governance system in the future. This will allow the integration between Evolution and Dash Core to proceed more smoothly and enable new governance object additions with minimal impact to Dash Core.
 
@@ -83,8 +83,8 @@ Beginning ~3 days (1662 blocks) prior to a superblock, Sentinel selects one mast
 
 All masternodes vote for existing superblock triggers. Each masternode casts only 1 superblock trigger "Yes" vote per superblock cycle. It will vote "No" for any other triggers it receives.
 
-> 🚧 Single masternode trigger vote
->
-> Note: This means that proposal votes submitted _after_ superblock trigger creation begins will **not** be counted by some masternodes (those that have already voted on a superblock trigger).
+:::{attention}
+Proposal votes submitted _after_ superblock trigger creation begins will **not** be counted by some masternodes (those that have already voted on a superblock trigger).
+:::
 
 At the superblock height, the trigger with the most "Yes" votes is paid out by that block's miner.

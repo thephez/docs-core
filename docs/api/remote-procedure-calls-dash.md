@@ -668,11 +668,7 @@ Result (truncated):
 
 ### GObject Prepare
 
-The `gobject prepare` RPC prepares a governance object by signing and creating a collateral transaction.
-
-> 👍
->
-> Note: Dash Core v18.0.0 added support for directing proposal payouts to P2SH addresses such as multisig.
+The `gobject prepare` RPC prepares a governance object by signing and creating a collateral transaction. Dash Core v18.0.0 added support for directing proposal payouts to P2SH addresses such as multisig.
 
 *Parameter #1---parent hash*
 
@@ -1038,10 +1034,6 @@ The [`masternode` RPC](#masternode) provides a set of commands for managing mast
 
 The `masternode count` RPC prints the number of all known masternodes.
 
-> 🚧 Dash Core 0.17.0 change
->
-> The previously deprecated `mode` parameter was removed in Dash Core 0.17.0. Information regarding the previous functionality is available in [an older version of the documentation](https://dashcore.readme.io/v0.16.0/docs/core-api-ref-remote-procedure-calls-dash#masternode-count).
-
 *Parameters: none*
 
 *Result---number of known masternodes*
@@ -1086,9 +1078,9 @@ Result:
 
 ### Masternode Current
 
-> ❗️ Deprecated in Dash Core 0.17.0
->
-> This RPC has been deprecated and will be removed in a future version of Dash Core
+:::{deprecated} 0.17.0
+This RPC has been deprecated and will be removed in a future version of Dash Core
+:::
 
 The `masternode current` RPC prints info on current masternode winner to be paid the next block (calculated locally).
 
@@ -1149,10 +1141,6 @@ Result:
 
 The `masternode outputs` RPC prints masternode compatible outputs.
 
-> ❗️ Breaking change
->
-> Dash Core 18.1.0 changed the response format from a JSON object (Key: TXID, Value: transaction index) to the current array representation
-
 *Parameters: none*
 
 *Result---masternode outputs*
@@ -1177,10 +1165,6 @@ Result:
 ```
 
 ### Masternode Payments
-
-> 👍
->
-> Added in Dash Core 0.17.0
 
 The `masternode payments` RPC prints an array of deterministic masternodes and their payments for the specified block.
 
@@ -1332,9 +1316,9 @@ Result:
 
 ### Masternode Winner
 
-> ❗️ Deprecated in Dash Core 0.17.0
->
-> This RPC has been deprecated and will be removed in a future version of Dash Core
+:::{deprecated} 0.17.0
+This RPC has been deprecated and will be removed in a future version of Dash Core
+:::
 
 The `masternode winner` RPC prints info on the next masternode winner to vote for.
 
@@ -1832,9 +1816,9 @@ Result:
 
 The [`sporkupdate` RPC](#sporkupdate) updates the value of the provided spork.
 
-> 📘
->
-> Signing spork update messages requires `-sporkkey` to be set via the command line or dash.conf file.
+:::{note}
+Signing spork update messages requires `-sporkkey` to be set via the command line or dash.conf file.
+:::
 
 To update the state of a spork activation, use the `<name> [value]` syntax.
 

@@ -20,9 +20,9 @@ The configuration file is not automatically created; you can create it using you
 | Windows | %APPDATA% | _(Vista-10)_ C:\\Users\\username\\AppData\\Roaming\\DashCore\\dash.conf |
 | Windows | %APPDATA% | _(2000-XP)_ C:\\Documents and Settings\\username\\Application Data\\DashCore\\dash.conf |
 
-> 📘 Testnet/Devnet modes
->
-> Note: if running Dash in testnet mode, the sub-folder `testnet3` will be appended to the data directory automatically. Likewise, if running in devnet mode, the subfolder `devnet-"devnet name"` will be appended to the data directory.
+:::{note}
+If running Dash in testnet mode, the sub-folder `testnet3` will be appended to the data directory automatically. Likewise, if running in devnet mode, the subfolder `devnet-"devnet name"` will be appended to the data directory.
+:::
 
 ## Command Line Arguments
 

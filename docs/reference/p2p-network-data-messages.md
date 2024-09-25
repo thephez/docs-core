@@ -558,11 +558,11 @@ The [`mempool` message](../reference/p2p-network-data-messages.md#mempool) reque
 
 Sending the [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is mostly useful when a program first connects to the network. Full nodes can use it to quickly gather most or all of the unconfirmed transactions available on the network; this is especially useful for miners trying to gather transactions for their transaction fees. SPV clients can set a filter before sending a `mempool` to only receive transactions that match that filter; this allows a recently-started client to get most or all unconfirmed transactions related to its wallet.
 
-> 📘 InstantSend and ChainLock Synchronization
->
-> Dash Core 0.15.0 expanded the mempool message to include syncing of [InstantSend Lock](../reference/p2p-network-deprecated-messages.md#islock) inventories. Additionally, nodes now attempt to sync their mempool with peers at startup by default (limited to peers using protocol version 70216 or higher). This allows nodes to more quickly detect any double-spend attempts as well as show InstantSend lock status correctly for transactions received while offline.
->
->Dash Core 0.17.0 expanded the mempool message to include syncing of [ChainLock](../reference/p2p-network-instantsend-messages.md#clsig) inventories. This allows nodes to more quickly show ChainLock status correctly after being offline.
+:::{note}
+Dash Core 0.15.0 expanded the mempool message to include syncing of [InstantSend Lock](../reference/p2p-network-deprecated-messages.md#islock) inventories. Additionally, nodes now attempt to sync their mempool with peers at startup by default (limited to peers using protocol version 70216 or higher). This allows nodes to more quickly detect any double-spend attempts as well as show InstantSend lock status correctly for transactions received while offline.
+
+Dash Core 0.17.0 expanded the mempool message to include syncing of [ChainLock](../reference/p2p-network-instantsend-messages.md#clsig) inventories. This allows nodes to more quickly show ChainLock status correctly after being offline.
+:::
 
 The `inv` response to the [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is, at best, one node's view of the network---not a complete list of every [unconfirmed transaction](../resources/glossary.md#unconfirmed-transaction) on the network. Here are some additional reasons the list might not be complete:
 

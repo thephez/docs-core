@@ -389,12 +389,12 @@ The [`qfcommit` message](../reference/p2p-network-quorum-messages.md#qfcommit) i
 
 It is possible to receive multiple valid final commitments for the same DKG session. These should only differ in the number of signers, which can be ignored as long as there are at least `quorumThreshold` number of signers. The set of valid members for these final commitments should always be the same, as each member only creates a single premature commitment. This means that only one set of valid members (and thus only one quorum verification vector and quorum [public key](../resources/glossary.md#public-key)) can gain a majority. If the threshold is not reached, there will be no valid final commitment.
 
-> 📘 Versions
->
-> * Version 2 (Dash Core 18.0) - updated the `qfcommit` message to support a [new method](https://github.com/dashpay/dips/blob/master/dip-0024.md) of quorum creation for some quorum types. Note the addition of the `quorumIndex` field in version 2 messages.
-> * Versions 3/4 (Dash Core 19.0) - `quorumPublicKey`, `quorumSig`, and `sig` serialized using the basic BLS scheme (versions <3 use the legacy BLS scheme).
->
-> See the *Version differences summary* table below for more information.
+:::{note}
+* Version 2 (Dash Core 18.0) - updated the `qfcommit` message to support a [new method](https://github.com/dashpay/dips/blob/master/dip-0024.md) of quorum creation for some quorum types. Note the addition of the `quorumIndex` field in version 2 messages.
+* Versions 3/4 (Dash Core 19.0) - `quorumPublicKey`, `quorumSig`, and `sig` serialized using the basic BLS scheme (versions <3 use the legacy BLS scheme).
+
+See the *Version differences summary* table below for more information.
+:::
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |

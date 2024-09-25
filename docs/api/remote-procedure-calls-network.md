@@ -658,9 +658,9 @@ Result (edited to show only a single entry, with IP addresses changed to
 
 The [`listbanned` RPC](../api/remote-procedure-calls-network.md#listbanned) lists all ***manually banned*** IPs/Subnets.
 
-> 📘 Changes regarding misbehaving peers
->
-> Dash Core 18.1.0 introduced changes to how misbehaving peers are treated. As a result they are no longer included in this RPC response. See the [release notes](https://github.com/dashpay/dash/blob/v18.1.0/doc/release-notes.md#changes-regarding-misbehaving-peers) for additional details.
+:::{note}
+Dash Core 18.1.0 introduced changes to how misbehaving peers are treated. As a result they are no longer included in this RPC response. See the [release notes](https://github.com/dashpay/dash/blob/v18.1.0/doc/release-notes.md#changes-regarding-misbehaving-peers) for additional details.
+:::
 
 *Parameters: none*
 

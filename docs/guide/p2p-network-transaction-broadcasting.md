@@ -8,9 +8,9 @@
 
 In order to send a [transaction](../resources/glossary.md#transaction) to a [peer](../resources/glossary.md#peer), an [`inv` message](../reference/p2p-network-data-messages.md#inv) is sent. If a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) is received in reply, the transaction is sent using a [`tx` message](../reference/p2p-network-data-messages.md#tx). If it is a valid transaction, the peer receiving the transaction also forwards the transaction to its peers.
 
-> 📘 Block-only relay connections
->
-> Dash Core 18.1.0 backported changes from Bitcoin to support block-only relay connections (specific connections that do not relay transaction information). This change was made to improve network topology and reduce information leaked by transaction relay. See the [Bitcoin pull request](https://github.com/bitcoin/bitcoin/pull/15759) for additional details.
+:::{note}
+Dash Core 18.1.0 backported changes from Bitcoin to support block-only relay connections (specific connections that do not relay transaction information). This change was made to improve network topology and reduce information leaked by transaction relay. See the [Bitcoin pull request](https://github.com/bitcoin/bitcoin/pull/15759) for additional details.
+:::
 
 ## Memory Pool
 

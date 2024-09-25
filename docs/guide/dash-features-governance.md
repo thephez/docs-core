@@ -18,9 +18,9 @@ There are two distinct stages of governance sync:
 
 2. Follow up request(s) (vote sync) - request governance object votes for a specific object via a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) containing the hash of the object. One message is required for each object. Dash Core periodically (~ every 6 seconds) sends messages to connected nodes until all the governance objects have been synchronized.
 
-> 📘 Governance Object Sync Limitation
->
-> Dash Core limits how frequently the first type of sync (object sync) can be requested. Frequent requests will result in the node being banned.
+:::{note}
+Dash Core limits how frequently the first type of sync (object sync) can be requested. Frequent requests will result in the node being banned.
+:::
 
 Masternodes respond to the [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) with several items:
 

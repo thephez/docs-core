@@ -16,9 +16,9 @@ The main task of LLMQs is to perform threshold signing of consensus-related mess
 
 The following table details the data flow of P2P messages exchanged during the distributed key generation (DKG) protocol used to establish an LLMQ.
 
-> 📘 Intra-Quorum Communication
->
-> Note: With the exception of the final step (`qfcommit` message broadcast), the message exchanges happen only between masternodes participating in the DKG process via the [Intra-Quorum communication process](https://github.com/dashpay/dips/blob/master/dip-0006.md#intra-quorum-communication) described in the DIP.
+:::{note}
+With the exception of the final step (`qfcommit` message broadcast), the message exchanges happen only between masternodes participating in the DKG process via the [Intra-Quorum communication process](https://github.com/dashpay/dips/blob/master/dip-0006.md#intra-quorum-communication) described in the DIP.
+:::
 
 *Quorum DKG Data Flow*
 

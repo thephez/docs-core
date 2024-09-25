@@ -13,9 +13,9 @@ Dash Core provides a remote procedure call (RPC) interface for various administr
 
 Open-source client libraries for the RPC interface are readily available in most modern programming languages, so you probably don't need to write your own from scratch. Dash Core also ships with its own compiled C++ RPC client, `dash-cli`, located in the `bin` directory alongside `dashd` and `dash-qt`. The `dash-cli` program can be used as a command-line interface (CLI) to Dash Core or for making RPC calls from applications written in languages lacking a suitable native client. The remainder of this section describes the Dash Core RPC protocol in detail.
 
-> 📘 Dash Core Configuration
->
-> The following subsections reference setting configuration values. See the [Examples Page](../examples/introduction.md) for more information about setting Dash Core configuration values.
+:::{note}
+The following subsections reference setting configuration values. See the [Examples Page](../examples/introduction.md) for more information about setting Dash Core configuration values.
+:::
 
 ### Enabling RPC
 

@@ -6,6 +6,80 @@
 
 # Dash RPCs
 
+<span id="privatesend"></span>
+
+## CoinJoin
+
+As of Dash Core 0.12.3, this is not supported on masternodes since wallet functionality is disabled on them for security reasons.
+
+The [`coinjoin` RPC](#coinjoin) controls the CoinJoin process (previously named `privatesend` prior to Dash Core 0.17.0).
+
+| Name   | Type   | Presence                | Description                                                                                                |
+| ------ | ------ | ----------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `mode` | string | Required<br>(exactly 1) | The command mode to use:<br>`start` - Start CoinJoin<br>`stop` - Stop CoinJoin<br>`reset` - Reset CoinJoin |
+
+**Command Mode - `start`**
+
+*Result---start command return status*
+
+| Name     | Type   | Presence                | Description           |
+| -------- | ------ | ----------------------- | --------------------- |
+| `result` | string | Required<br>(exactly 1) | Command return status |
+
+*Example from Dash Core 0.17.0*
+
+``` bash
+dash-cli -testnet coinjoin start
+```
+
+Result:
+
+```text
+Mixing started successfully
+```
+
+**Command Mode - `stop`**
+
+*Result---stop command return status*
+
+| Name     | Type   | Presence                | Description           |
+| -------- | ------ | ----------------------- | --------------------- |
+| `result` | string | Required<br>(exactly 1) | Command return status |
+
+*Example from Dash Core 0.17.0*
+
+``` bash
+dash-cli -testnet coinjoin stop
+```
+
+Result:
+
+```text
+Mixing was stopped
+```
+
+**Command Mode - `reset`**
+
+*Result---reset command return status*
+
+| Name     | Type   | Presence                | Description           |
+| -------- | ------ | ----------------------- | --------------------- |
+| `result` | string | Required<br>(exactly 1) | Command return status |
+
+*Example from Dash Core 0.17.0*
+
+``` bash
+dash-cli -testnet coinjoin reset
+```
+
+Result:
+
+```text
+Mixing was reset
+```
+
+*See also: none*
+
 ## GetGovernanceInfo
 
 The [`getgovernanceinfo` RPC](#getgovernanceinfo) returns an object containing governance parameters.
@@ -1663,80 +1737,6 @@ success
 
 * [Masternode](#masternode): provides a set of commands for managing masternodes and displaying information about them.
 * [MasternodeList](#masternodelist): returns a list of masternodes in different modes.
-
-<span id="privatesend"></span>
-
-## CoinJoin
-
-As of Dash Core 0.12.3, this is not supported on masternodes since wallet functionality is disabled on them for security reasons.
-
-The [`coinjoin` RPC](#coinjoin) controls the CoinJoin process (previously named `privatesend` prior to Dash Core 0.17.0).
-
-| Name   | Type   | Presence                | Description                                                                                                |
-| ------ | ------ | ----------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `mode` | string | Required<br>(exactly 1) | The command mode to use:<br>`start` - Start CoinJoin<br>`stop` - Stop CoinJoin<br>`reset` - Reset CoinJoin |
-
-**Command Mode - `start`**
-
-*Result---start command return status*
-
-| Name     | Type   | Presence                | Description           |
-| -------- | ------ | ----------------------- | --------------------- |
-| `result` | string | Required<br>(exactly 1) | Command return status |
-
-*Example from Dash Core 0.17.0*
-
-``` bash
-dash-cli -testnet coinjoin start
-```
-
-Result:
-
-```text
-Mixing started successfully
-```
-
-**Command Mode - `stop`**
-
-*Result---stop command return status*
-
-| Name     | Type   | Presence                | Description           |
-| -------- | ------ | ----------------------- | --------------------- |
-| `result` | string | Required<br>(exactly 1) | Command return status |
-
-*Example from Dash Core 0.17.0*
-
-``` bash
-dash-cli -testnet coinjoin stop
-```
-
-Result:
-
-```text
-Mixing was stopped
-```
-
-**Command Mode - `reset`**
-
-*Result---reset command return status*
-
-| Name     | Type   | Presence                | Description           |
-| -------- | ------ | ----------------------- | --------------------- |
-| `result` | string | Required<br>(exactly 1) | Command return status |
-
-*Example from Dash Core 0.17.0*
-
-``` bash
-dash-cli -testnet coinjoin reset
-```
-
-Result:
-
-```text
-Mixing was reset
-```
-
-*See also: none*
 
 ## Spork
 

@@ -80,6 +80,96 @@ Mixing was reset
 
 *See also: none*
 
+## CoinJoinSalt
+
+The [`coinjoinsalt` RPC](#coinjoinsalt) controls the CoinJoin salt used in the process. It allows
+you to generate, retrieve, or set the salt.
+
+| Name      | Type   | Presence                | Description                                                                                      |
+| --------- | ------ | ----------------------- | ------------------------------------------------------------------------------------------------ |
+| `command` | string | Required<br>(exactly 1) | The command mode to use:<br>`generate` - Generate new CoinJoin salt<br>`get` - Fetch existing CoinJoin salt<br>`set` - Set new CoinJoin salt |
+
+**Command Mode - `generate`**
+
+Generates a new CoinJoin salt and stores it in the wallet database. Note that a new salt cannot be
+generated if CoinJoin mixing is in process or if the wallet has private keys disabled.
+
+| Name        | Type    | Presence                        | Description |
+| ----------- | ------- | ------------------------------- | ----------- |
+| `overwrite` | boolean | Optional<br>(default: `false`)  | Allows generating new salt even if an existing salt is present and/or there is a CoinJoin balance |
+
+*Result---generate command return status*
+
+| Name     | Type    | Presence                | Description                        |
+| -------- | ------- | ----------------------- | ---------------------------------- |
+| `result` | boolean | Required<br>(exactly 1) | Status of CoinJoin salt generation |
+
+*Examples*
+
+```bash
+dash-cli -testnet coinjoinsalt generate
+```
+
+Result:
+
+```text
+true
+```
+
+**Command Mode - `get`**
+
+Fetches the existing CoinJoin salt. Note that the salt cannot be fetched if the wallet has private
+keys disabled.
+
+*Result---get command return value*
+
+| Name  | Type   | Presence                | Description               |
+| ----- | ------ | ----------------------- | ------------------------- |
+| `salt` | string | Required<br>(exactly 1) | The current CoinJoin salt (in hexadecimal format) |
+
+*Examples*
+
+```bash
+dash-cli -testnet coinjoinsalt get
+```
+
+Result:
+
+```text
+"c2ca...4546"
+```
+
+**Command Mode - `set`**
+
+Sets a new CoinJoin salt. The salt cannot be set if CoinJoin mixing is in process or if the wallet
+has private keys disabled. This command will overwrite the existing salt, and if a CoinJoin balance
+is present, the wallet will rescan.
+
+| Name        | Type    | Presence                        | Description |
+| ----------- | ------- | ------------------------------- | ----------- |
+| `salt`      | string  | Required<br>(exactly 1)         | The desired CoinJoin salt value for the wallet (in hexadecimal format) |
+| `overwrite` | boolean | Optional<br>(default: `false`)  | Allows overwriting the salt even if a CoinJoin balance is present |
+
+*Result---set command return status*
+
+| Name     | Type    | Presence                | Description                            |
+| -------- | ------- | ----------------------- | -------------------------------------- |
+| `result` | boolean | Required<br>(exactly 1) | Status of CoinJoin salt change request |
+
+*Examples*
+
+```bash
+dash-cli -testnet coinjoinsalt set f4184fc596403b9d638783cf57adfe4c75c605f6356fbc91338530e9831e9e16
+```
+
+Result:
+
+```text
+true
+```
+
+*See also: none*
+
 ## GetGovernanceInfo
 
 The [`getgovernanceinfo` RPC](#getgovernanceinfo) returns an object containing governance parameters.

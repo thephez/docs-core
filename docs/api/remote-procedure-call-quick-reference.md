@@ -63,14 +63,15 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 
 ## [Dash RPCs](../api/remote-procedure-calls-dash.md)
 
-* [GetGovernanceInfo](../api/remote-procedure-calls-dash.md#getgovernanceinfo): returns an object containing governance parameters. **Updated in Dash Core 20.0.0**
+* [CoinJoin](../api/remote-procedure-calls-dash.md#coinjoin): controls the CoinJoin process. _Updated in Dash Core 0.12.3_
+* [CoinJoinSalt](../api/remote-procedure-calls-dash.md#coinjoinsalt): controls the CoinJoin salt used in the process. It allows you to generate, retrieve, or set the salt. **Added in Dash Core 22.0.0**
 * [GetCoinJoinInfo](../api/remote-procedure-calls-dash.md#getcoinjoininfo): returns an object containing an information about CoinJoin settings and state. _New in Dash Core 0.15.0_
+* [GetGovernanceInfo](../api/remote-procedure-calls-dash.md#getgovernanceinfo): returns an object containing governance parameters. **Updated in Dash Core 20.0.0**
 * [GetSuperblockBudget](../api/remote-procedure-calls-dash.md#getsuperblockbudget): returns the absolute maximum sum of superblock payments allowed.
 * [GObject](../api/remote-procedure-calls-dash.md#gobject): provides a set of commands for managing governance objects and displaying information about them. **Updated in Dash Core 20.0.0**
 * [Masternode](../api/remote-procedure-calls-dash.md#masternode): provides a set of commands for managing masternodes and displaying information about them. **_Updated in Dash Core 19.2.0_**
 * [MasternodeList](../api/remote-procedure-calls-dash.md#masternodelist): returns a list of masternodes in different modes. **Updated in Dash Core 20.0.0**
 * [MnSync](../api/remote-procedure-calls-dash.md#mnsync): returns the sync status, updates to the next step or resets it entirely. _Updated in Dash Core 0.14.0_
-* [CoinJoin](../api/remote-procedure-calls-dash.md#coinjoin): controls the CoinJoin process. _Updated in Dash Core 0.12.3_
 * [Spork](../api/remote-procedure-calls-dash.md#spork): shows information about the current state of sporks. _Updated in Dash Core 18.1.0_
 * [SporkUpdate](../api/remote-procedure-calls-dash.md#sporkupdate): updates the value of the provided spork. _New in Dash Core 18.1.0_
 * [VoteRaw](../api/remote-procedure-calls-dash.md#voteraw): compiles and relays a governance vote with provided external signature instead of signing vote internally

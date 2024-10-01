@@ -225,39 +225,38 @@ The [`getcoinjoininfo` RPC](#getcoinjoininfo) returns an object containing an in
 
 *Result---(for regular nodes) information about the pool*
 
-| Name                     | Type                  | Presence                | Description                                                                                          |
-| ------------------------ | --------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------- |
-| `result`                 | object                | Required<br>(exactly 1) | Information about the pool                                                                           |
-| →<br>`enabled`           | bool                  | Required<br>(exactly 1) | Whether CoinJoin functionality is enabled                                                            |
-| →<br>`multisession`      | bool                  | Required<br>(exactly 1) | Whether CoinJoin multisession option is enabled                                                      |
-| →<br>`max_sessions`      | number (int)          | Required<br>(exactly 1) | How many parallel sessions can there be at once                                                      |
-| →<br>`max_rounds`        | number (int)          | Required<br>(exactly 1) | How many rounds to process                                                                           |
-| →<br>`max_amount`        | number (int)          | Required<br>(exactly 1) | How many DASH to keep processed                                                                      |
-| →<br>`max_denoms`        | number (int)          | Required<br>(exactly 1) | **Removed in Dash Core 0.16.0**<br>How many inputs of each denominated amount to create              |
-| →<br>`denoms_goal`       | number (int)          | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>How many inputs of each denominated amount to target                  |
+| Name                     | Type                  | Presence                | Description |
+| ------------------------ | --------------------- | ----------------------- | ----------- |
+| `result`                 | object                | Required<br>(exactly 1) | Information about the pool |
+| →<br>`enabled`           | bool                  | Required<br>(exactly 1) | Whether CoinJoin functionality is enabled |
+| →<br>`multisession`      | bool                  | Required<br>(exactly 1) | Whether CoinJoin multisession option is enabled |
+| →<br>`max_sessions`      | number (int)          | Required<br>(exactly 1) | How many parallel sessions can there be at once |
+| →<br>`max_rounds`        | number (int)          | Required<br>(exactly 1) | How many rounds to process |
+| →<br>`max_amount`        | number (int)          | Required<br>(exactly 1) | How many DASH to keep processed |
+| →<br>`denoms_goal`       | number (int)          | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>How many inputs of each denominated amount to target |
 | →<br>`denoms_hardcap`    | number (int)          | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Maximum limit of how many inputs of each denominated amount to create |
-| →<br>`queue_size`        | number (int)          | Required<br>(exactly 1) | How many queues there are currently on the network                                                   |
-| →<br>`running`           | bool                  | Required<br>(exactly 1) | Whether CoinJoin is currently running                                                                |
-| →<br>`sessions`          | array of json objects | Required<br>(exactly 1) | Information about session(s)                                                                         |
-| → →<br>Session           | object                | Optional<br>(1 or more) | Information for a session                                                                            |
-| → → →<br>`protxhash`     | string                | Required<br>(exactly 1) | The ProTxHash of the masternode                                                                      |
-| → → →<br>`outpoint`      | string (txid-index)   | Required<br>(exactly 1) | The outpoint of the masternode                                                                       |
-| → → →<br>`service`       | string (host:port)    | Required<br>(exactly 1) | The IP address and port of the masternode                                                            |
-| → → →<br>`denomination`  | number (int)          | Required<br>(exactly 1) | The denomination of the session (in DASH)                                                            |
-| → → →<br>`state`         | string                | Required<br>(exactly 1) | Current state of the session                                                                         |
-| → → →<br>`entries_count` | number (int)          | Required<br>(exactly 1) | The number of entries in the session                                                                 |
-| →<br>`keys_left`         | number (int)          | Required<br>(exactly 1) | How many new keys are left since last automatic backup                                               |
-| →<br>`warnings`          | string                | Optional<br>(exactly 1) | Any warnings                                                                                         |
+| →<br>`queue_size`        | number (int)          | Required<br>(exactly 1) | How many queues there are currently on the network |
+| →<br>`running`           | bool                  | Required<br>(exactly 1) | Whether CoinJoin is currently running |
+| →<br>`sessions`          | array of json objects | Required<br>(exactly 1) | Information about session(s) |
+| → →<br>Session           | object                | Optional<br>(1 or more) | Information for a session |
+| → → →<br>`protxhash`     | string                | Required<br>(exactly 1) | The ProTxHash of the masternode |
+| → → →<br>`outpoint`      | string (txid-index)   | Required<br>(exactly 1) | The outpoint of the masternode |
+| → → →<br>`service`       | string (host:port)    | Required<br>(exactly 1) | The IP address and port of the masternode |
+| → → →<br>`denomination`  | number (int)          | Required<br>(exactly 1) | The denomination of the session (in DASH) |
+| → → →<br>`state`         | string                | Required<br>(exactly 1) | Current state of the session |
+| → → →<br>`entries_count` | number (int)          | Required<br>(exactly 1) | The number of entries in the session |
+| →<br>`keys_left`         | number (int)          | Optional<br>(0 or 1) | *Changed to optional in Dash Core 22.0.0*<br>How many new keys are left since last automatic backup |
+| →<br>`warnings`          | string                | Optional<br>(exactly 1) | Any warnings |
 
 *Result---(for masternodes) information about the pool*
 
-| Name                 | Type         | Presence                | Description                                        |
-| -------------------- | ------------ | ----------------------- | -------------------------------------------------- |
-| `result`             | object       | Required<br>(exactly 1) | Information about the pool                         |
+| Name                 | Type         | Presence                | Description |
+| -------------------- | ------------ | ----------------------- | ----------- |
+| `result`             | object       | Required<br>(exactly 1) | Information about the pool |
 | →<br>`queue_size`    | number (int) | Required<br>(exactly 1) | How many queues there are currently on the network |
-| →<br>`denomination`  | number (int) | Required<br>(exactly 1) | The denomination of the session (in DASH)          |
-| →<br>`state`         | string       | Required<br>(exactly 1) | Current state of the session                       |
-| →<br>`entries_count` | number (int) | Required<br>(exactly 1) | The number of entries in the session               |
+| →<br>`denomination`  | number (int) | Required<br>(exactly 1) | The denomination of the session (in DASH) |
+| →<br>`state`         | string       | Required<br>(exactly 1) | Current state of the session |
+| →<br>`entries_count` | number (int) | Required<br>(exactly 1) | The number of entries in the session |
 
 *Example from Dash Core 0.17.0 (regular node)*
 

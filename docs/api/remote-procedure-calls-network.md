@@ -44,8 +44,12 @@ Result (no output from `dash-cli` because result is set to `null`).
 
 ## AddPeerAddress
 
+:::{attention}
+This RPC is for testing only.
+:::
+
 The [`addpeeraddress` RPC](../api/remote-procedure-calls-network.md#addpeeraddress) adds the address
-of a potential peer to the address manager. **This RPC is for testing only.**
+of a potential peer to the address manager.
 
 *Parameter #1---IP address of node to add*
 
@@ -58,6 +62,12 @@ of a potential peer to the address manager. **This RPC is for testing only.**
 | Name | Type | Presence | Description |
 | ---- | ---- | -------- | ----------- |
 | `port` | number | Required<br>(exactly 1) | The port of the peer |
+
+*Parameter #3---add to tried address table*
+
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
+| `tried` | bool | Optional<br>(0 or 1) | If true, attempt to add the peer to the tried addresses table |
 
 *Result---a list of added nodes*
 

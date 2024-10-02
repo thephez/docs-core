@@ -85,7 +85,7 @@ Name | Type | Presence | Description
 `result` | object/null | Required<br>(exactly 1) | An object containing the requested block, or JSON `null` if an error occurred
 →<br>`blockhash` | string (hex) | Required<br>(exactly 1) | The hash of the block encoded as hex in RPC byte order
 →<br>`height` | number (int) | Required<br>(exactly 1) | The height of this block on its block chain
-→<br>`signature` | string (hex) | Required<br>(exactly 1) | _Added in Dash Core 0.17.0_<br><br>The BLS signature of the ChainLock
+→<br>`signature` | string (hex) | Required<br>(exactly 1) | The BLS signature of the ChainLock
 →<br>`known_block` | boolean | Required<br>(exactly 1) | True if the block is known by this node
 
 *Example from Dash Core 0.17.0*
@@ -183,7 +183,7 @@ Name | Type | Presence | Description
 →<br>`bits` | string (hex) | Required<br>(exactly 1) | The value of the *nBits* field in the block header, indicating the target threshold this block's header had to pass
 →<br>`difficulty` | number (real) | Required<br>(exactly 1) | The estimated amount of work done to find this block relative to the estimated amount of work done to find block 0
 →<br>`chainwork` | string (hex) | Required<br>(exactly 1) | The estimated number of block header hashes miners had to check from the genesis block to this block, encoded as big-endian hex
-→<br>`nTx` | number (int) | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br><br>The number of transactions in the block
+→<br>`nTx` | number (int) | Required<br>(exactly 1) | The number of transactions in the block
 →<br>`previousblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the header of the previous block, encoded as hex in RPC byte order.  Not returned for genesis block
 →<br>`nextblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the next block on the best block chain, if known, encoded as hex in RPC byte order
 →<br>`chainlock` | bool | Required<br>(exactly 1) | *Added in Dash Core 0.14.0*<br><br>If set to `true`, this transaction is in a block that is locked (not susceptible to a chain re-org)
@@ -825,7 +825,7 @@ Name | Type | Presence | Description
 →<br>`bits` | string (hex) | Required<br>(exactly 1) | The value of the *nBits* field in the block header, indicating the target threshold this block's header had to pass
 →<br>`difficulty` | number (real) | Required<br>(exactly 1) | The estimated amount of work done to find this block relative to the estimated amount of work done to find block 0
 →<br>`chainwork` | string (hex) | Required<br>(exactly 1) | The estimated number of block header hashes miners had to check from the genesis block to this block, encoded as big-endian hex
-→<br>`nTx` | number (int) | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br><br>The number of transactions in the block
+→<br>`nTx` | number (int) | Required<br>(exactly 1) | The number of transactions in the block
 →<br>`previousblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the header of the previous block, encoded as hex in RPC byte order.  Not returned for genesis block
 →<br>`nextblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the next block on the best block chain, if known, encoded as hex in RPC byte order
 
@@ -943,7 +943,7 @@ Name | Type | Presence | Description
 → →<br>`bits` | string (hex) | Required<br>(exactly 1) | The value of the *nBits* field in the block header, indicating the target threshold this block's header had to pass
 → →<br>`difficulty` | number (real) | Required<br>(exactly 1) | The estimated amount of work done to find this block relative to the estimated amount of work done to find block 0
 →<br>`chainwork` | string (hex) | Required<br>(exactly 1) | The estimated number of block header hashes miners had to check from the genesis block to this block, encoded as big-endian hex
-→<br>`nTx` | number (int) | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br><br>The number of transactions in the block
+→<br>`nTx` | number (int) | Required<br>(exactly 1) | The number of transactions in the block
 → →<br>`previousblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the header of the previous block, encoded as hex in RPC byte order.  Not returned for genesis block
 → →<br>`nextblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the next block on the best block chain, if known, encoded as hex in RPC byte order
 
@@ -1280,11 +1280,11 @@ Name | Type | Presence | Description
 → →<br>`ancestorcount` | number (int) | Required<br>(exactly 1) | The number of in-mempool ancestor transactions (including this one)
 → →<br>`ancestorsize` | number (int) | Required<br>(exactly 1) | The size of in-mempool ancestors (including this one)
 → →<br>`ancestorfees` | number (int) | Required<br>(exactly 1) | **Deprecated in Dash Core 0.17.0**<br><br>The modified fees (see `modifiedfee` above) of in-mempool ancestors (including this one)
-→ →<br>`fees` | object | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Object containing fee information
-→→→<br>`base` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Transaction fee in DASH
-→→→<br>`modified` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Transaction fee with fee deltas used for mining priority in DASH
-→→→<br>`ancestor` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Modified fees (see above) of in-mempool ancestors (including this one) in DASH
-→→→<br>`descendent` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Modified fees (see above) of in-mempool descendants (including this one) in DASH
+→ →<br>`fees` | object | Optional<br>(0 or 1) | Object containing fee information
+→→→<br>`base` | number | Optional<br>(0 or 1) | Transaction fee in DASH
+→→→<br>`modified` | number | Optional<br>(0 or 1) | Transaction fee with fee deltas used for mining priority in DASH
+→→→<br>`ancestor` | number | Optional<br>(0 or 1) | Modified fees (see above) of in-mempool ancestors (including this one) in DASH
+→→→<br>`descendent` | number | Optional<br>(0 or 1) | Modified fees (see above) of in-mempool descendants (including this one) in DASH
 → →<br>`depends` | array | Required<br>(exactly 1) | An array holding TXIDs of unconfirmed transactions this transaction depends upon (parent transactions).  Those transactions must be part of a block before this transaction can be added to a block, although all transactions may be included in the same block.  The array may be empty
 → → →<br>Depends TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions this transaction depends upon, encoded as hex in RPC byte order
 → →<br>`spentby` | array | Required<br>(exactly 1) |  **Added in Dash Core 20.0.0**<br>An array of unconfirmed transactions spending outputs from this transaction
@@ -1398,11 +1398,11 @@ Name | Type | Presence | Description
 → →<br>`ancestorcount` | number (int) | Required<br>(exactly 1) | The number of in-mempool ancestor transactions (including this one)
 → →<br>`ancestorsize` | number (int) | Required<br>(exactly 1) | The size of in-mempool ancestors (including this one)
 → →<br>`ancestorfees` | number (int) | Required<br>(exactly 1) | **Deprecated in Dash Core 0.17.0**<br><br>The modified fees (see `modifiedfee` above) of in-mempool ancestors (including this one)
-→ →<br>`fees` | object | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Object containing fee information
-→→→<br>`base` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Transaction fee in DASH
-→→→<br>`modified` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Transaction fee with fee deltas used for mining priority in DASH
-→→→<br>`ancestor` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Modified fees (see above) of in-mempool ancestors (including this one) in DASH
-→→→<br>`descendent` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Modified fees (see above) of in-mempool descendants (including this one) in DASH
+→ →<br>`fees` | object | Optional<br>(0 or 1) | Object containing fee information
+→→→<br>`base` | number | Optional<br>(0 or 1) | Transaction fee in DASH
+→→→<br>`modified` | number | Optional<br>(0 or 1) | Transaction fee with fee deltas used for mining priority in DASH
+→→→<br>`ancestor` | number | Optional<br>(0 or 1) | Modified fees (see above) of in-mempool ancestors (including this one) in DASH
+→→→<br>`descendent` | number | Optional<br>(0 or 1) | Modified fees (see above) of in-mempool descendants (including this one) in DASH
 → →<br>`depends` | array | Required<br>(exactly 1) | An array holding TXIDs of unconfirmed transactions this transaction depends upon (parent transactions).  Those transactions must be part of a block before this transaction can be added to a block, although all transactions may be included in the same block.  The array may be empty
 → → →<br>Depends TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions this transaction depends upon, encoded as hex in RPC byte order
 → →<br>`spentby` | array | Required<br>(exactly 1) |  **Added in Dash Core 20.0.0**<br>An array of unconfirmed transactions spending outputs from this transaction
@@ -1502,11 +1502,11 @@ Name | Type | Presence | Description
 →<br>`ancestorcount` | number (int) | Required<br>(exactly 1) | The number of in-mempool ancestor transactions (including this one)
 →<br>`ancestorsize` | number (int) | Required<br>(exactly 1) | The size of in-mempool ancestors (including this one)
 →<br>`ancestorfees` | number (int) | Required<br>(exactly 1) | **Deprecated in Dash Core 0.17.0**<br><br>The modified fees (see `modifiedfee` above) of in-mempool ancestors (including this one)
-→ →<br>`fees` | object | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Object containing fee information
-→→→<br>`base` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Transaction fee in DASH
-→→→<br>`modified` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Transaction fee with fee deltas used for mining priority in DASH
-→→→<br>`ancestor` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Modified fees (see above) of in-mempool ancestors (including this one) in DASH
-→→→<br>`descendent` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Modified fees (see above) of in-mempool descendants (including this one) in DASH
+→ →<br>`fees` | object | Optional<br>(0 or 1) | Object containing fee information
+→→→<br>`base` | number | Optional<br>(0 or 1) | Transaction fee in DASH
+→→→<br>`modified` | number | Optional<br>(0 or 1) | Transaction fee with fee deltas used for mining priority in DASH
+→→→<br>`ancestor` | number | Optional<br>(0 or 1) | Modified fees (see above) of in-mempool ancestors (including this one) in DASH
+→→→<br>`descendent` | number | Optional<br>(0 or 1) | Modified fees (see above) of in-mempool descendants (including this one) in DASH
 →<br>`depends` | array | Required<br>(exactly 1) | An array holding TXIDs of unconfirmed transactions this transaction depends upon (parent transactions).  Those transactions must be part of a block before this transaction can be added to a block, although all transactions may be included in the same block.  The array may be empty
 → →<br>Depends TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions this transaction depends upon, encoded as hex in RPC byte order
 →<br>`spentby` | array | Required<br>(exactly 1) |  **Added in Dash Core 20.0.0**<br>An array of unconfirmed transactions spending outputs from this transaction

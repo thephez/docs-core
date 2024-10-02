@@ -604,6 +604,52 @@ Result:
 * [GetBlockHash](../api/remote-procedure-calls-blockchain.md#getblockhash): returns the header hash of a block at the given height in the local best block chain.
 * [GetBlock](../api/remote-procedure-calls-blockchain.md#getblock): gets a block with a particular header hash from the local block database either as a JSON object or as a serialized block.
 
+## GetBlockFromPeer
+
+The `getblockfrompeer` RPC attempts to fetch a specific block from a given peer. The node must
+already have the header for the block (e.g., by using the [`submitheader`
+RPC](./remote-procedure-calls-mining.md#submitheader)).
+
+*Parameter #1---the block hash to fetch*
+
+Name       | Type     | Presence                | Description
+-----------|----------|-------------------------|------------
+blockhash  | string   | Required<br>(exactly 1)  | The block hash to try to fetch
+
+*Parameter #2---the peer to fetch from*
+
+Name       | Type   | Presence                | Description
+-----------|--------|-------------------------|------------
+peer_id    | number | Required<br>(exactly 1)  | The ID of the peer to fetch the block from. You can get peer IDs by using the [`getpeerinfo` RPC](./remote-procedure-calls-network.md#getpeerinfo).
+
+*Result---execution result*
+
+Name        | Type    | Presence                | Description
+------------|---------|-------------------------|------------
+`warnings`  | string  | Optional<br>(0 or 1)     | Any warnings or issues encountered during the block fetch attempt. If there are no warnings, this field will not appear.
+
+Returns `{}` if a block request was successfully scheduled.
+
+*Example from Dash Core 22.0.0*
+
+Attempt to fetch block `00000021e19ebb597d74627a4df829768c3f26d3185d943a53773e4a681391bd` from peer ID `0`:
+
+```bash
+dash-cli -testnet getblockfrompeer "00000021e19ebb597d74627a4df829768c3f26d3185d943a53773e4a681391bd" 0
+```
+
+Result:
+
+```json
+{
+  "warnings": "Block already downloaded"
+}
+```
+
+*See also*
+
+* [GetBlock](../api/remote-procedure-calls-blockchain.md#getblock): gets a block with a particular header hash from the local block database either as a JSON object or as a serialized block.
+
 ## GetBlockHash
 
 The [`getblockhash` RPC](../api/remote-procedure-calls-blockchain.md#getblockhash) returns the header hash of a block at the given height in the local best block chain.

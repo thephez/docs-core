@@ -48,7 +48,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetTxOutSetInfo](../api/remote-procedure-calls-blockchain.md#gettxoutsetinfo): returns statistics about the confirmed unspent transaction output (UTXO) set. Note that this call may take some time and that it only counts outputs from confirmed transactions---it does not count outputs from the memory pool. _Updated in Dash Core 18.1.0_
 * [PreciousBlock](../api/remote-procedure-calls-blockchain.md#preciousblock): treats a block as if it were received before others with the same work. _New in Dash Core 0.12.3_
 * [PruneBlockChain](../api/remote-procedure-calls-blockchain.md#pruneblockchain): prunes the blockchain up to a specified height or timestamp. _New in Dash Core 0.12.3_
-* [SaveMemPool](../api/remote-procedure-calls-blockchain.md#savemempool): dumps the mempool to disk. _New in Dash Core 0.16.0_
+* [SaveMemPool](../api/remote-procedure-calls-blockchain.md#savemempool): dumps the mempool to disk. **Updated in Dash Core 22.0.0**
 * [VerifyChain](../api/remote-procedure-calls-blockchain.md#verifychain): verifies each entry in the local block chain database.
 * [VerifyTxOutProof](../api/remote-procedure-calls-blockchain.md#verifytxoutproof): verifies that a proof points to one or more transactions in a block, returning the transactions the proof commits to and throwing an RPC error if the block is not in our best block chain.
 
@@ -104,7 +104,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 ## [Network RPCs](../api/remote-procedure-calls-network.md)
 
 * [AddNode](../api/remote-procedure-calls-network.md#addnode): attempts to add or remove a node from the addnode list, or to try a connection to a node once.
-* [AddPeerAddress](../api/remote-procedure-calls-network.md#addpeeraddress): adds the address of a potential peer to the address manager. **New in Dash Core 20.0.0**
+* [AddPeerAddress](../api/remote-procedure-calls-network.md#addpeeraddress): adds the address of a potential peer to the address manager. **Updated in Dash Core 22.0.0**
 * [ClearBanned](../api/remote-procedure-calls-network.md#clearbanned): clears list of banned nodes.
 * [ClearDiscouraged](../api/remote-procedure-calls-network.md#cleardiscouraged): clears all discouraged nodes. **_New in Dash Core 19.0.0_**
 * [DisconnectNode](../api/remote-procedure-calls-network.md#disconnectnode): immediately disconnects from a specified node. _Updated in Dash Core 0.15.0_

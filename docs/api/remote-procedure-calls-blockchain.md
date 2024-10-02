@@ -2259,13 +2259,26 @@ The [`savemempool` RPC](../api/remote-procedure-calls-blockchain.md#savemempool)
 
 *Parameters: none*
 
-*Example from Dash Core 0.16.0*
+*Result---output filename*
+
+Name | Type | Presence | Description
+--- | --- | --- | ---
+`result` | object/null | Required<br>(exactly 1) | An object containing the filename the mempool was saved to
+→<br>`filename` | string | Required<br>(exactly 1) | The directory and file where the mempool was saved
+
+*Example from Dash Core 22.0.0*
 
 ``` bash
 dash-cli savemempool
 ```
 
-Result (no output from dash-cli).
+Result:
+
+```json
+{
+  "filename": "/home/phez/.dashcore/testnet3/mempool.dat"
+}
+```
 
 *See also: none*
 

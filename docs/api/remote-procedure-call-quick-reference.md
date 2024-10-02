@@ -26,7 +26,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetBlockChainInfo](../api/remote-procedure-calls-blockchain.md#getblockchaininfo): provides information about the current state of the block chain. **Updated in Dash Core 21.0.0**
 * [GetBlockCount](../api/remote-procedure-calls-blockchain.md#getblockcount): returns the number of blocks in the local best block chain.
 * [GetBlockFilter](../api/remote-procedure-calls-blockchain.md#getblockfilter): retrieves a [BIP157](https://github.com/bitcoin/bips/blob/master/bip-0157.mediawiki) content filter for a particular block. _New in Dash Core 18.0.0_
-* [GetBlockFromPeer](../api/remote-procedure-calls-blockchain.md#getblockfrompeer): attempts to fetch a specific block from a given peer. **Added in Dash Core 22.0.0**
+* [GetBlockFromPeer](../api/remote-procedure-calls-blockchain.md#getblockfrompeer): attempts to fetch a specific block from a given peer. **Updated in Dash Core 22.0.0**
 * [GetBlockHash](../api/remote-procedure-calls-blockchain.md#getblockhash): returns the header hash of a block at the given height in the local best block chain.
 * [GetBlockHashes](../api/remote-procedure-calls-blockchain.md#getblockhashes): returns array of hashes of blocks within the timestamp range provided (requires `timestampindex` to be enabled). New in Dash Core 0.12.1
 * [GetBlockHeader](../api/remote-procedure-calls-blockchain.md#getblockheader): gets a block header with a particular header hash from the local block database either as a JSON object or as a serialized block header. _Updated in Dash Core 0.16.0_
@@ -39,7 +39,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetMemPoolDescendants](../api/remote-procedure-calls-blockchain.md#getmempooldescendants): returns all in-mempool descendants for a transaction in the mempool. **Updated in Dash Core 20.0.0**
 * [GetMemPoolEntry](../api/remote-procedure-calls-blockchain.md#getmempoolentry): returns mempool data for given transaction (must be in mempool). **Updated in Dash Core 20.0.0**
 * [GetMemPoolInfo](../api/remote-procedure-calls-blockchain.md#getmempoolinfo): returns information about the node's current transaction memory pool. **Updated in Dash Core 20.1.0**
-* [GetRawMemPool](../api/remote-procedure-calls-blockchain.md#getrawmempool): returns all transaction identifiers (TXIDs) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object. **Updated in Dash Core 20.0.0**
+* [GetRawMemPool](../api/remote-procedure-calls-blockchain.md#getrawmempool): returns all transaction identifiers (TXIDs) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object. **Updated in Dash Core 22.0.0**
 * [GetMerkleBlocks](../api/remote-procedure-calls-blockchain.md#getmerkleblocks): returns an array of hex-encoded merkleblocks for <count> blocks starting from <hash> which match <filter>. _New in Dash Core 0.15.0_
 * [GetSpecialTxes](../api/remote-procedure-calls-blockchain.md#getspecialtxes): returns an array of special transactions found in the specified block _New in Dash Core 0.13.1_
 * [GetSpentInfo](../api/remote-procedure-calls-blockchain.md#getspentinfo): returns the txid and index where an output is spent (requires `spentindex` to be enabled). New in Dash Core 0.12.1

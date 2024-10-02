@@ -1617,11 +1617,17 @@ Result:
 
 The [`getrawmempool` RPC](../api/remote-procedure-calls-blockchain.md#getrawmempool) returns all transaction identifiers (TXIDs) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object.
 
-*Parameter---desired output format*
+*Parameter #1---verbose*
 
 Name | Type | Presence | Description
 --- | --- | --- | ---
 Format | bool | Optional<br>(0 or 1) | Set to `true` to get verbose output describing each transaction in the memory pool; set to `false` (the default) to only get an array of TXIDs for transactions in the memory pool
+
+*Parameter #2---mempool sequence*
+
+Name | Type | Presence | Description
+--- | --- | --- | ---
+Format | bool | Optional<br>(0 or 1) | If verbose=false, returns a json object with transaction list and mempool sequence number attached.
 
 *Result (format `false`)---an array of TXIDs*
 
@@ -1629,6 +1635,7 @@ Name | Type | Presence | Description
 --- | --- | --- | ---
 `result` | array | Required<br>(exactly 1) | An array of TXIDs belonging to transactions in the memory pool.  The array may be empty if there are no transactions in the memory pool
 →<br>TXID | string | Optional<br>(0 or more) | The TXID of a transaction in the memory pool, encoded as hex in RPC byte order
+→<br>mempool_sequence | number (int) | Optional<br>(0 or 1) | *Added in Dash Core 22.0.0*<br>The mempool sequence value
 
 *Result (format: `true`)---a JSON object describing each transaction*
 
@@ -1637,24 +1644,24 @@ Name | Type | Presence | Description
 `result` | object | Required<br>(exactly 1) | A object containing transactions currently in the memory pool.  May be empty
 →<br>TXID | string : object | Optional<br>(0 or more) | The TXID of a transaction in the memory pool, encoded as hex in RPC byte order
 → →<br>`size` | number (int) | Required<br>(exactly 1) | The size of the serialized transaction in bytes
-→ →<br>`fee` | amount (Dash) | Required<br>(exactly 1) | **Deprecated in Dash Core 0.17.0**<br><br>The transaction fee paid by the transaction in decimal Dash
-→ →<br>`modifiedfee` | amount (Dash) | Required<br>(exactly 1) | **Deprecated in Dash Core 0.17.0**<br><br>The transaction fee with fee deltas used for mining priority in decimal Dash
+→ →<br>`fee` | amount (Dash) | Required<br>(exactly 1) | *Deprecated in Dash Core 0.17.0*<br>The transaction fee paid by the transaction in decimal Dash
+→ →<br>`modifiedfee` | amount (Dash) | Required<br>(exactly 1) | *Deprecated in Dash Core 0.17.0*<br>The transaction fee with fee deltas used for mining priority in decimal Dash
 → →<br>`time` | number (int) | Required<br>(exactly 1) | The time the transaction entered the memory pool, Unix epoch time format
 → →<br>`height` | number (int) | Required<br>(exactly 1) | The block height when the transaction entered the memory pool
-→ →<br>`descendantcount` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The number of in-mempool descendant transactions (including this one)
-→ →<br>`descendantsize` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The size of in-mempool descendants (including this one)
-→ →<br>`descendantfees` | number (int) | Required<br>(exactly 1) | **Deprecated in Dash Core 0.17.0**<br><br>The modified fees (see `modifiedfee` above) of in-mempool descendants (including this one)
-→ →<br>`ancestorcount` | number (int) | Required<br>(exactly 1) | *Added in Dash Core 0.12.3 / Bitcoin Core 0.13.0*<br><br>The number of in-mempool ancestor transactions (including this one)
-→ →<br>`ancestorsize` | number (int) | Required<br>(exactly 1) | *Added in Dash Core 0.12.3 / Bitcoin Core 0.13.0*<br><br>The size of in-mempool ancestors (including this one)
-→ →<br>`ancestorfees` | number (int) | Required<br>(exactly 1) | **Deprecated in Dash Core 0.17.0**<br><br>The modified fees (see `modifiedfee` above) of in-mempool ancestors (including this one)
-→ →<br>`fees` | object | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Object containing fee information
-→→→<br>`base` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Transaction fee in DASH
-→→→<br>`modified` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Transaction fee with fee deltas used for mining priority in DASH
-→→→<br>`ancestor` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Modified fees (see above) of in-mempool ancestors (including this one) in DASH
-→→→<br>`descendent` | number | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br>Modified fees (see above) of in-mempool descendants (including this one) in DASH
+→ →<br>`descendantcount` | number (int) | Required<br>(exactly 1) | The number of in-mempool descendant transactions (including this one)
+→ →<br>`descendantsize` | number (int) | Required<br>(exactly 1) | The size of in-mempool descendants (including this one)
+→ →<br>`descendantfees` | number (int) | Required<br>(exactly 1) | *Deprecated in Dash Core 0.17.0*<br>The modified fees (see `modifiedfee` above) of in-mempool descendants (including this one)
+→ →<br>`ancestorcount` | number (int) | Required<br>(exactly 1) | The number of in-mempool ancestor transactions (including this one)
+→ →<br>`ancestorsize` | number (int) | Required<br>(exactly 1) | The size of in-mempool ancestors (including this one)
+→ →<br>`ancestorfees` | number (int) | Required<br>(exactly 1) | *Deprecated in Dash Core 0.17.0*<br>The modified fees (see `modifiedfee` above) of in-mempool ancestors (including this one)
+→ →<br>`fees` | object | Optional<br>(0 or 1) | Object containing fee information
+→→→<br>`base` | number | Optional<br>(0 or 1) | Transaction fee in DASH
+→→→<br>`modified` | number | Optional<br>(0 or 1) | Transaction fee with fee deltas used for mining priority in DASH
+→→→<br>`ancestor` | number | Optional<br>(0 or 1) | Modified fees (see above) of in-mempool ancestors (including this one) in DASH
+→→→<br>`descendent` | number | Optional<br>(0 or 1) | Modified fees (see above) of in-mempool descendants (including this one) in DASH
 → →<br>`depends` | array | Required<br>(exactly 1) | An array holding TXIDs of unconfirmed transactions this transaction depends upon (parent transactions).  Those transactions must be part of a block before this transaction can be added to a block, although all transactions may be included in the same block.  The array may be empty
 → → →<br>Depends TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions this transaction depends upon, encoded as hex in RPC byte order
-→ →<br>`spentby` | array | Required<br>(exactly 1) | _Added in Dash Core 0.17.0_<br>An array of unconfirmed transactions spending outputs from this transaction
+→ →<br>`spentby` | array | Required<br>(exactly 1) | An array of unconfirmed transactions spending outputs from this transaction
 → → →<br>TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions spending from this transaction
 → →<br>`unbroadcast` | bool | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>True if this transaction  is currently unbroadcast (initial broadcast not yet acknowledged by any peers)
 → →<br>`instantlock` | bool | Required<br>(exactly 1) | *Added in Dash Core 0.12.3*<br><br>Set to `true` for locked [InstantSend](../resources/glossary.md#instantsend) transactions (masternode quorum has locked the transaction inputs via `isdlock` message). Set to `false` if the masternodes have not approved the [InstantSend](../resources/glossary.md#instantsend) transaction

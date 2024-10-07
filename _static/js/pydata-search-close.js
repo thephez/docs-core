@@ -49,13 +49,35 @@ var addEventListenerForSearchKeyboard = () => {
   window.addEventListener(
     "keydown",
     (event) => {
+      console.log(event.code)
       // Allow Escape key to hide the search field
       if (event.code == "Escape") {
         hideSearchField();
       }
+
+      // Open the new search modal by simulating "/" keypress when Ctrl+K is pressed
+      if (event.ctrlKey && event.key === 'k') {
+        console.log('ctrl+k was pressed')
+        event.preventDefault();  // Prevent default behavior of Ctrl+K
+        simulateSlashKeyPress();
+      }
     },
     true
   );
+};
+
+/** Function to simulate pressing the "/" key */
+var simulateSlashKeyPress = () => {
+  console.log("pressing '/'")
+  const slashKeyEvent = new KeyboardEvent("keydown", {
+    key: '/',
+    keyCode: 191,
+    code: "Slash",
+    which: 191,
+    bubbles: true,
+    cancelable: true
+  });
+  window.dispatchEvent(slashKeyEvent);
 };
 
 /** Activate callbacks for search button popup */

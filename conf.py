@@ -40,7 +40,6 @@ extensions = [
   'sphinx.ext.autodoc',
   'sphinx_copybutton',
   'sphinx_design',
-  'sphinx_search.extension',
   'sphinx.ext.intersphinx',
 ]
 
@@ -158,5 +157,5 @@ html_context = {
     "doc_path": "",
 }
 
-def setup(app):
-    app.add_js_file('js/pydata-search-close.js')
+# def setup(app):
+#     app.add_js_file('js/pydata-search-close.js')

@@ -1,5 +1,4 @@
-// Script to allow use of readthedocs-sphinx-search extension with the pydata
-// theme
+// Script to allow use of readthedocs-sphinx-search extension with the pydata theme
 //
 // Based in part on:
 // https://github.com/pydata/pydata-sphinx-theme/blob/v0.13.3/src/pydata_sphinx_theme/assets/scripts/pydata-sphinx-theme.js#L167-L272
@@ -43,18 +42,22 @@ var hidePydataSearch = () => {
   }
 };
 
+/** Function to hide the ReadTheDocs search (addon version) */
+function hideRtdSearch() {
+    // Grab the search element from the DOM
+    const searchElement = document.querySelector('readthedocs-search');        
+    searchElement.closeModal(); 
+}
+
+function hideSearch() {
+  hidePydataSearch()
+  hideRtdSearch()
+}
+
 /** Function to show the ReadTheDocs search (addon version) */
 function showRtDSearch() {
   const searchElement = document.querySelector('readthedocs-search');
   searchElement.showModal();
-  // // Check if the modal is currently visible (i.e., 'show' property is true)
-  // if (searchElement.show) {
-  //   // If it's visible, hide it
-  //   searchElement.closeModal();
-  // } else {
-  //   // If it's hidden, show it
-  //   searchElement.showModal();
-  // }
 }
 
 /** Add an event listener for hideSearchField() for Escape*/
@@ -68,13 +71,10 @@ var addEventListenerForSearchKeyboard = () => {
         hidePydataSearch();
       }
 
-      // Open the new search modal by simulating "/" keypress when Ctrl+K is pressed
+      // Open the ReadTheDocs search modal when Ctrl+K is pressed
       if (event.ctrlKey && event.key === 'k') {
-        // console.log('ctrl+k was pressed')
-        event.preventDefault();  // Prevent default behavior of Ctrl+K
-        // Grab the search element from the DOM
-        const searchElement = document.querySelector('readthedocs-search');        
-        searchElement.showModal();
+        event.preventDefault(); // Prevent default behavior of Ctrl+K
+        showRtDSearch()
       }
     },
     true
@@ -90,6 +90,8 @@ var setupSearchButtons = () => {
   searchButtons.forEach(button => {
     button.addEventListener('click', showRtDSearch);
   });
+
+
 };
 
 // Custom code to manage closing the RtD search dialog properly

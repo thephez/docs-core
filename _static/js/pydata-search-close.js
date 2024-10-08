@@ -55,37 +55,25 @@ var addEventListenerForSearchKeyboard = () => {
         hideSearchField();
       }
 
-      // Original listener for "/"
-      if (event.code === "Slash" && !isModalVisible()) {
-        event.preventDefault();
-        // Grab the search element from the DOM
-        const searchElement = document.querySelector('readthedocs-search');        
-        searchElement.showModal();
-      }      
+      // // Original listener for "/"
+      // if (event.code === "Slash" && !isModalVisible()) {
+      //   event.preventDefault();
+      //   // Grab the search element from the DOM
+      //   const searchElement = document.querySelector('readthedocs-search');        
+      //   searchElement.showModal();
+      // }
 
       // Open the new search modal by simulating "/" keypress when Ctrl+K is pressed
       if (event.ctrlKey && event.key === 'k') {
         console.log('ctrl+k was pressed')
         event.preventDefault();  // Prevent default behavior of Ctrl+K
-        simulateSlashKeyPress();
+        // Grab the search element from the DOM
+        const searchElement = document.querySelector('readthedocs-search');        
+        searchElement.showModal();
       }
     },
     true
   );
-};
-
-/** Function to simulate pressing the "/" key */
-var simulateSlashKeyPress = () => {
-  console.log("pressing '/'")
-  const slashKeyEvent = new KeyboardEvent("keydown", {
-    key: '/',
-    keyCode: 191,
-    code: "Slash",
-    which: 191,
-    bubbles: true,
-    cancelable: true
-  });
-  window.dispatchEvent(slashKeyEvent);
 };
 
 /** Activate callbacks for search button popup */

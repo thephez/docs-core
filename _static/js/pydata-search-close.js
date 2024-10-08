@@ -44,23 +44,6 @@ var hideSearchField = () => {
   }
 };
 
-function showSearchModal() {
-  // Remove previous search results
-  removeResults();
-
-  // Focus the search input field
-  const searchInput = document.querySelector(".search__outer__input");
-  const modalWrapper = document.querySelector(".search__outer__wrapper");
-
-  if (searchInput !== null && modalWrapper !== null) {
-      searchInput.focus(); // Focus the input field
-
-      // Display the search modal
-      modalWrapper.style.display = "block"; // Show the modal
-  }
-}
-
-
 /** Add an event listener for hideSearchField() for Escape*/
 var addEventListenerForSearchKeyboard = () => {
   window.addEventListener(
@@ -73,9 +56,11 @@ var addEventListenerForSearchKeyboard = () => {
       }
 
       // Original listener for "/"
-      if (event.keyCode === 191 && !isModalVisible()) {
+      if (event.code === "Slash" && !isModalVisible()) {
         event.preventDefault();
-        showSearchModal();
+        // Grab the search element from the DOM
+        const searchElement = document.querySelector('readthedocs-search');        
+        searchElement.showModal();
       }      
 
       // Open the new search modal by simulating "/" keypress when Ctrl+K is pressed

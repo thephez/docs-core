@@ -58,6 +58,7 @@ function hideSearch() {
 function showRtDSearch() {
   const searchElement = document.querySelector('readthedocs-search');
   searchElement.showModal();
+  hidePydataSearch();
 }
 
 /** Add an event listener for hideSearchField() for Escape*/
@@ -85,16 +86,13 @@ var addEventListenerForSearchKeyboard = () => {
 var setupSearchButtons = () => {
   addEventListenerForSearchKeyboard();
 
-  // Wait until DOM is fully loaded
-  document.addEventListener('DOMContentLoaded', () => {
-    const searchElement = document.querySelector('readthedocs-search');
-
-    // Select the specific background div within the 'readthedocs-search' element
-    const background = searchElement.shadowRoot.querySelector('div[role="search"] > div.background');
-    if (background) {
-      background.addEventListener('click', hideSearch);
-    }
-  });  
+  // const searchElement = document.querySelector('readthedocs-search');
+  //
+  // // Select the specific background div within the 'readthedocs-search' element
+  // const background = searchElement.shadowRoot.querySelector('div.background');
+  // if (background) {
+  //   background.addEventListener('click', hideSearch);
+  // }
 
   // Add event listeners to elements with class "search-button__button"
   const searchButtons = document.querySelectorAll('.search-button__button');
@@ -103,7 +101,38 @@ var setupSearchButtons = () => {
   });
 
 
+  document.addEventListener(
+    "readthedocs-addons-data-ready",
+    function (event) {
+      const data = event.detail.data();
+      console.log(data)
+    }
+  );
 };
+
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.addedNodes.length > 0) {
+      const searchElement = document.querySelector('readthedocs-search');
+      if (searchElement) {
+        console.log('Found the search element!');
+        observer.disconnect();  // Stop observing once the element is found
+        // Vanilla JS for shadowRoot-based background click listener
+        const searchElement = document.querySelector('readthedocs-search');  // Adjust this to target the correct search element
+        console.log(searchElement)
+        if (searchElement && searchElement.shadowRoot) {
+          const background = searchElement.querySelector('div > div.background');
+          // Never finds the selector
+          if (background) {
+            background.addEventListener('click', function() {
+              hidePydataSearch();
+            });
+          }
+        }
+      }
+    }
+  });
+});
 
 // Custom code to manage closing the RtD search dialog properly
 $(document).ready(function(){
@@ -118,6 +147,20 @@ $(document).ready(function(){
     console.log("Close by search-button__overlay");
     hidePydataSearch();
   });
+
+  customElements.whenDefined('readthedocs-search').then(() => {
+    const searchElement = document.querySelector('readthedocs-search');
+    if (searchElement) {
+      console.log('Found the search element!');
+      // Add your shadow DOM query logic here
+    } else {
+      console.log('Search element not found');
+    }
+  });
+  
+  observer.observe(document.body, { childList: true, subtree: true });
 });
 
 $(setupSearchButtons);
+
+

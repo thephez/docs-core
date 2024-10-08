@@ -43,6 +43,20 @@ var hidePydataSearch = () => {
   }
 };
 
+/** Function to show the ReadTheDocs search (addon version) */
+function showRtDSearch() {
+  const searchElement = document.querySelector('readthedocs-search');
+  searchElement.showModal();
+  // // Check if the modal is currently visible (i.e., 'show' property is true)
+  // if (searchElement.show) {
+  //   // If it's visible, hide it
+  //   searchElement.closeModal();
+  // } else {
+  //   // If it's hidden, show it
+  //   searchElement.showModal();
+  // }
+}
+
 /** Add an event listener for hideSearchField() for Escape*/
 var addEventListenerForSearchKeyboard = () => {
   window.addEventListener(
@@ -70,6 +84,12 @@ var addEventListenerForSearchKeyboard = () => {
 /** Activate callbacks for search button popup */
 var setupSearchButtons = () => {
   addEventListenerForSearchKeyboard();
+
+  // Add event listeners to elements with class "search-button__button"
+  const searchButtons = document.querySelectorAll('.search-button__button');
+  searchButtons.forEach(button => {
+    button.addEventListener('click', showRtDSearch);
+  });
 };
 
 // Custom code to manage closing the RtD search dialog properly

@@ -48,23 +48,15 @@ var addEventListenerForSearchKeyboard = () => {
   window.addEventListener(
     "keydown",
     (event) => {
-      console.log(event.code)
+      // console.log(event.code)
       // Allow Escape key to hide the search field
       if (event.code == "Escape") {
         hidePydataSearch();
       }
 
-      // // Original listener for "/"
-      // if (event.code === "Slash" && !isModalVisible()) {
-      //   event.preventDefault();
-      //   // Grab the search element from the DOM
-      //   const searchElement = document.querySelector('readthedocs-search');        
-      //   searchElement.showModal();
-      // }
-
       // Open the new search modal by simulating "/" keypress when Ctrl+K is pressed
       if (event.ctrlKey && event.key === 'k') {
-        console.log('ctrl+k was pressed')
+        // console.log('ctrl+k was pressed')
         event.preventDefault();  // Prevent default behavior of Ctrl+K
         // Grab the search element from the DOM
         const searchElement = document.querySelector('readthedocs-search');        
@@ -89,8 +81,7 @@ $(document).ready(function(){
     hidePydataSearch();
   });
   $(".search-button__overlay").click(function(){
-    // Shouldn't be necessary since it's currently hidden by CSS, but just in
-    // case
+    // Shouldn't be necessary since it's currently hidden by CSS, but just in case
     console.log("Close by search-button__overlay");
     hidePydataSearch();
   });

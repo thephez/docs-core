@@ -86,28 +86,11 @@ var addEventListenerForSearchKeyboard = () => {
 var setupSearchButtons = () => {
   addEventListenerForSearchKeyboard();
 
-  // const searchElement = document.querySelector('readthedocs-search');
-  //
-  // // Select the specific background div within the 'readthedocs-search' element
-  // const background = searchElement.shadowRoot.querySelector('div.background');
-  // if (background) {
-  //   background.addEventListener('click', hideSearch);
-  // }
-
   // Add event listeners to elements with class "search-button__button"
   const searchButtons = document.querySelectorAll('.search-button__button');
   searchButtons.forEach(button => {
     button.addEventListener('click', showRtDSearch);
   });
-
-
-  document.addEventListener(
-    "readthedocs-addons-data-ready",
-    function (event) {
-      const data = event.detail.data();
-      console.log(data)
-    }
-  );
 };
 
 const observer = new MutationObserver((mutations) => {
@@ -162,5 +145,3 @@ $(document).ready(function(){
 });
 
 $(setupSearchButtons);
-
-

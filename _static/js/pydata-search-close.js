@@ -51,8 +51,8 @@ function hideRtdSearch() {
 
 // Hide any open search screens
 function hideSearch() {
-  hidePydataSearch()
-  hideRtdSearch()
+  hidePydataSearch();
+  hideRtdSearch();
 }
 
 // Show the ReadTheDocs search (addon version)
@@ -69,7 +69,6 @@ var addEventListenerForSearchKeyboard = () => {
   window.addEventListener(
     "keydown",
     (event) => {
-      // console.log(event.code)
       // Allow Escape key to hide the search field
       if (event.code == "Escape") {
         hidePydataSearch();
@@ -109,16 +108,6 @@ $(document).ready(function(){
     console.log("Close by search-button__overlay");
     hidePydataSearch();
   });
-
-  customElements.whenDefined('readthedocs-search').then(() => {
-    const searchElement = document.querySelector('readthedocs-search');
-    if (searchElement) {
-      console.log('Found the search element!');
-      // Add your shadow DOM query logic here
-    } else {
-      console.log('Search element not found');
-    }
-  });  
 });
 
 $(setupSearchButtons);

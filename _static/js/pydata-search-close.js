@@ -97,12 +97,12 @@ var setupSearchButtons = () => {
 
 // Custom code to manage closing the RtD search dialog properly
 $(document).ready(function(){
-  $(".search__cross").click(function(){
-    hidePydataSearch();
-  });
-  $(".search__outer__wrapper.search__backdrop").click(function(){
-    hidePydataSearch();
-  });
+//   $(".search__cross").click(function(){
+//     hidePydataSearch();
+//   });
+//   $(".search__outer__wrapper.search__backdrop").click(function(){
+//     hidePydataSearch();
+//   });
   $(".search-button__overlay").click(function(){
     // Shouldn't be necessary since it's currently hidden by CSS, but just in case
     console.log("Close by search-button__overlay");

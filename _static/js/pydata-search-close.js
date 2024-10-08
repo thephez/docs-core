@@ -27,7 +27,7 @@ var findSearchInput = () => {
   }
 };
 
-/** Function to hide the search field */
+// Hide Pydata theme's search
 var hidePydataSearch = () => {
   let input = findSearchInput();
   let searchPopupWrapper = document.querySelector(".search-button__wrapper");
@@ -42,26 +42,29 @@ var hidePydataSearch = () => {
   }
 };
 
-/** Function to hide the ReadTheDocs search (addon version) */
+// Hide the ReadTheDocs search (addon version)
 function hideRtdSearch() {
     // Grab the search element from the DOM
     const searchElement = document.querySelector('readthedocs-search');        
     searchElement.closeModal(); 
 }
 
+// Hide any open search screens
 function hideSearch() {
   hidePydataSearch()
   hideRtdSearch()
 }
 
-/** Function to show the ReadTheDocs search (addon version) */
+// Show the ReadTheDocs search (addon version)
 function showRtDSearch() {
   const searchElement = document.querySelector('readthedocs-search');
   searchElement.showModal();
+  
+  // If we're displaying ReadTheDocs search, make sure to hide the Pydata theme's search
   hidePydataSearch();
 }
 
-/** Add an event listener for hideSearchField() for Escape*/
+// Add event listeners for key strokes
 var addEventListenerForSearchKeyboard = () => {
   window.addEventListener(
     "keydown",
@@ -82,7 +85,7 @@ var addEventListenerForSearchKeyboard = () => {
   );
 };
 
-/** Activate callbacks for search button popup */
+// Activate callbacks for search button popup
 var setupSearchButtons = () => {
   addEventListenerForSearchKeyboard();
 

@@ -96,30 +96,6 @@ var setupSearchButtons = () => {
   });
 };
 
-const observer = new MutationObserver((mutations) => {
-  mutations.forEach((mutation) => {
-    if (mutation.addedNodes.length > 0) {
-      const searchElement = document.querySelector('readthedocs-search');
-      if (searchElement) {
-        console.log('Found the search element!');
-        observer.disconnect();  // Stop observing once the element is found
-        // Vanilla JS for shadowRoot-based background click listener
-        const searchElement = document.querySelector('readthedocs-search');  // Adjust this to target the correct search element
-        console.log(searchElement)
-        if (searchElement && searchElement.shadowRoot) {
-          const background = searchElement.querySelector('div > div.background');
-          // Never finds the selector
-          if (background) {
-            background.addEventListener('click', function() {
-              hidePydataSearch();
-            });
-          }
-        }
-      }
-    }
-  });
-});
-
 // Custom code to manage closing the RtD search dialog properly
 $(document).ready(function(){
   $(".search__cross").click(function(){
@@ -142,9 +118,7 @@ $(document).ready(function(){
     } else {
       console.log('Search element not found');
     }
-  });
-  
-  observer.observe(document.body, { childList: true, subtree: true });
+  });  
 });
 
 $(setupSearchButtons);

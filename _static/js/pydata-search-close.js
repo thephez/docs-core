@@ -29,8 +29,7 @@ var findSearchInput = () => {
 };
 
 /** Function to hide the search field */
-var hideSearchField = () => {
- 
+var hidePydataSearch = () => {
   let input = findSearchInput();
   let searchPopupWrapper = document.querySelector(".search-button__wrapper");
   let hiddenInput = searchPopupWrapper.querySelector("input");
@@ -52,7 +51,7 @@ var addEventListenerForSearchKeyboard = () => {
       console.log(event.code)
       // Allow Escape key to hide the search field
       if (event.code == "Escape") {
-        hideSearchField();
+        hidePydataSearch();
       }
 
       // // Original listener for "/"
@@ -84,16 +83,16 @@ var setupSearchButtons = () => {
 // Custom code to manage closing the RtD search dialog properly
 $(document).ready(function(){
   $(".search__cross").click(function(){
-    hideSearchField();
+    hidePydataSearch();
   });
   $(".search__outer__wrapper.search__backdrop").click(function(){
-    hideSearchField();
+    hidePydataSearch();
   });
   $(".search-button__overlay").click(function(){
     // Shouldn't be necessary since it's currently hidden by CSS, but just in
     // case
     console.log("Close by search-button__overlay");
-    hideSearchField();
+    hidePydataSearch();
   });
 });
 

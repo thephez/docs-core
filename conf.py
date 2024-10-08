@@ -157,5 +157,5 @@ html_context = {
     "doc_path": "",
 }
 
-# def setup(app):
-#     app.add_js_file('js/pydata-search-close.js')
+def setup(app):
+    app.add_js_file('js/pydata-search-close.js')

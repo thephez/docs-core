@@ -5,7 +5,7 @@
 
 Dash Core Documentation
 
-**Note: this documentation was migrated to the [dashpay/docs repository](https://github.com/dashpay/docs) after the Dash Core v21 release. Once Dash Core v22 is released, this documentation will be available at https://docs.dash.org/en/stable/docs/core and no further documentation updates will be made in this repository.**
+**Note: this documentation was migrated to the [dashpay/docs repository](https://github.com/dashpay/docs) after the Dash Core v21 release. This documentation is now available at https://docs.dash.org/en/stable/docs/core. No further documentation updates will be made in this repository.**
 
 Welcome to the Dash Core developer documentation. You’ll find sections for
 reference information, API details, guides, examples and Dash Core wallet

@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // Transform the path by replacing only the start of the path
   // Remove '/projects/core/' and replace 'en' with 'develop/docs/core'
   var replacements = [
+    { pattern: /^\/projects\/core\/en\/stable\/docs\//, replacement: '/en/develop/docs/core/' },
+    { pattern: /^\/projects\/core\/en\/stable\//, replacement: '/en/develop/docs/core/' },
+    { pattern: /^\/projects\/core\/en\/22.0.0\/docs\//, replacement: '/en/develop/docs/core/' },
+    { pattern: /^\/projects\/core\/en\/22.0.0\//, replacement: '/en/develop/docs/core/' },
     { pattern: /^\/projects\/core\/en\/develop\/docs\//, replacement: '/en/develop/docs/core/' },
     { pattern: /^\/projects\/core\/en\/develop\//, replacement: '/en/develop/docs/core/' },
     { pattern: /^\/projects\/core\/en\/latest\/docs\//, replacement: '/en/latest/docs/core/' },

@@ -13,6 +13,10 @@ html[data-theme="light"] {
   --pst-color-link: var(--pst-color-primary);
   --pst-color-link-hover: var(--dash-deep-blue);
   --pst-color-table-row-hover-bg: #aedcff;
+
+  #pst-back-to-top:hover {
+    background-color: var(--pst-color-link-hover);
+  }    
 }
 
 html[data-theme="dark"] {
@@ -22,7 +26,7 @@ html[data-theme="dark"] {
   --pst-color-table-row-hover-bg: var(--dash-deep-blue);
 
   .pst-navbar-icon:hover {
-    color: var(--pst-color-warning);
+    color: var(--pst-color-link-hover);
   }
 
   .pst-navbar-icon:hover:before {
@@ -35,6 +39,11 @@ html[data-theme="dark"] {
   
   .bd-header ul.navbar-nav>li.nav-item>.nav-link:hover:before {
     border-bottom: max(3px,.1875rem,.12em) solid var(--pst-color-warning);
+  }
+
+  #pst-back-to-top:hover {
+    background-color: var(--pst-color-link-hover);
+    color: #000;
   }  
 }
 

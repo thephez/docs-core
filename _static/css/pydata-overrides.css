@@ -45,6 +45,10 @@ html[data-theme="dark"] {
     background-color: var(--pst-color-link-hover);
     color: #000;
   }  
+
+  :host > div form > input {
+    color: var(--dash-midnight-blue);
+  }
 }
 
 html {
